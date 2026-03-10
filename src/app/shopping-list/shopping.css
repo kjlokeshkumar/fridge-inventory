@@ -1,0 +1,98 @@
+.shopping-container {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 16px;
+}
+
+.success-state {
+  text-align: center;
+  padding: 60px 24px;
+  border-color: rgba(16, 185, 129, 0.4);
+  background: linear-gradient(145deg, rgba(25, 29, 43, 0.8), rgba(16, 185, 129, 0.05));
+}
+
+.success-state .card-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.shopping-list {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s;
+}
+
+.list-row:last-child {
+  border-bottom: none;
+}
+
+.list-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-styled-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.item-category-tag {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.item-reason {
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.reason-depleted {
+  color: #f59e0b;
+}
+
+.reason-expired {
+  color: #ef4444;
+}
