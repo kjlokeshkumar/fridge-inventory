@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+
 import db from '@/lib/db';
 
 export async function GET(req: NextRequest) {
@@ -19,7 +19,8 @@ export async function GET(req: NextRequest) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const inventoryList = items.map((i: any) => `${i.quantity}x ${i.name} (${i.category})`).join(', ');
 
-    // Initialize Gemini API
+    // Dynamic lazy import to prevent global Vercel Node crashes on API boot
+    const { GoogleGenerativeAI } = await import('@google/generative-ai');
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
