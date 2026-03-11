@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import db from '@/lib/db';
 
-export const maxDuration = 60;
-
 export async function GET(req: NextRequest) {
   try {
     const apiKey = process.env.GEMINI_API_KEY;
