@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-        return NextResponse.json({ error: 'GEMINI_API_KEY is missing' }, { status: 500 });
+        return NextResponse.json({ error: 'GEMINI_API_KEY is missing' }, { status: 400 });
     }
 
     const imageParts = await Promise.all(
@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
       inventoryItems = JSON.parse(cleanJson);
     } catch (parseError) {
       console.error('Failed to parse Gemini response:', responseText);
-      return NextResponse.json({ error: 'Failed to parse inventory data from AI' }, { status: 500 });
+      return NextResponse.json({ error: 'Failed to parse inventory data from AI' }, { status: 400 });
     }
 
     // Insert into Postgres database
@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
         error: error instanceof Error ? error.message : 'Unknown server error',
         stack: error instanceof Error ? error.stack : undefined 
       },
-      { status: 500 }
+      { status: 400 }
     );
   }
 }
