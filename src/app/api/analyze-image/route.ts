@@ -109,7 +109,10 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error('Error analyzing image:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Unknown server error' },
+      { 
+        error: error instanceof Error ? error.message : 'Unknown server error',
+        stack: error instanceof Error ? error.stack : undefined 
+      },
       { status: 500 }
     );
   }

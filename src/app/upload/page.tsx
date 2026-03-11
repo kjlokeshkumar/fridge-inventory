@@ -157,8 +157,11 @@ export default function UploadPage() {
         });
 
         if (!response.ok) {
-          const errData = await response.json().catch(() => ({}));
-          throw new Error(errData.error || `Batch ${i + 1} analysis failed`);
+          const errText = await response.text();
+          console.error("Vercel API raw response:", errText);
+          let errData: any = {};
+          try { errData = JSON.parse(errText); } catch(e) {}
+          throw new Error(errData.error || errData.message || `API rejected batch ${i + 1} with status ${response.status}. See console for raw response.`);
         }
 
         const result = await response.json();
