@@ -2,7 +2,6 @@
 
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import heic2any from 'heic2any';
 import './upload.css';
 
 export default function UploadPage() {
@@ -20,7 +19,9 @@ export default function UploadPage() {
     let fileToCompress = file;
     if (file.type === 'image/heic' || file.name.toLowerCase().endsWith('.heic')) {
        try {
-         const conversionResult = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.8 });
+         // Dynamically import heic2any ONLY on the client to avoid SSR "window is not defined" crashes
+         const heic2anyModule = (await import('heic2any')).default;
+         const conversionResult = await heic2anyModule({ blob: file, toType: "image/jpeg", quality: 0.8 });
          const jpegBlob = Array.isArray(conversionResult) ? conversionResult[0] : conversionResult;
          
          // Create a new file object for the Canvas
