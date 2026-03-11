@@ -1,9 +1,11 @@
 import { neon } from '@neondatabase/serverless';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let cachedSql: any = null;
 
 // We use a proxy function to prevent the entire Next.js API route from crashing on module load 
 // if the environment variable is missing or malformed (like accidental quotes), allowing our API to catch it gracefully and return JSON.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const sql = ((strings: TemplateStringsArray, ...values: any[]) => {
   if (!cachedSql) {
     if (!process.env.DATABASE_URL) {
@@ -12,12 +14,14 @@ const sql = ((strings: TemplateStringsArray, ...values: any[]) => {
     try {
       // Create the connection using the URL
       cachedSql = neon(process.env.DATABASE_URL);
-    } catch (e: any) {
+    } catch (e: unknown) {
+      const error = e as Error;
       // neon throws a TypeError if the URL has quotes around it, spacing, or invalid protocols
-      throw new Error(`Neon DB Connection error (Check your Vercel Environment Variable for extra quotes/spaces!): ${e.message}`);
+      throw new Error(`Neon DB Connection error (Check your Vercel Environment Variable for extra quotes/spaces!): ${error.message}`);
     }
   }
   return cachedSql(strings, ...values);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) as any;
 
 // Since Vercel serverless functions shouldn't run arbitrary DDL on every request,

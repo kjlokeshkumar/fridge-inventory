@@ -52,7 +52,7 @@ export default function ShoppingListPage() {
       {items.length === 0 ? (
         <div className="empty-state glass-pane success-state">
           <div className="card-icon">✅</div>
-          <h2>You're all stocked up!</h2>
+          <h2>You&apos;re all stocked up!</h2>
           <p>No depleted or expired items found in your inventory.</p>
         </div>
       ) : (

@@ -169,7 +169,8 @@ export default function UploadPage() {
         if (!response.ok) {
           const errText = await response.text();
           console.error("Vercel API raw response:", errText);
-          let errData: any = {};
+          let errData: Record<string, string> = {};
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           try { errData = JSON.parse(errText); } catch(e) {}
           throw new Error(errData.error || errData.message || `API rejected batch ${i + 1} with status ${response.status}. See console for raw response.`);
         }

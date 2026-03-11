@@ -35,7 +35,8 @@ export default function RecipesPage() {
       if (data.recipes) {
         setRecipes(data.recipes);
       }
-    } catch (err: any) {
+    } catch (e: unknown) {
+      const err = e as Error;
       setError(err.message || 'Failed to craft recipes');
       console.error(err);
     } finally {

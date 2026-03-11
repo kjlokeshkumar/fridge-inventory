@@ -18,6 +18,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ recipes: [], message: 'Inventory is empty.' });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const inventoryList = items.map((i: any) => `${i.quantity}x ${i.name} (${i.category})`).join(', ');
 
     // Initialize Gemini API
