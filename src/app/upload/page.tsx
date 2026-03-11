@@ -9,8 +9,54 @@ export default function UploadPage() {
   const [previews, setPreviews] = useState<string[]>([]);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [progressMsg, setProgressMsg] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
+  const compressImage = (file: File, maxWidth = 1200): Promise<File> => {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.src = URL.createObjectURL(file);
+      image.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = image.width;
+        let height = image.height;
+        
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          reject(new Error("Could not get canvas context"));
+          return;
+        }
+        
+        // Fill white background for transparent images turning to JPEG
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(image, 0, 0, width, height);
+        
+        // Compress to JPEG with 0.7 quality
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            reject(new Error("Canvas to Blob failed"));
+            return;
+          }
+          const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, ".jpg"), {
+            type: 'image/jpeg',
+            lastModified: Date.now(),
+          });
+          resolve(compressedFile);
+        }, 'image/jpeg', 0.7);
+      };
+      image.onerror = (err) => reject(err);
+    });
+  };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
@@ -44,29 +90,63 @@ export default function UploadPage() {
 
     setIsAnalyzing(true);
     setError(null);
-
-    const formData = new FormData();
-    files.forEach(file => formData.append('images', file));
+    setProgressMsg('Compressing images...');
 
     try {
-      const response = await fetch('/api/analyze-image', {
-        method: 'POST',
-        body: formData,
-      });
+      // 1. Compress all files
+      const compressedFiles = await Promise.all(files.map(f => compressImage(f)));
+      
+      // 2. Chunk files to stay under 4MB limit (Vercel limit is 4.5MB)
+      const MAX_CHUNK_SIZE = 4 * 1024 * 1024; // 4MB
+      const chunks: File[][] = [];
+      let currentChunk: File[] = [];
+      let currentChunkSize = 0;
 
-      if (!response.ok) {
-        throw new Error('Analysis failed');
+      for (const file of compressedFiles) {
+        if (currentChunkSize + file.size > MAX_CHUNK_SIZE && currentChunk.length > 0) {
+          chunks.push(currentChunk);
+          currentChunk = [];
+          currentChunkSize = 0;
+        }
+        currentChunk.push(file);
+        currentChunkSize += file.size;
+      }
+      if (currentChunk.length > 0) {
+        chunks.push(currentChunk);
       }
 
-      const result = await response.json();
-      console.log('Analysis Result:', result);
+      // 3. Upload chunks sequentially to avoid rate limits
+      let totalAnalyzed = 0;
+      for (let i = 0; i < chunks.length; i++) {
+        setProgressMsg(`Analyzing batch ${i + 1} of ${chunks.length}...`);
+        
+        const formData = new FormData();
+        chunks[i].forEach(file => formData.append('images', file));
+
+        const response = await fetch('/api/analyze-image', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.error || `Batch ${i + 1} analysis failed`);
+        }
+
+        const result = await response.json();
+        totalAnalyzed += result.items?.length || 0;
+      }
       
-      // Navigate to inventory after successful upload
+      setProgressMsg('Analysis complete! Redirecting...');
+      // Small delay to show completion message
+      await new Promise(r => setTimeout(r, 800));
       router.push('/inventory');
     } catch (err) {
       console.error(err);
-      setError('Failed to analyze image. Please try again.');
+      setError(err instanceof Error ? err.message : 'Failed to analyze images. Please try again.');
+    } finally {
       setIsAnalyzing(false);
+      setProgressMsg('');
     }
   };
 
@@ -144,9 +224,12 @@ export default function UploadPage() {
             disabled={files.length === 0 || isAnalyzing}
           >
             {isAnalyzing ? (
-              <>
-                <span className="spinner"></span> Analyzing...
-              </>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span className="spinner"></span> Analyzing...
+                </div>
+                {progressMsg && <span style={{ fontSize: '0.85rem', opacity: 0.9 }}>{progressMsg}</span>}
+              </div>
             ) : (
               'Analyze with AI ✨'
             )}
