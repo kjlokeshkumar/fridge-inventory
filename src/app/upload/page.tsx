@@ -13,7 +13,7 @@ export default function UploadPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  const compressImage = (file: File, maxWidth = 1200): Promise<File> => {
+  const compressImage = (file: File, maxWidth = 800): Promise<File> => {
     return new Promise((resolve, reject) => {
       const image = new Image();
       image.src = URL.createObjectURL(file);
@@ -52,7 +52,7 @@ export default function UploadPage() {
             lastModified: Date.now(),
           });
           resolve(compressedFile);
-        }, 'image/jpeg', 0.7);
+        }, 'image/jpeg', 0.5);
       };
       image.onerror = (err) => reject(err);
     });
@@ -96,8 +96,8 @@ export default function UploadPage() {
       // 1. Compress all files
       const compressedFiles = await Promise.all(files.map(f => compressImage(f)));
       
-      // 2. Chunk files to stay under 4MB limit (Vercel limit is 4.5MB)
-      const MAX_CHUNK_SIZE = 4 * 1024 * 1024; // 4MB
+      // 2. Chunk files to stay under 2MB limit to safely pass Vercel's proxy
+      const MAX_CHUNK_SIZE = 2 * 1024 * 1024; // 2MB
       const chunks: File[][] = [];
       let currentChunk: File[] = [];
       let currentChunkSize = 0;
