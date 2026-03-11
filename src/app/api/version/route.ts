@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 export async function GET() {
-  return NextResponse.json({ version: 1, status: "active" });
+  return NextResponse.json({ version: 2, status: "edge-active" });
 }
