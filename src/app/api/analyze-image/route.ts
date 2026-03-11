@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ 
       success: true, 
-      message: \`Successfully analyzed and added \${insertedCount} items to inventory.\`,
+      message: `Successfully analyzed and added ${insertedCount} items to inventory.`,
       items: inventoryItems 
     });
 
