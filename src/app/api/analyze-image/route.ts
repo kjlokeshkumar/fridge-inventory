@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'nodejs';
+
 export async function POST(req: NextRequest) {
   // DIAGNOSTIC ECHO TEST
   // Bypasses all body reading, module resolution, and async logic.
