@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export const maxDuration = 60; // Allow more time for Gemini API
-
 export async function POST(req: NextRequest) {
   // DIAGNOSTIC ECHO TEST
   // Bypasses all body reading, module resolution, and async logic.
