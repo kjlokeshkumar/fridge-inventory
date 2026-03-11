@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import db from '@/lib/db';
 
+export const maxDuration = 60; // Allow more time for Gemini API
+
 export async function POST(req: NextRequest) {
   try {
     const jsonBody = await req.json();
