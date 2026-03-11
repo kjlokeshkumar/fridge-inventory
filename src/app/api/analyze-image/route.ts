@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import db from '@/lib/db';
 
 export const maxDuration = 60; // Allow more time for Gemini API
 
 export async function POST(req: NextRequest) {
   try {
-    const jsonBody = await req.json();
+    const rawText = await req.text();
+    let jsonBody;
+    try {
+      jsonBody = JSON.parse(rawText);
+    } catch (e) {
+      return NextResponse.json({ error: 'Failed to parse JSON body natively' }, { status: 400 });
+    }
+    
     const base64Images = jsonBody.images as string[];
     
     if (!base64Images || base64Images.length === 0) {
@@ -37,6 +42,10 @@ export async function POST(req: NextRequest) {
       };
     });
     
+    // Dynamic imports to strictly trap any Module-Level Panics thrown by Vercel Node runtime
+    const { GoogleGenerativeAI } = await import('@google/generative-ai');
+    const { default: db } = await import('@/lib/db');
+
     // Initialize Gemini API
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
@@ -68,7 +77,7 @@ export async function POST(req: NextRequest) {
     
     try {
       // Clean up the text in case Gemini wraps it in markdown blocks
-      const cleanJson = responseText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+      const cleanJson = responseText.replace(/\`\`\`json\n?/g, '').replace(/\`\`\`\n?/g, '').trim();
       inventoryItems = JSON.parse(cleanJson);
     } catch (parseError) {
       console.error('Failed to parse Gemini response:', responseText);
@@ -97,7 +106,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ 
       success: true, 
-      message: `Successfully analyzed and added ${insertedCount} items to inventory.`,
+      message: \`Successfully analyzed and added \${insertedCount} items to inventory.\`,
       items: inventoryItems 
     });
 
