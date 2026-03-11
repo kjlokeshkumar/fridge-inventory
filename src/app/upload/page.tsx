@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import heic2any from 'heic2any';
 import './upload.css';
 
 export default function UploadPage() {
@@ -13,10 +14,29 @@ export default function UploadPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  const compressImage = (file: File, maxWidth = 800): Promise<File> => {
+  const compressImage = async (file: File, maxWidth = 800): Promise<File> => {
+    
+    // First, Check if we need to convert HEIC to JPEG.
+    let fileToCompress = file;
+    if (file.type === 'image/heic' || file.name.toLowerCase().endsWith('.heic')) {
+       try {
+         const conversionResult = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.8 });
+         const jpegBlob = Array.isArray(conversionResult) ? conversionResult[0] : conversionResult;
+         
+         // Create a new file object for the Canvas
+         fileToCompress = new File([jpegBlob], file.name.replace(/\.[^/.]+$/, ".jpg"), {
+            type: 'image/jpeg',
+            lastModified: Date.now(),
+         });
+       } catch (err) {
+         console.error(`HEIC conversion failed for ${file.name}. Falling back to raw file.`, err);
+         return file; 
+       }
+    }
+
     return new Promise((resolve, reject) => {
       const image = new Image();
-      image.src = URL.createObjectURL(file);
+      image.src = URL.createObjectURL(fileToCompress);
       image.onload = () => {
         const canvas = document.createElement('canvas');
         let width = image.width;
@@ -55,12 +75,12 @@ export default function UploadPage() {
         }, 'image/jpeg', 0.5);
       };
       
-      // If the image fails to load into the canvas (e.g. HEIC on unsupported browsers, 
-      // or CORS taint), we log the error and just return the original uncompressed file.
-      // This prevents the entire upload batch from failing due to one unsupported file format.
+      // If the image fails to load into the canvas (e.g. unsupported metadata 
+      // or CORS taint), we log the error and just return the originally processed file.
+      // This prevents the entire upload batch from failing.
       image.onerror = (err) => {
-        console.warn(`Failed to compress image ${file.name}, using original file instead:`, err);
-        resolve(file);
+        console.warn(`Failed to compress image ${fileToCompress.name}, using original file instead:`, err);
+        resolve(fileToCompress);
       };
     });
   };
