@@ -54,7 +54,14 @@ export default function UploadPage() {
           resolve(compressedFile);
         }, 'image/jpeg', 0.5);
       };
-      image.onerror = (err) => reject(err);
+      
+      // If the image fails to load into the canvas (e.g. HEIC on unsupported browsers, 
+      // or CORS taint), we log the error and just return the original uncompressed file.
+      // This prevents the entire upload batch from failing due to one unsupported file format.
+      image.onerror = (err) => {
+        console.warn(`Failed to compress image ${file.name}, using original file instead:`, err);
+        resolve(file);
+      };
     });
   };
 

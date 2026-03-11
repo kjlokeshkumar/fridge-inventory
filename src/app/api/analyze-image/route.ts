@@ -4,15 +4,6 @@ import db from '@/lib/db';
 
 export const maxDuration = 60; // Allow more time for Gemini API
 
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '4mb',
-    },
-  },
-};
-
-
 // Generate a random ID or user could provide via headers, but this is a local DB MVP
 export async function POST(req: NextRequest) {
   try {
