@@ -148,12 +148,22 @@ export default function UploadPage() {
       for (let i = 0; i < chunks.length; i++) {
         setProgressMsg(`Analyzing batch ${i + 1} of ${chunks.length}...`);
         
-        const formData = new FormData();
-        chunks[i].forEach(file => formData.append('images', file));
+        // Convert chunk files to base64 Data URLs so we bypass Next.js buggy FormData parser entirely
+        const base64Images = await Promise.all(chunks[i].map(file => {
+          return new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+        }));
 
         const response = await fetch('/api/analyze-image', {
           method: 'POST',
-          body: formData,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ images: base64Images }),
         });
 
         if (!response.ok) {

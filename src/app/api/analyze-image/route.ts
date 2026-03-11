@@ -2,15 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import db from '@/lib/db';
 
-export const maxDuration = 60; // Allow more time for Gemini API
-
-// Generate a random ID or user could provide via headers, but this is a local DB MVP
 export async function POST(req: NextRequest) {
   try {
-    const formData = await req.formData();
-    const files = formData.getAll('images') as File[];
+    const jsonBody = await req.json();
+    const base64Images = jsonBody.images as string[];
     
-    if (!files || files.length === 0) {
+    if (!base64Images || base64Images.length === 0) {
       return NextResponse.json({ error: 'No images provided' }, { status: 400 });
     }
 
@@ -19,28 +16,24 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'GEMINI_API_KEY is missing' }, { status: 400 });
     }
 
-    const imageParts = await Promise.all(
-      files.map(async (file) => {
-        const buffer = await file.arrayBuffer();
-        const base64Image = Buffer.from(buffer).toString('base64');
-        
-        let mimeType = file.type;
-        if (!mimeType || mimeType === 'application/octet-stream') {
-          const ext = file.name.split('.').pop()?.toLowerCase();
-          if (ext === 'png') mimeType = 'image/png';
-          else if (ext === 'webp') mimeType = 'image/webp';
-          else if (ext === 'heic') mimeType = 'image/heic';
-          else mimeType = 'image/jpeg';
+    const imageParts = base64Images.map((dataUrl) => {
+      // Decode the data URL: data:image/jpeg;base64,...
+      const parts = dataUrl.split(',');
+      const header = parts[0];
+      const base64Data = parts[1];
+      
+      let mimeType = 'image/jpeg';
+      if (header.includes('image/png')) mimeType = 'image/png';
+      else if (header.includes('image/webp')) mimeType = 'image/webp';
+      else if (header.includes('image/heic')) mimeType = 'image/heic';
+      
+      return {
+        inlineData: {
+          data: base64Data,
+          mimeType: mimeType
         }
-
-        return {
-          inlineData: {
-            data: base64Image,
-            mimeType: mimeType
-          }
-        };
-      })
-    );
+      };
+    });
     
     // Initialize Gemini API
     const genAI = new GoogleGenerativeAI(apiKey);
