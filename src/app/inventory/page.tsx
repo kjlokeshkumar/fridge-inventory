@@ -6,6 +6,7 @@ import './inventory.css';
 interface InventoryItem {
   id: number;
   name: string;
+  sourashtraName: string | null;
   quantity: number;
   category: string;
   expirationDate: string | null;
@@ -106,7 +107,12 @@ export default function InventoryPage() {
                   ✕
                 </button>
               </div>
-              <h3 className="item-name">{item.name}</h3>
+              <h3 className="item-name">
+                {item.name}
+                {item.sourashtraName && (
+                  <span className="item-sourashtra-name">({item.sourashtraName})</span>
+                )}
+              </h3>
               <div className="item-details">
                 <span className="item-quantity">Qty: {item.quantity}</span>
                 {item.expirationDate && (

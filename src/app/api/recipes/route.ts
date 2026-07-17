@@ -9,15 +9,15 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ error: 'GEMINI_API_KEY is missing' }, { status: 500 });
     }
 
-    // Fetch current inventory
-    const items = await db`SELECT name, quantity, category FROM inventory WHERE quantity > 0`;
+    // Fetch current inventory (including Sourashtra names)
+    const items = await db`SELECT name, "sourashtraName", quantity, category FROM inventory WHERE quantity > 0`;
     
     if (items.length === 0) {
       return NextResponse.json({ recipes: [], message: 'Inventory is empty.' });
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const inventoryList = items.map((i: any) => `${i.quantity}x ${i.name} (${i.category})`).join(', ');
+    const inventoryList = items.map((i: any) => `${i.quantity}x ${i.name}${i.sourashtraName ? ` (${i.sourashtraName})` : ''} [Category: ${i.category}]`).join(', ');
 
     // Dynamic lazy import to prevent global Vercel Node crashes on API boot
     const { GoogleGenerativeAI } = await import('@google/generative-ai');
@@ -25,32 +25,48 @@ export async function GET(req: NextRequest) {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `
-    You are an expert chef. Create 3 recipe ideas based primarily on these available ingredients in my kitchen:
+    You are an expert chef specializing in traditional Sourashtra cuisine.
+    Create 3 recipe ideas based primarily on these available ingredients in my kitchen:
     ${inventoryList}
 
-    It evaluates to true if the user has basic pantry items like salt, pepper, oil, water.
+    It evaluates to true if the user has basic pantry items like salt, pepper, oil, water, mustard, etc.
+    
+    CRITICAL INSTRUCTION:
+    - You must write the recipe titles, difficulty level, and step-by-step cooking steps in transliterated Sourashtra (Latin script) so it is easy to read. E.g. title: "Vangi Budith (Brinjal Chutney)", steps: ["Cooker-ma brinjal, tomato, onions boil kero", "Pulses oil-ma splutter thaya pachhi mix kero"].
+    - Prioritize proposing traditional Sourashtra recipes if ingredients match:
+      1. "Mhuri Pongal (Mustard Pongal)": Rice (Rice), Mustard (Mhuri), Curry leaves, Asafoetida, Salt.
+      2. "Vangi Budith (Brinjal Chutney)": Brinjal (Vangi), Tomato (Tomato), Onions (Kanno), Chili, Tamarind.
+      3. "Gullu Pongal (Jaggery Pongal)": Raw Rice, Milk (Dudh), Jaggery, Ghee, Cashews.
+      4. "Limbu Pongal (Lemon Rice)": Rice, Lemon (Limbu), Mustard, bengal gram.
+      5. "Rubbin (Gooseberry Mash)": Gooseberry (Nellika), Ginger, Garlic, Chili.
+      6. "Chilli Chapatti": Chapatti, Onion (Kanno), Tomato, Curry leaves, Masala.
+    - If none of the ingredients match traditional dishes, suggest standard recipes but written in transliterated Sourashtra instructions!
+
     For each recipe, provide:
-    1. A catchy title
-    2. Missing ingredients I need to buy
-    3. Difficulty level (Easy, Medium, Hard)
-    4. A concise list of 3-5 steps to make it.
+    1. A catchy title in transliterated Sourashtra (with English translation in parentheses)
+    2. Missing ingredients I need to buy (in English, e.g. "Mustard", "Jaggery")
+    3. Difficulty level (Easy, Medium, Hard) transliterated into Sourashtra
+    4. A concise list of 3-5 steps to make it, written in transliterated Sourashtra (Latin script).
     5. An estimated total calories for the recipe.
-    6. A mapped list of ALL ingredients used (both inventory and missing) with an estimated weight in grams and the calories for that specific weight.
+    6. A mapped list of ALL ingredients used (both inventory and missing) with estimated weight in grams and calories.
     
     Respond STRICTLY with a valid JSON array of objects. Do not use markdown blocks.
-    Example:
+    Example format:
     [
       {
-        "title": "Apple Cinnamon Oatmeal",
-        "missingIngredients": ["Cinnamon", "Oats"],
-        "difficulty": "Easy",
-        "steps": ["Chop apples", "Boil oats", "Mix everything"],
-        "totalCalories": 350,
+        "title": "Mhuri Pongal (Mustard Pongal)",
+        "missingIngredients": ["Mustard seeds"],
+        "difficulty": "Suluva (Easy)",
+        "steps": [
+          "Soaked raw rice-go cooker-ma 2.5 cups pani add kero.",
+          "Oil-ma mustard splutter kero, curry leaves anim asafoetida add kero.",
+          "Mhuri tadka rice-ma add keri cooker automatic whistle avu dyo.",
+          "Ready thaya pachhi vangi budith sanga sarvo kero."
+        ],
+        "totalCalories": 380,
         "ingredientsBreakdown": [
-          { "name": "Apple", "weightGrams": 150, "calories": 78 },
-          { "name": "Oats", "weightGrams": 40, "calories": 150 },
-          { "name": "Cinnamon", "weightGrams": 5, "calories": 12 },
-          { "name": "Milk", "weightGrams": 180, "calories": 110 }
+          { "name": "Raw Rice", "weightGrams": 200, "calories": 260 },
+          { "name": "Mustard seeds", "weightGrams": 10, "calories": 50 }
         ]
       }
     ]

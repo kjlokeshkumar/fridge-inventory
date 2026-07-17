@@ -57,6 +57,14 @@ export default function RecipesPage() {
     );
   }
 
+  const getDifficultyClass = (diff: string) => {
+    const d = diff.toLowerCase();
+    if (d.includes('easy') || d.includes('suluva')) return 'easy';
+    if (d.includes('medium') || d.includes('madhyama')) return 'medium';
+    if (d.includes('hard') || d.includes('kastam')) return 'hard';
+    return 'medium'; // fallback
+  };
+
   return (
     <div className="recipes-container">
       <header className="dashboard-header flex-header">
@@ -84,7 +92,7 @@ export default function RecipesPage() {
             <div key={idx} className="recipe-card glass-pane">
               <div className="recipe-header">
                 <h3>{recipe.title}</h3>
-                <span className={`difficulty ${recipe.difficulty.toLowerCase()}`}>
+                <span className={`difficulty ${getDifficultyClass(recipe.difficulty)}`}>
                   {recipe.difficulty}
                 </span>
               </div>

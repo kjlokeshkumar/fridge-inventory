@@ -6,6 +6,7 @@ import './shopping.css';
 interface ShoppingItem {
   id: number;
   name: string;
+  sourashtraName: string | null;
   category: string;
   quantity: number;
   expirationDate: string | null;
@@ -65,7 +66,14 @@ export default function ShoppingListPage() {
             {items.map((item) => (
               <li key={item.id} className="list-row">
                 <div className="item-info">
-                  <span className="item-styled-name">{item.name}</span>
+                  <span className="item-styled-name">
+                    {item.name}
+                    {item.sourashtraName && (
+                      <span style={{ display: 'block', fontSize: '0.85rem', color: 'var(--accent-color)', marginTop: '2px' }}>
+                        ({item.sourashtraName})
+                      </span>
+                    )}
+                  </span>
                   <span className="item-category-tag">{item.category}</span>
                 </div>
                 <div className="item-reason">

@@ -33,6 +33,7 @@ export async function initDb() {
       CREATE TABLE IF NOT EXISTS inventory (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
+        "sourashtraName" VARCHAR(255),
         quantity INTEGER NOT NULL DEFAULT 1,
         category VARCHAR(100),
         expirationDate VARCHAR(25),
@@ -41,6 +42,12 @@ export async function initDb() {
         updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `;
+    
+    // Safely add column if it doesn't exist for existing databases
+    await sql`
+      ALTER TABLE inventory ADD COLUMN IF NOT EXISTS "sourashtraName" VARCHAR(255)
+    `;
+    
     console.log("Database initialized successfully!");
   } catch (error) {
     console.error("Failed to initialize database", error);
