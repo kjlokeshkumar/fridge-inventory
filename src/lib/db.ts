@@ -55,4 +55,16 @@ export async function initDb() {
   }
 }
 
+export async function purgeOldItems() {
+  try {
+    await sql`
+      DELETE FROM inventory 
+      WHERE "addedAt" < NOW() - INTERVAL '14 days'
+    `;
+    console.log("Successfully purged inventory items older than 2 weeks.");
+  } catch (error) {
+    console.error("Failed to purge old inventory items:", error);
+  }
+}
+
 export default sql;

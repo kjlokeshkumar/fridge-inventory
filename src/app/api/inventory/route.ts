@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
   try {
-    const { default: db, initDb } = await import('@/lib/db');
+    const { default: db, initDb, purgeOldItems } = await import('@/lib/db');
     await initDb();
+    await purgeOldItems();
     const items = await db`SELECT * FROM inventory ORDER BY "expirationDate" ASC, name ASC`;
 
     const lang = req.nextUrl.searchParams.get('lang') || 'English';
