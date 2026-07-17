@@ -12,8 +12,10 @@ const sql = ((strings: TemplateStringsArray, ...values: any[]) => {
       throw new Error("DATABASE_URL environment variable is missing on Vercel!");
     }
     try {
-      // Create the connection using the URL
-      cachedSql = neon(process.env.DATABASE_URL);
+      const rawUrl = process.env.DATABASE_URL || '';
+      const cleanUrl = rawUrl.replace(/\0/g, '').replace(/[\r\n]/g, '').trim().replace(/^['"]|['"]$/g, '').trim();
+      // Create the connection using the cleaned URL
+      cachedSql = neon(cleanUrl);
     } catch (e: unknown) {
       const error = e as Error;
       // neon throws a TypeError if the URL has quotes around it, spacing, or invalid protocols
