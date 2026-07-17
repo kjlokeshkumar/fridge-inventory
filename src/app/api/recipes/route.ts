@@ -56,7 +56,29 @@ export async function GET(req: NextRequest) {
     ]
     `;
 
-    const result = await model.generateContent(prompt);
+    // Helper to request content with exponential backoff retries for transient 503/429 errors
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const generateContentWithRetry = async (geminiModel: any, contentParts: any[], retries = 3, retryDelay = 1500): Promise<any> => {
+      for (let i = 0; i < retries; i++) {
+        try {
+          return await geminiModel.generateContent(contentParts);
+        } catch (err: unknown) {
+          const errorObj = err as { status?: number; message?: string };
+          const isRetryable = errorObj?.status === 429 || errorObj?.status === 503 || 
+                             errorObj?.message?.includes('503') || errorObj?.message?.includes('429') || 
+                             errorObj?.message?.includes('high demand');
+          if (isRetryable && i < retries - 1) {
+            console.warn(`Gemini API 503/429 encountered, retrying in ${retryDelay}ms... (Attempt ${i + 1} of ${retries})`);
+            await new Promise(resolve => setTimeout(resolve, retryDelay));
+            retryDelay *= 2;
+          } else {
+            throw err;
+          }
+        }
+      }
+    };
+
+    const result = await generateContentWithRetry(model, [prompt]);
     const responseText = result.response.text();
     let recipes = [];
     
