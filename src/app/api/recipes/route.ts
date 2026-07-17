@@ -32,8 +32,13 @@ export async function GET(req: NextRequest) {
 
     It evaluates to true if the user has basic pantry items like salt, pepper, oil, water, mustard, etc.
     
-    CRITICAL INSTRUCTION:
-    - You must write the recipe titles, difficulty level, and step-by-step cooking steps in transliterated Sourashtra (Latin script) so it is easy to read. E.g. title: "Vangi Budith (Brinjal Chutney)", steps: ["Cooker-ma brinjal, tomato, onions boil kero", "Pulses oil-ma splutter thaya pachhi mix kero"].
+    CRITICAL LANGUAGE INSTRUCTIONS:
+    - Do NOT write in Hindi or Gujarati (DO NOT use Hindi words/phrases like "milayein", "dalen", "kijiye", "pani milaye", "ubale", "pakayein", "tadka lagayein").
+    - Write ALL cooking instructions, difficulty levels, and titles in transliterated Sourashtra (Latin script) using typical Sourashtra dialect grammar.
+    - Sourashtra grammatical features:
+      * Verb endings: Verbs should end in "-kero" (do/make), "-dyo" (let/give), "-mel" (add/mix/place).
+        E.g., Use "add kero" or "mix kero" instead of "milayein". Use "boil kero" instead of "ubale". Use "splutter kero" or "fry kero" instead of "pakayein/tadka lagayein". Use "avu dyo" (let it come/let it boil). Use "sarvo kero" instead of "parose".
+      * Prepositions/particles: Use "-go" or "-ma" (in/into) for locations, and "sanga" (with). E.g., "cooker-ma", "pani-go", "vangi budith sanga".
     - Prioritize proposing traditional Sourashtra recipes if ingredients match:
       1. "Mhuri Pongal (Mustard Pongal)": Rice (Rice), Mustard (Mhuri), Curry leaves, Asafoetida, Salt.
       2. "Vangi Budith (Brinjal Chutney)": Brinjal (Vangi), Tomato (Tomato), Onions (Kanno), Chili, Tamarind.
