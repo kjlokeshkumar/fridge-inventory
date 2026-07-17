@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import db from '@/lib/db';
 
 export async function GET(req: NextRequest) {
   try {
+    const { default: db, initDb } = await import('@/lib/db');
+    await initDb();
+    
     // A real app would track depleted items over time.
     // For MVP, anything that is expired or quantity = 0 is considered depleted.
     const items = await db`

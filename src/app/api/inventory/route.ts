@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import db from '@/lib/db';
 
 export async function GET(req: NextRequest) {
   try {
+    const { default: db, initDb } = await import('@/lib/db');
+    await initDb();
     const items = await db`SELECT * FROM inventory ORDER BY "expirationDate" ASC, name ASC`;
     return NextResponse.json({ items });
   } catch (error) {
@@ -16,6 +17,8 @@ export async function DELETE(req: NextRequest) {
     const { id } = await req.json();
     if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
 
+    const { default: db, initDb } = await import('@/lib/db');
+    await initDb();
     const result = await db`DELETE FROM inventory WHERE id = ${id}`;
     
     if (result.length > 0) {
