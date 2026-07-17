@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import './recipes.css';
+import { UI_TRANSLATIONS } from '@/lib/translations';
 
 interface IngredientCalories {
   name: string;
@@ -22,12 +23,29 @@ export default function RecipesPage() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [language, setLanguage] = useState('English');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('appLanguage') || 'English';
+    setLanguage(stored);
+
+    const handleLang = (e: Event) => {
+      const newLang = (e as CustomEvent).detail;
+      setLanguage(newLang);
+    };
+    window.addEventListener('languageChange', handleLang);
+    return () => window.removeEventListener('languageChange', handleLang);
+  }, []);
+
+  useEffect(() => {
+    fetchRecipes();
+  }, [language]);
 
   const fetchRecipes = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('/api/recipes');
+      const res = await fetch(`/api/recipes?lang=${encodeURIComponent(language)}`);
       const data = await res.json();
       
       if (!res.ok) throw new Error(data.error || 'Failed to fetch');
@@ -44,36 +62,33 @@ export default function RecipesPage() {
     }
   };
 
-  useEffect(() => {
-    fetchRecipes();
-  }, []);
+  const getDifficultyClass = (diff: string) => {
+    const d = diff.toLowerCase();
+    if (d.includes('easy') || d.includes('suluva') || d.includes('எளிது') || d.includes('சுலபம்') || d.includes('आसान') || d.includes('సులభం') || d.includes('ಸುಲಭ') || d.includes('સરળ') || d.includes('सोपे') || d.includes('সহজ') || d.includes('എളുപ്പം')) return 'easy';
+    if (d.includes('hard') || d.includes('kastam') || d.includes('கடினம்') || d.includes('कठिन') || d.includes('కష్టం') || d.includes('ಕಷ್ಟ') || d.includes('મુશ્કેલ') || d.includes('कठीण') || d.includes('কঠিন') || d.includes('ബുദ്ധിമുട്ടാണ്')) return 'hard';
+    return 'medium'; // default
+  };
+
+  const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
   if (loading) {
     return (
       <div className="recipes-loading">
         <div className="spinner" style={{ width: '40px', height: '40px' }}></div>
-        <p>Chef AI is crafting recipes from your inventory...</p>
+        <p>{t.loadingRecipes}</p>
       </div>
     );
   }
-
-  const getDifficultyClass = (diff: string) => {
-    const d = diff.toLowerCase();
-    if (d.includes('easy') || d.includes('suluva')) return 'easy';
-    if (d.includes('medium') || d.includes('madhyama')) return 'medium';
-    if (d.includes('hard') || d.includes('kastam')) return 'hard';
-    return 'medium'; // fallback
-  };
 
   return (
     <div className="recipes-container">
       <header className="dashboard-header flex-header">
         <div>
-          <h1 className="page-title">AI Recipes</h1>
-          <p className="page-subtitle">Meals based on what you already have</p>
+          <h1 className="page-title">{t.recipesTitle}</h1>
+          <p className="page-subtitle">{t.recipesSub}</p>
         </div>
         <button className="btn-secondary" onClick={fetchRecipes}>
-          ↻ Regenerate
+          {t.regenerate}
         </button>
       </header>
 
@@ -82,9 +97,9 @@ export default function RecipesPage() {
       {recipes.length === 0 && !error ? (
         <div className="empty-state glass-pane">
           <div className="card-icon">🍳</div>
-          <h2>Nothing to cook yet</h2>
-          <p>Add more items to your inventory to get recipe suggestions.</p>
-          <a href="/upload" className="btn-primary mt-16">Scan groceries</a>
+          <h2>{t.noRecipesTitle}</h2>
+          <p>{t.noRecipesSub}</p>
+          <a href="/upload" className="btn-primary mt-16">{t.scanGroceries}</a>
         </div>
       ) : (
         <div className="recipes-grid">
@@ -98,7 +113,7 @@ export default function RecipesPage() {
               </div>
               
               <div className="recipe-section">
-                <h4>Missing Ingredients:</h4>
+                <h4>{t.missingIngredients}</h4>
                 {recipe.missingIngredients.length > 0 ? (
                   <ul className="missing-list">
                     {recipe.missingIngredients.map((ing, i) => (
@@ -106,19 +121,19 @@ export default function RecipesPage() {
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-success">You have everything needed!</p>
+                  <p className="text-success">{t.haveEverything}</p>
                 )}
               </div>
 
               <div className="recipe-section">
-                <h4>Ingredients & Calories (approx. {recipe.totalCalories || 0} kcal):</h4>
+                <h4>Ingredients & Calories ({t.approx} {recipe.totalCalories || 0} {t.kcal}):</h4>
                 <div className="calorie-breakdown">
                   {recipe.ingredientsBreakdown?.length > 0 ? (
                     <ul className="calorie-list" style={{ listStyleType: 'none', paddingLeft: 0 }}>
                       {recipe.ingredientsBreakdown.map((item, i) => (
                         <li key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                           <span>{item.name} <span style={{ opacity: 0.6, fontSize: '0.9em' }}>({item.weightGrams}g)</span></span>
-                          <span style={{ fontWeight: 'bold' }}>{item.calories} kcal</span>
+                          <span style={{ fontWeight: 'bold' }}>{item.calories} {t.kcal}</span>
                         </li>
                       ))}
                     </ul>
@@ -129,7 +144,7 @@ export default function RecipesPage() {
               </div>
 
               <div className="recipe-section">
-                <h4>Instructions:</h4>
+                <h4>{t.instructions}</h4>
                 <ol className="steps-list">
                   {recipe.steps.map((step, i) => (
                     <li key={i}>{step}</li>

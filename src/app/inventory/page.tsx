@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import './inventory.css';
+import { UI_TRANSLATIONS } from '@/lib/translations';
 
 interface InventoryItem {
   id: number;
   name: string;
-  sourashtraName: string | null;
   quantity: number;
   category: string;
   expirationDate: string | null;
@@ -16,10 +16,28 @@ interface InventoryItem {
 export default function InventoryPage() {
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState('English');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('appLanguage') || 'English';
+    setLanguage(stored);
+
+    const handleLang = (e: Event) => {
+      const newLang = (e as CustomEvent).detail;
+      setLanguage(newLang);
+    };
+    window.addEventListener('languageChange', handleLang);
+    return () => window.removeEventListener('languageChange', handleLang);
+  }, []);
+
+  useEffect(() => {
+    fetchInventory();
+  }, [language]);
 
   const fetchInventory = async () => {
+    setLoading(true);
     try {
-      const res = await fetch('/api/inventory');
+      const res = await fetch(`/api/inventory?lang=${encodeURIComponent(language)}`);
       const data = await res.json();
       if (data.items) {
         setItems(data.items);
@@ -30,10 +48,6 @@ export default function InventoryPage() {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchInventory();
-  }, []);
 
   const handleDelete = async (id: number) => {
     try {
@@ -67,11 +81,13 @@ export default function InventoryPage() {
     return expDate < today;
   };
 
+  const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
+
   if (loading) {
     return (
       <div className="inventory-loading">
         <div className="spinner"></div>
-        <p>Loading your pantry...</p>
+        <p>{t.loadingInventory}</p>
       </div>
     );
   }
@@ -79,16 +95,16 @@ export default function InventoryPage() {
   return (
     <div className="inventory-container">
       <header className="dashboard-header">
-        <h1 className="page-title">Current Inventory</h1>
-        <p className="page-subtitle">Track your food and reduce waste</p>
+        <h1 className="page-title">{t.inventoryTitle}</h1>
+        <p className="page-subtitle">{t.inventorySub}</p>
       </header>
 
       {items.length === 0 ? (
         <div className="empty-state glass-pane">
           <div className="card-icon">🫙</div>
-          <h2>Your fridge is empty</h2>
-          <p>Scan some items or upload a grocery receipt to get started.</p>
-          <a href="/upload" className="btn-primary" style={{ marginTop: '16px' }}>Scan Items</a>
+          <h2>{t.emptyInventoryTitle}</h2>
+          <p>{t.emptyInventorySub}</p>
+          <a href="/upload" className="btn-primary" style={{ marginTop: '16px' }}>{t.scanItems}</a>
         </div>
       ) : (
         <div className="inventory-grid">
@@ -107,17 +123,12 @@ export default function InventoryPage() {
                   ✕
                 </button>
               </div>
-              <h3 className="item-name">
-                {item.name}
-                {item.sourashtraName && (
-                  <span className="item-sourashtra-name">({item.sourashtraName})</span>
-                )}
-              </h3>
+              <h3 className="item-name">{item.name}</h3>
               <div className="item-details">
-                <span className="item-quantity">Qty: {item.quantity}</span>
+                <span className="item-quantity">{t.qty}: {item.quantity}</span>
                 {item.expirationDate && (
                   <span className="item-expiry">
-                    Exp: {item.expirationDate}
+                    {t.exp}: {item.expirationDate}
                   </span>
                 )}
               </div>

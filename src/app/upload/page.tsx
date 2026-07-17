@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import './upload.css';
+import { UI_TRANSLATIONS } from '@/lib/translations';
 
 export default function UploadPage() {
   const [files, setFiles] = useState<File[]>([]);
@@ -10,8 +11,14 @@ export default function UploadPage() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [progressMsg, setProgressMsg] = useState<string>('');
+  const [language, setLanguage] = useState('English');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const stored = localStorage.getItem('appLanguage') || 'English';
+    setLanguage(stored);
+  }, []);
 
   const compressImage = async (file: File, maxWidth = 800): Promise<File> => {
     
@@ -118,7 +125,7 @@ export default function UploadPage() {
 
     setIsAnalyzing(true);
     setError(null);
-    setProgressMsg('Compressing images...');
+    setProgressMsg(t.compressing);
 
     try {
       // 1. Compress all files
@@ -146,7 +153,7 @@ export default function UploadPage() {
       // 3. Upload chunks sequentially to avoid rate limits
       let totalAnalyzed = 0;
       for (let i = 0; i < chunks.length; i++) {
-        setProgressMsg(`Analyzing batch ${i + 1} of ${chunks.length}...`);
+        setProgressMsg(`${t.analyzingBatch} ${i + 1} ${t.of} ${chunks.length}...`);
         
         // Convert chunk files to base64 Data URLs so we bypass Next.js buggy FormData parser entirely
         const base64Images = await Promise.all(chunks[i].map(file => {
@@ -179,7 +186,7 @@ export default function UploadPage() {
         totalAnalyzed += result.items?.length || 0;
       }
       
-      setProgressMsg('Analysis complete! Redirecting...');
+      setProgressMsg(t.completeRedirecting);
       // Small delay to show completion message
       await new Promise(r => setTimeout(r, 800));
       router.push('/inventory');
@@ -192,11 +199,13 @@ export default function UploadPage() {
     }
   };
 
+  const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
+
   return (
     <div className="upload-container">
       <header className="dashboard-header">
-        <h1 className="page-title">Scan Inventory</h1>
-        <p className="page-subtitle">Upload a photo of your fridge, pantry, or grocery receipt</p>
+        <h1 className="page-title">{t.scanTitle}</h1>
+        <p className="page-subtitle">{t.scanSub}</p>
       </header>
 
       <div className="upload-content">
@@ -208,8 +217,8 @@ export default function UploadPage() {
             onDrop={handleDrop}
           >
             <div className="drop-zone-icon">📷</div>
-            <h3>Click or drag images here</h3>
-            <p>Supports JPG, PNG, WEBP (Max 10MB)</p>
+            <h3>{t.clickOrDrag}</h3>
+            <p>{t.supports}</p>
             <input 
               type="file" 
               accept="image/*"
@@ -251,7 +260,7 @@ export default function UploadPage() {
                 }}
                 disabled={isAnalyzing}
               >
-                ✕ Retake All
+                {t.retakeAll}
               </button>
             </div>
           </div>
@@ -268,12 +277,12 @@ export default function UploadPage() {
             {isAnalyzing ? (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span className="spinner"></span> Analyzing...
+                  <span className="spinner"></span> {t.analyzingBatch}...
                 </div>
                 {progressMsg && <span style={{ fontSize: '0.85rem', opacity: 0.9 }}>{progressMsg}</span>}
               </div>
             ) : (
-              'Analyze with AI ✨'
+              t.analyzeWithAi
             )}
           </button>
         </div>

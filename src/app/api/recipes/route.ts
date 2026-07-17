@@ -10,15 +10,17 @@ export async function GET(req: NextRequest) {
     const { default: db, initDb } = await import('@/lib/db');
     await initDb();
 
-    // Fetch current inventory (including Sourashtra names)
-    const items = await db`SELECT name, "sourashtraName", quantity, category FROM inventory WHERE quantity > 0`;
+    // Fetch current inventory
+    const items = await db`SELECT name, quantity, category FROM inventory WHERE quantity > 0`;
     
     if (items.length === 0) {
       return NextResponse.json({ recipes: [], message: 'Inventory is empty.' });
     }
 
+    const lang = req.nextUrl.searchParams.get('lang') || 'English';
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const inventoryList = items.map((i: any) => `${i.quantity}x ${i.name}${i.sourashtraName ? ` (${i.sourashtraName})` : ''} [Category: ${i.category}]`).join(', ');
+    const inventoryList = items.map((i: any) => `${i.quantity}x ${i.name} [Category: ${i.category}]`).join(', ');
 
     // Dynamic lazy import to prevent global Vercel Node crashes on API boot
     const { GoogleGenerativeAI } = await import('@google/generative-ai');
@@ -26,53 +28,42 @@ export async function GET(req: NextRequest) {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `
-    You are an expert chef specializing in traditional Sourashtra cuisine.
+    You are an expert chef.
     Create 3 recipe ideas based primarily on these available ingredients in my kitchen:
     ${inventoryList}
 
-    It evaluates to true if the user has basic pantry items like salt, pepper, oil, water, mustard, etc.
+    It evaluates to true if the user has basic pantry items like salt, pepper, oil, water, etc.
     
     CRITICAL LANGUAGE INSTRUCTIONS:
-    - Do NOT write in Hindi or Gujarati (DO NOT use Hindi words/phrases like "milayein", "dalen", "kijiye", "pani milaye", "ubale", "pakayein", "tadka lagayein").
-    - Write ALL cooking instructions, difficulty levels, and titles in transliterated Sourashtra (Latin script) using typical Sourashtra dialect grammar.
-    - Sourashtra grammatical features:
-      * Verb endings: Verbs should end in "-kero" (do/make), "-dyo" (let/give), "-mel" (add/mix/place).
-        E.g., Use "add kero" or "mix kero" instead of "milayein". Use "boil kero" instead of "ubale". Use "splutter kero" or "fry kero" instead of "pakayein/tadka lagayein". Use "avu dyo" (let it come/let it boil). Use "sarvo kero" instead of "parose".
-      * Prepositions/particles: Use "-go" or "-ma" (in/into) for locations, and "sanga" (with). E.g., "cooker-ma", "pani-go", "vangi budith sanga".
-    - Prioritize proposing traditional Sourashtra recipes if ingredients match:
-      1. "Mhuri Pongal (Mustard Pongal)": Rice (Rice), Mustard (Mhuri), Curry leaves, Asafoetida, Salt.
-      2. "Vangi Budith (Brinjal Chutney)": Brinjal (Vangi), Tomato (Tomato), Onions (Kanno), Chili, Tamarind.
-      3. "Gullu Pongal (Jaggery Pongal)": Raw Rice, Milk (Dudh), Jaggery, Ghee, Cashews.
-      4. "Limbu Pongal (Lemon Rice)": Rice, Lemon (Limbu), Mustard, bengal gram.
-      5. "Rubbin (Gooseberry Mash)": Gooseberry (Nellika), Ginger, Garlic, Chili.
-      6. "Chilli Chapatti": Chapatti, Onion (Kanno), Tomato, Curry leaves, Masala.
-    - If none of the ingredients match traditional dishes, suggest standard recipes but written in transliterated Sourashtra instructions!
+    - You MUST write the recipe titles, difficulty level, and step-by-step cooking steps in the ${lang} language.
+    - If ${lang} is English, write it in English.
+    - If ${lang} is Tamil, Hindi, Telugu, Kannada, Gujarati, Marathi, Bengali, Malayalam, or any other Indian language, write it directly in the correct native script of that language (e.g. Tamil script for Tamil, Devanagari script for Hindi, etc.). Do not use transliterated English characters if a native script exists for that language.
 
     For each recipe, provide:
-    1. A catchy title in transliterated Sourashtra (with English translation in parentheses)
-    2. Missing ingredients I need to buy (in English, e.g. "Mustard", "Jaggery")
-    3. Difficulty level (Easy, Medium, Hard) transliterated into Sourashtra
-    4. A concise list of 3-5 steps to make it, written in transliterated Sourashtra (Latin script).
+    1. A catchy title in the ${lang} language (with English translation in parentheses if it's not English)
+    2. Missing ingredients I need to buy (in English, e.g. "Tomato", "Mustard")
+    3. Difficulty level (Easy, Medium, Hard) in the ${lang} language
+    4. A concise list of 3-5 steps to make it, written in the ${lang} language.
     5. An estimated total calories for the recipe.
     6. A mapped list of ALL ingredients used (both inventory and missing) with estimated weight in grams and calories.
     
     Respond STRICTLY with a valid JSON array of objects. Do not use markdown blocks.
-    Example format:
+    Example format when Tamil (தமிழ்) is selected:
     [
       {
-        "title": "Mhuri Pongal (Mustard Pongal)",
-        "missingIngredients": ["Mustard seeds"],
-        "difficulty": "Suluva (Easy)",
+        "title": "தக்காளி சாதം (Tomato Rice)",
+        "missingIngredients": ["Tomato"],
+        "difficulty": "எளிது (Easy)",
         "steps": [
-          "Soaked raw rice-go cooker-ma 2.5 cups pani add kero.",
-          "Oil-ma mustard splutter kero, curry leaves anim asafoetida add kero.",
-          "Mhuri tadka rice-ma add keri cooker automatic whistle avu dyo.",
-          "Ready thaya pachhi vangi budith sanga sarvo kero."
+          "அரிசியை நன்றாக கழுவி 10 நிമിடம் ஊற வைக்கவும்.",
+          "கடாயில் எண்ணெய் ஊற்றி கடுகு, கறிவேப்பிலை தாளிக்கவும்.",
+          "நறுக்கிய தக்காளி மற்றும் மசாலா சேர்த்து வதக்கவும்.",
+          "அரிசியை சேர்த்து பிரஷர் குக்கரில் 2 விசில் விடவும்."
         ],
-        "totalCalories": 380,
+        "totalCalories": 350,
         "ingredientsBreakdown": [
-          { "name": "Raw Rice", "weightGrams": 200, "calories": 260 },
-          { "name": "Mustard seeds", "weightGrams": 10, "calories": 50 }
+          { "name": "Rice", "weightGrams": 200, "calories": 260 },
+          { "name": "Tomato", "weightGrams": 150, "calories": 30 }
         ]
       }
     ]

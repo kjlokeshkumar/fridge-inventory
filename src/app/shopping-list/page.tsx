@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import './shopping.css';
+import { UI_TRANSLATIONS } from '@/lib/translations';
 
 interface ShoppingItem {
   id: number;
   name: string;
-  sourashtraName: string | null;
   category: string;
   quantity: number;
   expirationDate: string | null;
@@ -15,10 +15,28 @@ interface ShoppingItem {
 export default function ShoppingListPage() {
   const [items, setItems] = useState<ShoppingItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState('English');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('appLanguage') || 'English';
+    setLanguage(stored);
+
+    const handleLang = (e: Event) => {
+      const newLang = (e as CustomEvent).detail;
+      setLanguage(newLang);
+    };
+    window.addEventListener('languageChange', handleLang);
+    return () => window.removeEventListener('languageChange', handleLang);
+  }, []);
+
+  useEffect(() => {
+    fetchList();
+  }, [language]);
 
   const fetchList = async () => {
+    setLoading(true);
     try {
-      const res = await fetch('/api/shopping-list');
+      const res = await fetch(`/api/shopping-list?lang=${encodeURIComponent(language)}`);
       const data = await res.json();
       if (data.items) {
         setItems(data.items);
@@ -30,15 +48,13 @@ export default function ShoppingListPage() {
     }
   };
 
-  useEffect(() => {
-    fetchList();
-  }, []);
+  const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
   if (loading) {
     return (
       <div className="center-container">
         <div className="spinner"></div>
-        <p>Checking your pantry status...</p>
+        <p>{t.loadingShopping}</p>
       </div>
     );
   }
@@ -46,41 +62,34 @@ export default function ShoppingListPage() {
   return (
     <div className="shopping-container">
       <header className="dashboard-header">
-        <h1 className="page-title">Shopping List</h1>
-        <p className="page-subtitle">Automatically generated from depleted or expired items</p>
+        <h1 className="page-title">{t.shoppingTitle}</h1>
+        <p className="page-subtitle">{t.shoppingSub}</p>
       </header>
 
       {items.length === 0 ? (
         <div className="empty-state glass-pane success-state">
           <div className="card-icon">✅</div>
-          <h2>You&apos;re all stocked up!</h2>
-          <p>No depleted or expired items found in your inventory.</p>
+          <h2>{t.allStockedTitle}</h2>
+          <p>{t.allStockedSub}</p>
         </div>
       ) : (
         <div className="shopping-list glass-pane">
           <div className="list-header">
-            <span>Item</span>
-            <span>Reason</span>
+            <span>{t.item}</span>
+            <span>{t.reason}</span>
           </div>
           <ul className="list-items">
             {items.map((item) => (
               <li key={item.id} className="list-row">
                 <div className="item-info">
-                  <span className="item-styled-name">
-                    {item.name}
-                    {item.sourashtraName && (
-                      <span style={{ display: 'block', fontSize: '0.85rem', color: 'var(--accent-color)', marginTop: '2px' }}>
-                        ({item.sourashtraName})
-                      </span>
-                    )}
-                  </span>
+                  <span className="item-styled-name">{item.name}</span>
                   <span className="item-category-tag">{item.category}</span>
                 </div>
                 <div className="item-reason">
                   {item.quantity <= 0 ? (
-                    <span className="reason-depleted">Depleted (0 left)</span>
+                    <span className="reason-depleted">{t.depleted}</span>
                   ) : (
-                    <span className="reason-expired">Expired ({item.expirationDate})</span>
+                    <span className="reason-expired">{t.expired} ({item.expirationDate})</span>
                   )}
                 </div>
               </li>
