@@ -546,6 +546,36 @@ body::before {
   padding: 8px;
 }
 
+.user-auth-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: var(--text-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.user-auth-badge:hover {
+  background: rgba(6, 182, 212, 0.25);
+  border-color: var(--accent-color);
+}
+
+.auth-error-banner {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid #ef4444;
+  color: #f87171;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
 @media (max-width: 768px) {
   /* On mobile, align logo left and dropdown right in the header */
   .logo {
@@ -554,15 +584,32 @@ body::before {
   .nav-content {
     justify-content: space-between !important;
     width: 100%;
+    padding: 0 12px;
   }
   .nav-controls {
     display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 70vw;
   }
-  .lang-selector-container {
-    padding: 4px 8px;
+  .user-auth-badge, .profile-badge-btn, .lang-selector-container {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  .user-auth-name, .profile-name {
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .profile-diet-tag {
+    display: none; /* Hide extra tag on tiny mobile screens */
   }
   .lang-selector {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 }
 

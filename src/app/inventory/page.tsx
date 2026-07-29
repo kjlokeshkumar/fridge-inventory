@@ -26,8 +26,15 @@ export default function InventoryPage() {
       const newLang = (e as CustomEvent).detail;
       setLanguage(newLang);
     };
+    const handleAuth = () => {
+      fetchInventory();
+    };
     window.addEventListener('languageChange', handleLang);
-    return () => window.removeEventListener('languageChange', handleLang);
+    window.addEventListener('userAuthChange', handleAuth);
+    return () => {
+      window.removeEventListener('languageChange', handleLang);
+      window.removeEventListener('userAuthChange', handleAuth);
+    };
   }, []);
 
   useEffect(() => {
@@ -38,7 +45,8 @@ export default function InventoryPage() {
   const fetchInventory = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/inventory?lang=${encodeURIComponent(language)}`);
+      const storedUserId = localStorage.getItem('appUserId') || '1';
+      const res = await fetch(`/api/inventory?lang=${encodeURIComponent(language)}&userId=${encodeURIComponent(storedUserId)}`);
       const data = await res.json();
       if (data.items) {
         setItems(data.items);

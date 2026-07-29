@@ -62,6 +62,34 @@ export async function initDb() {
       )
     `;
 
+    // Create multi-tenant accounts table
+    await sql`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        username VARCHAR(255) UNIQUE NOT NULL,
+        passkey VARCHAR(255) NOT NULL,
+        status VARCHAR(20) DEFAULT 'active',
+        role VARCHAR(20) DEFAULT 'user',
+        "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `;
+
+    // Safely add userId column to inventory for multi-tenant data isolation
+    await sql`
+      ALTER TABLE inventory ADD COLUMN IF NOT EXISTS "userId" INTEGER DEFAULT 1
+    `;
+
+    // Seed admin account if missing
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const existingAdmin = await (sql as any)`SELECT COUNT(*)::int as count FROM users WHERE username = 'admin'`;
+    if (existingAdmin && (existingAdmin[0]?.count || 0) === 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await (sql as any)`
+        INSERT INTO users (username, passkey, status, role)
+        VALUES ('admin', 'admin123', 'active', 'admin')
+      `;
+    }
+
     // Seed default primary profile if profiles table is empty
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const existingProfiles = await (sql as any)`SELECT COUNT(*)::int as count FROM profiles`;

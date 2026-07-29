@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 import ProfileSelector from './ProfileSelector';
+import UserAuthModal from './UserAuthModal';
 
 const LANGUAGES = [
   { code: 'English', label: 'English' },
@@ -51,6 +52,7 @@ export default function Navigation() {
           </Link>
           
           <div className="nav-controls">
+            <UserAuthModal />
             <ProfileSelector />
 
             <div className="lang-selector-container">

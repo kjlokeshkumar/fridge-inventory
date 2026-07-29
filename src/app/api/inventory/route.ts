@@ -5,7 +5,11 @@ export async function GET(req: NextRequest) {
     const { default: db, initDb, purgeOldItems } = await import('@/lib/db');
     await initDb();
     await purgeOldItems();
-    const items = await db`SELECT * FROM inventory ORDER BY "expirationDate" ASC, name ASC`;
+
+    const userIdParam = req.nextUrl.searchParams.get('userId') || req.headers.get('x-user-id') || '1';
+    const userId = parseInt(userIdParam, 10);
+
+    const items = await db`SELECT * FROM inventory WHERE "userId" = ${userId} ORDER BY "expirationDate" ASC, name ASC`;
 
     const lang = req.nextUrl.searchParams.get('lang') || 'English';
     if (lang && lang !== 'English' && items.length > 0) {
@@ -49,12 +53,15 @@ export async function GET(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
-    const { id } = await req.json();
+    const { id, userId: bodyUserId } = await req.json();
     if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+
+    const userIdParam = req.nextUrl.searchParams.get('userId') || req.headers.get('x-user-id') || bodyUserId || '1';
+    const userId = parseInt(userIdParam, 10);
 
     const { default: db, initDb } = await import('@/lib/db');
     await initDb();
-    const result = await db`DELETE FROM inventory WHERE id = ${id}`;
+    await db`DELETE FROM inventory WHERE id = ${id} AND "userId" = ${userId}`;
     
     if (result.length > 0) {
       // If we used RETURNING we could check rows, otherwise just assume success if no error thrown
