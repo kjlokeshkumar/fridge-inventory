@@ -61,7 +61,7 @@ export async function DELETE(req: NextRequest) {
 
     const { default: db, initDb } = await import('@/lib/db');
     await initDb();
-    await db`DELETE FROM inventory WHERE id = ${id} AND "userId" = ${userId}`;
+    const result = await db`DELETE FROM inventory WHERE id = ${id} AND "userId" = ${userId}`;
     
     if (result.length > 0) {
       // If we used RETURNING we could check rows, otherwise just assume success if no error thrown
