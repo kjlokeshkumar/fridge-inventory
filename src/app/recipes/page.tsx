@@ -39,6 +39,7 @@ export default function RecipesPage() {
 
   useEffect(() => {
     fetchRecipes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
 
   const fetchRecipes = async () => {

@@ -229,6 +229,7 @@ export default function UploadPage() {
           <div className="preview-container glass-pane" style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center', padding: '20px' }}>
             {previews.map((preview, index) => (
               <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '10px', borderRadius: '12px' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
                   src={preview} 
                   alt={`Upload preview ${index + 1}`} 

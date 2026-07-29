@@ -31,6 +31,7 @@ export default function ShoppingListPage() {
 
   useEffect(() => {
     fetchList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
 
   const fetchList = async () => {

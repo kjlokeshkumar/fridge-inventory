@@ -32,6 +32,7 @@ export default function InventoryPage() {
 
   useEffect(() => {
     fetchInventory();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
 
   const fetchInventory = async () => {
