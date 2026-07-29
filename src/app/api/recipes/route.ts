@@ -98,7 +98,7 @@ export async function GET(req: NextRequest) {
     try {
       const cleanJson = responseText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
       recipes = JSON.parse(cleanJson);
-    } catch (parseError) {
+    } catch (_parseError) {
       console.error('Failed to parse Gemini recipes:', responseText);
       throw new Error('Failed to parse recipe data from AI');
     }

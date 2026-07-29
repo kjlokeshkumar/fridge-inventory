@@ -151,7 +151,7 @@ export default function UploadPage() {
       }
 
       // 3. Upload chunks sequentially to avoid rate limits
-      let totalAnalyzed = 0;
+      let _totalAnalyzed = 0;
       for (let i = 0; i < chunks.length; i++) {
         setProgressMsg(`${t.analyzingBatch} ${i + 1} ${t.of} ${chunks.length}...`);
         
@@ -183,7 +183,7 @@ export default function UploadPage() {
         }
 
         const result = await response.json();
-        totalAnalyzed += result.items?.length || 0;
+        _totalAnalyzed += result.items?.length || 0;
       }
       
       setProgressMsg(t.completeRedirecting);
