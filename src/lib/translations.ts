@@ -45,11 +45,11 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     completeRedirecting: "Analysis complete! Redirecting..."
   },
   Sourashtra: {
-    inventoryTitle: "Sourashtra Haat / Inventory",
-    inventorySub: "Khana Samanu Dekho (Track food & reduce waste)",
-    loadingInventory: "Samanu sodhi riya... (Loading inventory...)",
-    emptyInventoryTitle: "Tumara Fridge Khali Ha (Your fridge is empty)",
-    emptyInventorySub: "Samanu scan karo (Scan items or upload receipt)",
+    inventoryTitle: "Sete Jamaan",
+    inventorySub: "Khaatayo lhekho (Track food & reduce waste)",
+    loadingInventory: "Pantry load kerariyo...",
+    emptyInventoryTitle: "Fridge khali",
+    emptyInventorySub: "Photo nhimeneth Receipt hingaduvo",
     scanItems: "Samanu Scan Karo",
     qty: "Numa (Qty)",
     exp: "Tariku (Exp)",
