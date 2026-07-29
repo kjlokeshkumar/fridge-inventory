@@ -12,6 +12,17 @@ export async function GET(req: NextRequest) {
     const items = await db`SELECT * FROM inventory WHERE "userId" = ${userId} ORDER BY "expirationDate" ASC, name ASC`;
 
     const lang = req.nextUrl.searchParams.get('lang') || 'English';
+    
+    // First, map any items that have DB sourashtraName if Sourashtra language is selected
+    if (lang === 'Sourashtra' && items.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      items.forEach((i: any) => {
+        if (i.sourashtraName && i.sourashtraName.trim()) {
+          i.name = i.sourashtraName;
+        }
+      });
+    }
+
     if (lang && lang !== 'English' && items.length > 0) {
       try {
         const apiKey = process.env.GEMINI_API_KEY;
@@ -25,8 +36,10 @@ export async function GET(req: NextRequest) {
           const prompt = `Translate this list of food items into the ${lang} language. Maintain the exact same order.
           Input array: ${JSON.stringify(names)}
           
+          ${lang === 'Sourashtra' ? 'CRITICAL: Translate into authentic Sourashtra spoken language using ONLY standard English/Latin script transliteration (e.g. Milk -> "Taani", Rice -> "Saadu", Tomato -> "Takkali", Water -> "Tani", Oil -> "Telu", Salt -> "Lenu", Egg -> "Anda"). Do NOT use Tamil script characters or Devanagari script.' : ''}
+
           Respond ONLY with a valid JSON array of strings containing the translations. Do not include markdown formatting.
-          Example: ["ஆப்பிள்", "பால்"]`;
+          Example: ${lang === 'Sourashtra' ? '["Seppu", "Taani"]' : '["ஆப்பிள்", "பால்"]'}`;
           
           const result = await model.generateContent(prompt);
           const responseText = result.response.text();
