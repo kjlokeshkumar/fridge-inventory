@@ -49,6 +49,29 @@ export async function initDb() {
     await sql`
       ALTER TABLE inventory ADD COLUMN IF NOT EXISTS "sourashtraName" VARCHAR(255)
     `;
+
+    // Create user profiles table
+    await sql`
+      CREATE TABLE IF NOT EXISTS profiles (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        "dietaryPreference" VARCHAR(100) DEFAULT 'Any',
+        allergies VARCHAR(255) DEFAULT '',
+        avatar VARCHAR(50) DEFAULT '👤',
+        "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `;
+
+    // Seed default primary profile if profiles table is empty
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const existingProfiles = await (sql as any)`SELECT COUNT(*)::int as count FROM profiles`;
+    if (existingProfiles && (existingProfiles[0]?.count || 0) === 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await (sql as any)`
+        INSERT INTO profiles (name, "dietaryPreference", allergies, avatar)
+        VALUES ('Primary Profile', 'Any', '', '👤')
+      `;
+    }
     
     console.log("Database initialized successfully!");
   } catch (error) {

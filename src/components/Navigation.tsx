@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
+import ProfileSelector from './ProfileSelector';
+
 const LANGUAGES = [
   { code: 'English', label: 'English' },
   { code: 'Sourashtra', label: 'ꢱꢵꢫꢵꢯꢵꢵ (Sourashtra)' },
@@ -49,6 +51,8 @@ export default function Navigation() {
           </Link>
           
           <div className="nav-controls">
+            <ProfileSelector />
+
             <div className="lang-selector-container">
               <span className="lang-globe-icon">🌐</span>
               <select 

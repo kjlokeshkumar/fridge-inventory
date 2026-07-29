@@ -18,6 +18,27 @@ export async function GET(req: NextRequest) {
     }
 
     const lang = req.nextUrl.searchParams.get('lang') || 'English';
+    const profileIdParam = req.nextUrl.searchParams.get('profileId');
+
+    // Fetch user profile for personalized dietary restrictions
+    let profileData: { name: string; dietaryPreference: string; allergies: string } | null = null;
+    try {
+      if (profileIdParam) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const res = await (sql as any)`SELECT name, "dietaryPreference", allergies FROM profiles WHERE id = ${parseInt(profileIdParam, 10)}`;
+        if (res && res.length > 0) profileData = res[0];
+      }
+      if (!profileData) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const defaultRes = await (sql as any)`SELECT name, "dietaryPreference", allergies FROM profiles ORDER BY id ASC LIMIT 1`;
+        if (defaultRes && defaultRes.length > 0) profileData = defaultRes[0];
+      }
+    } catch {
+      // Fallback gracefully if profiles table is missing or DB connection is transient
+    }
+
+    const userDiet = profileData?.dietaryPreference || 'Any';
+    const userAllergies = profileData?.allergies || '';
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const inventoryList = items.map((i: any) => `${i.quantity}x ${i.name} [Category: ${i.category}]`).join(', ');
@@ -31,6 +52,12 @@ export async function GET(req: NextRequest) {
     You are an expert chef.
     Create 3 recipe ideas based primarily on these available ingredients in my kitchen:
     ${inventoryList}
+
+    CRITICAL DIETARY CONSTRAINTS FOR USER PROFILE (${profileData?.name || 'User'}):
+    - Dietary Preference: ${userDiet}
+    - Allergies / Exclusions to Avoid: ${userAllergies || 'None'}
+    ${userDiet !== 'Any' ? `- You MUST strictly respect the '${userDiet}' dietary preference (e.g. if Vegetarian/Vegan/Jain, do NOT suggest meat, fish, or restricted ingredients).` : ''}
+    ${userAllergies ? `- Absolutely do NOT include any ingredients containing ${userAllergies}.` : ''}
 
     It evaluates to true if the user has basic pantry items like salt, pepper, oil, water, etc.
     

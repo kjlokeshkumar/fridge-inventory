@@ -33,8 +33,15 @@ export default function RecipesPage() {
       const newLang = (e as CustomEvent).detail;
       setLanguage(newLang);
     };
+    const handleProfile = () => {
+      fetchRecipes();
+    };
     window.addEventListener('languageChange', handleLang);
-    return () => window.removeEventListener('languageChange', handleLang);
+    window.addEventListener('profileChange', handleProfile);
+    return () => {
+      window.removeEventListener('languageChange', handleLang);
+      window.removeEventListener('profileChange', handleProfile);
+    };
   }, []);
 
   useEffect(() => {
@@ -46,7 +53,8 @@ export default function RecipesPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/recipes?lang=${encodeURIComponent(language)}`);
+      const storedProfileId = localStorage.getItem('activeProfileId') || '';
+      const res = await fetch(`/api/recipes?lang=${encodeURIComponent(language)}&profileId=${encodeURIComponent(storedProfileId)}`);
       const data = await res.json();
       
       if (!res.ok) throw new Error(data.error || 'Failed to fetch');
