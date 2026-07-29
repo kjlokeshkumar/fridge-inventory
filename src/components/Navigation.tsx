@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 
 const LANGUAGES = [
   { code: 'English', label: 'English' },
+  { code: 'Sourashtra', label: 'ꢱꢵꢫꢵꢯꢵꢵ (Sourashtra)' },
   { code: 'Tamil', label: 'தமிழ் (Tamil)' },
   { code: 'Hindi', label: 'हिन्दी (Hindi)' },
   { code: 'Telugu', label: 'తెలుగు (Telugu)' },

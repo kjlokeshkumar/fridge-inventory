@@ -61,12 +61,13 @@ export async function POST(req: NextRequest) {
     For each item, guess a reasonable category (Dairy, Produce, Meat, Pantry, Drink, etc).
     Also guess a rough expiration date in YYYY-MM-DD format based purely on standard expiry times (e.g. fresh milk = 7 days from today, canned goods = 1 year from today). Assume today is ${new Date().toISOString().split('T')[0]}.
     Estimate the quantity of each.
-    
+    Also provide the Sourashtra language name for the food item in "sourashtraName" field (e.g. Milk -> "ꢡꢵꢥꢶ (Taani)", Rice -> "ꢱꢵꢢꢸ (Saadu)", Tomato -> "ꢡꢒꢵꢭꢶ (Takkali)").
+
     Respond STRICTLY with a valid JSON array of objects. Do not include markdown formatting like \`\`\`json. Just the array.
     Example:
     [
-      { "name": "Milk", "quantity": 1, "category": "Dairy", "expirationDate": "2024-06-15" },
-      { "name": "Apples", "quantity": 4, "category": "Produce", "expirationDate": "2024-06-20" }
+      { "name": "Milk", "sourashtraName": "ꢡꢵꢥꢶ (Taani)", "quantity": 1, "category": "Dairy", "expirationDate": "2024-06-15" },
+      { "name": "Apples", "sourashtraName": "ꢱꢳꢦꢸ (Seppu)", "quantity": 4, "category": "Produce", "expirationDate": "2024-06-20" }
     ]
     `;
 
@@ -118,9 +119,10 @@ export async function POST(req: NextRequest) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const anyDb = db as any;
       await anyDb`
-        INSERT INTO inventory (name, quantity, category, "expirationDate", "imageUrl")
+        INSERT INTO inventory (name, "sourashtraName", quantity, category, "expirationDate", "imageUrl")
         VALUES (
           ${item.name || 'Unknown Item'}, 
+          ${item.sourashtraName || null},
           ${item.quantity || 1}, 
           ${item.category || 'Other'}, 
           ${item.expirationDate || null}, 
