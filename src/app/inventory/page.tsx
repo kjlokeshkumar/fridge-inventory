@@ -35,6 +35,7 @@ export default function InventoryPage() {
       window.removeEventListener('languageChange', handleLang);
       window.removeEventListener('userAuthChange', handleAuth);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
