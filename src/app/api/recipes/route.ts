@@ -25,12 +25,12 @@ export async function GET(req: NextRequest) {
     try {
       if (profileIdParam) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const res = await (sql as any)`SELECT name, "dietaryPreference", allergies FROM profiles WHERE id = ${parseInt(profileIdParam, 10)}`;
+        const res = await (db as any)`SELECT name, "dietaryPreference", allergies FROM profiles WHERE id = ${parseInt(profileIdParam, 10)}`;
         if (res && res.length > 0) profileData = res[0];
       }
       if (!profileData) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const defaultRes = await (sql as any)`SELECT name, "dietaryPreference", allergies FROM profiles ORDER BY id ASC LIMIT 1`;
+        const defaultRes = await (db as any)`SELECT name, "dietaryPreference", allergies FROM profiles ORDER BY id ASC LIMIT 1`;
         if (defaultRes && defaultRes.length > 0) profileData = defaultRes[0];
       }
     } catch {
