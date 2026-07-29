@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  serverExternalPackages: ['@neondatabase/serverless', '@google/generative-ai'],
-};
+const nextConfig = {};
 
 export default nextConfig;
