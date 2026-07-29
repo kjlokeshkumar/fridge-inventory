@@ -151,7 +151,6 @@ export default function UploadPage() {
       }
 
       // 3. Upload chunks sequentially to avoid rate limits
-      let _totalAnalyzed = 0;
       for (let i = 0; i < chunks.length; i++) {
         setProgressMsg(`${t.analyzingBatch} ${i + 1} ${t.of} ${chunks.length}...`);
         
@@ -177,13 +176,11 @@ export default function UploadPage() {
           const errText = await response.text();
           console.error("Vercel API raw response:", errText);
           let errData: Record<string, string> = {};
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          try { errData = JSON.parse(errText); } catch(e) {}
+          try { errData = JSON.parse(errText); } catch {}
           throw new Error(errData.error || errData.message || `API rejected batch ${i + 1} with status ${response.status}. See console for raw response.`);
         }
 
-        const result = await response.json();
-        _totalAnalyzed += result.items?.length || 0;
+        await response.json();
       }
       
       setProgressMsg(t.completeRedirecting);

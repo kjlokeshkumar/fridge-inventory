@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
     let jsonBody;
     try {
       jsonBody = JSON.parse(rawText);
-    } catch (_e) {
+    } catch {
       return NextResponse.json({ error: 'Failed to parse JSON body natively' }, { status: 400 });
     }
     
@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
       // Clean up the text in case Gemini wraps it in markdown blocks
       const cleanJson = responseText.replace(/\`\`\`json\n?/g, '').replace(/\`\`\`\n?/g, '').trim();
       inventoryItems = JSON.parse(cleanJson);
-    } catch (_parseError) {
+    } catch {
       console.error('Failed to parse Gemini response:', responseText);
       return NextResponse.json({ error: 'Failed to parse inventory data from AI' }, { status: 400 });
     }
