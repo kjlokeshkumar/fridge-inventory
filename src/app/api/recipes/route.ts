@@ -64,7 +64,7 @@ export async function GET(req: NextRequest) {
     CRITICAL LANGUAGE INSTRUCTIONS:
     - You MUST write the recipe titles, difficulty level, and step-by-step cooking steps in the ${lang} language.
     - If ${lang} is English, write it in English.
-    - If ${lang} is Sourashtra, you MUST write recipe titles, difficulty level, and every cooking step with BOTH native Sourashtra script (ꢱꢵꢫꢵꢯꢵꢵ) AND English/Latin script transliteration in parentheses (e.g. "ꢢꢒꢵꢭꢶ ꢱꢵꢢꢸ (Takkali Saadu) - Tomato Rice"). Every cooking step must include Latin transliteration alongside native script so users can easily read it. Prioritize authentic traditional Sourashtra dishes (e.g. Kadam Saadam, Puliyodarai, Ambat Sambar, Dibba Rotti).
+    - If ${lang} is Sourashtra, you MUST write recipe titles, difficulty level, and every cooking step with BOTH native Sourashtra script (ꢱꢵꢫꢵꢯꢵꢵ) AND English/Latin script transliteration in parentheses (e.g. "ꢢꢒꢵꢭꢶ ꢱꢵꢢꢸ (Takkali Saadu) - Tomato Rice"). Every cooking step must include Latin transliteration alongside native script so users can easily read it. Prioritize authentic traditional Sourashtra recipes from traditional Sourashtra culinary heritage (specifically: Vangi Budith / Brinjal Chutney, Mhuri Pongal / Kadugu Pongal mustard seed rice, Gullu Pongal / Sweet Jaggery Rice Pongal, Limbu Pongal / Sourashtra Lemon Rice, Rubbin / Gooseberry Nellika Mashed Pickle, Kadam Saadam, Ambat Sambar, Dibba Rotti).
     - If ${lang} is Tamil, Hindi, Telugu, Kannada, Gujarati, Marathi, Bengali, Malayalam, or any other Indian language, write it directly in the correct native script of that language. Do not use transliterated English characters if a native script exists for that language.
 
     For each recipe, provide:

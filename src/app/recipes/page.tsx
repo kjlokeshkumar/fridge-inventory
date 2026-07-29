@@ -42,6 +42,7 @@ export default function RecipesPage() {
       window.removeEventListener('languageChange', handleLang);
       window.removeEventListener('profileChange', handleProfile);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
