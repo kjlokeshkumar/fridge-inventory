@@ -48,7 +48,7 @@ export default function Navigation() {
         <div className="container nav-content">
           <Link href="/" className="logo">
             <span className="logo-icon">🧊</span>
-            Fridge<span className="logo-accent">AI</span>
+            <span className="logo-text">Fridge<span className="logo-accent">AI</span></span>
           </Link>
           
           <div className="nav-controls">

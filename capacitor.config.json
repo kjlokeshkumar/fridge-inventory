@@ -1,0 +1,9 @@
+{
+  "appId": "com.fridge.ai",
+  "appName": "Fridge AI",
+  "webDir": "out",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}

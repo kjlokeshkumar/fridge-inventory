@@ -577,39 +577,53 @@ body::before {
 }
 
 @media (max-width: 768px) {
-  /* On mobile, align logo left and dropdown right in the header */
+  /* On mobile, align logo left and controls right cleanly without overlapping */
   .logo {
     margin: 0 !important;
+    font-size: 1.1rem;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-size: 1rem;
   }
   .nav-content {
     justify-content: space-between !important;
     width: 100%;
-    padding: 0 12px;
+    padding: 0 8px;
+    height: 56px;
+    gap: 8px;
   }
   .nav-controls {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     flex-wrap: nowrap;
     overflow-x: auto;
-    max-width: 70vw;
+    max-width: calc(100vw - 110px);
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-controls::-webkit-scrollbar {
+    display: none;
   }
   .user-auth-badge, .profile-badge-btn, .lang-selector-container {
-    padding: 3px 8px;
-    font-size: 0.75rem;
+    padding: 2px 6px;
+    font-size: 0.7rem;
     white-space: nowrap;
+    border-radius: 12px;
   }
   .user-auth-name, .profile-name {
-    max-width: 60px;
+    max-width: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
   .profile-diet-tag {
-    display: none; /* Hide extra tag on tiny mobile screens */
+    display: none; /* Hide extra tag on mobile screens */
   }
   .lang-selector {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    padding: 2px 2px;
   }
 }
 

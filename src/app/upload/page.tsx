@@ -208,6 +208,28 @@ export default function UploadPage() {
       </header>
 
       <div className="upload-content">
+        {previews.length > 0 && (
+          <div className="action-buttons top-action-bar" style={{ marginBottom: '16px' }}>
+            <button 
+              className="btn-primary btn-large glow-btn" 
+              onClick={handleUpload}
+              disabled={files.length === 0 || isAnalyzing}
+              style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', fontWeight: 'bold', boxShadow: '0 4px 20px rgba(59, 130, 246, 0.4)' }}
+            >
+              {isAnalyzing ? (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span className="spinner"></span> {t.analyzingBatch}...
+                  </div>
+                  {progressMsg && <span style={{ fontSize: '0.85rem', opacity: 0.9 }}>{progressMsg}</span>}
+                </div>
+              ) : (
+                `✨ ${t.analyzeWithAi} (${previews.length})`
+              )}
+            </button>
+          </div>
+        )}
+
         {previews.length === 0 ? (
           <div 
             className="drop-zone glass-pane"
@@ -228,30 +250,39 @@ export default function UploadPage() {
             />
           </div>
         ) : (
-          <div className="preview-container glass-pane" style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center', padding: '20px' }}>
-            {previews.map((preview, index) => (
-              <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '10px', borderRadius: '12px' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src={preview} 
-                  alt={`Upload preview ${index + 1}`} 
-                  className="preview-image" 
-                  style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} 
-                  onError={(e) => {
-                    // Fallback for formats browser doesn't support rendering (like HEIC)
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement?.querySelector('.fallback-icon')?.classList.remove('hidden');
-                  }}
-                />
-                <div className="fallback-icon hidden" style={{ width: '120px', height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', border: '1px dashed rgba(255,255,255,0.3)', fontSize: '2rem' }}>
-                  📄
+          <div className="preview-container glass-pane" style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', padding: '20px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', width: '100%' }}>
+              {previews.map((preview, index) => (
+                <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '8px', borderRadius: '12px' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src={preview} 
+                    alt={`Upload preview ${index + 1}`} 
+                    className="preview-image" 
+                    style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} 
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement?.querySelector('.fallback-icon')?.classList.remove('hidden');
+                    }}
+                  />
+                  <div className="fallback-icon hidden" style={{ width: '100px', height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', border: '1px dashed rgba(255,255,255,0.3)', fontSize: '2rem' }}>
+                    📄
+                  </div>
+                  <span style={{ fontSize: '0.7rem', marginTop: '6px', maxWidth: '100px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', opacity: 0.8 }}>
+                    {files[index]?.name}
+                  </span>
                 </div>
-                <span style={{ fontSize: '0.75rem', marginTop: '10px', maxWidth: '120px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', opacity: 0.8 }}>
-                  {files[index]?.name}
-                </span>
-              </div>
-            ))}
-            <div className="preview-overlay" style={{ width: '100%', marginTop: '15px' }}>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', gap: '12px', marginTop: '10px', width: '100%', justifyContent: 'center' }}>
+              <button 
+                className="btn-secondary btn-icon" 
+                onClick={() => fileInputRef.current?.click()}
+                disabled={isAnalyzing}
+              >
+                ➕ Add More
+              </button>
               <button 
                 className="btn-secondary btn-icon" 
                 onClick={() => {
@@ -260,9 +291,24 @@ export default function UploadPage() {
                 }}
                 disabled={isAnalyzing}
               >
-                {t.retakeAll}
+                🗑️ {t.retakeAll}
               </button>
             </div>
+
+            <input 
+              type="file" 
+              accept="image/*"
+              multiple
+              className="hidden-input" 
+              ref={fileInputRef}
+              onChange={(e) => {
+                const newFiles = Array.from(e.target.files || []);
+                if (newFiles.length > 0) {
+                  setFiles(prev => [...prev, ...newFiles]);
+                  setPreviews(prev => [...prev, ...newFiles.map(f => URL.createObjectURL(f))]);
+                }
+              }}
+            />
           </div>
         )}
 
@@ -270,9 +316,10 @@ export default function UploadPage() {
 
         <div className="action-buttons">
           <button 
-            className="btn-primary btn-large" 
+            className="btn-primary btn-large glow-btn" 
             onClick={handleUpload}
             disabled={files.length === 0 || isAnalyzing}
+            style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', fontWeight: 'bold', boxShadow: '0 4px 20px rgba(59, 130, 246, 0.4)' }}
           >
             {isAnalyzing ? (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
@@ -282,7 +329,7 @@ export default function UploadPage() {
                 {progressMsg && <span style={{ fontSize: '0.85rem', opacity: 0.9 }}>{progressMsg}</span>}
               </div>
             ) : (
-              t.analyzeWithAi
+              `✨ ${t.analyzeWithAi}`
             )}
           </button>
         </div>
