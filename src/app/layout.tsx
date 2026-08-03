@@ -8,6 +8,12 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Fridge Inventory',
   description: 'AI-powered fridge and pantry tracking',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Fridge Inventory',
+  },
 };
 
 export const viewport: Viewport = {

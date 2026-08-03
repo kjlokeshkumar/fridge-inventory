@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
     // Dynamic lazy import to prevent global Vercel Node crashes on API boot
     const { GoogleGenerativeAI } = await import('@google/generative-ai');
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = `
     You are an expert chef.
