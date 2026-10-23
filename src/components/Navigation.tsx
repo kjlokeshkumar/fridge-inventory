@@ -9,15 +9,7 @@ import UserAuthModal from './UserAuthModal';
 
 const LANGUAGES = [
   { code: 'English', label: 'English' },
-  { code: 'Sourashtra', label: 'Sourashtra (Madurai)' },
-  { code: 'Tamil', label: 'தமிழ் (Tamil)' },
-  { code: 'Hindi', label: 'हिन्दी (Hindi)' },
-  { code: 'Telugu', label: 'తెలుగు (Telugu)' },
-  { code: 'Kannada', label: 'ಕನ್ನಡ (Kannada)' },
-  { code: 'Gujarati', label: 'ગુજરાતી (Gujarati)' },
-  { code: 'Marathi', label: 'मराठी (Marathi)' },
-  { code: 'Bengali', label: 'বাংলা (Bengali)' },
-  { code: 'Malayalam', label: 'മലയാളം (Malayalam)' }
+  { code: 'Tamil', label: 'Tamil (தமிழ் / Transliteration)' }
 ];
 
 export default function Navigation() {
@@ -26,7 +18,11 @@ export default function Navigation() {
 
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
-    setSelectedLanguage(stored);
+    const valid = stored === 'Tamil' ? 'Tamil' : 'English';
+    if (stored !== valid) {
+      localStorage.setItem('appLanguage', valid);
+    }
+    setSelectedLanguage(valid);
   }, []);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

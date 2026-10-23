@@ -462,11 +462,225 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
     };
   };
 
+  const breakfastCombos: MealCombo[] = breakfastBlueprints.map(mapBlueprint);
+  const lunchCombos: MealCombo[] = lunchBlueprints.map(mapBlueprint);
+  const dinnerCombos: MealCombo[] = dinnerBlueprints.map(mapBlueprint);
+
+  // Dynamically expand Breakfast, Lunch, and Dinner Paired Combinations from all 323 catalog recipes
+  const chutneysAndSides = catalog.filter((r) => {
+    const t = `${r.title} ${r.category || ''}`.toLowerCase();
+    return (
+      t.includes('chutni') ||
+      t.includes('chutney') ||
+      t.includes('budith') ||
+      t.includes('bhudith') ||
+      t.includes('losto') ||
+      t.includes('rubbin') ||
+      t.includes('lubbin') ||
+      t.includes('thuvaiyal') ||
+      t.includes('polte') ||
+      t.includes('kutkiri') ||
+      t.includes('podimas') ||
+      t.includes('fry') ||
+      t.includes('varuval')
+    );
+  });
+
+  const pilcharsAndBroths = catalog.filter((r) => {
+    const t = `${r.title} ${r.category || ''}`.toLowerCase();
+    return (
+      t.includes('pilchar') ||
+      t.includes('rasam') ||
+      t.includes('charu') ||
+      t.includes('chaaru') ||
+      t.includes('pani') ||
+      t.includes('soup')
+    );
+  });
+
+  const ountiesAndGravies = catalog.filter((r) => {
+    const t = `${r.title} ${r.category || ''}`.toLowerCase();
+    return (
+      t.includes('ounty') ||
+      t.includes('avunty') ||
+      t.includes('avunti') ||
+      t.includes('ambat') ||
+      t.includes('ambad') ||
+      t.includes('kolkar') ||
+      t.includes('kolgar') ||
+      t.includes('pitla') ||
+      t.includes('sambar') ||
+      t.includes('sambhar') ||
+      t.includes('kulambu') ||
+      t.includes('kurma') ||
+      t.includes('kuzhambu')
+    );
+  });
+
+  const seenComboIds = new Set<string>([
+    ...breakfastCombos.map((c) => c.comboId),
+    ...lunchCombos.map((c) => c.comboId),
+    ...dinnerCombos.map((c) => c.comboId)
+  ]);
+
+  catalog.forEach((r, idx) => {
+    const titleLow = r.title.toLowerCase();
+    const catLow = (r.category || '').toLowerCase();
+    const side1 = chutneysAndSides[idx % Math.max(1, chutneysAndSides.length)] || catalog[(idx + 5) % catalog.length];
+    const rasam1 = pilcharsAndBroths[idx % Math.max(1, pilcharsAndBroths.length)] || catalog[(idx + 11) % catalog.length];
+    const gravy1 = ountiesAndGravies[idx % Math.max(1, ountiesAndGravies.length)] || catalog[(idx + 17) % catalog.length];
+
+    // 1. Dynamic Breakfast Combinations (Phalar / Diido / Pongal / Appam / Kanji + Paired Chutney or Ounty)
+    if (
+      catLow.includes('bhairi') ||
+      catLow.includes('appam') ||
+      titleLow.includes('pongal') ||
+      titleLow.includes('upma') ||
+      titleLow.includes('kichadi') ||
+      titleLow.includes('kanji') ||
+      titleLow.includes('paes') ||
+      titleLow.includes('dosai') ||
+      titleLow.includes('dosa') ||
+      titleLow.includes('idli') ||
+      titleLow.includes('phalar') ||
+      titleLow.includes('poori') ||
+      titleLow.includes('paniyaram') ||
+      titleLow.includes('appam')
+    ) {
+      const cid = `bf-dyn-${r.id || idx}`;
+      if (!seenComboIds.has(cid)) {
+        seenComboIds.add(cid);
+        breakfastCombos.push({
+          comboId: cid,
+          mainDishTitle: r.title,
+          pairedWithTitle: `${side1.title} & Hot Filter Coffee`,
+          pairingTraditionNote: 'Authentic Madurai Sourashtra morning tiffin paired with freshly ground chutney/budith.',
+          primaryRecipe: r,
+          secondaryRecipe: side1
+        });
+      }
+    }
+
+    // Also pair Morning Chutneys / Tiffin Ounties with Soft Phalar & Crispy Diido
+    if (
+      titleLow.includes('chutni') ||
+      titleLow.includes('chutney') ||
+      titleLow.includes('budith') ||
+      titleLow.includes('thakkali ounty') ||
+      titleLow.includes('tiffin sambar') ||
+      titleLow.includes('kurma') ||
+      titleLow.includes('vadacurry')
+    ) {
+      const cid = `bf-phalar-pair-${r.id || idx}`;
+      if (!seenComboIds.has(cid)) {
+        seenComboIds.add(cid);
+        breakfastCombos.push({
+          comboId: cid,
+          mainDishTitle: idx % 2 === 0
+            ? 'Soft Phalar (Steamed Madurai Idli) & Crispy Diido (Dosa)'
+            : 'Hot Kal Diido (Sponge Dosa) & Onion Uttapam',
+          pairedWithTitle: r.title,
+          pairingTraditionNote: 'Traditional Madurai Sourashtra Phalar & Diido served with a flavorful homemade accompaniment.',
+          primaryRecipe: PHALAR_DIIDO_BASE_RECIPE,
+          secondaryRecipe: r
+        });
+      }
+    }
+
+    // 2. Dynamic Full Lunch Combinations (Steamed Rice + Ounty/Ambat/Kolkar/Curry + Pilchar/Polte)
+    if (
+      catLow.includes('ounty') ||
+      catLow.includes('ambat') ||
+      catLow.includes('non-veg') ||
+      titleLow.includes('ounty') ||
+      titleLow.includes('ambat') ||
+      titleLow.includes('kolkar') ||
+      titleLow.includes('sambar') ||
+      titleLow.includes('kulambu') ||
+      titleLow.includes('pitla') ||
+      titleLow.includes('bhaath') ||
+      titleLow.includes('bhath') ||
+      titleLow.includes('biryani') ||
+      titleLow.includes('pulav')
+    ) {
+      const cid = `ln-dyn-${r.id || idx}`;
+      if (!seenComboIds.has(cid)) {
+        seenComboIds.add(cid);
+        const isRiceDish =
+          titleLow.includes('bhaath') ||
+          titleLow.includes('bhath') ||
+          titleLow.includes('biryani') ||
+          titleLow.includes('pulav') ||
+          titleLow.includes('rice');
+        lunchCombos.push({
+          comboId: cid,
+          mainDishTitle: isRiceDish ? `${r.title} + Dhi Bhaath (Curd Rice)` : `Steamed Rice (Saadu) + ${r.title}`,
+          pairedWithTitle: isRiceDish
+            ? `${side1.title} & Crispy Appalam`
+            : `${rasam1.title} + ${side1.title}`,
+          pairingTraditionNote: isRiceDish
+            ? 'Traditional Madurai Sourashtra variety rice meal balanced with a tangy/spicy side dish and cool curd rice.'
+            : 'Complete Madurai Sourashtra afternoon meal pairing a signature gravy over hot rice with soothing rasam and stir-fry/budith.',
+          primaryRecipe: r,
+          secondaryRecipe: isRiceDish ? side1 : rasam1
+        });
+      }
+    }
+
+    // 3. Dynamic Dinner / Evening Tiffin Combinations
+    if (
+      titleLow.includes('bhairi') ||
+      titleLow.includes('dhowlo') ||
+      titleLow.includes('kolukattai') ||
+      titleLow.includes('kozhukattai') ||
+      titleLow.includes('chappathi') ||
+      titleLow.includes('chapati') ||
+      titleLow.includes('parotta') ||
+      titleLow.includes('kurma') ||
+      titleLow.includes('idiyappam') ||
+      titleLow.includes('sevai') ||
+      titleLow.includes('adai') ||
+      titleLow.includes('oothappam') ||
+      titleLow.includes('uttapam') ||
+      titleLow.includes('pongal')
+    ) {
+      const cid = `dn-dyn-${r.id || idx}`;
+      if (!seenComboIds.has(cid)) {
+        seenComboIds.add(cid);
+        const isGravy = titleLow.includes('kurma') || titleLow.includes('ounty') || titleLow.includes('ambat') || titleLow.includes('masala');
+        dinnerCombos.push({
+          comboId: cid,
+          mainDishTitle: isGravy ? 'Soft Phulka / Chappathi & Steamed Idiyappam' : r.title,
+          pairedWithTitle: isGravy ? r.title : `${gravy1.title} / ${side1.title}`,
+          pairingTraditionNote: 'Wholesome Madurai Sourashtra evening tiffin combination.',
+          primaryRecipe: isGravy ? PHULKA_IDIYAPPAM_BASE_RECIPE : r,
+          secondaryRecipe: isGravy ? r : side1
+        });
+      }
+    }
+  });
+
   return {
-    breakfastCombos: breakfastBlueprints.map(mapBlueprint),
-    lunchCombos: lunchBlueprints.map(mapBlueprint),
-    dinnerCombos: dinnerBlueprints.map(mapBlueprint)
+    breakfastCombos,
+    lunchCombos,
+    dinnerCombos
   };
+}
+
+// Deterministic seeded Fisher-Yates shuffle so every click on Regenerate / Resample
+// selects a completely fresh set of combinations from across the full pool
+function seededShufflePool<T>(items: T[], seed: number): T[] {
+  const arr = [...items];
+  if (seed <= 0) return arr;
+  let s = (seed * 2654435761) >>> 0;
+  for (let i = arr.length - 1; i > 0; i--) {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    const j = s % (i + 1);
+    const tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+  }
+  return arr;
 }
 
 function getUpcoming7Days(): { dayName: string; dateLabel: string; isoDate: string }[] {
@@ -560,22 +774,51 @@ export default function RecipesPage() {
 
     const upcomingDays = getUpcoming7Days();
     const usedComboIds = new Set<string>();
+    const prevUnpinnedIds = new Set<string>();
 
     for (const day of existingPlan) {
-      if (day?.pinnedSlots?.breakfast && day.breakfast?.comboId) usedComboIds.add(day.breakfast.comboId);
-      if (day?.pinnedSlots?.lunch && day.lunch?.comboId) usedComboIds.add(day.lunch.comboId);
-      if (day?.pinnedSlots?.dinner && day.dinner?.comboId) usedComboIds.add(day.dinner.comboId);
+      if (day?.pinnedSlots?.breakfast && day.breakfast?.comboId) {
+        usedComboIds.add(day.breakfast.comboId);
+      } else if (day?.breakfast?.comboId) {
+        prevUnpinnedIds.add(day.breakfast.comboId);
+      }
+
+      if (day?.pinnedSlots?.lunch && day.lunch?.comboId) {
+        usedComboIds.add(day.lunch.comboId);
+      } else if (day?.lunch?.comboId) {
+        prevUnpinnedIds.add(day.lunch.comboId);
+      }
+
+      if (day?.pinnedSlots?.dinner && day.dinner?.comboId) {
+        usedComboIds.add(day.dinner.comboId);
+      } else if (day?.dinner?.comboId) {
+        prevUnpinnedIds.add(day.dinner.comboId);
+      }
     }
 
-    const pickUniqueCombo = (pool: MealCombo[], startOffset: number): MealCombo => {
-      for (let step = 0; step < pool.length; step++) {
-        const candidate = pool[(startOffset + step) % pool.length];
+    // Shuffle each pool with the current seed so every click picks a completely fresh set
+    const shuffledBreakfast = seededShufflePool(breakfastCombos, seedVal * 13 + 1);
+    const shuffledLunch = seededShufflePool(lunchCombos, seedVal * 29 + 7);
+    const shuffledDinner = seededShufflePool(dinnerCombos, seedVal * 47 + 19);
+
+    const pickUniqueCombo = (pool: MealCombo[], fallbackIdx: number): MealCombo => {
+      // First pass: pick a combo not used this week AND not in the previous unpinned week
+      if (seedVal > 0 && pool.length > 7) {
+        for (const candidate of pool) {
+          if (!usedComboIds.has(candidate.comboId) && !prevUnpinnedIds.has(candidate.comboId)) {
+            usedComboIds.add(candidate.comboId);
+            return candidate;
+          }
+        }
+      }
+      // Second pass: pick any combo not yet used this week
+      for (const candidate of pool) {
         if (!usedComboIds.has(candidate.comboId)) {
           usedComboIds.add(candidate.comboId);
           return candidate;
         }
       }
-      return pool[startOffset % pool.length];
+      return pool[fallbackIdx % pool.length];
     };
 
     const newPlan: DayMealPlan[] = upcomingDays.map((dayMeta, idx) => {
@@ -584,17 +827,17 @@ export default function RecipesPage() {
       const bf =
         prevDay?.pinnedSlots?.breakfast && prevDay.breakfast?.mainDishTitle
           ? prevDay.breakfast
-          : pickUniqueCombo(breakfastCombos, idx + seedVal);
+          : pickUniqueCombo(shuffledBreakfast, idx);
 
       const ln =
         prevDay?.pinnedSlots?.lunch && prevDay.lunch?.mainDishTitle
           ? prevDay.lunch
-          : pickUniqueCombo(lunchCombos, idx + seedVal * 2);
+          : pickUniqueCombo(shuffledLunch, idx);
 
       const dn =
         prevDay?.pinnedSlots?.dinner && prevDay.dinner?.mainDishTitle
           ? prevDay.dinner
-          : pickUniqueCombo(dinnerCombos, idx + seedVal * 3);
+          : pickUniqueCombo(shuffledDinner, idx);
 
       return {
         dayIndex: idx,
@@ -618,8 +861,14 @@ export default function RecipesPage() {
     }
   };
 
-  const fetchRecipes = async (customItems: string[] = selectedFridgeItems, seed = shuffleSeed) => {
-    setLoading(true);
+  const fetchRecipes = async (
+    customItems: string[] = selectedFridgeItems,
+    seed = shuffleSeed,
+    forceResamplePlanner = false
+  ) => {
+    if (recipes.length === 0) {
+      setLoading(true);
+    }
     setError(null);
     try {
       const storedProfileId = localStorage.getItem('activeProfileId') || '';
@@ -646,8 +895,9 @@ export default function RecipesPage() {
       setIsUsingSampleBasket(usingSample);
 
       const savedPlan = localStorage.getItem('pinnedSourashtraWeeklyCombosV3');
-      if (!savedPlan && loadedRecipes.length > 0) {
-        generateOrUpdateWeeklyPlan(loadedRecipes, plannerSeed, weeklyPlan);
+      if (loadedRecipes.length > 0 && (forceResamplePlanner || !savedPlan)) {
+        const activeSeed = forceResamplePlanner ? seed : plannerSeed;
+        generateOrUpdateWeeklyPlan(loadedRecipes, activeSeed, weeklyPlan);
       }
     } catch (e: unknown) {
       const err = e as Error;
@@ -662,19 +912,24 @@ export default function RecipesPage() {
       ? selectedFridgeItems.filter((i) => i !== item)
       : [...selectedFridgeItems, item];
     setSelectedFridgeItems(updated);
-    fetchRecipes(updated, 0);
+    fetchRecipes(updated, shuffleSeed, false);
   };
 
   const handleRegenerate = () => {
-    const nextSeed = shuffleSeed + 1;
+    const nextSeed = Math.max(shuffleSeed, plannerSeed) + 1;
     setShuffleSeed(nextSeed);
-    fetchRecipes(selectedFridgeItems, nextSeed);
+    setPlannerSeed(nextSeed);
+    if (recipes.length > 0) {
+      generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan);
+    }
+    fetchRecipes(selectedFridgeItems, nextSeed, true);
   };
 
   // Weekly Planner Controls
   const handleResampleWeek = () => {
-    const nextSeed = plannerSeed + 1;
+    const nextSeed = Math.max(plannerSeed, shuffleSeed) + 1;
     setPlannerSeed(nextSeed);
+    setShuffleSeed(nextSeed);
     generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan);
   };
 
@@ -932,7 +1187,7 @@ export default function RecipesPage() {
             🥣 {showBhurkoModal ? 'Hide Bhurko Guide' : 'Sourashtra Bhurko Spice Guide'}
           </button>
           <button className="btn-primary" onClick={handleRegenerate}>
-            {t.regenerate}
+            {t.regenerate} {plannerSeed > 0 ? `(Set #${plannerSeed + 1})` : ''}
           </button>
         </div>
       </header>
@@ -1128,7 +1383,12 @@ export default function RecipesPage() {
         <section className="weekly-planner-panel glass-pane mb-24">
           <div className="planner-top-bar">
             <div>
-              <h2>📅 7-Day Madurai Sourashtra Weekly Meal Planner (Complete Paired Combinations)</h2>
+              <h2>
+                📅 7-Day Madurai Sourashtra Weekly Meal Planner{' '}
+                <span style={{ color: '#10b981', fontSize: '0.88em' }}>
+                  (Sample Set #{plannerSeed + 1} • Complete Paired Combinations)
+                </span>
+              </h2>
               <p className="selector-sub">
                 Click <strong>any Main Dish or Paired Side Dish</strong> below to open its full step-by-step recipe, ingredients, and video, then close it to return right back here!
               </p>
@@ -1146,7 +1406,7 @@ export default function RecipesPage() {
                 className="btn-gold"
                 onClick={handleResampleWeek}
               >
-                🎲 Resample Unpinned Combos
+                🎲 Resample Unpinned Combos (Set #{plannerSeed + 1})
               </button>
               <button
                 type="button"
