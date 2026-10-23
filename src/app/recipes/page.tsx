@@ -466,9 +466,43 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
   const lunchCombos: MealCombo[] = lunchBlueprints.map(mapBlueprint);
   const dinnerCombos: MealCombo[] = dinnerBlueprints.map(mapBlueprint);
 
+  const cleanDishTitle = (raw: string): string => {
+    return (raw || '')
+      .replace(/\|.*$/g, '')
+      .replace(/#[A-Za-z0-9_]+/g, '')
+      .replace(/\s+in\s+(Sourashtra|Tamil|English).*$/i, '')
+      .replace(/^With only \d+ ingredients make yummy\s+/i, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  };
+
+  const isSpicePowderOrSnack = (text: string): boolean => {
+    const t = text.toLowerCase();
+    return (
+      t.includes('podi') ||
+      t.includes('bhurko') ||
+      t.includes('burko') ||
+      t.includes('powder') ||
+      t.includes('bonda') ||
+      t.includes('bajji') && !t.includes('bhajji') ||
+      t.includes('murukku') ||
+      t.includes('mixture') ||
+      t.includes('halwa') ||
+      t.includes('laddu') ||
+      t.includes('kesari') ||
+      t.includes('payasam') ||
+      t.includes('kheer') ||
+      t.includes('jamun') ||
+      t.includes('sweet') ||
+      t.includes('cake') ||
+      t.includes('biscuit')
+    );
+  };
+
   // Dynamically expand Breakfast, Lunch, and Dinner Paired Combinations from all 323 catalog recipes
   const chutneysAndSides = catalog.filter((r) => {
     const t = `${r.title} ${r.category || ''}`.toLowerCase();
+    if (isSpicePowderOrSnack(t)) return false;
     return (
       t.includes('chutni') ||
       t.includes('chutney') ||
@@ -488,6 +522,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
 
   const pilcharsAndBroths = catalog.filter((r) => {
     const t = `${r.title} ${r.category || ''}`.toLowerCase();
+    if (isSpicePowderOrSnack(t)) return false;
     return (
       t.includes('pilchar') ||
       t.includes('rasam') ||
@@ -500,6 +535,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
 
   const ountiesAndGravies = catalog.filter((r) => {
     const t = `${r.title} ${r.category || ''}`.toLowerCase();
+    if (isSpicePowderOrSnack(t)) return false;
     return (
       t.includes('ounty') ||
       t.includes('avunty') ||
@@ -526,14 +562,15 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
   catalog.forEach((r, idx) => {
     const titleLow = r.title.toLowerCase();
     const catLow = (r.category || '').toLowerCase();
+    if (isSpicePowderOrSnack(titleLow)) return;
+
+    const cleanMain = cleanDishTitle(r.title);
     const side1 = chutneysAndSides[idx % Math.max(1, chutneysAndSides.length)] || catalog[(idx + 5) % catalog.length];
     const rasam1 = pilcharsAndBroths[idx % Math.max(1, pilcharsAndBroths.length)] || catalog[(idx + 11) % catalog.length];
     const gravy1 = ountiesAndGravies[idx % Math.max(1, ountiesAndGravies.length)] || catalog[(idx + 17) % catalog.length];
 
-    // 1. Dynamic Breakfast Combinations (Phalar / Diido / Pongal / Appam / Kanji + Paired Chutney or Ounty)
+    // 1. Dynamic Breakfast Combinations (Only genuine morning tiffins + Paired Chutney or Ounty)
     if (
-      catLow.includes('bhairi') ||
-      catLow.includes('appam') ||
       titleLow.includes('pongal') ||
       titleLow.includes('upma') ||
       titleLow.includes('kichadi') ||
@@ -541,19 +578,22 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       titleLow.includes('paes') ||
       titleLow.includes('dosai') ||
       titleLow.includes('dosa') ||
+      titleLow.includes('diido') ||
       titleLow.includes('idli') ||
       titleLow.includes('phalar') ||
       titleLow.includes('poori') ||
       titleLow.includes('paniyaram') ||
-      titleLow.includes('appam')
+      titleLow.includes('appam') ||
+      titleLow.includes('idiyappam') ||
+      titleLow.includes('adai')
     ) {
       const cid = `bf-dyn-${r.id || idx}`;
       if (!seenComboIds.has(cid)) {
         seenComboIds.add(cid);
         breakfastCombos.push({
           comboId: cid,
-          mainDishTitle: r.title,
-          pairedWithTitle: `${side1.title} & Hot Filter Coffee`,
+          mainDishTitle: cleanMain,
+          pairedWithTitle: `${cleanDishTitle(side1.title)} & Tiffin Sambar`,
           pairingTraditionNote: 'Authentic Madurai Sourashtra morning tiffin paired with freshly ground chutney/budith.',
           primaryRecipe: r,
           secondaryRecipe: side1
@@ -579,7 +619,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
           mainDishTitle: idx % 2 === 0
             ? 'Soft Phalar (Steamed Madurai Idli) & Crispy Diido (Dosa)'
             : 'Hot Kal Diido (Sponge Dosa) & Onion Uttapam',
-          pairedWithTitle: r.title,
+          pairedWithTitle: cleanMain,
           pairingTraditionNote: 'Traditional Madurai Sourashtra Phalar & Diido served with a flavorful homemade accompaniment.',
           primaryRecipe: PHALAR_DIIDO_BASE_RECIPE,
           secondaryRecipe: r
@@ -614,10 +654,10 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
           titleLow.includes('rice');
         lunchCombos.push({
           comboId: cid,
-          mainDishTitle: isRiceDish ? `${r.title} + Dhi Bhaath (Curd Rice)` : `Steamed Rice (Saadu) + ${r.title}`,
+          mainDishTitle: isRiceDish ? `${cleanMain} + Dhi Bhaath (Curd Rice)` : `Steamed Rice (Saadu) + ${cleanMain}`,
           pairedWithTitle: isRiceDish
-            ? `${side1.title} & Crispy Appalam`
-            : `${rasam1.title} + ${side1.title}`,
+            ? `${cleanDishTitle(side1.title)} & Crispy Appalam`
+            : `${cleanDishTitle(rasam1.title)} + ${cleanDishTitle(side1.title)}`,
           pairingTraditionNote: isRiceDish
             ? 'Traditional Madurai Sourashtra variety rice meal balanced with a tangy/spicy side dish and cool curd rice.'
             : 'Complete Madurai Sourashtra afternoon meal pairing a signature gravy over hot rice with soothing rasam and stir-fry/budith.',
@@ -650,8 +690,8 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
         const isGravy = titleLow.includes('kurma') || titleLow.includes('ounty') || titleLow.includes('ambat') || titleLow.includes('masala');
         dinnerCombos.push({
           comboId: cid,
-          mainDishTitle: isGravy ? 'Soft Phulka / Chappathi & Steamed Idiyappam' : r.title,
-          pairedWithTitle: isGravy ? r.title : `${gravy1.title} / ${side1.title}`,
+          mainDishTitle: isGravy ? 'Soft Phulka / Chappathi & Steamed Idiyappam' : cleanMain,
+          pairedWithTitle: isGravy ? cleanMain : `${cleanDishTitle(gravy1.title)} / ${cleanDishTitle(side1.title)}`,
           pairingTraditionNote: 'Wholesome Madurai Sourashtra evening tiffin combination.',
           primaryRecipe: isGravy ? PHULKA_IDIYAPPAM_BASE_RECIPE : r,
           secondaryRecipe: isGravy ? r : side1
@@ -796,10 +836,10 @@ export default function RecipesPage() {
       }
     }
 
-    // Shuffle each pool with the current seed so every click picks a completely fresh set
-    const shuffledBreakfast = seededShufflePool(breakfastCombos, seedVal * 13 + 1);
-    const shuffledLunch = seededShufflePool(lunchCombos, seedVal * 29 + 7);
-    const shuffledDinner = seededShufflePool(dinnerCombos, seedVal * 47 + 19);
+    // Keep curated signature order on initial load (seedVal === 0), and shuffle on Regenerate / Resample (seedVal > 0)
+    const shuffledBreakfast = seedVal === 0 ? breakfastCombos : seededShufflePool(breakfastCombos, seedVal * 13 + 1);
+    const shuffledLunch = seedVal === 0 ? lunchCombos : seededShufflePool(lunchCombos, seedVal * 29 + 7);
+    const shuffledDinner = seedVal === 0 ? dinnerCombos : seededShufflePool(dinnerCombos, seedVal * 47 + 19);
 
     const pickUniqueCombo = (pool: MealCombo[], fallbackIdx: number): MealCombo => {
       // First pass: pick a combo not used this week AND not in the previous unpinned week
