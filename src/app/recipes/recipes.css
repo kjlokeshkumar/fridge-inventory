@@ -1,5 +1,5 @@
 .recipes-container {
-  max-width: 1000px;
+  max-width: 1080px;
   margin: 0 auto;
   width: 100%;
 }
@@ -7,7 +7,15 @@
 .flex-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .recipes-loading {
@@ -15,13 +23,256 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 40vh;
   gap: 16px;
+  padding: 32px;
+}
+
+.fridge-selector-panel {
+  padding: 20px;
+}
+
+.selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.selector-header h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.1rem;
+  color: #f8fafc;
+}
+
+.selector-sub {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.selector-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+
+.fridge-pills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fridge-pill {
+  background: rgba(30, 41, 59, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.fridge-pill:hover {
+  border-color: #38bdf8;
+  color: #fff;
+}
+
+.fridge-pill.active {
+  background: rgba(16, 185, 129, 0.22);
+  border: 1px solid #10b981;
+  color: #6ee7b7;
+  font-weight: 600;
+}
+
+.sample-basket-banner {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #bae6fd;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* Search & Category Filter Bar */
+.catalog-filter-panel {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.search-stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.recipe-search-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.8);
+  color: #f8fafc;
+  font-size: 0.92rem;
+}
+
+.recipe-search-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.catalog-count-badge {
+  font-size: 0.88rem;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.category-tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-tab-btn {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.category-tab-btn:hover {
+  border-color: #6366f1;
+  color: #fff;
+}
+
+.category-tab-btn.active {
+  background: rgba(99, 102, 241, 0.28);
+  border-color: #6366f1;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Source Hyperlinks Section inside Recipe & Bhurko Cards */
+.recipe-source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.source-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.source-link-yt {
+  background: rgba(239, 68, 68, 0.16);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+}
+
+.source-link-yt:hover {
+  background: rgba(239, 68, 68, 0.28);
+  color: #fff;
+}
+
+.source-link-web {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #7dd3fc;
+}
+
+.source-link-web:hover {
+  background: rgba(56, 189, 248, 0.28);
+  color: #fff;
+}
+
+.bhurko-guide-panel {
+  padding: 20px;
+}
+
+.bhurko-guide-panel h3 {
+  margin: 0 0 8px 0;
+  color: #fbbf24;
+}
+
+.bhurko-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.bhurko-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bhurko-card h4 {
+  margin: 0;
+  color: #fde68a;
+  font-size: 0.98rem;
+}
+
+.bhurko-used-for {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.bhurko-ing-list {
+  padding-left: 18px;
+  margin: 0;
+  font-size: 0.84rem;
+  color: #e2e8f0;
+}
+
+.bhurko-prep {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .recipes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 24px;
 }
 
@@ -29,7 +280,7 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .recipe-header {
@@ -39,9 +290,21 @@
   gap: 12px;
 }
 
+.recipe-category-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
 .recipe-header h3 {
-  font-size: 1.3rem;
-  line-height: 1.4;
+  font-size: 1.18rem;
+  line-height: 1.35;
   margin: 0;
   color: #fff;
 }
@@ -49,9 +312,10 @@
 .difficulty {
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .difficulty.easy { background: rgba(16, 185, 129, 0.2); color: #34d399; }
@@ -59,21 +323,65 @@
 .difficulty.hard { background: rgba(239, 68, 68, 0.2); color: #f87171; }
 
 .recipe-section h4 {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: #94a3b8;
-  margin-bottom: 8px;
+  margin: 0 0 8px 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.ingredient-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badge-fridge {
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #6ee7b7;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.84rem;
+}
+
+.badge-pantry {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fde68a;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.84rem;
+}
+
+.bhurko-note-box {
+  background: rgba(251, 191, 36, 0.1);
+  border-left: 3px solid #f59e0b;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: #fef3c7;
+  line-height: 1.45;
 }
 
 .missing-list, .steps-list {
   padding-left: 20px;
   color: #cbd5e1;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .steps-list li {
   margin-bottom: 8px;
+}
+
+.load-more-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px 0;
+  flex-wrap: wrap;
 }
 
 .text-success {
@@ -81,5 +389,496 @@
   font-weight: 500;
 }
 
+.mb-16 { margin-bottom: 16px; }
 .mb-24 { margin-bottom: 24px; }
 .mt-16 { margin-top: 16px; }
+
+
+/* =========================================================
+   7-DAY MADURAI SOURASHTRA WEEKLY MEAL PLANNER & PRINT VIEW
+   ========================================================= */
+.weekly-planner-panel {
+  padding: 22px;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.85));
+}
+
+.planner-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.planner-top-bar h2 {
+  margin: 0 0 6px 0;
+  font-size: 1.35rem;
+  color: #fde68a;
+}
+
+.planner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #0f172a;
+  font-weight: 700;
+  border: none;
+  padding: 9px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.86rem;
+  transition: all 0.15s ease;
+}
+
+.btn-gold:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-pin-plan {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #6ee7b7;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.86rem;
+}
+
+.btn-pin-plan.pinned {
+  background: #10b981;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.weekly-days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.day-plan-card {
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  padding-bottom: 8px;
+  gap: 8px;
+}
+
+.day-title-group h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #f8fafc;
+}
+
+.day-date-sub {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.gcal-day-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.16);
+  border: 1px solid rgba(59, 130, 246, 0.38);
+  padding: 5px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.gcal-day-link:hover {
+  background: rgba(59, 130, 246, 0.3);
+  color: #fff;
+}
+
+.meal-slot-box {
+  background: rgba(30, 41, 59, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meal-slot-box.slot-pinned {
+  border-color: rgba(251, 191, 36, 0.55);
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.meal-slot-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.meal-type-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #38bdf8;
+}
+
+.meal-slot-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.slot-mini-btn {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  color: #cbd5e1;
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.slot-mini-btn:hover {
+  border-color: #fbbf24;
+  color: #fff;
+}
+
+.slot-mini-btn.active {
+  background: rgba(251, 191, 36, 0.25);
+  border-color: #fbbf24;
+  color: #fde68a;
+  font-weight: 600;
+}
+
+.meal-slot-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  line-height: 1.35;
+}
+
+.meal-slot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.76rem;
+}
+
+.meal-slot-links a {
+  color: #fca5a5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.meal-slot-links a.web-ref {
+  color: #7dd3fc;
+}
+
+.meal-slot-links a:hover {
+  text-decoration: underline;
+}
+
+/* Weekly Shopping & Inventory Gap Summary */
+.weekly-shopping-box {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.weekly-shopping-box h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  color: #38bdf8;
+}
+
+.shopping-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.shopping-col-card {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.shopping-col-card h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.92rem;
+}
+
+.purchase-needed-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.purchase-needed-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  color: #fecaca;
+}
+
+.purchase-days-tag {
+  font-size: 0.74rem;
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.15);
+  padding: 2px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Print-Friendly Styles for Ladies to Print the 7-Day Menu & Shopping List */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .navbar,
+  .bottom-nav,
+  .fridge-selector-panel,
+  .catalog-filter-panel,
+  .recipes-grid,
+  .load-more-bar,
+  .header-actions,
+  .planner-actions,
+  .slot-mini-btn,
+  .gcal-day-link {
+    display: none !important;
+  }
+  .weekly-planner-panel,
+  .day-plan-card,
+  .meal-slot-box,
+  .weekly-shopping-box,
+  .shopping-col-card {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  .planner-top-bar h2,
+  .day-title-group h4,
+  .meal-slot-title,
+  .weekly-shopping-box h3,
+  .shopping-col-card h4,
+  .purchase-needed-item {
+    color: #000000 !important;
+  }
+}
+
+/* Paired Combination Styling inside Meal Slots */
+.combo-main-line {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.35;
+}
+
+.combo-side-box {
+  background: rgba(16, 185, 129, 0.1);
+  border-left: 3px solid #10b981;
+  padding: 6px 9px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #d1fae5;
+  line-height: 1.35;
+}
+
+.combo-side-label {
+  font-weight: 700;
+  color: #34d399;
+  margin-right: 4px;
+}
+
+.combo-why-note {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+
+/* Clickable Recipe Hyperlinks inside 7-Day Planner Slots */
+.combo-dish-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 7px;
+  padding: 7px 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #e0f2fe;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(56, 189, 248, 0.5);
+  text-underline-offset: 3px;
+  transition: all 0.15s ease;
+}
+
+.combo-dish-link:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+.combo-paired-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-left: 3px solid #10b981;
+  border-radius: 7px;
+  padding: 7px 10px;
+  font-size: 0.83rem;
+  color: #d1fae5;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(16, 185, 129, 0.5);
+  text-underline-offset: 3px;
+  transition: all 0.15s ease;
+}
+
+.combo-paired-link:hover {
+  background: rgba(16, 185, 129, 0.24);
+  border-color: #34d399;
+  color: #ffffff;
+}
+
+.view-recipe-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #fbbf24;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Recipe Detail Modal when clicking any dish in the 7-Day Planner */
+.planner-recipe-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(2, 6, 23, 0.82);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.planner-recipe-modal {
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #0f172a;
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  padding-bottom: 12px;
+}
+
+.btn-back-planner {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #0f172a;
+  font-weight: 700;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-back-planner:hover {
+  filter: brightness(1.08);
+}
+
+.modal-combo-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-combo-tab {
+  flex: 1;
+  min-width: 180px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(30, 41, 59, 0.7);
+  color: #cbd5e1;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.modal-combo-tab.active {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: #38bdf8;
+  color: #ffffff;
+}

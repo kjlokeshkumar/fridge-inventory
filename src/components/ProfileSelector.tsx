@@ -40,7 +40,7 @@ export default function ProfileSelector() {
         }
       }
     } catch (e) {
-      console.error('Failed to fetch profiles:', e);
+      console.warn('Failed to fetch profiles:', e);
     }
   };
 
@@ -77,7 +77,7 @@ export default function ProfileSelector() {
         selectProfile(data.profile);
       }
     } catch (e) {
-      console.error('Failed to save profile:', e);
+      console.warn('Failed to save profile:', e);
     }
   };
 
