@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fridge AI
 
-## Getting Started
+Fridge AI is a Next.js web app for tracking food inventory, scanning groceries,
+and generating recipes. The Android app uses Capacitor to open the deployed web
+app, so the desktop browser and Android app share the same interface and API.
+An internet connection is required in the Android app.
 
-First, run the development server:
+## Run the web app
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For a production build:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build the Android app
 
-## Learn More
+The Capacitor project is kept in `android-capacitor/`. The older native WebView
+project remains in `android/` and is not used by Capacitor.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run android:sync
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Then build a debug APK from PowerShell:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```powershell
+Set-Location android-capacitor
+.\gradlew.bat assembleDebug
+```
 
-## Deploy on Vercel
+The APK is written to
+`android-capacitor/app/build/outputs/apk/debug/app-debug.apk`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The Capacitor server URL is configured in `capacitor.config.ts` and currently
+points to the production Vercel app. Update it if the production domain changes.
+The bundled page is only an offline fallback; API-backed features require the
+hosted Next.js app and its configured environment.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Google Play distribution requires a release-signed Android App Bundle (`.aab`),
+a final unique application ID, and Play Console listing/privacy declarations.
+Do not commit upload keystores or signing passwords.

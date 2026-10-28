@@ -6,10 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android"
   },
 
   "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/camera": "^8.2.6",
+    "@capacitor/core": "^8.5.3",
     "@google/generative-ai": "^0.24.1",
     "@neondatabase/serverless": "^1.0.2",
     "heic2any": "^0.0.4",
@@ -21,6 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@capacitor/cli": "^8.5.3",
     "eslint": "^9",
     "eslint-config-next": "15.1.11",
     "typescript": "^5"

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Fridge AI</string>
+    <string name="title_activity_main">Fridge AI</string>
+    <string name="package_name">com.fridge.ai</string>
+    <string name="custom_url_scheme">com.fridge.ai</string>
+</resources>

@@ -103,6 +103,7 @@ export default function ProfileSelector() {
         onClick={() => setIsOpen(true)} 
         className="profile-badge-btn"
         title="Manage Household Profiles"
+        aria-label="Manage Household Profiles"
       >
         <span className="profile-avatar">{activeProfile?.avatar || '👤'}</span>
         <span className="profile-name">{activeProfile?.name || 'Profile'}</span>

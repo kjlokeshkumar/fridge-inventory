@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Capacitor } from '@capacitor/core';
 import './upload.css';
 import { UI_TRANSLATIONS } from '@/lib/translations';
 
@@ -12,13 +14,49 @@ export default function UploadPage() {
   const [error, setError] = useState<string | null>(null);
   const [progressMsg, setProgressMsg] = useState<string>('');
   const [language, setLanguage] = useState('English');
+  const [isNativePlatform, setIsNativePlatform] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
     setLanguage(stored);
+    setIsNativePlatform(Capacitor.isNativePlatform());
   }, []);
+
+  const handleTakePhoto = async () => {
+    try {
+      const photo = await Camera.getPhoto({
+        quality: 90,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+      });
+
+      if (!photo.webPath) {
+        throw new Error('The camera did not return a photo.');
+      }
+
+      const response = await fetch(photo.webPath);
+      if (!response.ok) {
+        throw new Error('Could not read the captured photo.');
+      }
+
+      const blob = await response.blob();
+      const file = new File(
+        [blob],
+        `fridge-photo-${Date.now()}.${photo.format}`,
+        { type: blob.type || `image/${photo.format}` }
+      );
+      setFiles((current) => [...current, file]);
+      setPreviews((current) => [...current, URL.createObjectURL(file)]);
+      setError(null);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Camera access failed.';
+      if (!/cancel/i.test(message)) {
+        setError(`Could not take a photo: ${message}`);
+      }
+    }
+  };
 
   const compressImage = async (file: File, maxWidth = 800): Promise<File> => {
     
@@ -248,6 +286,18 @@ export default function UploadPage() {
               ref={fileInputRef}
               onChange={handleFileSelect}
             />
+            {isNativePlatform && (
+              <button
+                type="button"
+                className="btn-secondary btn-icon"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  void handleTakePhoto();
+                }}
+              >
+                📷 {t.takePhoto}
+              </button>
+            )}
           </div>
         ) : (
           <div className="preview-container glass-pane" style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', padding: '20px' }}>

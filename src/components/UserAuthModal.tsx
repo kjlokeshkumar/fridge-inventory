@@ -78,6 +78,7 @@ export default function UserAuthModal() {
         onClick={() => setIsOpen(true)} 
         className="user-auth-badge"
         title="Switch Account / Unique Username"
+        aria-label="Switch Account / Unique Username"
       >
         <span className="user-auth-icon">🔑</span>
         <span className="user-auth-name">{currentUser?.username || 'Sign In'}</span>

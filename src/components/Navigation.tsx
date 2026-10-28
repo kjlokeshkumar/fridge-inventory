@@ -57,6 +57,7 @@ export default function Navigation() {
                 value={selectedLanguage} 
                 onChange={handleLanguageChange}
                 className="lang-selector"
+                aria-label="Display language"
               >
                 {LANGUAGES.map((l) => (
                   <option key={l.code} value={l.code}>{l.label}</option>

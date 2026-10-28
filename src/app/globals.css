@@ -599,12 +599,10 @@ body::before {
     align-items: center;
     gap: 4px;
     flex-wrap: nowrap;
-    overflow-x: auto;
-    max-width: calc(100vw - 110px);
-    -webkit-overflow-scrolling: touch;
-  }
-  .nav-controls::-webkit-scrollbar {
-    display: none;
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    justify-content: flex-end;
   }
   .user-auth-badge, .profile-badge-btn, .lang-selector-container {
     padding: 2px 6px;
@@ -613,7 +611,7 @@ body::before {
     border-radius: 12px;
   }
   .user-auth-name, .profile-name {
-    max-width: 50px;
+    max-width: 36px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -624,6 +622,17 @@ body::before {
   .lang-selector {
     font-size: 0.7rem;
     padding: 2px 2px;
+    width: 56px;
+  }
+}
+
+@media (max-width: 360px) {
+  .user-auth-name, .profile-name {
+    display: none;
+  }
+
+  .lang-selector {
+    width: 20px;
   }
 }
 
