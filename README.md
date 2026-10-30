@@ -12,14 +12,14 @@ connection.
   database exports, `.env` files, signing keys, or signing passwords.
 - Remote: `origin` (`https://github.com/kjlokeshkumar/fridge-inventory.git`)
 - Branch: `master`
-- Latest pushed commit at the last handoff: `64c1dac` (`build: add signed Play
-  bundle workflow`)
+- Latest pushed commit at this handoff: `9398958`
+  (`feat: unify weekly shopping experience`).
 - The release AAB was built and signature-verified locally on October 29, 2026.
-- The user reports backing up both signing files and saving the decrypted
-  keystore password in a password manager.
+- The user reports uploading that AAB to Play Console on October 29, 2026.
+  Check Play Console for its current track and release status; an upload is not
+  the same as a published release.
 - `Fridge_AI_Friends_Guide.txt` is an unrelated, untracked user file. Leave it
   untouched.
-- No Google Play Console listing or release has been created/submitted yet.
 
 ## Architecture
 
@@ -119,46 +119,147 @@ APK, not a Play release. The emulator/device was not available during the last
 mobile check, so a real Android installation and camera flow still need device
 testing.
 
-## Play upload key and signed release
+## Build a signed Android App Bundle (AAB)
 
 The app's Android application ID is `com.fridge.ai`; its target SDK is 36.
-Confirm the package ID is available before creating the Play app because the
-ID cannot be changed after creation.
+The existing Play Console app must use this same package ID; it cannot be
+changed for an existing app.
 
 The signing files are outside the repository:
 
 - `$HOME\.android\fridge-ai-upload.p12` — upload keystore
 - `$HOME\.android\fridge-ai-upload-password.sec` — password protected with
-  Windows DPAPI for the current Windows user
+  Windows DPAPI for the Windows user that created it
 
-The user reports both files are backed up and the decrypted password is saved
-in a password manager. The `.sec` backup is bound to the Windows account that
-created it; keep the actual password in the password manager for recovery on a
-different computer. Never commit, upload, or share either file.
+The user reports the upload keystore is backed up and its password is saved in
+a password manager. The `.sec` file only decrypts under the Windows account
+that created it. On a different computer/account, securely restore the `.p12`
+keystore to `$HOME\.android\fridge-ai-upload.p12`; the build script prompts for
+the password from the password manager if the DPAPI file is absent or cannot
+be decrypted. Never commit, upload, or share the keystore or password.
 
-If the key is not present on the current machine, restore it locally to the
-paths above before building. To create a new key only if no prior upload key
-exists, run:
+**Do not generate a new upload key for an app that already exists in Play
+Console.** Restore the original key from its secure backup. The setup command
+below is only for a brand-new Play app that has never had an upload key:
 
 ```powershell
 pwsh -File .\android-capacitor\scripts\setup-play-signing.ps1
 ```
 
-For a signed release bundle, set the SDK variables as above and run:
+### One-time machine setup
+
+Install Node.js 22+, JDK 17+, and Android Studio with Android SDK Platform 36
+and Android SDK Build-Tools. In Android Studio's SDK Manager, install those
+components before disconnecting from the internet. Gradle and Android
+dependencies may also need to be downloaded on the first build.
+
+Open PowerShell at the repository root and set the SDK location (change it if
+Android Studio installed the SDK elsewhere):
 
 ```powershell
+$env:ANDROID_HOME = "$HOME\AppData\Local\Android\Sdk"
+$env:ANDROID_SDK_ROOT = $env:ANDROID_HOME
+Test-Path $env:ANDROID_HOME
+java -version
+```
+
+`Test-Path` should return `True`. Ensure the original upload keystore is at
+`$HOME\.android\fridge-ai-upload.p12`. On a new computer, restore it securely;
+do not email it or put it in source control.
+
+### Build online, or fully offline if dependencies are cached
+
+The Android app is a Capacitor WebView that loads the production Vercel URL.
+Deploy web-only changes to Vercel separately; they are not copied into the AAB.
+Build and upload a new AAB when native Android code, Capacitor plugins, or
+Android release metadata changes. Deploy web changes before testing the Android
+app.
+
+If dependencies are missing, install them while online:
+
+```powershell
+npm ci
+npm run android:sync
+```
+
+Before each new Play upload, open `android-capacitor/app/build.gradle` and set
+`versionCode` to a number higher than every version already uploaded to any
+Play track. Keep `versionName` meaningful for users. The current source file
+starts at version code `1`; check Play Console for the latest uploaded version
+before choosing the next number. Save the change before building.
+
+From the repository root, synchronize Capacitor and build the signed release
+bundle:
+
+```powershell
+$env:ANDROID_HOME = "$HOME\AppData\Local\Android\Sdk"
+$env:ANDROID_SDK_ROOT = $env:ANDROID_HOME
+npm run android:sync
 pwsh -File .\android-capacitor\scripts\build-play-bundle.ps1
 ```
 
-The signing script reads the password locally and passes it to Gradle through
-process environment variables. The signed AAB is at
-`android-capacitor/app/build/outputs/bundle/release/app-release.aab`. The last
-verified AAB used package `com.fridge.ai`, version code `1`, version name `1.0`,
-and target SDK 36. Increment `versionCode` in
-`android-capacitor/app/build.gradle` for each Play upload.
+If the JDK, SDK, npm packages, Gradle distribution, and all Android/Gradle
+dependencies have already been downloaded on this computer, build without
+network access by adding `-Offline`:
+
+```powershell
+pwsh -File .\android-capacitor\scripts\build-play-bundle.ps1 -Offline
+```
+
+Offline mode cannot fetch missing dependencies. If Gradle reports that a
+dependency is unavailable offline, reconnect and run the online build once,
+then retry offline. `npm run android:sync` also requires the project's npm
+dependencies to already be installed. The AAB can be built offline; uploading
+it to Play Console requires internet access.
+
+The build script reads the password locally and passes it to Gradle through
+temporary process environment variables; it does not put the password on the
+command line. It produces:
+
+`android-capacitor/app/build/outputs/bundle/release/app-release.aab`
+
+Check that the bundle exists and note its size/time:
+
+```powershell
+Get-Item .\android-capacitor\app\build\outputs\bundle\release\app-release.aab |
+  Select-Object FullName, Length, LastWriteTime
+```
+
+Optionally verify the bundle signature with the JDK:
+
+```powershell
+jarsigner -verify -verbose -certs .\android-capacitor\app\build\outputs\bundle\release\app-release.aab
+```
 
 New Play apps use Android App Bundles and Play App Signing. Uploading the AAB
-enrolls the app in Play App Signing; it does not publish the app.
+enrolls the app in Play App Signing; it does not publish the app. Keep the
+upload keystore backed up: Play App Signing uses Google's app-signing key for
+delivered APKs, while this upload key authenticates future AAB submissions.
+
+## Upload the AAB in Google Play Console
+
+This part must be done online in the browser; build and keep the artifact
+locally until you have internet access.
+
+1. Sign in to Google Play Console and select the existing **Fridge AI**
+   application (`com.fridge.ai`).
+2. Open **Testing > Internal testing** for an initial tester release, or choose
+   the intended existing track (closed, open, or production). Do not create a
+   second app listing.
+3. Choose **Create new release** (or edit the draft release), then upload
+   `android-capacitor/app/build/outputs/bundle/release/app-release.aab`.
+4. Wait for Play Console to process the bundle. Resolve errors and review
+   warnings and required declarations.
+5. Add release notes, review the countries/testers and release details, then
+   save and roll out to the selected track. Production releases may require
+   additional testing or review before they become available to users.
+6. Confirm the release status in Play Console. An uploaded or saved draft is
+   not the same as a submitted, approved, or published release.
+
+For each later release, upload a newly built AAB with a higher `versionCode`.
+Google Play rejects a version code already uploaded to any track. Keep the
+original upload key; losing it can block future updates unless the Play
+Console upload-key reset process is available and completed.
 
 ## Remaining Play readiness work
 
@@ -170,7 +271,8 @@ enrolls the app in Play App Signing; it does not publish the app.
    before public release.
 3. Review the in-app privacy policy, deploy it, and confirm its public URL is
    stable and reachable; link that URL from the Play store listing.
-4. Verify `com.fridge.ai` availability and create the Play Console listing.
+4. Verify the existing `com.fridge.ai` Play Console listing and its current
+   release/track status.
 5. Complete Data safety and other App content declarations based on actual
    data flows, SDK behavior, audience, and access controls.
 6. Prepare store listing text, a 512x512 icon, 1024x500 feature graphic, at
@@ -180,16 +282,17 @@ enrolls the app in Play App Signing; it does not publish the app.
 8. Follow any account-specific testing gate shown by Play Console. Some newer
    personal developer accounts require a closed test with at least 12 testers
    opted in continuously for 14 days before production access.
-9. Upload the signed AAB to an internal testing track first; proceed to review
-   and production only after the listing, policy, privacy declarations, and
-   device tests are complete.
+9. The user reports that an AAB was uploaded to Play Console on October 29,
+   2026. Verify which track it is in and whether the release is draft, in
+   review, or published. Complete testing and declarations before production.
 
 Play policy requirements and deadlines can change; confirm current requirements
 in Play Console and Google's official developer documentation before submission.
 
 ## Checks last completed
 
-- `npm test` passed all 6 passkey and session-token tests.
+- `npm test` passed all 16 tests, including shopping and Tamil translation
+  coverage.
 - `npx tsc --noEmit` passed.
 - `npm run build` succeeded with one React Hook dependency warning in
   `src/app/shopping-list/page.tsx`.
@@ -200,8 +303,9 @@ in Play Console and Google's official developer documentation before submission.
 - `jarsigner -verify` accepted the release AAB signature.
 - Android output confirmed `com.fridge.ai`, target SDK 36, internet permission,
   and camera permission.
-- No physical-device install/camera test, public privacy-policy URL, or Play
-  Console submission was completed.
+- No physical-device install/camera test was completed. The user reports a Play
+  Console AAB upload; its current release status has not been independently
+  verified.
 
 The original checked-in database export and untracked guide may contain user
 data/content; keep the repository private and review their handling before

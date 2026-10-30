@@ -1,3 +1,7 @@
+param(
+    [switch]$Offline
+)
+
 $ErrorActionPreference = 'Stop'
 
 $keyDirectory = Join-Path $HOME '.android'
@@ -8,14 +12,23 @@ if (-not (Test-Path $keystorePath)) {
     throw "Upload keystore not found. Run scripts/setup-play-signing.ps1 first."
 }
 
-if (-not (Test-Path $passwordPath)) {
-    throw "Protected upload password not found. Run scripts/setup-play-signing.ps1 first."
-}
-
 $projectDirectory = Split-Path -Parent $PSScriptRoot
 $gradleWrapper = Join-Path $projectDirectory 'gradlew.bat'
-$protectedPassword = [IO.File]::ReadAllText($passwordPath).Trim()
-$securePassword = ConvertTo-SecureString -String $protectedPassword
+
+if (Test-Path $passwordPath) {
+    $protectedPassword = [IO.File]::ReadAllText($passwordPath).Trim()
+    try {
+        $securePassword = ConvertTo-SecureString -String $protectedPassword -ErrorAction Stop
+    }
+    catch {
+        Write-Warning 'The saved password is protected for a different Windows user. Enter the upload-key password from your password manager.'
+        $securePassword = Read-Host 'Upload-key password' -AsSecureString
+    }
+}
+else {
+    $securePassword = Read-Host 'Upload-key password' -AsSecureString
+}
+
 $passwordPointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($securePassword)
 
 try {
@@ -25,7 +38,13 @@ try {
 
     Push-Location $projectDirectory
     try {
-        & $gradleWrapper --no-daemon bundleRelease
+        $gradleArguments = @('--no-daemon')
+        if ($Offline) {
+            $gradleArguments += '--offline'
+        }
+        $gradleArguments += 'bundleRelease'
+
+        & $gradleWrapper @gradleArguments
         if ($LASTEXITCODE -ne 0) {
             throw "Gradle failed to build the Play bundle (exit code $LASTEXITCODE)."
         }
