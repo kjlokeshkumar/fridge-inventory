@@ -12,12 +12,13 @@ connection.
   database exports, `.env` files, signing keys, or signing passwords.
 - Remote: `origin` (`https://github.com/kjlokeshkumar/fridge-inventory.git`)
 - Branch: `master`
-- Latest pushed commit at this handoff: `9398958`
-  (`feat: unify weekly shopping experience`).
-- The release AAB was built and signature-verified locally on October 29, 2026.
-- The user reports uploading that AAB to Play Console on October 29, 2026.
-  Check Play Console for its current track and release status; an upload is not
-  the same as a published release.
+- Latest pushed commit at this handoff: `1276233`
+  (`docs: document offline Play release workflow`).
+- A signed release AAB with version name `1.1` and version code `2` was built
+  and signature-verified locally on October 30, 2026.
+- The user confirmed uploading version `1.1` to Play Console on October 30,
+  2026. Check Play Console for its current track and release status; an upload
+  is not the same as a published release.
 - `Fridge_AI_Friends_Guide.txt` is an unrelated, untracked user file. Leave it
   untouched.
 
@@ -184,9 +185,10 @@ npm run android:sync
 
 Before each new Play upload, open `android-capacitor/app/build.gradle` and set
 `versionCode` to a number higher than every version already uploaded to any
-Play track. Keep `versionName` meaningful for users. The current source file
-starts at version code `1`; check Play Console for the latest uploaded version
-before choosing the next number. Save the change before building.
+Play track. Keep `versionName` meaningful for users. The current source is
+version name `1.1`, version code `2`; check Play Console for the latest
+uploaded version before choosing the next number. Save the change before
+building.
 
 From the repository root, synchronize Capacitor and build the signed release
 bundle:
@@ -299,13 +301,14 @@ in Play Console and Google's official developer documentation before submission.
 - `git diff --check` passed.
 - Web UI was checked locally in a browser at desktop, 390px, and 320px widths;
   no horizontal page/header overflow was measured.
-- Capacitor debug APK and release AAB built successfully.
+- Capacitor debug APK and signed release AAB version `1.1` (version code `2`)
+  built successfully on October 30, 2026.
 - `jarsigner -verify` accepted the release AAB signature.
 - Android output confirmed `com.fridge.ai`, target SDK 36, internet permission,
   and camera permission.
-- No physical-device install/camera test was completed. The user reports a Play
-  Console AAB upload; its current release status has not been independently
-  verified.
+- No physical-device install/camera test was completed. The user confirmed
+  uploading AAB version `1.1` to Play Console; its track and release status
+  have not been independently verified.
 
 The original checked-in database export and untracked guide may contain user
 data/content; keep the repository private and review their handling before
