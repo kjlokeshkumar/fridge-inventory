@@ -43,6 +43,34 @@ points to the production Vercel app. Update it if the production domain changes.
 The bundled page is only an offline fallback; API-backed features require the
 hosted Next.js app and its configured environment.
 
-Google Play distribution requires a release-signed Android App Bundle (`.aab`),
-a final unique application ID, and Play Console listing/privacy declarations.
-Do not commit upload keystores or signing passwords.
+## Prepare a Google Play bundle
+
+The app targets API 36 and uses `com.fridge.ai`. Confirm that package ID is
+available before creating the Play listing; a Play app's package ID cannot be
+changed later.
+
+Create a local upload key once, then build the signed Android App Bundle:
+
+```powershell
+pwsh -File .\android-capacitor\scripts\setup-play-signing.ps1
+pwsh -File .\android-capacitor\scripts\build-play-bundle.ps1
+```
+
+The upload keystore is saved outside the repository at
+`$HOME\.android\fridge-ai-upload.p12`. Its password is generated locally and
+protected with Windows DPAPI for the current Windows user. Back up both files
+securely; the protected password file cannot be decrypted by another Windows
+account. Never commit or share the keystore or password.
+
+The signed bundle is written to
+`android-capacitor/app/build/outputs/bundle/release/app-release.aab`. New Play
+apps use Android App Bundles and Play App Signing; upload this bundle in Play
+Console to enroll. The bundle alone does not publish the app.
+
+Before submitting for review, complete the Play Console listing and app-content
+declarations, including the privacy policy and Data safety form. Add a public
+app-specific privacy policy to the listing and inside the app, and prepare the
+required store icon, feature graphic, screenshots, contact details, and any
+reviewer access instructions. Personal developer accounts created after
+November 13, 2023 may also need a 12-tester closed test lasting 14 continuous
+days before production access.
