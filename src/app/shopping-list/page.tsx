@@ -29,7 +29,37 @@ interface ShoppingAlert {
 }
 
 function isAbortError(error: unknown): boolean {
-  return error instanceof DOMException && error.name === 'AbortError';
+  return (
+    (error instanceof DOMException && error.name === 'AbortError') ||
+    (error instanceof Error && /share canceled|share cancelled/i.test(error.message))
+  );
+}
+
+async function copyTextToClipboard(text: string): Promise<void> {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch (error) {
+      console.warn('Modern clipboard API unavailable; trying the compatibility copy method:', error);
+    }
+  }
+
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.setAttribute('readonly', '');
+  textArea.style.position = 'fixed';
+  textArea.style.opacity = '0';
+  document.body.appendChild(textArea);
+  textArea.select();
+
+  try {
+    if (!document.execCommand('copy')) {
+      throw new Error('The browser did not allow copying to the clipboard.');
+    }
+  } finally {
+    document.body.removeChild(textArea);
+  }
 }
 
 function getCheckedItemsKey(plan: WeeklyShoppingDay[]): string {
@@ -157,8 +187,16 @@ export default function ShoppingListPage() {
         });
         setNotice(t.shoppingListShared);
       } catch (shareError) {
+        if (isAbortError(shareError)) return;
         console.error('Failed to open native shopping-list share sheet:', shareError);
-        setError(t.shareShoppingError);
+        try {
+          await copyTextToClipboard(text);
+          setNotice(t.shoppingListCopied);
+          setError('');
+        } catch (copyError) {
+          console.error('Failed to copy shopping list after native share failed:', copyError);
+          setError(t.shareShoppingError);
+        }
       }
       return;
     }
@@ -172,7 +210,14 @@ export default function ShoppingListPage() {
     } catch (shareError) {
       if (!isAbortError(shareError)) {
         console.error('Failed to share shopping list:', shareError);
-        setError(t.shareShoppingError);
+        try {
+          await copyTextToClipboard(text);
+          setNotice(t.shoppingListCopied);
+          setError('');
+        } catch (copyError) {
+          console.error('Failed to copy shopping list after browser share failed:', copyError);
+          setError(t.shareShoppingError);
+        }
       }
     }
   };
@@ -184,7 +229,7 @@ export default function ShoppingListPage() {
       return;
     }
     try {
-      await navigator.clipboard.writeText(text);
+      await copyTextToClipboard(text);
       setNotice(t.shoppingListCopied);
       setError('');
     } catch (copyError) {
