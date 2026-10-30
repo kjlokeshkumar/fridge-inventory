@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export interface AuthUser {
   id: number;
@@ -16,8 +17,10 @@ export default function UserAuthModal() {
   const [passkeyInput, setPasskeyInput] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const syncSession = async () => {
       try {
         const response = await fetch('/api/auth');
@@ -92,7 +95,7 @@ export default function UserAuthModal() {
       </button>
 
       {/* Auth Modal */}
-      {isOpen && (
+      {isOpen && isMounted && createPortal(
         <div className="modal-backdrop" onClick={() => setIsOpen(false)}>
           <div className="modal-content glass-pane" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
@@ -154,7 +157,8 @@ export default function UserAuthModal() {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   );

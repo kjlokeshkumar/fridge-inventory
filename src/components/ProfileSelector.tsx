@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export interface UserProfile {
   id: number;
@@ -18,6 +19,7 @@ export default function ProfileSelector() {
   const [activeProfile, setActiveProfile] = useState<UserProfile | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [editForm, setEditForm] = useState<Partial<UserProfile>>({
     name: '',
     dietaryPreference: 'Any',
@@ -50,6 +52,7 @@ export default function ProfileSelector() {
   };
 
   useEffect(() => {
+    setIsMounted(true);
     fetchProfiles();
     window.addEventListener('userAuthChange', fetchProfiles);
     return () => window.removeEventListener('userAuthChange', fetchProfiles);
@@ -120,7 +123,7 @@ export default function ProfileSelector() {
       </button>
 
       {/* Profile Modal */}
-      {isOpen && (
+      {isOpen && isMounted && createPortal(
         <div className="modal-backdrop" onClick={() => setIsOpen(false)}>
           <div className="modal-content glass-pane" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
@@ -235,7 +238,8 @@ export default function ProfileSelector() {
               </form>
             )}
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   );
