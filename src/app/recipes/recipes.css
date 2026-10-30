@@ -759,8 +759,9 @@
     background: #ffffff !important;
     color: #000000 !important;
   }
+}
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
     .recipe-view-tabs {
       position: sticky;
       top: calc(56px + env(safe-area-inset-top, 0px));
@@ -776,18 +777,25 @@
     }
 
     .planner-day-tabs {
-      grid-template-columns: repeat(7, minmax(58px, 1fr));
+      display: flex;
       overflow-x: auto;
       padding-bottom: 6px;
       margin-right: -6px;
       scrollbar-width: thin;
       min-width: 0;
       max-width: 100%;
+      -webkit-overflow-scrolling: touch;
     }
 
     .planner-day-tab {
+      flex: 0 0 64px;
       min-height: 48px;
       font-size: 0.76rem;
+    }
+
+    .planner-day-tab > span,
+    .planner-day-tab small {
+      white-space: nowrap;
     }
 
     .weekly-planner-panel {
@@ -890,7 +898,9 @@
       flex-wrap: wrap;
       overflow-wrap: anywhere;
     }
-  }
+}
+
+@media print {
   .navbar,
   .bottom-nav,
   .fridge-selector-panel,
