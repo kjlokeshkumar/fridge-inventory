@@ -33,9 +33,17 @@ export default function UserAuthModal() {
     const handleAuth = (event: Event) => {
       setCurrentUser((event as CustomEvent<AuthUser | null>).detail);
     };
+    const handleOpen = () => {
+      setErrorMsg(null);
+      setIsOpen(true);
+    };
     void syncSession();
     window.addEventListener('userAuthChange', handleAuth);
-    return () => window.removeEventListener('userAuthChange', handleAuth);
+    window.addEventListener('openAuthModal', handleOpen);
+    return () => {
+      window.removeEventListener('userAuthChange', handleAuth);
+      window.removeEventListener('openAuthModal', handleOpen);
+    };
   }, []);
 
   useEffect(() => {

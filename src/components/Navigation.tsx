@@ -15,6 +15,7 @@ const LANGUAGES = [
 export default function Navigation() {
   const pathname = usePathname();
   const [selectedLanguage, setSelectedLanguage] = useState('English');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
@@ -23,6 +24,23 @@ export default function Navigation() {
       localStorage.setItem('appLanguage', valid);
     }
     setSelectedLanguage(valid);
+
+    const syncSession = async () => {
+      try {
+        const response = await fetch('/api/auth');
+        const data = await response.json();
+        setIsAuthenticated(response.ok && Boolean(data.success && data.user));
+      } catch (error) {
+        console.error('Unable to load navigation session:', error);
+        setIsAuthenticated(false);
+      }
+    };
+    const handleAuthChange = (event: Event) => {
+      setIsAuthenticated(Boolean((event as CustomEvent).detail));
+    };
+    void syncSession();
+    window.addEventListener('userAuthChange', handleAuthChange);
+    return () => window.removeEventListener('userAuthChange', handleAuthChange);
   }, []);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -49,7 +67,7 @@ export default function Navigation() {
           
           <div className="nav-controls">
             <UserAuthModal />
-            <ProfileSelector />
+            {isAuthenticated && <ProfileSelector />}
 
             <div className="lang-selector-container">
               <span className="lang-globe-icon">🌐</span>
@@ -66,43 +84,53 @@ export default function Navigation() {
             </div>
 
             <div className="nav-links">
-              <Link href="/inventory" className={`nav-link ${isActive('/inventory') ? 'active' : ''}`}>Inventory</Link>
-              <Link href="/shopping-list" className={`nav-link ${isActive('/shopping-list') ? 'active' : ''}`}>Shopping</Link>
               <Link href="/recipes" className={`nav-link ${isActive('/recipes') ? 'active' : ''}`}>Recipes</Link>
-              <Link href="/upload" className="nav-link btn-primary nav-upload">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
-                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                  <circle cx="12" cy="13" r="4"/>
-                </svg>
-                Scan
-              </Link>
+              {isAuthenticated && (
+                <>
+                  <Link href="/inventory" className={`nav-link ${isActive('/inventory') ? 'active' : ''}`}>Inventory</Link>
+                  <Link href="/shopping-list" className={`nav-link ${isActive('/shopping-list') ? 'active' : ''}`}>Shopping</Link>
+                  <Link href="/upload" className="nav-link btn-primary nav-upload">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                      <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                    Scan
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
       </nav>
 
       <nav className="bottom-nav">
-        <Link href="/" className={`bottom-nav-item ${isActive('/') ? 'active' : ''}`}>
-          <span className="bottom-nav-icon">🏠</span>
-          <span className="bottom-nav-label">Home</span>
-        </Link>
-        <Link href="/inventory" className={`bottom-nav-item ${isActive('/inventory') ? 'active' : ''}`}>
-          <span className="bottom-nav-icon">🫙</span>
-          <span className="bottom-nav-label">Inventory</span>
-        </Link>
-        <Link href="/upload" className="bottom-nav-item scan-btn" title="Scan fridge">
-          <div className="scan-icon-container">
-            <span className="bottom-nav-icon">📷</span>
-          </div>
-        </Link>
+        {isAuthenticated && (
+          <>
+            <Link href="/" className={`bottom-nav-item ${isActive('/') ? 'active' : ''}`}>
+              <span className="bottom-nav-icon">🏠</span>
+              <span className="bottom-nav-label">Home</span>
+            </Link>
+            <Link href="/inventory" className={`bottom-nav-item ${isActive('/inventory') ? 'active' : ''}`}>
+              <span className="bottom-nav-icon">🫙</span>
+              <span className="bottom-nav-label">Inventory</span>
+            </Link>
+            <Link href="/upload" className="bottom-nav-item scan-btn" title="Scan fridge">
+              <div className="scan-icon-container">
+                <span className="bottom-nav-icon">📷</span>
+              </div>
+            </Link>
+          </>
+        )}
         <Link href="/recipes" className={`bottom-nav-item ${isActive('/recipes') ? 'active' : ''}`}>
           <span className="bottom-nav-icon">🍳</span>
           <span className="bottom-nav-label">Recipes</span>
         </Link>
-        <Link href="/shopping-list" className={`bottom-nav-item ${isActive('/shopping-list') ? 'active' : ''}`}>
-          <span className="bottom-nav-icon">🛒</span>
-          <span className="bottom-nav-label">Shopping</span>
-        </Link>
+        {isAuthenticated && (
+          <Link href="/shopping-list" className={`bottom-nav-item ${isActive('/shopping-list') ? 'active' : ''}`}>
+            <span className="bottom-nav-icon">🛒</span>
+            <span className="bottom-nav-label">Shopping</span>
+          </Link>
+        )}
       </nav>
     </>
   );

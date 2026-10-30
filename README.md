@@ -59,6 +59,10 @@ Play Data safety form. Current app behavior includes:
   upgraded after a successful sign-in. Authentication uses a signed,
   HttpOnly/SameSite=Lax session cookie, and profile and inventory APIs scope
   records to the authenticated account.
+- The home dashboard, inventory, upload, shopping list, and admin areas require
+  an active sign-in. The recipe catalog and privacy policy remain publicly
+  accessible; anonymous recipe browsing uses a sample ingredient basket rather
+  than anyone's account inventory.
 - Admin APIs require an active account with the admin role and a separately
   configured `ADMIN_SECRET_KEY`. There is no self-service admin bootstrap;
   provision the role through a trusted database operation.

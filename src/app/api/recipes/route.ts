@@ -241,10 +241,15 @@ function formulateSourashtraRecipesFromFridge(
 
 export async function GET(req: NextRequest) {
   try {
-    const user = await getAuthenticatedUser(req);
-    if (!user) return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
-    const { default: db, initDb } = await import('@/lib/db');
-    await initDb();
+    let user = null;
+    try {
+      user = await getAuthenticatedUser(req);
+    } catch (error) {
+      if (!isAuthConfigurationError(error)) throw error;
+    }
+
+    const database = user ? await import('@/lib/db') : null;
+    if (database) await database.initDb();
 
     const customFridgeParam = req.nextUrl.searchParams.get('fridgeItems') || '';
     const shuffleParam = parseInt(req.nextUrl.searchParams.get('seed') || '0', 10) || 0;
@@ -258,9 +263,9 @@ export async function GET(req: NextRequest) {
         .map((s) => s.trim())
         .filter(Boolean)
         .map((name) => ({ name, quantity: 1, category: 'Fridge Selection' }));
-    } else {
+    } else if (user && database) {
       try {
-        items = await db`SELECT name, quantity, category FROM inventory WHERE quantity > 0 AND "userId" = ${user.id}`;
+        items = await database.default`SELECT name, quantity, category FROM inventory WHERE quantity > 0 AND "userId" = ${user.id}`;
       } catch {
         items = [];
       }
@@ -283,20 +288,20 @@ export async function GET(req: NextRequest) {
     // Fetch user profile for personalized dietary restrictions
     let profileData: { name: string; dietaryPreference: string; allergies: string } | null = null;
     try {
-      if (profileIdParam) {
+      if (user && database && profileIdParam) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const selectedProfileId = Number(profileIdParam);
         if (Number.isSafeInteger(selectedProfileId) && selectedProfileId > 0) {
-          const res = await db`
+          const res = await database.default`
             SELECT name, "dietaryPreference", allergies
             FROM profiles WHERE id = ${selectedProfileId} AND "userId" = ${user.id}
           `;
           if (res && res.length > 0) profileData = res[0];
         }
       }
-      if (!profileData) {
+      if (user && database && !profileData) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const defaultRes = await db`
+        const defaultRes = await database.default`
           SELECT name, "dietaryPreference", allergies FROM profiles
           WHERE "userId" = ${user.id} ORDER BY id ASC LIMIT 1
         `;

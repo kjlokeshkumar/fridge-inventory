@@ -1,6 +1,33 @@
+"use client";
+
+import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function Home() {
+  const [inventoryCount, setInventoryCount] = useState<number | null>(null);
+
+  const fetchInventoryCount = useCallback(async () => {
+    try {
+      const response = await fetch('/api/inventory');
+      if (!response.ok) {
+        setInventoryCount(null);
+        return;
+      }
+
+      const data = await response.json();
+      setInventoryCount(Array.isArray(data.items) ? data.items.length : null);
+    } catch (error) {
+      console.error('Failed to fetch home inventory count:', error);
+      setInventoryCount(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    void fetchInventoryCount();
+    window.addEventListener('userAuthChange', fetchInventoryCount);
+    return () => window.removeEventListener('userAuthChange', fetchInventoryCount);
+  }, [fetchInventoryCount]);
+
   return (
     <div className="dashboard">
       <header className="dashboard-header">
@@ -21,7 +48,11 @@ export default function Home() {
           <div className="card-icon">🍎</div>
           <h3>Inventory</h3>
           <p>View currently tracked food items and expiration dates</p>
-          <div className="card-stats">0 Items</div>
+          <div className="card-stats">
+            {inventoryCount === null
+              ? '— Items'
+              : `${inventoryCount} ${inventoryCount === 1 ? 'Item' : 'Items'}`}
+          </div>
         </Link>
 
         <Link href="/recipes" className="glass-pane action-card">

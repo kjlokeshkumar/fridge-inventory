@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import './globals.css';
 import Navigation from '@/components/Navigation';
+import AppAccessGate from '@/components/AppAccessGate';
 
 export const metadata: Metadata = {
   title: 'Fridge Inventory',
@@ -32,7 +33,7 @@ export default function RootLayout({
       <body>
         <Navigation />
         <main className="page-wrapper container">
-          {children}
+          <AppAccessGate>{children}</AppAccessGate>
         </main>
         <footer className="site-footer">
           <Link href="/privacy">Privacy Policy</Link>
