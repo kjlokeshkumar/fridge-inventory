@@ -58,6 +58,15 @@ export default function ProfileSelector() {
     return () => window.removeEventListener('userAuthChange', fetchProfiles);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   const selectProfile = (profile: UserProfile) => {
     setActiveProfile(profile);
     localStorage.setItem('activeProfileId', String(profile.id));
@@ -125,10 +134,19 @@ export default function ProfileSelector() {
       {/* Profile Modal */}
       {isOpen && isMounted && createPortal(
         <div className="modal-backdrop" onClick={() => setIsOpen(false)}>
-          <div className="modal-content glass-pane" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content glass-pane" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>{isEditing ? (editForm.id ? 'Edit Profile' : 'New Family Profile') : 'Household Profiles'}</h3>
-              <button onClick={() => setIsOpen(false)} className="modal-close-btn">✕</button>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="modal-close-btn"
+                aria-label="Close profile dialog"
+                title="Close"
+              >
+                <span aria-hidden="true">✕</span>
+                <span>Close</span>
+              </button>
             </div>
 
             {!isEditing ? (

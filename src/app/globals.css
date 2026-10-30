@@ -750,18 +750,32 @@ body::before {
 }
 
 .modal-close-btn {
-  background: transparent;
-  border: none;
-  color: #94a3b8;
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 88px;
+  min-height: 48px;
+  background: #991b1b;
+  border: 2px solid #fecaca;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .modal-close-btn:hover {
   color: white;
-  background: rgba(255, 255, 255, 0.1);
+  background: #b91c1c;
+  border-color: #fff;
+}
+
+.modal-close-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 
 .profile-cards-grid {

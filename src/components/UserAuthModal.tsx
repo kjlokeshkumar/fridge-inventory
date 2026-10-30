@@ -38,6 +38,15 @@ export default function UserAuthModal() {
     return () => window.removeEventListener('userAuthChange', handleAuth);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   const loginUser = async (uname: string, pkey: string) => {
     setLoading(true);
     setErrorMsg(null);
@@ -97,10 +106,19 @@ export default function UserAuthModal() {
       {/* Auth Modal */}
       {isOpen && isMounted && createPortal(
         <div className="modal-backdrop" onClick={() => setIsOpen(false)}>
-          <div className="modal-content glass-pane" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content glass-pane" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Enter Unique Username</h3>
-              <button onClick={() => setIsOpen(false)} className="modal-close-btn">✕</button>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="modal-close-btn"
+                aria-label="Close sign-in dialog"
+                title="Close"
+              >
+                <span aria-hidden="true">✕</span>
+                <span>Close</span>
+              </button>
             </div>
 
             <p style={{ fontSize: '0.85rem', color: '#cbd5e1', marginBottom: '16px' }}>
