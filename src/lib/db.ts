@@ -121,15 +121,23 @@ export async function initDb() {
   }
 }
 
-export async function purgeOldItems(userId: number) {
+export async function purgeStaleInventoryItems(userId: number) {
   try {
-    await sql`
+    const deletedItems = await sql`
       DELETE FROM inventory 
-      WHERE "userId" = ${userId} AND "addedAt" < NOW() - INTERVAL '14 days'
+      WHERE "userId" = ${userId}
+        AND (
+          "addedAt" < NOW() - INTERVAL '14 days'
+          OR ("expirationDate" IS NOT NULL AND "expirationDate" < CURRENT_DATE::text)
+        )
+      RETURNING id
     `;
-    console.log("Successfully purged inventory items older than 2 weeks.");
+    if (deletedItems.length > 0) {
+      console.log(`Purged ${deletedItems.length} expired or stale inventory item(s) for user ${userId}.`);
+    }
   } catch (error) {
-    console.error("Failed to purge old inventory items:", error);
+    console.error("Failed to purge expired or stale inventory items:", error);
+    throw error;
   }
 }
 

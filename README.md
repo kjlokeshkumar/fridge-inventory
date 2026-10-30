@@ -48,9 +48,11 @@ Play Data safety form. Current app behavior includes:
 - Food photos are sent to the app server and Google Gemini for analysis. The
   inventory database stores the extracted food data and a placeholder image
   URL, not the uploaded photo itself.
-- Inventory records older than 14 days are purged during inventory API
-  requests. There is no equivalent automatic retention limit for user accounts
-  or household profiles.
+- Inventory records with expiration dates before today, and records older than
+  14 days from when they were added, are purged when the signed-in user accesses
+  inventory or the shopping list. This is request-triggered cleanup, not a
+  background job. There is no equivalent automatic retention limit for user
+  accounts or household profiles.
 - Language, account/profile IDs, and the saved Sourashtra meal plan are stored
   in browser/WebView local storage.
 - The app uses Vercel, Neon, and Google Gemini. No separate analytics SDK was

@@ -92,10 +92,12 @@ export default function PrivacyPolicyPage() {
       <section>
         <h2>Retention and deletion</h2>
         <p>
-          The app attempts to remove inventory records older than 14 days when
-          its inventory API is accessed. Account and household profile records
-          do not currently have an automatic expiration period. You can remove
-          individual inventory items in the app. To ask us to delete an account
+          The app removes inventory records whose expiration date has passed,
+          as well as records older than 14 days from when they were added, when
+          you access inventory or the shopping list. This cleanup is triggered
+          by app requests, not by a background job. Account and household
+          profile records do not currently have an automatic expiration period.
+          You can also remove inventory items in the app. To ask us to delete an account
           or other information, email{' '}
           <a href="mailto:kjlokeshkumar@gmail.com">kjlokeshkumar@gmail.com</a>{' '}
           from your account email address, if applicable, and include your

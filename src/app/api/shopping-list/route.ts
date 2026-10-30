@@ -6,9 +6,9 @@ export async function GET(req: NextRequest) {
   try {
     const user = await getAuthenticatedUser(req);
     if (!user) return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
-    const { default: db, initDb, purgeOldItems } = await import('@/lib/db');
+    const { default: db, initDb, purgeStaleInventoryItems } = await import('@/lib/db');
     await initDb();
-    await purgeOldItems(user.id);
+    await purgeStaleInventoryItems(user.id);
 
     const items = await db`
         SELECT * FROM inventory 
