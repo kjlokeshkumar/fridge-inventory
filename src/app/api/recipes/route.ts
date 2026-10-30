@@ -200,7 +200,7 @@ function formulateSourashtraRecipesFromFridge(
 
   scored.sort((a, b) => b.score - a.score);
 
-  // Return ALL eligible Madurai Sourashtra recipes (300+ recipes ranked by fridge match!)
+  // Return ALL eligible Sourashtra recipes (300+ recipes ranked by fridge match!)
   return scored.map(({ recipe, matchedTriggers, missingTriggers }): FormulatedRecipe => {
     const usedFridge =
       matchedTriggers.length > 0
@@ -229,7 +229,7 @@ function formulateSourashtraRecipesFromFridge(
       pantryAdditives: recipe.pantryAdditives,
       bhurkoNote: recipe.bhurkoUsed
         ? `${recipe.bhurkoUsed} • Source: ${recipe.sourceAttribution}`
-        : `Traditional Madurai Sourashtra tempering & preparation • Source: ${recipe.sourceAttribution}`,
+        : `Traditional Sourashtra tempering & preparation • Source: ${recipe.sourceAttribution}`,
       missingIngredients: missingTriggers,
       difficulty: recipe.dietaryType === 'Non-Veg' || recipe.processSteps.length > 5 ? 'Medium' : 'Easy',
       steps: recipe.processSteps,

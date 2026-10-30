@@ -67,7 +67,7 @@ export const MADURAI_SOURASHTRA_BHURKOS: SourashtraBhurko[] = [
       'Dry roast black pepper, red chillies, cumin seeds, and toor dal separately on low heat without scorching. Crisp the curry leaves briefly, cool everything, and pulse with hing into a coarse, fiery-aromatic powder.'
   },
   {
-    name: 'Sambar Bhurko (Madurai Sourashtra Sambar Powder)',
+    name: 'Sambar Bhurko (Sourashtra Sambar Powder)',
     sourashtraName: 'Sambar Bhurko',
     youtubeUrl: 'https://www.youtube.com/watch?v=n79vRnUDSfE',
     webUrl: 'https://www.palkar.org/recipes/',
@@ -172,7 +172,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=ANrgSgIelP4',
     webUrl: 'https://www.palkar.org/recipes/thakkali-ounty/',
     name: 'Thakkali Ounty',
-    englishSubtitle: 'Classic Madurai Sourashtra Tangy Tomato Gravy',
+    englishSubtitle: 'Classic Sourashtra Tangy Tomato Gravy',
     sourceAttribution: 'Palkar.org / Sailaja Kitchen / Sugi Cooks',
     category: 'Ounty & Kolkar (Tangy Gravies)',
     dietaryType: 'Vegetarian',
@@ -199,7 +199,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=1cKPmolVaeA',
     webUrl: 'https://www.sailajakitchen.org/search?q=poondu+kulambu',
     name: 'Losan Kolkar (Lasan Ounty)',
-    englishSubtitle: 'Madurai Sourashtra Whole Garlic & Sesame Oil Tamarind Gravy',
+    englishSubtitle: 'Sourashtra Whole Garlic & Sesame Oil Tamarind Gravy',
     sourceAttribution: 'Sugi Cooks / Sourashtra Samayal YouTube',
     category: 'Ounty & Kolkar (Tangy Gravies)',
     dietaryType: 'Vegetarian',
@@ -253,7 +253,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=GRLitI8ZapU',
     webUrl: 'https://www.abiscookbook.com/vangi-bhudid-eggplant-chutney-sourashtra-style/',
     name: 'Vangi Budith',
-    englishSubtitle: 'Iconic Madurai Sourashtra Pressure-Cooked Brinjal Chutney',
+    englishSubtitle: 'Iconic Sourashtra Pressure-Cooked Brinjal Chutney',
     sourceAttribution: "Abi's Cookbook / Palkar.org / Sourashtra Samayal",
     category: 'Budith, Losto & Polte (Chutneys/Masiyal)',
     dietaryType: 'Vegetarian',
@@ -330,7 +330,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     webUrl: 'https://www.palkar.org/recipes/',
     name: 'Nellika Rubbin (Lubbin)',
     englishSubtitle: 'Zero-Oil Salted & Spiced Gooseberry Relish',
-    sourceAttribution: 'Madurai Sourashtra Heritage Recipes',
+    sourceAttribution: 'Sourashtra Heritage Recipes',
     category: 'Budith, Losto & Polte (Chutneys/Masiyal)',
     dietaryType: 'Vegetarian',
     fridgeTriggers: ['Gooseberry', 'Amla', 'Nellika', 'Green Chilli'],
@@ -352,7 +352,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     webUrl: 'https://www.palkar.org/recipes/',
     name: 'Beans & Batata Ambat',
     englishSubtitle: 'Madurai Feast Double Beans & Potato Gravy',
-    sourceAttribution: 'Madurai Sourashtra Feast Archives',
+    sourceAttribution: 'Sourashtra Feast Archives',
     category: 'Ambat & Pitla (Rich Curries)',
     dietaryType: 'Vegetarian',
     fridgeTriggers: ['Beans', 'Butter Beans', 'Potato', 'Onion', 'Tomato', 'Garlic', 'Curry Leaves'],
@@ -405,7 +405,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     webUrl: 'https://www.palkar.org/recipes/',
     name: 'Sourashtra Vangi / Pavakkai Pitla',
     englishSubtitle: 'Brinjal or Bitter Gourd in Roasted Coconut-Chana Dal-Tamarind Gravy',
-    sourceAttribution: 'Madurai Sourashtra Kitchens',
+    sourceAttribution: 'Sourashtra Kitchens',
     category: 'Ambat & Pitla (Rich Curries)',
     dietaryType: 'Vegetarian',
     fridgeTriggers: ['Brinjal', 'Bitter Gourd', 'Coconut', 'Curry Leaves'],
@@ -429,7 +429,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=uig8xhgsFSk',
     webUrl: 'https://www.palkar.org/recipes/joman-pilchar/',
     name: 'Joman Pilchar (Thakkali Charu)',
-    englishSubtitle: 'Madurai Sourashtra Wedding-Style Pepper-Cumin Tomato Rasam',
+    englishSubtitle: 'Sourashtra Wedding-Style Pepper-Cumin Tomato Rasam',
     sourceAttribution: 'Palkar.org / Buddy Recipes / Sugi Cooks',
     category: 'Pilchar & Charu (Rasam/Broths)',
     dietaryType: 'Vegetarian',
@@ -480,7 +480,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=zeSmDlcDjvg',
     webUrl: 'https://www.palkar.org/recipes/ambat-bhaath/',
     name: 'Ambat Bhaath & Mudha Ambat Bhaath',
-    englishSubtitle: 'Signature Madurai Sourashtra Tamarind Rice with Roasted Methi & Sesame Oil',
+    englishSubtitle: 'Signature Sourashtra Tamarind Rice with Roasted Methi & Sesame Oil',
     sourceAttribution: 'Palkar.org / Sugi Cooks / Shalikuta',
     category: 'Bhaath & Pongal (Rice Specialties)',
     dietaryType: 'Vegetarian',
@@ -507,7 +507,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=5IfOVAZboes',
     webUrl: 'https://www.palkar.org/recipes/',
     name: 'Mudha Pongal (with Milk & Ghee)',
-    englishSubtitle: 'Velvety Madurai Sourashtra Ven Pongal Paired with Vangi Budith',
+    englishSubtitle: 'Velvety Sourashtra Ven Pongal Paired with Vangi Budith',
     sourceAttribution: 'Sourashtra Samayal YouTube / Palkar.org',
     category: 'Bhaath & Pongal (Rice Specialties)',
     dietaryType: 'Vegetarian',
@@ -555,7 +555,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=7zY526OUAsM',
     webUrl: 'https://sugi-writes.blogspot.com/search/label/Sourashtra%20Recipes',
     name: 'Limbu Pongal, Thoop Pongal & Mhuri Pongal',
-    englishSubtitle: 'Madurai Sourashtra Lemon Rice, Pepper-Ghee "Love Birds" Rice & Mustard Rice',
+    englishSubtitle: 'Sourashtra Lemon Rice, Pepper-Ghee "Love Birds" Rice & Mustard Rice',
     sourceAttribution: 'Sugi Cooks / Palkar.org',
     category: 'Bhaath & Pongal (Rice Specialties)',
     dietaryType: 'Vegetarian',
@@ -578,8 +578,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=i1Q3DzBMum4',
     webUrl: 'https://www.palkar.org/recipes/',
     name: 'Sengu-Vangi-Batata Sambar',
-    englishSubtitle: 'Madurai Sourashtra Drumstick, Brinjal & Potato Sambar',
-    sourceAttribution: 'Madurai Sourashtra Home Kitchens',
+    englishSubtitle: 'Sourashtra Drumstick, Brinjal & Potato Sambar',
+    sourceAttribution: 'Sourashtra Home Kitchens',
     category: 'Sambar (Lentil Stews)',
     dietaryType: 'Vegetarian',
     fridgeTriggers: ['Drumstick', 'Brinjal', 'Potato', 'Tomato', 'Onion', 'Curry Leaves', 'Coriander'],
@@ -630,7 +630,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     webUrl: 'https://www.palkar.org/recipes/',
     name: 'Loni Appam (Madurai Karupatti Appam)',
     englishSubtitle: 'Soft Fermented Rice & Palm Jaggery Sweet Appam in Ghee',
-    sourceAttribution: 'Madurai Sourashtra Street Food / YouTube',
+    sourceAttribution: 'Sourashtra Street Food / YouTube',
     category: 'Bhairi & Appam (Fritters & Tiffin)',
     dietaryType: 'Vegetarian',
     fridgeTriggers: ['Butter', 'Milk'],
@@ -676,9 +676,9 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     id: 'chaino-kolkar',
     youtubeUrl: 'https://www.youtube.com/watch?v=J1FI_2w4Mb0',
     webUrl: 'https://sugi-writes.blogspot.com/search/label/Sourashtra%20Recipes',
-    name: 'Chaino Kolkar (Madurai Sourashtra Mutton Ounty)',
+    name: 'Chaino Kolkar (Sourashtra Mutton Ounty)',
     englishSubtitle: 'Traditional Bone-In Mutton Gravy with Ounty Bhurko & Sesame Oil',
-    sourceAttribution: 'Sugi Cooks / Madurai Sourashtra Veetu Samayal',
+    sourceAttribution: 'Sugi Cooks / Sourashtra Veetu Samayal',
     category: 'Non-Veg Ounty, Chaino & Kodhi',
     dietaryType: 'Non-Veg',
     fridgeTriggers: ['Mutton', 'Goat', 'Onion', 'Tomato', 'Ginger', 'Garlic', 'Coconut', 'Curry Leaves', 'Coriander'],
@@ -729,7 +729,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=juhH5lr44Tc',
     webUrl: 'https://jaleelacooking.blogspot.com/search?q=saurashtra+chicken',
     name: 'Saurashtra Koli Ounty (Pepper & Poppy Seed Chicken Gravy)',
-    englishSubtitle: 'Traditional Madurai Sourashtra Pepper-Cumin-Khus Khus Chicken Curry',
+    englishSubtitle: 'Traditional Sourashtra Pepper-Cumin-Khus Khus Chicken Curry',
     sourceAttribution: 'Cook Book Jaleela',
     category: 'Non-Veg Ounty, Chaino & Kodhi',
     dietaryType: 'Non-Veg',
@@ -753,7 +753,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     id: 'meen-karuvadu-kodhi',
     youtubeUrl: 'https://www.youtube.com/watch?v=CHC1Vv5cZPQ',
     webUrl: 'https://jaleelacooking.blogspot.com/search?q=saurashtra+fish',
-    name: 'Madurai Sourashtra Meen / Karuvadu Kodhi (Fish Ounty)',
+    name: 'Sourashtra Meen / Karuvadu Kodhi (Fish Ounty)',
     englishSubtitle: 'Tangy Tamarind, Shallot & Whole Garlic Fish / Dry Fish Curry',
     sourceAttribution: 'Sourashtra Samayal YouTube / Cook Book Jaleela',
     category: 'Non-Veg Ounty, Chaino & Kodhi',
@@ -822,8 +822,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves) by washing, chopping, and measuring as shown by Chef Deena’s Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chef Deena’s Kitchen via the YouTube link above!"
     ]
@@ -851,8 +851,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Chef Deena’s Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chef Deena’s Kitchen via the YouTube link above!"
     ]
@@ -882,7 +882,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Chef Deena’s Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chef Deena’s Kitchen via the YouTube link above!"
@@ -912,7 +912,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Chef Deena’s Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chef Deena’s Kitchen via the YouTube link above!"
@@ -940,16 +940,16 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by AK Uncut.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by AK Uncut via the YouTube link above!"
     ]
   },
   {
     "id": "yt-MHqhf3yErEY",
-    "name": "Madurai sourashtra spl. Marriage brinjal chutney",
-    "englishSubtitle": "Madurai sourashtra spl. Marriage brinjal chutney/thokku",
+    "name": "Sourashtra spl. Marriage brinjal chutney",
+    "englishSubtitle": "Sourashtra spl. Marriage brinjal chutney/thokku",
     "sourceAttribution": "3am kitchen (YouTube)",
     "youtubeUrl": "https://www.youtube.com/watch?v=MHqhf3yErEY",
     "webUrl": "https://www.palkar.org/recipes/",
@@ -967,7 +967,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by 3am kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by 3am kitchen via the YouTube link above!"
@@ -975,8 +975,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
   },
   {
     "id": "yt-_WKIjM7-knw",
-    "name": "Lemon Pickle - Madurai Sourashtra Style 🍋🍋 #nooil #pickle #lemon #madurai #sourashtra #palkar",
-    "englishSubtitle": "Lemon Pickle - Madurai Sourashtra Style 🍋🍋 #nooil #pickle #lemon #madurai #sourashtra #palkar",
+    "name": "Lemon Pickle - Sourashtra Style 🍋🍋 #nooil #pickle #lemon #madurai #sourashtra #palkar",
+    "englishSubtitle": "Lemon Pickle - Sourashtra Style 🍋🍋 #nooil #pickle #lemon #madurai #sourashtra #palkar",
     "sourceAttribution": "3am kitchen (YouTube)",
     "youtubeUrl": "https://www.youtube.com/watch?v=_WKIjM7-knw",
     "webUrl": "https://www.palkar.org/recipes/",
@@ -994,7 +994,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Lemon, Curry Leaves) by washing, chopping, and measuring as shown by 3am kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by 3am kitchen via the YouTube link above!"
@@ -1002,8 +1002,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
   },
   {
     "id": "yt-7an3SSvAJuE",
-    "name": "Madurai Sourashtra Kulambu Podi 😋",
-    "englishSubtitle": "Madurai Sourashtra Kulambu Podi 😋",
+    "name": "Sourashtra Kulambu Podi 😋",
+    "englishSubtitle": "Sourashtra Kulambu Podi 😋",
     "sourceAttribution": "sridevi.lapasi (YouTube)",
     "youtubeUrl": "https://www.youtube.com/watch?v=7an3SSvAJuE",
     "webUrl": "https://www.palkar.org/recipes/",
@@ -1015,7 +1015,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Madurai Sourashtra Kulambu Podi. Ingredients: Half KG Malli Vidhai, 125gm Vatral, Veesam Padi arisi, 300gm Karupu Ullundu, ...",
+      "Channel Ingredient Note: Sourashtra Kulambu Podi. Ingredients: Half KG Malli Vidhai, 125gm Vatral, Veesam Padi arisi, 300gm Karupu Ullundu, ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1025,7 +1025,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by sridevi.lapasi.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by sridevi.lapasi via the YouTube link above!"
@@ -1053,8 +1053,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -1083,7 +1083,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -1113,7 +1113,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -1143,7 +1143,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -1173,7 +1173,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Isha kitchen and lifestyle.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Isha kitchen and lifestyle via the YouTube link above!"
@@ -1193,7 +1193,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Tomato Rice | Tamaatar Pulao | தக்காளி சாதம் | Madurai Sourashtra Thakkali Pongal in Pressure Cooker ...",
+      "Channel Ingredient Note: Sourashtra Tomato Rice | Tamaatar Pulao | தக்காளி சாதம் | Sourashtra Thakkali Pongal in Pressure Cooker ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -1201,8 +1201,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
     ]
@@ -1232,7 +1232,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Curry Leaves, Coriander, Mint Leaves, Gooseberry) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -1262,7 +1262,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -1290,7 +1290,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Mint Leaves, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -1319,8 +1319,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -1350,7 +1350,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -1378,8 +1378,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Milk, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
     ]
@@ -1408,7 +1408,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Pooja Idols.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Pooja Idols via the YouTube link above!"
@@ -1441,7 +1441,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Green Chilli, Curry Leaves, Coriander) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -1470,7 +1470,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -1498,8 +1498,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Milk, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -1529,8 +1529,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Coconut, Milk) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -1557,8 +1557,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -1588,7 +1588,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -1617,7 +1617,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -1645,8 +1645,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -1673,8 +1673,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -1701,8 +1701,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -1732,7 +1732,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -1763,7 +1763,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -1791,7 +1791,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -1822,7 +1822,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -1852,7 +1852,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Coconut) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -1883,7 +1883,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -1913,7 +1913,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -1943,7 +1943,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -1972,8 +1972,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Chitra Cooks.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chitra Cooks via the YouTube link above!"
     ]
@@ -2003,7 +2003,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -2035,7 +2035,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Seasoned With Love.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Seasoned With Love via the YouTube link above!"
@@ -2065,7 +2065,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Coriander, Curry Leaves) by washing, chopping, and measuring as shown by Seasoned With Love.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Seasoned With Love via the YouTube link above!"
@@ -2095,7 +2095,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -2127,7 +2127,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -2159,7 +2159,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Milk, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -2188,8 +2188,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by VJ's Dream Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by VJ's Dream Samayal via the YouTube link above!"
     ]
@@ -2217,8 +2217,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -2245,8 +2245,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -2272,8 +2272,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves) by washing, chopping, and measuring as shown by Vaish's Kitchenette.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vaish's Kitchenette via the YouTube link above!"
     ]
@@ -2305,7 +2305,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Garlic, Ginger, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -2333,8 +2333,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Buvana's kitchen and lifestyle.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buvana's kitchen and lifestyle via the YouTube link above!"
     ]
@@ -2361,8 +2361,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -2392,7 +2392,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -2420,8 +2420,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
     ]
@@ -2448,7 +2448,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -2478,7 +2478,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -2509,7 +2509,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -2540,7 +2540,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -2570,7 +2570,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -2601,7 +2601,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -2632,7 +2632,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -2663,7 +2663,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -2694,7 +2694,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Vaish's Kitchenette.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vaish's Kitchenette via the YouTube link above!"
@@ -2725,7 +2725,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -2754,7 +2754,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -2784,7 +2784,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Cheese Flower.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Cheese Flower via the YouTube link above!"
@@ -2815,7 +2815,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -2845,7 +2845,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Lemon, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -2876,7 +2876,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -2907,7 +2907,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by You_Too_Channel 🤞🏻.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by You_Too_Channel 🤞🏻 via the YouTube link above!"
@@ -2935,8 +2935,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Channel Ingredient Note: Rice - 1 cup Water - 3 cup Jaggery pongal - 1.5 cup Ghee - 1/2 cup Cardamom - 2 Cashew and raisin - 20 number.; Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Palm Jaggery / Karupatti or Gullu (1 cup); Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins.",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Channel Ingredient Note: Rice - 1 cup Water - 3 cup Jaggery pongal - 1.5 cup Ghee - 1/2 cup Cardamom - 2 Cashew and raisin - 20 number.; Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Palm Jaggery / Karupatti or Gullu (1 cup); Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins.",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -2964,8 +2964,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Chitra Cooks.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chitra Cooks via the YouTube link above!"
     ]
@@ -2993,8 +2993,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Isha kitchen and lifestyle.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Isha kitchen and lifestyle via the YouTube link above!"
     ]
@@ -3022,8 +3022,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
     ]
@@ -3051,8 +3051,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Puliady’s Kitchen!.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Puliady’s Kitchen! via the YouTube link above!"
     ]
@@ -3080,8 +3080,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by SEKAR MANJULA.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by SEKAR MANJULA via the YouTube link above!"
     ]
@@ -3109,8 +3109,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
     ]
@@ -3138,8 +3138,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -3166,8 +3166,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
     ]
@@ -3194,8 +3194,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -3222,8 +3222,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -3251,8 +3251,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
     ]
@@ -3280,8 +3280,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Lakshmi's Best Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Lakshmi's Best Recipes via the YouTube link above!"
     ]
@@ -3308,8 +3308,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -3337,8 +3337,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Kalatthai Vellalam.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Kalatthai Vellalam via the YouTube link above!"
     ]
@@ -3364,7 +3364,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Kalpz விருந்து.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Kalpz விருந்து via the YouTube link above!"
@@ -3392,7 +3392,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -3420,7 +3420,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by TaHa RK.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by TaHa RK via the YouTube link above!"
@@ -3452,7 +3452,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Brinjal, Onion, Green Chilli, Curry Leaves, Coriander) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -3480,8 +3480,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Curry Leaves) by washing, chopping, and measuring as shown by It's Cooking Time .",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by It's Cooking Time  via the YouTube link above!"
     ]
@@ -3508,7 +3508,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -3536,7 +3536,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -3564,7 +3564,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Chef Deena’s Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chef Deena’s Kitchen via the YouTube link above!"
@@ -3592,7 +3592,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -3619,7 +3619,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -3647,7 +3647,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Chitra Cooks.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chitra Cooks via the YouTube link above!"
@@ -3675,7 +3675,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -3703,7 +3703,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -3731,7 +3731,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Viji Cookss.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Viji Cookss via the YouTube link above!"
@@ -3758,7 +3758,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by LifeBox.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by LifeBox via the YouTube link above!"
@@ -3786,7 +3786,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -3815,7 +3815,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Mint Leaves, Milk, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -3846,7 +3846,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Ginger, Curry Leaves, Coriander, Mint Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -3874,8 +3874,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Mint Leaves, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -3903,7 +3903,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coriander, Mint Leaves, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -3936,7 +3936,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Onion, Garlic, Ginger, Curry Leaves, Mutton) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -3966,7 +3966,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -3997,7 +3997,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4028,7 +4028,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4060,7 +4060,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Onion, Garlic, Ginger, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4090,7 +4090,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4118,8 +4118,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Lemon, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4151,7 +4151,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Green Chilli, Curry Leaves, Chicken) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4185,8 +4185,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Garlic, Ginger, Green Chilli, Mint Leaves, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4215,7 +4215,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4245,7 +4245,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Ginger, Curry Leaves, Coconut) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4280,7 +4280,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Garlic, Ginger, Green Chilli, Chicken, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4312,7 +4312,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Coriander, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4344,7 +4344,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Ginger, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4379,7 +4379,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Green Chilli, Curry Leaves, Coriander, Coconut, Milk) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4411,7 +4411,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves, Chicken) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4441,7 +4441,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Fish, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4472,7 +4472,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Coconut, Mutton) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4506,7 +4506,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Onion, Garlic, Ginger, Green Chilli, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4537,7 +4537,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4569,7 +4569,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves, Eggs) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4600,8 +4600,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Ginger, Curry Leaves, Coriander, Mint Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4628,8 +4628,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4656,8 +4656,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4686,8 +4686,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4714,8 +4714,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4746,8 +4746,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Garlic, Ginger, Green Chilli, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4778,8 +4778,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Coriander, Mint Leaves, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4806,8 +4806,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -4835,7 +4835,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -4864,8 +4864,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -4893,7 +4893,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -4924,7 +4924,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -4954,7 +4954,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -4983,7 +4983,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Chicken, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -5014,7 +5014,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -5047,7 +5047,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Onion, Garlic, Green Chilli, Curry Leaves, Chicken) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -5077,7 +5077,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -5106,7 +5106,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Chicken, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -5134,8 +5134,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5162,8 +5162,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5192,7 +5192,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -5222,7 +5222,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -5251,7 +5251,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -5280,8 +5280,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5310,8 +5310,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5339,8 +5339,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5369,8 +5369,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5398,8 +5398,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5428,8 +5428,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5458,8 +5458,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5487,8 +5487,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Lemon, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5517,8 +5517,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -5547,7 +5547,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -5577,7 +5577,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -5607,7 +5607,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -5638,7 +5638,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -5668,7 +5668,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -5696,8 +5696,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
     ]
@@ -5727,7 +5727,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Puliady’s Kitchen!.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Puliady’s Kitchen! via the YouTube link above!"
@@ -5755,8 +5755,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Lemon, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
     ]
@@ -5784,7 +5784,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves) by washing, chopping, and measuring as shown by Ammana’s Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Ammana’s Kitchen via the YouTube link above!"
@@ -5815,7 +5815,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -5846,7 +5846,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -5876,7 +5876,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Potato, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -5905,7 +5905,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -5936,7 +5936,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -5967,7 +5967,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -5997,7 +5997,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Eggs, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6027,7 +6027,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6058,7 +6058,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Beans, Milk, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6089,7 +6089,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6120,7 +6120,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6151,7 +6151,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6182,7 +6182,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6213,7 +6213,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6244,7 +6244,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Milk, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6274,7 +6274,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6305,7 +6305,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6336,7 +6336,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6367,7 +6367,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6398,7 +6398,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -6427,7 +6427,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -6455,8 +6455,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Channel Ingredient Note: ZOOM THE VIDEO FOR BETTER CLARITY -------------------------------------------------- Gullu pongal - https://youtu.be/t13ugVJQ_Z4 ...; Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Palm Jaggery / Karupatti or Gullu (1 cup); Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins.",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Channel Ingredient Note: ZOOM THE VIDEO FOR BETTER CLARITY -------------------------------------------------- Gullu pongal - https://youtu.be/t13ugVJQ_Z4 ...; Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Palm Jaggery / Karupatti or Gullu (1 cup); Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins.",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
     ]
@@ -6484,7 +6484,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -6514,7 +6514,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -6543,7 +6543,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Coconut) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -6571,8 +6571,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by 3am kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by 3am kitchen via the YouTube link above!"
     ]
@@ -6599,8 +6599,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Channel Ingredient Note: Sourashtrian Traditional sweet (SEVI) | Doodun Dhowlo | Pal Kozhakattai rice flour - 1.5 cups sugar -1 cup caradamon powder ...; Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Palm Jaggery / Karupatti or Gullu (1 cup); Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins.",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Channel Ingredient Note: Sourashtrian Traditional sweet (SEVI) | Doodun Dhowlo | Pal Kozhakattai rice flour - 1.5 cups sugar -1 cup caradamon powder ...; Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Palm Jaggery / Karupatti or Gullu (1 cup); Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins.",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
     ]
@@ -6628,8 +6628,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
     ]
@@ -6658,7 +6658,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Drumstick, Spinach, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -6685,8 +6685,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Channel Ingredient Note: ... Sadham | மதுரை Special பருத்தி பால் சாதம் | Sekki Bath | Palkar Recipe | Buddy Recipes This traditional ...; Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Palm Jaggery / Karupatti or Gullu (1 cup); Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins.",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Channel Ingredient Note: ... Sadham | மதுரை Special பருத்தி பால் சாதம் | Sekki Bath | Palkar Recipe | Buddy Recipes This traditional ...; Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Palm Jaggery / Karupatti or Gullu (1 cup); Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins.",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
     ]
@@ -6714,8 +6714,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
     ]
@@ -6743,7 +6743,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -6772,7 +6772,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Curry Leaves) by washing, chopping, and measuring as shown by CookBook Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by CookBook Recipes via the YouTube link above!"
@@ -6801,7 +6801,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
@@ -6832,7 +6832,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Drumstick, Spinach, Curry Leaves) by washing, chopping, and measuring as shown by Chitra Cooks.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chitra Cooks via the YouTube link above!"
@@ -6863,7 +6863,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Isha kitchen and lifestyle.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Isha kitchen and lifestyle via the YouTube link above!"
@@ -6894,7 +6894,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Salem Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Salem Sourashtra via the YouTube link above!"
@@ -6925,7 +6925,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -6956,7 +6956,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -6987,7 +6987,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7017,7 +7017,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7047,7 +7047,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7077,7 +7077,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7107,7 +7107,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7137,7 +7137,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7167,7 +7167,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7197,7 +7197,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7227,7 +7227,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7255,8 +7255,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Milk, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
     ]
@@ -7283,8 +7283,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
     ]
@@ -7314,7 +7314,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7345,7 +7345,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Vani's Palkar Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vani's Palkar Kitchen via the YouTube link above!"
@@ -7375,7 +7375,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7406,7 +7406,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7435,8 +7435,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
     ]
@@ -7466,7 +7466,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Coconut, Milk) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7495,8 +7495,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
     ]
@@ -7525,7 +7525,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Chicken, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7554,7 +7554,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coriander, Mint Leaves, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7584,8 +7584,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
     ]
@@ -7614,7 +7614,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Fish) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7644,7 +7644,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7674,7 +7674,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Beans, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7704,7 +7704,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Chicken) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7735,7 +7735,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7765,7 +7765,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind Extract (Ambat) & Cooked Toor Dal Water; Black Pepper (Miri), Cumin Seeds (Jeera) & Hing; Mustard Seeds & Ghee (Thup — 1 tsp); Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Pilchar Bhurko (Coarse Black Pepper, Cumin, Red Chilli, Toor Dal, Curry Leaves & Hing)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7794,8 +7794,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
     ]
@@ -7824,7 +7824,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Mekan Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mekan Recipes via the YouTube link above!"
@@ -7855,7 +7855,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
@@ -7886,7 +7886,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
@@ -7917,7 +7917,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Milk, Curry Leaves) by washing, chopping, and measuring as shown by Sou cooking.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou cooking via the YouTube link above!"
@@ -7948,7 +7948,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
@@ -7976,8 +7976,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
     ]
@@ -8007,7 +8007,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
@@ -8038,7 +8038,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
@@ -8066,8 +8066,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
     ]
@@ -8096,7 +8096,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
@@ -8126,7 +8126,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Fish, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
@@ -8156,7 +8156,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Potato, Curry Leaves) by washing, chopping, and measuring as shown by Sou Sou Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sou Sou Samayal via the YouTube link above!"
@@ -8186,7 +8186,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -8217,7 +8217,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Veggies Recipe.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Veggies Recipe via the YouTube link above!"
@@ -8248,7 +8248,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sourashtra Videos.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sourashtra Videos via the YouTube link above!"
@@ -8278,7 +8278,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by SS Cooking Galatta (Gayathri Dhanapal).",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by SS Cooking Galatta (Gayathri Dhanapal) via the YouTube link above!"
@@ -8309,7 +8309,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Rajagopal Bhaskara narayanan.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rajagopal Bhaskara narayanan via the YouTube link above!"
@@ -8340,7 +8340,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Sourashtra World.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sourashtra World via the YouTube link above!"
@@ -8370,7 +8370,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -8400,7 +8400,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by sourashtra films.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by sourashtra films via the YouTube link above!"
@@ -8430,7 +8430,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -8459,8 +8459,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Chitra Cooks.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Chitra Cooks via the YouTube link above!"
     ]
@@ -8488,7 +8488,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Kalpanasezhiyan cooking.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Kalpanasezhiyan cooking via the YouTube link above!"
@@ -8518,8 +8518,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Drumstick, Spinach, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
     ]
@@ -8547,8 +8547,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Sahazhya's Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sahazhya's Kitchen via the YouTube link above!"
     ]
@@ -8578,7 +8578,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Drumstick, Spinach, Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Shree Creations World.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Shree Creations World via the YouTube link above!"
@@ -8605,8 +8605,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
     ]
@@ -8633,8 +8633,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
     ]
@@ -8661,8 +8661,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Curry Leaves) by washing, chopping, and measuring as shown by Buddy Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Buddy Recipes via the YouTube link above!"
     ]
@@ -8689,8 +8689,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Coconut, Curry Leaves) by washing, chopping, and measuring as shown by sourashtra films.",
-      "Gather the dry Madurai Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
-      "Cook the raw rice (Saadu) and dal base to the traditional Madurai Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
+      "Gather the dry Sourashtra pantry additives: Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal; Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal); Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing; Gingelly Oil or Ghee (Thup) & Salt (Lenu).",
+      "Cook the raw rice (Saadu) and dal base to the traditional Sourashtra texture, then prepare the aromatic tempering or tamarind/jaggery reduction.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by sourashtra films via the YouTube link above!"
     ]
@@ -8720,7 +8720,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Thara's Channel.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Thara's Channel via the YouTube link above!"
@@ -8751,7 +8751,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by CookBook Recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by CookBook Recipes via the YouTube link above!"
@@ -8781,7 +8781,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -8811,7 +8811,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -8840,7 +8840,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -8870,7 +8870,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Kalatthai Vellalam.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Kalatthai Vellalam via the YouTube link above!"
@@ -8900,7 +8900,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Traditional Sourashtra Kitchen (பாரம்பரிய முறை).",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Traditional Sourashtra Kitchen (பாரம்பரிய முறை) via the YouTube link above!"
@@ -8930,7 +8930,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Sha Home recipes.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sha Home recipes via the YouTube link above!"
@@ -8960,7 +8960,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Puliady’s Kitchen!.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Puliady’s Kitchen! via the YouTube link above!"
@@ -8989,7 +8989,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Digi Views.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Digi Views via the YouTube link above!"
@@ -9019,7 +9019,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -9049,7 +9049,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Garlic, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -9078,7 +9078,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Served with Chenna Bhurko (Roasted Gram Chutney Podi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp); Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo); Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi); Gingelly Oil / Ghee & Salt (Lenu).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Served with Chenna Bhurko (Roasted Gram Chutney Podi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -9109,7 +9109,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Chicken, Mutton) by washing, chopping, and measuring as shown by Sugi cooks - SomethingDifferent, FOR ALL.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Sugi cooks - SomethingDifferent, FOR ALL via the YouTube link above!"
@@ -9139,7 +9139,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Chicken, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Mommy Days.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Mommy Days via the YouTube link above!"
@@ -9170,7 +9170,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Chicken, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Vevan Media.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Vevan Media via the YouTube link above!"
@@ -9178,8 +9178,8 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
   },
   {
     "id": "yt-aNhbFCzw-uQ",
-    "name": "Madurai Sourashtra Mutton curry !",
-    "englishSubtitle": "Madurai Sourashtra Mutton curry !",
+    "name": "Sourashtra Mutton curry !",
+    "englishSubtitle": "Sourashtra Mutton curry !",
     "sourceAttribution": "3am kitchen (YouTube)",
     "youtubeUrl": "https://www.youtube.com/watch?v=aNhbFCzw-uQ",
     "webUrl": "https://jaleelacooking.blogspot.com/search?q=saurashtra",
@@ -9200,7 +9200,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Chicken, Mutton) by washing, chopping, and measuring as shown by 3am kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by 3am kitchen via the YouTube link above!"
@@ -9234,7 +9234,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Coconut, Chicken, Mutton, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -9264,7 +9264,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Curry Leaves, Chicken, Mutton) by washing, chopping, and measuring as shown by Little Vessels Cooking.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Little Vessels Cooking via the YouTube link above!"
@@ -9294,7 +9294,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Fish, Curry Leaves) by washing, chopping, and measuring as shown by VIP Kids favourite.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by VIP Kids favourite via the YouTube link above!"
@@ -9324,7 +9324,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Fish, Curry Leaves) by washing, chopping, and measuring as shown by Shawes log.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Shawes log via the YouTube link above!"
@@ -9354,7 +9354,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Fish, Curry Leaves) by washing, chopping, and measuring as shown by VIP Kids favourite.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by VIP Kids favourite via the YouTube link above!"
@@ -9385,7 +9385,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Puliady’s Kitchen!.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Puliady’s Kitchen! via the YouTube link above!"
@@ -9418,7 +9418,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Garlic, Green Chilli, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -9451,7 +9451,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Drumstick, Green Chilli, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -9483,7 +9483,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Green Chilli, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -9514,7 +9514,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Tomato, Onion, Curry Leaves) by washing, chopping, and measuring as shown by Puliady’s Kitchen!.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Puliady’s Kitchen! via the YouTube link above!"
@@ -9544,7 +9544,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko / Sambar Bhurko",
     "processSteps": [
       "Prep the fresh fridge ingredients (Spinach, Curry Leaves) by washing, chopping, and measuring as shown by Hema's Sourashtra Samayal.",
-      "Gather the dry Madurai Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp); Tamarind (small gooseberry size), Turmeric & Hing; Mustard Seeds, Urad Dal & Cooking Oil; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko / Sambar Bhurko) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Hema's Sourashtra Samayal via the YouTube link above!"
@@ -9572,7 +9572,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Mint Leaves, Gooseberry, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -9601,7 +9601,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Mint Leaves, Gooseberry, Curry Leaves) by washing, chopping, and measuring as shown by Puliady’s Kitchen!.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Puliady’s Kitchen! via the YouTube link above!"
@@ -9631,7 +9631,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Ginger, Mint Leaves, Gooseberry, Curry Leaves) by washing, chopping, and measuring as shown by Yummy Sourashtra.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Yummy Sourashtra via the YouTube link above!"
@@ -9661,7 +9661,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     ],
     "processSteps": [
       "Prep the fresh fridge ingredients (Mint Leaves, Lemon, Gooseberry, Curry Leaves) by washing, chopping, and measuring as shown by Rani's Sourastra Kitchen.",
-      "Gather the dry Madurai Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
+      "Gather the dry Sourashtra pantry additives: Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8); Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp); Mustard Seeds, Urad Dal & Gingelly Oil (for tempering); Rock Salt / Salt (Lenu).",
       "Cook or roast the main fridge ingredients with dry red chillies, tamarind, hing, and lentil additives until tender, then stone-grind or mash coarsely with a wooden mathu.",
       "Incorporate the signature Sourashtra spice blend (traditional roasted spices & tamarind/dal stock) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Rani's Sourastra Kitchen via the YouTube link above!"
@@ -9694,7 +9694,7 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
     "bhurkoUsed": "Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)",
     "processSteps": [
       "Prep the fresh fridge ingredients (Brinjal, Mint Leaves, Gooseberry, Eggs, Curry Leaves) by washing, chopping, and measuring as shown by Puliady’s Kitchen!.",
-      "Gather the dry Madurai Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
+      "Gather the dry Sourashtra pantry additives: Tamarind (Ambat — small lemon size); Gingelly / Sesame Oil (2–3 tbsp); Mustard Seeds (Mhuri), Urad Dal, Fenugreek (Methi) & Hing; Salt (Lenu — to taste).",
       "Heat gingelly oil or ghee in a heavy pan; splutter mustard seeds, urad dal, cumin/fennel, hing, and curry leaves, then sauté the aromatics and primary fridge ingredients.",
       "Incorporate the signature Sourashtra spice blend (Ounty Bhurko (Roasted Coriander, Red Chilli, Black Urad Dal, Raw Rice & Methi)) and simmer until the flavors meld and oil separates.",
       "Finish with fresh coriander or a drizzle of sesame oil/ghee. Watch the full step-by-step video tutorial by Puliady’s Kitchen! via the YouTube link above!"

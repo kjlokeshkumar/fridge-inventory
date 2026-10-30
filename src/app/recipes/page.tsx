@@ -90,12 +90,12 @@ const FRIDGE_QUICK_ITEMS = [
   'Fish (Meen / Koddi)'
 ];
 
-// Built-in traditional Madurai Sourashtra Tiffin Base recipes (for Phalar/Diido & Phulka/Idiyappam when clicked as the Main Dish)
+// Built-in traditional Sourashtra Tiffin Base recipes (for Phalar/Diido & Phulka/Idiyappam when clicked as the Main Dish)
 const PHALAR_DIIDO_BASE_RECIPE: Recipe = {
   id: 'madurai-phalar-diido-base',
-  title: 'Soft Phalar (Madurai Sourashtra Idli) & Crispy Diido (Dosa)',
+  title: 'Soft Phalar (Sourashtra Idli) & Crispy Diido (Dosa)',
   category: 'Bhairi & Appam (Fritters & Tiffin)',
-  sourceAttribution: 'Madurai Sourashtra Traditional Home Kitchens / Palkar.org',
+  sourceAttribution: 'Sourashtra Traditional Home Kitchens / Palkar.org',
   youtubeUrl: 'https://www.youtube.com/watch?v=ANrgSgIelP4',
   webUrl: 'https://www.palkar.org/recipes/',
   fridgeIngredientsUsed: ['Curry Leaves & Coriander (for garnish)'],
@@ -129,7 +129,7 @@ const PHULKA_IDIYAPPAM_BASE_RECIPE: Recipe = {
   id: 'madurai-phulka-idiyappam-base',
   title: 'Soft Phulka / Chappathi & Steamed Idiyappam (String Hoppers)',
   category: 'Bhairi & Appam (Fritters & Tiffin)',
-  sourceAttribution: 'Sugi Cooks / Madurai Sourashtra Home Kitchens',
+  sourceAttribution: 'Sugi Cooks / Sourashtra Home Kitchens',
   youtubeUrl: 'https://www.youtube.com/watch?v=pM3CsN9W5Gw',
   webUrl: 'https://sugi-writes.blogspot.com/search/label/Sourashtra%20Recipes',
   fridgeIngredientsUsed: ['Fresh Grated Coconut (Nalar) - 50g'],
@@ -180,7 +180,7 @@ function findRecipeByKeywords(catalog: Recipe[], keywords: string[], fallbackInd
   return catalog[fallbackIndex % catalog.length];
 }
 
-// Curated Authentic Madurai Sourashtra Breakfast, Lunch, and Dinner Combinations
+// Curated Authentic Sourashtra Breakfast, Lunch, and Dinner Combinations
 // primaryKeys -> Main Dish Recipe; secondaryKeys -> Paired Side / Accompaniment Recipe
 function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
   if (!catalog || catalog.length === 0) {
@@ -200,7 +200,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'bf-phalar-thakkali-ounty',
       mainDishTitle: 'Soft Phalar (Steamed Idli) & Crispy Diido (Dosa)',
       pairedWithTitle: 'Thakkali Ounty (Tangy Tomato Gravy) & Nalar Chutni (Coconut Chutney)',
-      pairingTraditionNote: 'Classic Madurai Sourashtra morning tiffin—Ounty Bhurko thickened tomato gravy poured generously over hot Phalar (idli).',
+      pairingTraditionNote: 'Classic Sourashtra morning tiffin—Ounty Bhurko thickened tomato gravy poured generously over hot Phalar (idli).',
       primaryKeys: ['__PHALAR_DIIDO__'],
       secondaryKeys: ['thakkali-ounty', 'Thakkali Ounty']
     },
@@ -208,7 +208,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'bf-mudha-pongal-vangi-budith',
       mainDishTitle: 'Mudha Pongal (Velvety Milk & Ghee Ven Pongal)',
       pairedWithTitle: 'Vangi Budith (Pressure-Cooked Brinjal Chutney) & Tiffin Sambar',
-      pairingTraditionNote: 'The #1 iconic Madurai Sourashtra breakfast marriage—creamy pepper-cumin Mudha Pongal is always eaten with smoky Vangi Budith.',
+      pairingTraditionNote: 'The #1 iconic Sourashtra breakfast marriage—creamy pepper-cumin Mudha Pongal is always eaten with smoky Vangi Budith.',
       primaryKeys: ['mudha-pongal', 'Mudha Pongal', 'Muddha pongal'],
       secondaryKeys: ['vangi-budith', 'Vangi Budith']
     },
@@ -232,7 +232,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'bf-loni-karupatti-appam-kandha',
       mainDishTitle: 'Loni Appam / Madurai Karupatti Appam (Palm Jaggery & Butter Appam)',
       pairedWithTitle: 'Savory Kara Appam & Kandha Chutney (Madurai Thanni Onion-Tomato Chutney)',
-      pairingTraditionNote: 'Famous Madurai Sourashtra morning street-style sweet & savory breakfast platter.',
+      pairingTraditionNote: 'Famous Sourashtra morning street-style sweet & savory breakfast platter.',
       primaryKeys: ['loni-karupatti-appam', 'Karuppatti appam', 'Sourashtra Appam'],
       secondaryKeys: ['Kandha Chutney', 'Thakkali Chutney']
     },
@@ -248,7 +248,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'bf-mhuri-pongal-bela-chutney',
       mainDishTitle: 'Mhuri Pongal (Sourashtra Mustard-Coconut Seasoned Rice)',
       pairedWithTitle: 'Bela Chutney (Roasted Chana Dal Chutney) & Curd',
-      pairingTraditionNote: 'Unique Madurai Sourashtra tiffin rice flavored with freshly ground raw mustard and green chilli paste.',
+      pairingTraditionNote: 'Unique Sourashtra tiffin rice flavored with freshly ground raw mustard and green chilli paste.',
       primaryKeys: ['mhuri pongal', 'Muri pongal', 'limbu-thoop-mhuri-pongal'],
       secondaryKeys: ['Bela chutney', 'Paruppu Thuvaiyal']
     },
@@ -256,7 +256,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'bf-limbu-thoop-lovebirds',
       mainDishTitle: 'Limbu Pongal (Lemon Rice) & Thoop Pongal (Ghee-Pepper "Love Birds" Rice)',
       pairedWithTitle: 'Vangi Chutni & Chenna Bhurko (Pottukadalai Podi)',
-      pairingTraditionNote: 'In Madurai Sourashtra homes, tangy Limbu Pongal and mild ghee-pepper Thoop Pongal are served side-by-side as "Love Birds Rice".',
+      pairingTraditionNote: 'In Sourashtra homes, tangy Limbu Pongal and mild ghee-pepper Thoop Pongal are served side-by-side as "Love Birds Rice".',
       primaryKeys: ['limbu-thoop-mhuri-pongal', 'Thoov Pongal'],
       secondaryKeys: ['Vangi chutni', 'vangi-budith']
     },
@@ -284,13 +284,13 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'ln-sambar-thakkali-charu-polte-bhajji',
       mainDishTitle: 'Steamed Rice + Sengu-Vangi-Batata Sambar (Drumstick, Brinjal & Potato Sambar)',
       pairedWithTitle: 'Thakkali Charu (Sourashtra Tomato Broth) + Polte Bhajji (Mashed Greens / Keerai Kadayal)',
-      pairingTraditionNote: 'Everyday Madurai Sourashtra family lunch thali with freshly ground Sambar Bhurko and iron-rich mashed greens.',
+      pairingTraditionNote: 'Everyday Sourashtra family lunch thali with freshly ground Sambar Bhurko and iron-rich mashed greens.',
       primaryKeys: ['sengu-vangi-batata-sambar', 'Sambhar'],
       secondaryKeys: ['polte-bhajji', 'Thakkali charu', 'Ambad Bhajji']
     },
     {
       comboId: 'ln-ambat-bhaath-losto-curd',
-      mainDishTitle: 'Madurai Sourashtra Ambat Bhaath (Roast Methi & Sesame Tamarind Rice) + Dhi Bhaath (Curd Rice)',
+      mainDishTitle: 'Sourashtra Ambat Bhaath (Roast Methi & Sesame Tamarind Rice) + Dhi Bhaath (Curd Rice)',
       pairedWithTitle: 'Pudina / Kothmir Losto + Nellika Rubbin (Zero-Oil Gooseberry Pickle) & Potato Fry',
       pairingTraditionNote: 'Festival & travel favorite—tangy Ambat Bhaath followed by cool curd rice and fiery green Losto.',
       primaryKeys: ['ambat-bhaath', 'Ambat Bhath', 'Ambad Bhaath'],
@@ -300,7 +300,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'ln-koduk-ounty-polte-bhajji',
       mainDishTitle: 'Steamed Rice + Ancient Sourashtra Koduk Ounty (Fermented Rice-Starch Probiotic Gravy)',
       pairedWithTitle: 'Polte Bhajji (Arai Keerai Masiyal) + Crispy Roasted Beans / Curd',
-      pairingTraditionNote: 'Centuries-old Madurai Sourashtra heritage lunch—tangy fermented kanji gravy is traditionally paired with mashed greens.',
+      pairingTraditionNote: 'Centuries-old Sourashtra heritage lunch—tangy fermented kanji gravy is traditionally paired with mashed greens.',
       primaryKeys: ['koduk-ounty', 'Koduk Ounty'],
       secondaryKeys: ['polte-bhajji', 'Ambad Bhajji']
     },
@@ -331,9 +331,9 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
     hasNonVeg
       ? {
           comboId: 'ln-sunday-chaino-kolkar-polte-chaino',
-          mainDishTitle: 'Sunday Feast: Steamed Rice + Chaino Kolkar (Madurai Sourashtra Mutton Ounty)',
+          mainDishTitle: 'Sunday Feast: Steamed Rice + Chaino Kolkar (Sourashtra Mutton Ounty)',
           pairedWithTitle: 'Polte Chaino (Mutton Uppu Kari with Crunchy Coconut Bits) + Joman Pilchar',
-          pairingTraditionNote: 'The ultimate Madurai Sourashtra Sunday feast—bone-in Mutton Ounty paired with oil-free coconut-studded Polte Chaino and rasam.',
+          pairingTraditionNote: 'The ultimate Sourashtra Sunday feast—bone-in Mutton Ounty paired with oil-free coconut-studded Polte Chaino and rasam.',
           primaryKeys: ['chaino-kolkar', 'Chaiena Ounty', 'Mutton ounty'],
           secondaryKeys: ['polte-chaino', 'Poulda Chaieno', 'CHAINA POLDAYO']
         }
@@ -341,7 +341,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
           comboId: 'ln-sunday-kajali-ambat-gullu-pongal',
           mainDishTitle: 'Sunday Feast: Steamed Rice + Kajali Ambat (Madurai Special Veg Eral / Saiva Liver Gravy)',
           pairedWithTitle: 'Gullu Pongal (Sweet Jaggery Pongal) + Joman Pilchar (Wedding Rasam)',
-          pairingTraditionNote: 'Famous Madurai Sourashtra vegetarian feast curry (Kajali Ambat) served with sweet Gullu Pongal and wedding-style Pilchar.',
+          pairingTraditionNote: 'Famous Sourashtra vegetarian feast curry (Kajali Ambat) served with sweet Gullu Pongal and wedding-style Pilchar.',
           primaryKeys: ['Kajali Ambat', 'Veg Kajali Ambat'],
           secondaryKeys: ['serki-bhaath-gullu-pongal', 'Gullu pongal']
         },
@@ -365,7 +365,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
     hasNonVeg
       ? {
           comboId: 'ln-meen-kodhi-anda-ounty',
-          mainDishTitle: 'Steamed Rice + Madurai Sourashtra Meen / Koddi Ounty (Tamarind & Whole Garlic Fish Curry)',
+          mainDishTitle: 'Steamed Rice + Sourashtra Meen / Koddi Ounty (Tamarind & Whole Garlic Fish Curry)',
           pairedWithTitle: 'Sourashtra Anda Ounty (Boiled Egg Masala) + Lemon Rasam (Limbu Pilchar)',
           pairingTraditionNote: 'No-coconut tangy Madurai fish/dry-fish curry simmered in gingelly oil with whole garlic pods.',
           primaryKeys: ['meen-karuvadu-kodhi', 'Koddi Ounty'],
@@ -387,7 +387,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'dn-pangarapaan-nalar-bhairi-chenna',
       mainDishTitle: 'Pangarapaan Bhairi (Herbal Greens Fritters) & Nalar Bhairi (Crispy Coconut Rice Fritters)',
       pairedWithTitle: 'Chenna Bhurko (Spicy Roasted Gram Podi) & Thakkali Chutni',
-      pairingTraditionNote: 'Iconic Madurai Sourashtra evening street-food tiffin—puffed crispy rice-and-greens Bhairi dipped in nutty Chenna Bhurko.',
+      pairingTraditionNote: 'Iconic Sourashtra evening street-food tiffin—puffed crispy rice-and-greens Bhairi dipped in nutty Chenna Bhurko.',
       primaryKeys: ['pangarapaan-nalar-bhairi', 'Pangarappan Bhairi'],
       secondaryKeys: ['Thakkali Chutney', 'Kandha Chutney']
     },
@@ -409,7 +409,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
     },
     {
       comboId: 'dn-thakkali-pongal-raita',
-      mainDishTitle: 'Madurai Sourashtra Thakkali Pongal (Cinnamon-Clove Spiced Tomato Pulao)',
+      mainDishTitle: 'Sourashtra Thakkali Pongal (Cinnamon-Clove Spiced Tomato Pulao)',
       pairedWithTitle: 'Bela Chutney (Roasted Chana Dal Chutney) & Onion-Curd Pachadi',
       pairingTraditionNote: 'One-pot pressure-cooker Madurai tomato pongal fragrant with cinnamon, mint, and coconut.',
       primaryKeys: ['Thakkali Pongal', 'Sourashtra Tomato Rice'],
@@ -435,7 +435,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
       comboId: 'dn-chappathi-meal-maker-ambat',
       mainDishTitle: 'Hot Layered Chappathi / Coin Parotta',
       pairedWithTitle: 'Sourashtra Meal Maker Ambat (Spiced Soya Chunks Gravy) & Onion Salad',
-      pairingTraditionNote: 'High-protein Madurai Sourashtra dinner curry made with Ounty Bhurko and soya chunks.',
+      pairingTraditionNote: 'High-protein Sourashtra dinner curry made with Ounty Bhurko and soya chunks.',
       primaryKeys: ['__PHULKA_IDIYAPPAM__'],
       secondaryKeys: ['Meal Maker Ambat', 'beans-batata-ambat']
     },
@@ -594,7 +594,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
           comboId: cid,
           mainDishTitle: cleanMain,
           pairedWithTitle: `${cleanDishTitle(side1.title)} & Tiffin Sambar`,
-          pairingTraditionNote: 'Authentic Madurai Sourashtra morning tiffin paired with freshly ground chutney/budith.',
+          pairingTraditionNote: 'Authentic Sourashtra morning tiffin paired with freshly ground chutney/budith.',
           primaryRecipe: r,
           secondaryRecipe: side1
         });
@@ -620,7 +620,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
             ? 'Soft Phalar (Steamed Madurai Idli) & Crispy Diido (Dosa)'
             : 'Hot Kal Diido (Sponge Dosa) & Onion Uttapam',
           pairedWithTitle: cleanMain,
-          pairingTraditionNote: 'Traditional Madurai Sourashtra Phalar & Diido served with a flavorful homemade accompaniment.',
+          pairingTraditionNote: 'Traditional Sourashtra Phalar & Diido served with a flavorful homemade accompaniment.',
           primaryRecipe: PHALAR_DIIDO_BASE_RECIPE,
           secondaryRecipe: r
         });
@@ -659,8 +659,8 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
             ? `${cleanDishTitle(side1.title)} & Crispy Appalam`
             : `${cleanDishTitle(rasam1.title)} + ${cleanDishTitle(side1.title)}`,
           pairingTraditionNote: isRiceDish
-            ? 'Traditional Madurai Sourashtra variety rice meal balanced with a tangy/spicy side dish and cool curd rice.'
-            : 'Complete Madurai Sourashtra afternoon meal pairing a signature gravy over hot rice with soothing rasam and stir-fry/budith.',
+            ? 'Traditional Sourashtra variety rice meal balanced with a tangy/spicy side dish and cool curd rice.'
+            : 'Complete Sourashtra afternoon meal pairing a signature gravy over hot rice with soothing rasam and stir-fry/budith.',
           primaryRecipe: r,
           secondaryRecipe: isRiceDish ? side1 : rasam1
         });
@@ -692,7 +692,7 @@ function buildAuthenticSourashtraCombos(catalog: Recipe[]) {
           comboId: cid,
           mainDishTitle: isGravy ? 'Soft Phulka / Chappathi & Steamed Idiyappam' : cleanMain,
           pairedWithTitle: isGravy ? cleanMain : `${cleanDishTitle(gravy1.title)} / ${cleanDishTitle(side1.title)}`,
-          pairingTraditionNote: 'Wholesome Madurai Sourashtra evening tiffin combination.',
+          pairingTraditionNote: 'Wholesome Sourashtra evening tiffin combination.',
           primaryRecipe: isGravy ? PHULKA_IDIYAPPAM_BASE_RECIPE : r,
           secondaryRecipe: isGravy ? r : side1
         });
@@ -1104,7 +1104,7 @@ export default function RecipesPage() {
   }, [weeklyPlan, selectedFridgeItems, isUsingSampleBasket, currentFridgeInventory]);
 
   const buildGoogleCalendarDayUrl = (day: DayMealPlan) => {
-    const title = `🍲 Madurai Sourashtra Menu (${day.dayName})`;
+    const title = `🍲 Sourashtra Menu (${day.dayName})`;
     const details = [
       `🌅 BREAKFAST: ${day.breakfast?.mainDishTitle} + ${day.breakfast?.pairedWithTitle}`,
       day.breakfast?.primaryRecipe?.youtubeUrl ? `   YouTube: ${day.breakfast.primaryRecipe.youtubeUrl}` : '',
@@ -1130,7 +1130,7 @@ export default function RecipesPage() {
     const lines = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Fridge AI//Madurai Sourashtra 7-Day Meal Planner//EN',
+      'PRODID:-//Fridge AI//Sourashtra 7-Day Meal Planner//EN',
       'CALSCALE:GREGORIAN'
     ];
 
@@ -1215,7 +1215,7 @@ export default function RecipesPage() {
       <header className="dashboard-header flex-header">
         <div>
           <h1 className="page-title">
-            🍲 Madurai Sourashtra Recipes ({recipes.length > 0 ? `${recipes.length} Dishes` : t.recipesTitle})
+            🍲 Sourashtra Recipes ({recipes.length > 0 ? `${recipes.length} Dishes` : t.recipesTitle})
           </h1>
           <p className="page-subtitle">
             Formulated from your fridge veggies &amp; meats + traditional Sourashtra pantry additives (Bela, Tamarind &amp; Bhurko) with direct YouTube &amp; Web links
@@ -1356,10 +1356,10 @@ export default function RecipesPage() {
                 </div>
               )}
 
-            {/* 3. Madurai Sourashtra Secret */}
+            {/* 3. Sourashtra Secret */}
             {modalRecipe.bhurkoNote && (
               <div className="bhurko-note-box">
-                <strong>🥣 Madurai Sourashtra Secret:</strong> {safeString(modalRecipe.bhurkoNote)}
+                <strong>🥣 Sourashtra Secret:</strong> {safeString(modalRecipe.bhurkoNote)}
               </div>
             )}
 
@@ -1425,14 +1425,14 @@ export default function RecipesPage() {
       )}
 
       {/* =====================================================================
-          7-DAY MADURAI SOURASHTRA WEEKLY MEAL PLANNER (COMPLETE PAIRED MEALS)
+          7-DAY Sourashtra WEEKLY MEAL PLANNER (COMPLETE PAIRED MEALS)
           ===================================================================== */}
       {showWeeklyPlanner && weeklyPlan.length > 0 && (
         <section className="weekly-planner-panel glass-pane mb-24">
           <div className="planner-top-bar">
             <div>
               <h2>
-                📅 7-Day Madurai Sourashtra Weekly Meal Planner{' '}
+                📅 7-Day Sourashtra Weekly Meal Planner{' '}
                 <span style={{ color: '#10b981', fontSize: '0.88em' }}>
                   (Sample Set #{plannerSeed + 1} • Complete Paired Combinations)
                 </span>
@@ -1678,7 +1678,7 @@ export default function RecipesPage() {
           <div>
             <h3>🧊 What&apos;s in Your Fridge Right Now? (Veggies, Greens, Dairy &amp; Meat)</h3>
             <p className="selector-sub">
-              Tap the fresh items in your fridge to rank all <strong>{recipes.length || 320}+ Madurai Sourashtra recipes</strong> AND automatically update the <strong>Weekly Shopping List</strong> above!
+              Tap the fresh items in your fridge to rank all <strong>{recipes.length || 320}+ Sourashtra recipes</strong> AND automatically update the <strong>Weekly Shopping List</strong> above!
             </p>
           </div>
           {selectedFridgeItems.length > 0 && (
@@ -1717,12 +1717,12 @@ export default function RecipesPage() {
 
         {isUsingSampleBasket && (
           <div className="sample-basket-banner">
-            💡 Ranking all <strong>{recipes.length} Madurai Sourashtra recipes</strong> for a classic Madurai fridge basket (<strong>Tomato, Brinjal, Potato, Onion, Mint &amp; Coriander</strong>). Tap any fridge items above to re-rank and update your 7-day shopping list!
+            💡 Ranking all <strong>{recipes.length} Sourashtra recipes</strong> for a classic Madurai fridge basket (<strong>Tomato, Brinjal, Potato, Onion, Mint &amp; Coriander</strong>). Tap any fridge items above to re-rank and update your 7-day shopping list!
           </div>
         )}
       </section>
 
-      {/* Search & Category Filter Bar across all 320+ Madurai Sourashtra Recipes */}
+      {/* Search & Category Filter Bar across all 320+ Sourashtra Recipes */}
       <section className="catalog-filter-panel glass-pane mb-24">
         <div className="search-stats-row">
           <input
@@ -1766,12 +1766,12 @@ export default function RecipesPage() {
         </div>
       </section>
 
-      {/* Collapsible Madurai Sourashtra Bhurko (Spice Blend) Reference */}
+      {/* Collapsible Sourashtra Bhurko (Spice Blend) Reference */}
       {showBhurkoModal && bhurkoGuide.length > 0 && (
         <section className="bhurko-guide-panel glass-pane mb-24">
-          <h3>🥣 Authentic Madurai Sourashtra Bhurko (Homemade Spice Powders)</h3>
+          <h3>🥣 Authentic Sourashtra Bhurko (Homemade Spice Powders)</h3>
           <p className="selector-sub mb-16">
-            In Madurai Sourashtra kitchens, these foundational sun-dried/roasted spice blends are kept in the pantry and added to gravies (<em>Ounty</em>), stews (<em>Sambar</em>), and broths (<em>Pilchar</em>):
+            In Sourashtra kitchens, these foundational sun-dried/roasted spice blends are kept in the pantry and added to gravies (<em>Ounty</em>), stews (<em>Sambar</em>), and broths (<em>Pilchar</em>):
           </p>
           <div className="bhurko-grid">
             {bhurkoGuide.map((b, idx) => (
@@ -1897,7 +1897,7 @@ export default function RecipesPage() {
                 {/* 3. Signature Sourashtra Bhurko / Culinary Note */}
                 {recipe.bhurkoNote && (
                   <div className="bhurko-note-box">
-                    <strong>🥣 Madurai Sourashtra Secret:</strong> {safeString(recipe.bhurkoNote)}
+                    <strong>🥣 Sourashtra Secret:</strong> {safeString(recipe.bhurkoNote)}
                   </div>
                 )}
 
