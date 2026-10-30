@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import './inventory.css';
 import { UI_TRANSLATIONS } from '@/lib/translations';
+import { isInventoryItemExpired, isInventoryItemExpiringSoon } from '@/lib/inventory-dates';
 
 interface InventoryItem {
   id: number;
@@ -76,23 +77,6 @@ export default function InventoryPage() {
     }
   };
 
-  const isExpiringSoon = (dateStr: string | null) => {
-    if (!dateStr) return false;
-    const expDate = new Date(dateStr);
-    const today = new Date();
-    const diffTime = expDate.getTime() - today.getTime();
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays >= 0 && diffDays <= 3;
-  };
-
-  const isExpired = (dateStr: string | null) => {
-    if (!dateStr) return false;
-    const expDate = new Date(dateStr);
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    return expDate < today;
-  };
-
   const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
   if (loading) {
@@ -123,7 +107,7 @@ export default function InventoryPage() {
           {items.map((item) => (
             <div 
               key={item.id} 
-              className={`inventory-item glass-pane ${isExpired(item.expirationDate) ? 'expired' : ''} ${isExpiringSoon(item.expirationDate) ? 'expiring-soon' : ''}`}
+              className={`inventory-item glass-pane ${isInventoryItemExpired(item.expirationDate) ? 'expired' : ''} ${isInventoryItemExpiringSoon(item.expirationDate) ? 'expiring-soon' : ''}`}
             >
               <div className="item-header">
                 <span className="item-category">{item.category}</span>
