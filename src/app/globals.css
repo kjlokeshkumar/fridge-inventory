@@ -627,6 +627,24 @@ body::before {
   margin-bottom: 12px;
 }
 
+.auth-account-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.auth-account-summary p {
+  color: #cbd5e1;
+}
+
+.auth-account-summary > strong {
+  font-size: 1.4rem;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 768px) {
   .site-footer {
     padding: 12px 16px calc(88px + env(safe-area-inset-bottom, 0px));

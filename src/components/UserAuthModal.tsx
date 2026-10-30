@@ -18,6 +18,7 @@ export default function UserAuthModal() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isSessionReady, setIsSessionReady] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -25,13 +26,16 @@ export default function UserAuthModal() {
       try {
         const response = await fetch('/api/auth');
         const data = await response.json();
-        setCurrentUser(data.success ? data.user : null);
+        setCurrentUser(response.ok && data.success ? data.user : null);
       } catch {
         setCurrentUser(null);
+      } finally {
+        setIsSessionReady(true);
       }
     };
     const handleAuth = (event: Event) => {
       setCurrentUser((event as CustomEvent<AuthUser | null>).detail);
+      setIsSessionReady(true);
     };
     const handleOpen = () => {
       setErrorMsg(null);
@@ -101,14 +105,19 @@ export default function UserAuthModal() {
   return (
     <div className="user-auth-wrapper">
       {/* User Badge Button in Header */}
-      <button 
-        onClick={() => setIsOpen(true)} 
+      <button
+        onClick={() => {
+          if (isSessionReady) setIsOpen(true);
+        }}
         className="user-auth-badge"
-        title="Switch Account / Unique Username"
-        aria-label="Switch Account / Unique Username"
+        title={currentUser ? `Signed in as ${currentUser.username}` : 'Sign in'}
+        aria-label={currentUser ? `Account: ${currentUser.username}` : 'Sign in'}
+        disabled={!isSessionReady}
       >
         <span className="user-auth-icon">🔑</span>
-        <span className="user-auth-name">{currentUser?.username || 'Sign In'}</span>
+        <span className="user-auth-name">
+          {isSessionReady ? currentUser?.username || 'Sign In' : 'Checking…'}
+        </span>
       </button>
 
       {/* Auth Modal */}
@@ -116,12 +125,12 @@ export default function UserAuthModal() {
         <div className="modal-backdrop" onClick={() => setIsOpen(false)}>
           <div className="modal-content glass-pane" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h3>Enter Unique Username</h3>
+              <h3>{currentUser ? 'Your Account' : 'Sign In or Create Account'}</h3>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 className="modal-close-btn"
-                aria-label="Close sign-in dialog"
+                aria-label="Close account dialog"
                 title="Close"
               >
                 <span aria-hidden="true">✕</span>
@@ -129,59 +138,75 @@ export default function UserAuthModal() {
               </button>
             </div>
 
-            <p style={{ fontSize: '0.85rem', color: '#cbd5e1', marginBottom: '16px' }}>
-              Maintain your own <strong>private inventory</strong>! Enter a unique alphanumeric name to log in or create your personal account.
-            </p>
-
-            {errorMsg && (
-              <div className="auth-error-banner">
-                ⚠️ {errorMsg}
-              </div>
-            )}
-
-            <form onSubmit={handleFormSubmit} className="profile-form">
-              <div className="form-group">
-                <label>Unique Username (e.g. alex99, lokesh_cook)</label>
-                <input 
-                  type="text"
-                  required
-                  placeholder="Enter unique username"
-                  value={usernameInput}
-                  onChange={(e) => setUsernameInput(e.target.value)}
-                  className="form-input"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Passkey / PIN</label>
-                <input 
-                  type="password"
-                  required
-                  placeholder="e.g. 1234"
-                  value={passkeyInput}
-                  onChange={(e) => setPasskeyInput(e.target.value)}
-                  className="form-input"
-                />
-              </div>
-
-              <div className="form-actions">
-                {currentUser && (
+            {currentUser ? (
+              <div className="auth-account-summary">
+                <p>You’re signed in as</p>
+                <strong>{currentUser.username}</strong>
+                <div className="form-actions">
                   <button type="button" onClick={logoutUser} className="btn-secondary">
                     Sign out
                   </button>
-                )}
-                <button 
-                  type="button" 
-                  onClick={() => setIsOpen(false)} 
-                  className="btn-secondary"
-                >
-                  Cancel
-                </button>
-                <button type="submit" className="btn-primary" disabled={loading}>
-                  {loading ? 'Authenticating...' : 'Access My Inventory'}
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsOpen(false)}
+                    className="btn-primary"
+                  >
+                    Done
+                  </button>
+                </div>
               </div>
-            </form>
+            ) : (
+              <>
+                <p style={{ fontSize: '0.85rem', color: '#cbd5e1', marginBottom: '16px' }}>
+                  Sign in or create an account to access your private inventory.
+                </p>
+
+                {errorMsg && (
+                  <div className="auth-error-banner">
+                    ⚠️ {errorMsg}
+                  </div>
+                )}
+
+                <form onSubmit={handleFormSubmit} className="profile-form">
+                  <div className="form-group">
+                    <label>Unique Username (e.g. alex99, lokesh_cook)</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Enter unique username"
+                      value={usernameInput}
+                      onChange={(e) => setUsernameInput(e.target.value)}
+                      className="form-input"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>Passkey / PIN</label>
+                    <input
+                      type="password"
+                      required
+                      placeholder="e.g. 1234"
+                      value={passkeyInput}
+                      onChange={(e) => setPasskeyInput(e.target.value)}
+                      className="form-input"
+                    />
+                  </div>
+
+                  <div className="form-actions">
+                    <button
+                      type="button"
+                      onClick={() => setIsOpen(false)}
+                      className="btn-secondary"
+                    >
+                      Cancel
+                    </button>
+                    <button type="submit" className="btn-primary" disabled={loading}>
+                      {loading ? 'Authenticating...' : 'Access My Inventory'}
+                    </button>
+                  </div>
+                </form>
+              </>
+            )}
           </div>
         </div>,
         document.body,
