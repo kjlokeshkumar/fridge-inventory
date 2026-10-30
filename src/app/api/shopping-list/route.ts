@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { toTamilTransliteration } from '@/lib/translations';
+import { toTamilItemName } from '@/lib/translations';
 import { getAuthenticatedUser, isAuthConfigurationError } from '@/lib/session';
 
 export async function GET(req: NextRequest) {
@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
     if (lang === 'Tamil' && items.length > 0) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       items.forEach((i: any) => {
-        i.name = toTamilTransliteration(i.name);
+        i.name = toTamilItemName(i.name);
       });
     }
 

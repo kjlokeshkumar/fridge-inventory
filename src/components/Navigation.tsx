@@ -6,16 +6,18 @@ import { useState, useEffect } from 'react';
 
 import ProfileSelector from './ProfileSelector';
 import UserAuthModal from './UserAuthModal';
+import { UI_TRANSLATIONS } from '@/lib/translations';
 
 const LANGUAGES = [
   { code: 'English', label: 'English' },
-  { code: 'Tamil', label: 'Tamil (தமிழ் / Transliteration)' }
+  { code: 'Tamil', label: 'Tamil (தமிழ்)' }
 ];
 
 export default function Navigation() {
   const pathname = usePathname();
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const t = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS.English;
 
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
@@ -84,17 +86,17 @@ export default function Navigation() {
             </div>
 
             <div className="nav-links">
-              <Link href="/recipes" className={`nav-link ${isActive('/recipes') ? 'active' : ''}`}>Recipes</Link>
+              <Link href="/recipes" className={`nav-link ${isActive('/recipes') ? 'active' : ''}`}>{t.navRecipes}</Link>
               {isAuthenticated && (
                 <>
-                  <Link href="/inventory" className={`nav-link ${isActive('/inventory') ? 'active' : ''}`}>Inventory</Link>
-                  <Link href="/shopping-list" className={`nav-link ${isActive('/shopping-list') ? 'active' : ''}`}>Shopping</Link>
+                  <Link href="/inventory" className={`nav-link ${isActive('/inventory') ? 'active' : ''}`}>{t.navInventory}</Link>
+                  <Link href="/shopping-list" className={`nav-link ${isActive('/shopping-list') ? 'active' : ''}`}>{t.navShopping}</Link>
                   <Link href="/upload" className="nav-link btn-primary nav-upload">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
                       <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
                       <circle cx="12" cy="13" r="4"/>
                     </svg>
-                    Scan
+                    {t.navScan}
                   </Link>
                 </>
               )}
@@ -108,13 +110,13 @@ export default function Navigation() {
           <>
             <Link href="/" className={`bottom-nav-item ${isActive('/') ? 'active' : ''}`}>
               <span className="bottom-nav-icon">🏠</span>
-              <span className="bottom-nav-label">Home</span>
+              <span className="bottom-nav-label">{t.navHome}</span>
             </Link>
             <Link href="/inventory" className={`bottom-nav-item ${isActive('/inventory') ? 'active' : ''}`}>
               <span className="bottom-nav-icon">🫙</span>
-              <span className="bottom-nav-label">Inventory</span>
+              <span className="bottom-nav-label">{t.navInventory}</span>
             </Link>
-            <Link href="/upload" className="bottom-nav-item scan-btn" title="Scan fridge">
+            <Link href="/upload" className="bottom-nav-item scan-btn" title={t.homeScanTitle}>
               <div className="scan-icon-container">
                 <span className="bottom-nav-icon">📷</span>
               </div>
@@ -123,12 +125,12 @@ export default function Navigation() {
         )}
         <Link href="/recipes" className={`bottom-nav-item ${isActive('/recipes') ? 'active' : ''}`}>
           <span className="bottom-nav-icon">🍳</span>
-          <span className="bottom-nav-label">Recipes</span>
+          <span className="bottom-nav-label">{t.navRecipes}</span>
         </Link>
         {isAuthenticated && (
           <Link href="/shopping-list" className={`bottom-nav-item ${isActive('/shopping-list') ? 'active' : ''}`}>
             <span className="bottom-nav-icon">🛒</span>
-            <span className="bottom-nav-label">Shopping</span>
+            <span className="bottom-nav-label">{t.navShopping}</span>
           </Link>
         )}
       </nav>

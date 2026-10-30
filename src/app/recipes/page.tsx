@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState, useMemo } from 'react';
+import Link from 'next/link';
 import './recipes.css';
-import { UI_TRANSLATIONS } from '@/lib/translations';
+import { toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
+import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
+import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
 
 interface IngredientCalories {
   name: string;
@@ -776,11 +779,15 @@ export default function RecipesPage() {
         const parsed = JSON.parse(savedPlan);
         if (Array.isArray(parsed) && parsed.length === 7 && parsed[0]?.breakfast?.mainDishTitle) {
           setWeeklyPlan(parsed);
+          saveCurrentWeeklyPlan(parsed);
           setIsWeekPinned(true);
         }
       } catch {
         // Ignore corrupt localStorage
       }
+    } else {
+      const currentPlan = readCurrentWeeklyPlan();
+      if (currentPlan.length > 0) setWeeklyPlan(currentPlan as DayMealPlan[]);
     }
 
     const handleLang = (e: Event) => {
@@ -816,7 +823,9 @@ export default function RecipesPage() {
   const generateOrUpdateWeeklyPlan = (
     catalog: Recipe[],
     seedVal: number,
-    existingPlan: DayMealPlan[] = []
+    existingPlan: DayMealPlan[] = [],
+    preserveWholeWeekPin = isWeekPinned,
+    persistPinnedPlan = isWeekPinned
   ) => {
     if (!catalog || catalog.length === 0) return;
     const { breakfastCombos, lunchCombos, dinnerCombos } = buildAuthenticSourashtraCombos(catalog);
@@ -875,17 +884,17 @@ export default function RecipesPage() {
       const prevDay = existingPlan[idx];
 
       const bf =
-        prevDay?.pinnedSlots?.breakfast && prevDay.breakfast?.mainDishTitle
+        (preserveWholeWeekPin || prevDay?.pinnedSlots?.breakfast) && prevDay?.breakfast?.mainDishTitle
           ? prevDay.breakfast
           : pickUniqueCombo(shuffledBreakfast, idx);
 
       const ln =
-        prevDay?.pinnedSlots?.lunch && prevDay.lunch?.mainDishTitle
+        (preserveWholeWeekPin || prevDay?.pinnedSlots?.lunch) && prevDay?.lunch?.mainDishTitle
           ? prevDay.lunch
           : pickUniqueCombo(shuffledLunch, idx);
 
       const dn =
-        prevDay?.pinnedSlots?.dinner && prevDay.dinner?.mainDishTitle
+        (preserveWholeWeekPin || prevDay?.pinnedSlots?.dinner) && prevDay?.dinner?.mainDishTitle
           ? prevDay.dinner
           : pickUniqueCombo(shuffledDinner, idx);
 
@@ -906,7 +915,8 @@ export default function RecipesPage() {
     });
 
     setWeeklyPlan(newPlan);
-    if (isWeekPinned) {
+    saveCurrentWeeklyPlan(newPlan);
+    if (persistPinnedPlan) {
       localStorage.setItem('pinnedSourashtraWeeklyCombosV3', JSON.stringify(newPlan));
     }
   };
@@ -914,7 +924,8 @@ export default function RecipesPage() {
   const fetchRecipes = async (
     customItems: string[] = selectedFridgeItems,
     seed = shuffleSeed,
-    forceResamplePlanner = false
+    forceResamplePlanner = false,
+    preserveWholeWeekPin = isWeekPinned
   ) => {
     if (recipes.length === 0) {
       setLoading(true);
@@ -944,9 +955,16 @@ export default function RecipesPage() {
       setIsUsingSampleBasket(usingSample);
 
       const savedPlan = localStorage.getItem('pinnedSourashtraWeeklyCombosV3');
-      if (loadedRecipes.length > 0 && (forceResamplePlanner || !savedPlan)) {
+      const currentPlan = readCurrentWeeklyPlan();
+      if (loadedRecipes.length > 0 && (forceResamplePlanner || (!savedPlan && currentPlan.length === 0))) {
         const activeSeed = forceResamplePlanner ? seed : plannerSeed;
-        generateOrUpdateWeeklyPlan(loadedRecipes, activeSeed, weeklyPlan);
+        generateOrUpdateWeeklyPlan(
+          loadedRecipes,
+          activeSeed,
+          weeklyPlan,
+          preserveWholeWeekPin,
+          preserveWholeWeekPin
+        );
       }
     } catch (e: unknown) {
       const err = e as Error;
@@ -965,21 +983,45 @@ export default function RecipesPage() {
   };
 
   const handleRegenerate = () => {
+    if (
+      isWeekPinned &&
+      !window.confirm(t.pinnedPlanConfirmRegenerate)
+    ) {
+      return;
+    }
+
+    if (isWeekPinned) {
+      localStorage.removeItem('pinnedSourashtraWeeklyCombosV3');
+      setIsWeekPinned(false);
+    }
+
     const nextSeed = Math.max(shuffleSeed, plannerSeed) + 1;
     setShuffleSeed(nextSeed);
     setPlannerSeed(nextSeed);
     if (recipes.length > 0) {
-      generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan);
+      generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan, false, false);
     }
-    fetchRecipes(selectedFridgeItems, nextSeed, true);
+    fetchRecipes(selectedFridgeItems, nextSeed, true, false);
   };
 
   // Weekly Planner Controls
   const handleResampleWeek = () => {
+    if (
+      isWeekPinned &&
+      !window.confirm(t.pinnedPlanConfirmResample)
+    ) {
+      return;
+    }
+
+    if (isWeekPinned) {
+      localStorage.removeItem('pinnedSourashtraWeeklyCombosV3');
+      setIsWeekPinned(false);
+    }
+
     const nextSeed = Math.max(plannerSeed, shuffleSeed) + 1;
     setPlannerSeed(nextSeed);
     setShuffleSeed(nextSeed);
-    generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan);
+    generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan, false, false);
   };
 
   const toggleSlotPin = (dayIdx: number, slot: 'breakfast' | 'lunch' | 'dinner') => {
@@ -994,6 +1036,7 @@ export default function RecipesPage() {
       };
     });
     setWeeklyPlan(updated);
+    saveCurrentWeeklyPlan(updated);
     if (isWeekPinned) {
       localStorage.setItem('pinnedSourashtraWeeklyCombosV3', JSON.stringify(updated));
     }
@@ -1019,6 +1062,7 @@ export default function RecipesPage() {
       };
     });
     setWeeklyPlan(updated);
+    saveCurrentWeeklyPlan(updated);
     if (isWeekPinned) {
       localStorage.setItem('pinnedSourashtraWeeklyCombosV3', JSON.stringify(updated));
     }
@@ -1030,6 +1074,7 @@ export default function RecipesPage() {
       setIsWeekPinned(false);
     } else {
       localStorage.setItem('pinnedSourashtraWeeklyCombosV3', JSON.stringify(weeklyPlan));
+      saveCurrentWeeklyPlan(weeklyPlan);
       setIsWeekPinned(true);
     }
   };
@@ -1042,66 +1087,7 @@ export default function RecipesPage() {
         : isUsingSampleBasket
         ? []
         : currentFridgeInventory;
-
-    const normalizedAvailable = activeFridge.map((s) => s.toLowerCase());
-    const neededMap = new Map<string, Set<string>>();
-    const availableUsedSet = new Set<string>();
-    const pantryNeededSet = new Set<string>();
-
-    for (const day of weeklyPlan) {
-      const dayShort = day.dayName.replace('Today (', '').replace(')', '').slice(0, 3);
-      const combos = [day.breakfast, day.lunch, day.dinner].filter(Boolean);
-
-      for (const combo of combos) {
-        const recipesInCombo = [combo.primaryRecipe, combo.secondaryRecipe].filter(Boolean) as Recipe[];
-
-        for (const meal of recipesInCombo) {
-          const allFreshForMeal = [
-            ...(meal.fridgeIngredientsUsed || []),
-            ...(meal.missingIngredients || [])
-          ];
-
-          for (const rawIng of allFreshForMeal) {
-            const cleanName = safeString(rawIng).split(' - ')[0].replace('(Fresh from Fridge)', '').trim();
-            if (!cleanName) continue;
-            const cleanLow = cleanName.toLowerCase();
-
-            const inFridge = normalizedAvailable.some(
-              (avail) =>
-                avail.includes(cleanLow) ||
-                cleanLow.includes(avail.split(' (')[0].toLowerCase())
-            );
-
-            if (inFridge) {
-              availableUsedSet.add(cleanName);
-            } else {
-              if (!neededMap.has(cleanName)) {
-                neededMap.set(cleanName, new Set());
-              }
-              neededMap.get(cleanName)!.add(dayShort);
-            }
-          }
-
-          for (const pAdd of meal.pantryAdditives || []) {
-            const s = safeString(pAdd);
-            if (!s.startsWith('Channel Ingredient Note:')) {
-              pantryNeededSet.add(s.split(' (')[0].trim());
-            }
-          }
-        }
-      }
-    }
-
-    const toPurchase = Array.from(neededMap.entries()).map(([item, daysSet]) => ({
-      item,
-      days: Array.from(daysSet).join(', ')
-    }));
-
-    return {
-      toPurchase,
-      alreadyInFridge: Array.from(availableUsedSet),
-      pantryChecklist: Array.from(pantryNeededSet).slice(0, 14)
-    };
+    return calculateWeeklyShopping(weeklyPlan, activeFridge);
   }, [weeklyPlan, selectedFridgeItems, isUsingSampleBasket, currentFridgeInventory]);
 
   const buildGoogleCalendarDayUrl = (day: DayMealPlan) => {
@@ -1216,10 +1202,10 @@ export default function RecipesPage() {
       <header className="dashboard-header flex-header">
         <div>
           <h1 className="page-title">
-            🍲 Sourashtra Recipes ({recipes.length > 0 ? `${recipes.length} Dishes` : t.recipesTitle})
+            🍲 {t.recipesTitle} ({recipes.length > 0 ? `${recipes.length} ${t.dishCountLabel}` : t.recipesTitle})
           </h1>
           <p className="page-subtitle">
-            Explore a weekly meal plan, a smart shopping list, or the Sourashtra recipe collection.
+            {t.recipesPageSubtitle}
           </p>
         </div>
       </header>
@@ -1232,7 +1218,7 @@ export default function RecipesPage() {
           className={`recipe-view-tab ${activeRecipesTab === 'planner' ? 'active' : ''}`}
           onClick={() => setActiveRecipesTab('planner')}
         >
-          📅 7-Day Plan
+          📅 {t.plannerTab}
         </button>
         <button
           type="button"
@@ -1241,7 +1227,7 @@ export default function RecipesPage() {
           className={`recipe-view-tab ${activeRecipesTab === 'shopping' ? 'active' : ''}`}
           onClick={() => setActiveRecipesTab('shopping')}
         >
-          🛒 Shopping List
+          🛒 {t.shoppingTab}
         </button>
         <button
           type="button"
@@ -1250,7 +1236,7 @@ export default function RecipesPage() {
           className={`recipe-view-tab ${activeRecipesTab === 'recipes' ? 'active' : ''}`}
           onClick={() => setActiveRecipesTab('recipes')}
         >
-          🍲 Recipes
+          🍲 {t.recipesTab}
         </button>
       </div>
 
@@ -1348,7 +1334,7 @@ export default function RecipesPage() {
             {Array.isArray(modalRecipe.fridgeIngredientsUsed) &&
               modalRecipe.fridgeIngredientsUsed.length > 0 && (
                 <div className="recipe-section">
-                  <h4>🧊 Main Fridge Ingredients (Veggies / Meat / Dairy):</h4>
+                  <h4>🧊 {t.mainFridgeIngredients}</h4>
                   <div className="ingredient-badges">
                     {modalRecipe.fridgeIngredientsUsed.map((ing, i) => (
                       <span key={i} className="badge-fridge">{safeString(ing)}</span>
@@ -1361,7 +1347,7 @@ export default function RecipesPage() {
             {Array.isArray(modalRecipe.pantryAdditives) &&
               modalRecipe.pantryAdditives.length > 0 && (
                 <div className="recipe-section">
-                  <h4>🫙 Pantry &amp; Spice Additives (Dals, Tamarind, Bhurko, Salt &amp; Oil):</h4>
+                  <h4>🫙 {t.pantryAdditives}</h4>
                   <div className="ingredient-badges">
                     {modalRecipe.pantryAdditives.map((add, i) => (
                       <span key={i} className="badge-pantry">{safeString(add)}</span>
@@ -1446,14 +1432,12 @@ export default function RecipesPage() {
           <div className="planner-top-bar">
             <div>
               <h2>
-                📅 7-Day Sourashtra Weekly Meal Planner{' '}
+                📅 {t.plannerTitle}{' '}
                 <span style={{ color: '#10b981', fontSize: '0.88em' }}>
-                  (Sample Set #{plannerSeed + 1} • Complete Paired Combinations)
+                  ({t.sampleSet} #{plannerSeed + 1} • {t.completePairs})
                 </span>
               </h2>
-              <p className="selector-sub">
-                Click <strong>any Main Dish or Paired Side Dish</strong> below to open its full step-by-step recipe, ingredients, and video, then close it to return right back here!
-              </p>
+              <p className="selector-sub">{t.chooseRecipePrompt}</p>
             </div>
             <div className="planner-actions">
               <button
@@ -1461,14 +1445,14 @@ export default function RecipesPage() {
                 className={`btn-pin-plan ${isWeekPinned ? 'pinned' : ''}`}
                 onClick={togglePinEntireWeek}
               >
-                {isWeekPinned ? '📌 Week Plan Pinned (Saved)' : '📌 Pin & Save This Week'}
+                {isWeekPinned ? t.planPinned : t.pinAndSavePlan}
               </button>
               <button
                 type="button"
                 className="btn-gold"
                 onClick={handleResampleWeek}
               >
-                🎲 Resample Unpinned Combos (Set #{plannerSeed + 1})
+                {t.resamplePlan} (#{plannerSeed + 1})
               </button>
               <button
                 type="button"
@@ -1482,14 +1466,14 @@ export default function RecipesPage() {
                 className="btn-secondary btn-sm"
                 onClick={() => window.print()}
               >
-                🖨️ Print 7-Day Menu &amp; List
+                {t.printPlan}
               </button>
               <button
                 type="button"
                 className="btn-secondary btn-sm"
                 onClick={handleDownloadIcsCalendar}
               >
-                📆 Export 7-Day Calendar (.ics)
+                {t.exportCalendar}
               </button>
             </div>
           </div>
@@ -1504,7 +1488,7 @@ export default function RecipesPage() {
                 className={`planner-day-tab ${selectedDayIndex === index ? 'active' : ''}`}
                 onClick={() => setSelectedDayIndex(index)}
               >
-                <span>{day.dayName.split(' ')[0]}</span>
+                <span>{language === 'Tamil' ? toTamilDayName(day.dayName.split(' ')[0]) : day.dayName.split(' ')[0]}</span>
                 <small>{day.dateLabel.split(',')[0]}</small>
               </button>
             ))}
@@ -1518,7 +1502,7 @@ export default function RecipesPage() {
               <div key={day.isoDate} className="day-plan-card">
                 <div className="day-card-header">
                   <div className="day-title-group">
-                    <h4>{day.dayName}</h4>
+                    <h4>{language === 'Tamil' ? toTamilDayName(day.dayName) : day.dayName}</h4>
                     <span className="day-date-sub">{day.dateLabel}</span>
                   </div>
                   <a
@@ -1526,9 +1510,9 @@ export default function RecipesPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="gcal-day-link"
-                    title={`Add ${day.dayName} menu to Google Calendar`}
+                    title={`${t.googleCalendar} ${day.dayName}`}
                   >
-                    📆 + Google Cal
+                    📆 {t.googleCalendar}
                   </a>
                 </div>
 
@@ -1538,10 +1522,10 @@ export default function RecipesPage() {
                   const isSlotPinned = day.pinnedSlots[slotKey];
                   const slotIcon =
                     slotKey === 'breakfast'
-                      ? '🌅 Breakfast Combo'
+                      ? `🌅 ${t.breakfast}`
                       : slotKey === 'lunch'
-                      ? '☀️ Full Lunch Meal'
-                      : '🌙 Dinner / Tiffin Combo';
+                      ? `☀️ ${t.lunch}`
+                      : `🌙 ${t.dinner}`;
 
                   return (
                     <div
@@ -1555,9 +1539,9 @@ export default function RecipesPage() {
                             type="button"
                             className={`slot-mini-btn ${isSlotPinned ? 'active' : ''}`}
                             onClick={() => toggleSlotPin(dIdx, slotKey)}
-                            title={isSlotPinned ? 'Unpin this meal combo' : 'Pin this meal combo so it stays when resampling'}
+                            title={isSlotPinned ? t.unpinMeal : t.pinMeal}
                           >
-                            {isSlotPinned ? '📌 Pinned' : '📌 Pin'}
+                            {isSlotPinned ? `📌 ${t.pinnedTag}` : `📌 ${t.pinTag}`}
                           </button>
                           <button
                             type="button"
@@ -1565,7 +1549,7 @@ export default function RecipesPage() {
                             onClick={() => swapSingleSlot(dIdx, slotKey)}
                             title="Swap with another authentic Sourashtra combination"
                           >
-                            🔄 Swap
+                            🔄 {t.swapMeal}
                           </button>
                         </div>
                       </div>
@@ -1585,7 +1569,7 @@ export default function RecipesPage() {
                         title="Click to view full recipe & returns to 7-Day Planner on close"
                       >
                         <span>🍽️ {safeString(combo?.mainDishTitle)}</span>
-                        <span className="view-recipe-pill">📖 Recipe →</span>
+                        <span className="view-recipe-pill">📖 {t.recipeLink} →</span>
                       </button>
 
                       {/* Clickable Paired Side Dish Hyperlink -> Opens Full Recipe Modal on 'paired' tab */}
@@ -1603,10 +1587,10 @@ export default function RecipesPage() {
                         title="Click to view paired side/curry recipe & returns to 7-Day Planner on close"
                       >
                         <span>
-                          <strong className="combo-side-label">+ Paired With:</strong>
+                          <strong className="combo-side-label">+ {t.pairedWith}</strong>
                           {safeString(combo?.pairedWithTitle)}
                         </span>
-                        <span className="view-recipe-pill">📖 Recipe →</span>
+                        <span className="view-recipe-pill">📖 {t.recipeLink} →</span>
                       </button>
 
                       {/* Traditional Pairing Note */}
@@ -1666,58 +1650,12 @@ export default function RecipesPage() {
       )}
 
       {activeRecipesTab === 'shopping' && (
-        <section className="weekly-shopping-box shopping-view-panel">
-          <h3>🛒 Smart Weekly Shopping List</h3>
-          <p className="selector-sub shopping-view-subtitle">
-            Items needed for your full 7-day plan, compared with your current fridge selection.
-          </p>
-          <div className="shopping-columns">
-            <div className="shopping-col-card">
-              <h4 style={{ color: '#fca5a5' }}>
-                🛍️ Fresh items to purchase ({weeklyShoppingAnalysis.toPurchase.length})
-              </h4>
-              {weeklyShoppingAnalysis.toPurchase.length === 0 ? (
-                <p className="text-success">
-                  🎉 Your fridge already has all the fresh items needed for this 7-day plan!
-                </p>
-              ) : (
-                <ul className="purchase-needed-list">
-                  {weeklyShoppingAnalysis.toPurchase.map((item, index) => (
-                    <li key={index} className="purchase-needed-item">
-                      <span>{item.item}</span>
-                      <span className="purchase-days-tag">For: {item.days}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-
-            <div className="shopping-col-card">
-              <h4 style={{ color: '#6ee7b7' }}>
-                ✅ Already in your fridge ({weeklyShoppingAnalysis.alreadyInFridge.length})
-              </h4>
-              {weeklyShoppingAnalysis.alreadyInFridge.length === 0 ? (
-                <p className="selector-sub">
-                  Use the Recipes tab to select what you already have and update this list.
-                </p>
-              ) : (
-                <div className="ingredient-badges">
-                  {weeklyShoppingAnalysis.alreadyInFridge.map((item, index) => (
-                    <span key={index} className="badge-fridge">✓ {item}</span>
-                  ))}
-                </div>
-              )}
-
-              <h4 style={{ color: '#fde68a', marginTop: '16px' }}>
-                🫙 Pantry &amp; Bhurko staples
-              </h4>
-              <div className="ingredient-badges">
-                {weeklyShoppingAnalysis.pantryChecklist.map((item, index) => (
-                  <span key={index} className="badge-pantry">{item}</span>
-                ))}
-              </div>
-            </div>
-          </div>
+        <section className="weekly-shopping-box shopping-view-panel glass-pane">
+          <h3>🛒 {t.weeklyShoppingList}</h3>
+          <p className="selector-sub shopping-view-subtitle">{t.fullShoppingListDescription}</p>
+          <Link href="/shopping-list" className="btn-primary">
+            {t.openFullShoppingList}
+          </Link>
         </section>
       )}
 
@@ -1739,9 +1677,9 @@ export default function RecipesPage() {
       <section className="fridge-selector-panel glass-pane mb-24">
         <div className="selector-header">
           <div>
-            <h3>🧊 What&apos;s in Your Fridge Right Now? (Veggies, Greens, Dairy &amp; Meat)</h3>
+            <h3>🧊 {t.fridgeNow}</h3>
             <p className="selector-sub">
-                Select the fresh items you have to rank recipes and update the smart shopping list.
+                {t.fridgeSelectionIntro}
             </p>
           </div>
           {selectedFridgeItems.length > 0 && (
@@ -1772,7 +1710,7 @@ export default function RecipesPage() {
                 onClick={() => toggleFridgeItem(item)}
               >
                 {active ? '✓ ' : '+ '}
-                {item}
+                {language === 'Tamil' ? toTamilItemName(item) : item}
               </button>
             );
           })}
@@ -1791,7 +1729,9 @@ export default function RecipesPage() {
           <input
             type="text"
             className="recipe-search-input"
-            placeholder="🔍 Search 320+ Sourashtra recipes (e.g. Ounty, Budith, Pilchar, Ambat, Pongal, Bhairi, Chaino, Rani's, Sugi)..."
+            placeholder={language === 'Tamil'
+              ? t.searchRecipesPlaceholder
+              : "🔍 Search 320+ Sourashtra recipes (e.g. Ounty, Budith, Pilchar, Ambat, Pongal, Bhairi, Chaino, Rani's, Sugi)..."}
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -1885,8 +1825,8 @@ export default function RecipesPage() {
       ) : displayedRecipes.length === 0 && !error ? (
         <div className="empty-state glass-pane">
           <div className="card-icon">🍳</div>
-          <h2>No matching Sourashtra recipes found</h2>
-          <p>Try clearing your search filter or selecting different category tabs above.</p>
+          <h2>{t.noMatchingRecipes}</h2>
+          <p>{t.noMatchingRecipesHint}</p>
         </div>
       ) : (
         <>
@@ -1936,7 +1876,7 @@ export default function RecipesPage() {
                 {/* 1. Main Fridge Ingredients Used */}
                 {Array.isArray(recipe.fridgeIngredientsUsed) && recipe.fridgeIngredientsUsed.length > 0 && (
                   <div className="recipe-section">
-                    <h4>🧊 Main Fridge Ingredients (Veggies / Meat / Dairy):</h4>
+                    <h4>🧊 {t.mainFridgeIngredients}</h4>
                     <div className="ingredient-badges">
                       {recipe.fridgeIngredientsUsed.map((ing, i) => (
                         <span key={i} className="badge-fridge">{safeString(ing)}</span>
@@ -1948,7 +1888,7 @@ export default function RecipesPage() {
                 {/* 2. Pantry Additives (Non-Fridge Items like Toor Dal, Tamarind, Bhurko, Salt, Oil) */}
                 {Array.isArray(recipe.pantryAdditives) && recipe.pantryAdditives.length > 0 && (
                   <div className="recipe-section">
-                    <h4>🫙 Pantry &amp; Spice Additives (Dals, Tamarind, Bhurko, Salt &amp; Oil):</h4>
+                    <h4>🫙 {t.pantryAdditives}</h4>
                     <div className="ingredient-badges">
                       {recipe.pantryAdditives.map((add, i) => (
                         <span key={i} className="badge-pantry">{safeString(add)}</span>

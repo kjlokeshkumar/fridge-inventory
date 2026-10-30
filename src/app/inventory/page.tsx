@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import './inventory.css';
-import { UI_TRANSLATIONS } from '@/lib/translations';
+import { toTamilCategory, UI_TRANSLATIONS } from '@/lib/translations';
 import { isInventoryItemExpired, isInventoryItemExpiringSoon } from '@/lib/inventory-dates';
 
 interface InventoryItem {
@@ -110,11 +110,11 @@ export default function InventoryPage() {
               className={`inventory-item glass-pane ${isInventoryItemExpired(item.expirationDate) ? 'expired' : ''} ${isInventoryItemExpiringSoon(item.expirationDate) ? 'expiring-soon' : ''}`}
             >
               <div className="item-header">
-                <span className="item-category">{item.category}</span>
+                <span className="item-category">{language === 'Tamil' ? toTamilCategory(item.category) : item.category}</span>
                 <button 
                   className="delete-btn" 
                   onClick={() => handleDelete(item.id)}
-                  title="Remove from inventory"
+                  title={t.removeFromInventory}
                 >
                   ✕
                 </button>
