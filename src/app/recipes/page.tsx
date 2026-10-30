@@ -754,7 +754,8 @@ export default function RecipesPage() {
   const [visibleCount, setVisibleCount] = useState(60);
   const [isUsingSampleBasket, setIsUsingSampleBasket] = useState(false);
   const [showBhurkoModal, setShowBhurkoModal] = useState(false);
-  const [showWeeklyPlanner, setShowWeeklyPlanner] = useState(true);
+  const [activeRecipesTab, setActiveRecipesTab] = useState<'planner' | 'shopping' | 'recipes'>('planner');
+  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
   const [weeklyPlan, setWeeklyPlan] = useState<DayMealPlan[]>([]);
   const [activePlannerModal, setActivePlannerModal] = useState<ActivePlannerModalState | null>(null);
   const [isWeekPinned, setIsWeekPinned] = useState(false);
@@ -1218,27 +1219,40 @@ export default function RecipesPage() {
             🍲 Sourashtra Recipes ({recipes.length > 0 ? `${recipes.length} Dishes` : t.recipesTitle})
           </h1>
           <p className="page-subtitle">
-            Formulated from your fridge veggies &amp; meats + traditional Sourashtra pantry additives (Bela, Tamarind &amp; Bhurko) with direct YouTube &amp; Web links
+            Explore a weekly meal plan, a smart shopping list, or the Sourashtra recipe collection.
           </p>
         </div>
-        <div className="header-actions">
-          <button
-            className="btn-gold"
-            onClick={() => setShowWeeklyPlanner(!showWeeklyPlanner)}
-          >
-            📅 {showWeeklyPlanner ? 'Hide 7-Day Meal Planner' : '7-Day Weekly Meal Planner'}
-          </button>
-          <button
-            className="btn-secondary"
-            onClick={() => setShowBhurkoModal(!showBhurkoModal)}
-          >
-            🥣 {showBhurkoModal ? 'Hide Bhurko Guide' : 'Sourashtra Bhurko Spice Guide'}
-          </button>
-          <button className="btn-primary" onClick={handleRegenerate}>
-            {t.regenerate} {plannerSeed > 0 ? `(Set #${plannerSeed + 1})` : ''}
-          </button>
-        </div>
       </header>
+
+      <div className="recipe-view-tabs" role="tablist" aria-label="Recipe sections">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeRecipesTab === 'planner'}
+          className={`recipe-view-tab ${activeRecipesTab === 'planner' ? 'active' : ''}`}
+          onClick={() => setActiveRecipesTab('planner')}
+        >
+          📅 7-Day Plan
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeRecipesTab === 'shopping'}
+          className={`recipe-view-tab ${activeRecipesTab === 'shopping' ? 'active' : ''}`}
+          onClick={() => setActiveRecipesTab('shopping')}
+        >
+          🛒 Shopping List
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeRecipesTab === 'recipes'}
+          className={`recipe-view-tab ${activeRecipesTab === 'recipes' ? 'active' : ''}`}
+          onClick={() => setActiveRecipesTab('recipes')}
+        >
+          🍲 Recipes
+        </button>
+      </div>
 
       {/* =====================================================================
           RECIPE VIEWER MODAL (OPENS WHEN ANY DISH IN THE 7-DAY PLANNER IS CLICKED,
@@ -1427,7 +1441,7 @@ export default function RecipesPage() {
       {/* =====================================================================
           7-DAY Sourashtra WEEKLY MEAL PLANNER (COMPLETE PAIRED MEALS)
           ===================================================================== */}
-      {showWeeklyPlanner && weeklyPlan.length > 0 && (
+      {activeRecipesTab === 'planner' && weeklyPlan.length > 0 && (
         <section className="weekly-planner-panel glass-pane mb-24">
           <div className="planner-top-bar">
             <div>
@@ -1458,6 +1472,13 @@ export default function RecipesPage() {
               </button>
               <button
                 type="button"
+                className="btn-primary"
+                onClick={handleRegenerate}
+              >
+                {t.regenerate}
+              </button>
+              <button
+                type="button"
                 className="btn-secondary btn-sm"
                 onClick={() => window.print()}
               >
@@ -1473,9 +1494,27 @@ export default function RecipesPage() {
             </div>
           </div>
 
-          {/* 7-Day Cards Grid */}
+          <div className="planner-day-tabs" role="tablist" aria-label="Choose a day">
+            {weeklyPlan.map((day, index) => (
+              <button
+                key={day.isoDate}
+                type="button"
+                role="tab"
+                aria-selected={selectedDayIndex === index}
+                className={`planner-day-tab ${selectedDayIndex === index ? 'active' : ''}`}
+                onClick={() => setSelectedDayIndex(index)}
+              >
+                <span>{day.dayName.split(' ')[0]}</span>
+                <small>{day.dateLabel.split(',')[0]}</small>
+              </button>
+            ))}
+          </div>
+
+          {/* Show only the selected day's meals to keep the planner compact. */}
           <div className="weekly-days-grid">
-            {weeklyPlan.map((day, dIdx) => (
+            {weeklyPlan[selectedDayIndex] && [weeklyPlan[selectedDayIndex]].map((day) => {
+              const dIdx = selectedDayIndex;
+              return (
               <div key={day.isoDate} className="day-plan-card">
                 <div className="day-card-header">
                   <div className="day-title-group">
@@ -1613,72 +1652,96 @@ export default function RecipesPage() {
                   );
                 })}
               </div>
-            ))}
+              );
+            })}
           </div>
+        </section>
+      )}
 
-          {/* Smart Weekly Shopping Suggestions Based on Current Fridge Inventory */}
-          <div className="weekly-shopping-box">
-            <h3>🛒 Smart Weekly Shopping List (Based on Your Current Fridge Inventory)</h3>
-            <div className="shopping-columns">
-              {/* Column 1: Fresh Items Needed to Purchase */}
-              <div className="shopping-col-card">
-                <h4 style={{ color: '#fca5a5' }}>
-                  🛍️ Fresh Veggies, Dairy &amp; Meat to Purchase ({weeklyShoppingAnalysis.toPurchase.length})
-                </h4>
-                {weeklyShoppingAnalysis.toPurchase.length === 0 ? (
-                  <p className="text-success">
-                    🎉 Your fridge already has all the fresh items needed for this 7-day plan!
-                  </p>
-                ) : (
-                  <ul className="purchase-needed-list">
-                    {weeklyShoppingAnalysis.toPurchase.map((p, i) => (
-                      <li key={i} className="purchase-needed-item">
-                        <span>{p.item}</span>
-                        <span className="purchase-days-tag">For: {p.days}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+      {activeRecipesTab === 'planner' && weeklyPlan.length === 0 && (
+        <div className="recipes-loading glass-pane">
+          <div className="spinner" style={{ width: '40px', height: '40px' }}></div>
+          <p>{t.loadingRecipes}</p>
+        </div>
+      )}
 
-              {/* Column 2: Already Available in Fridge */}
-              <div className="shopping-col-card">
-                <h4 style={{ color: '#6ee7b7' }}>
-                  ✅ Already in Your Fridge ({weeklyShoppingAnalysis.alreadyInFridge.length})
-                </h4>
-                {weeklyShoppingAnalysis.alreadyInFridge.length === 0 ? (
-                  <p className="selector-sub">
-                    Tap the items you currently have in the <strong>&ldquo;What&apos;s in Your Fridge Right Now?&rdquo;</strong> panel below (or scan your fridge) to automatically cross them off this shopping list!
-                  </p>
-                ) : (
-                  <div className="ingredient-badges">
-                    {weeklyShoppingAnalysis.alreadyInFridge.map((ing, i) => (
-                      <span key={i} className="badge-fridge">✓ {ing}</span>
-                    ))}
-                  </div>
-                )}
+      {activeRecipesTab === 'shopping' && (
+        <section className="weekly-shopping-box shopping-view-panel">
+          <h3>🛒 Smart Weekly Shopping List</h3>
+          <p className="selector-sub shopping-view-subtitle">
+            Items needed for your full 7-day plan, compared with your current fridge selection.
+          </p>
+          <div className="shopping-columns">
+            <div className="shopping-col-card">
+              <h4 style={{ color: '#fca5a5' }}>
+                🛍️ Fresh items to purchase ({weeklyShoppingAnalysis.toPurchase.length})
+              </h4>
+              {weeklyShoppingAnalysis.toPurchase.length === 0 ? (
+                <p className="text-success">
+                  🎉 Your fridge already has all the fresh items needed for this 7-day plan!
+                </p>
+              ) : (
+                <ul className="purchase-needed-list">
+                  {weeklyShoppingAnalysis.toPurchase.map((item, index) => (
+                    <li key={index} className="purchase-needed-item">
+                      <span>{item.item}</span>
+                      <span className="purchase-days-tag">For: {item.days}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
 
-                <h4 style={{ color: '#fde68a', marginTop: '16px' }}>
-                  🫙 Pantry &amp; Bhurko Staples Used This Week
-                </h4>
+            <div className="shopping-col-card">
+              <h4 style={{ color: '#6ee7b7' }}>
+                ✅ Already in your fridge ({weeklyShoppingAnalysis.alreadyInFridge.length})
+              </h4>
+              {weeklyShoppingAnalysis.alreadyInFridge.length === 0 ? (
+                <p className="selector-sub">
+                  Use the Recipes tab to select what you already have and update this list.
+                </p>
+              ) : (
                 <div className="ingredient-badges">
-                  {weeklyShoppingAnalysis.pantryChecklist.map((add, i) => (
-                    <span key={i} className="badge-pantry">{add}</span>
+                  {weeklyShoppingAnalysis.alreadyInFridge.map((item, index) => (
+                    <span key={index} className="badge-fridge">✓ {item}</span>
                   ))}
                 </div>
+              )}
+
+              <h4 style={{ color: '#fde68a', marginTop: '16px' }}>
+                🫙 Pantry &amp; Bhurko staples
+              </h4>
+              <div className="ingredient-badges">
+                {weeklyShoppingAnalysis.pantryChecklist.map((item, index) => (
+                  <span key={index} className="badge-pantry">{item}</span>
+                ))}
               </div>
             </div>
           </div>
         </section>
       )}
 
+      {activeRecipesTab === 'recipes' && (
+        <>
+          <div className="recipe-tools-row">
+            <p className="selector-sub">
+              Match recipes to your fridge, or browse and search the full collection.
+            </p>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={() => setShowBhurkoModal(!showBhurkoModal)}
+            >
+              🥣 {showBhurkoModal ? 'Hide Bhurko Guide' : 'Sourashtra Bhurko Spice Guide'}
+            </button>
+          </div>
       {/* Interactive Fridge Veggies & Meat Selector */}
       <section className="fridge-selector-panel glass-pane mb-24">
         <div className="selector-header">
           <div>
             <h3>🧊 What&apos;s in Your Fridge Right Now? (Veggies, Greens, Dairy &amp; Meat)</h3>
             <p className="selector-sub">
-              Tap the fresh items in your fridge to rank all <strong>{recipes.length || 320}+ Sourashtra recipes</strong> AND automatically update the <strong>Weekly Shopping List</strong> above!
+                Select the fresh items you have to rank recipes and update the smart shopping list.
             </p>
           </div>
           {selectedFridgeItems.length > 0 && (
@@ -1978,6 +2041,8 @@ export default function RecipesPage() {
               </button>
             </div>
           )}
+        </>
+      )}
         </>
       )}
     </div>

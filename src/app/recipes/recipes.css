@@ -18,6 +18,91 @@
   flex-wrap: wrap;
 }
 
+.recipe-view-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 6px;
+  margin: 0 0 18px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 14px;
+}
+
+.recipe-view-tab {
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #cbd5e1;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.recipe-view-tab.active {
+  color: #fff;
+  background: rgba(99, 102, 241, 0.28);
+  border-color: rgba(129, 140, 248, 0.7);
+}
+
+.planner-day-tabs {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.planner-day-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  min-height: 52px;
+  padding: 6px 4px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #cbd5e1;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.planner-day-tab small {
+  color: #94a3b8;
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+.planner-day-tab.active {
+  border-color: #fbbf24;
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.15);
+}
+
+.recipe-tools-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.shopping-view-panel {
+  max-width: 900px;
+  margin: 0 auto 24px;
+}
+
+.shopping-view-subtitle {
+  margin: -4px 0 16px;
+}
+
 .recipes-loading {
   display: flex;
   flex-direction: column;
@@ -460,9 +545,12 @@
 
 .weekly-days-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   margin-bottom: 22px;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .day-plan-card {
@@ -639,6 +727,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-height: min(52vh, 480px);
+  overflow-y: auto;
 }
 
 .purchase-needed-item {
@@ -668,6 +758,138 @@
   body {
     background: #ffffff !important;
     color: #000000 !important;
+  }
+
+  @media (max-width: 600px) {
+    .recipe-view-tabs {
+      position: sticky;
+      top: calc(56px + env(safe-area-inset-top, 0px));
+      z-index: 20;
+      margin-left: -4px;
+      margin-right: -4px;
+    }
+
+    .recipe-view-tab {
+      min-height: 46px;
+      padding: 8px 4px;
+      font-size: 0.78rem;
+    }
+
+    .planner-day-tabs {
+      grid-template-columns: repeat(7, minmax(58px, 1fr));
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-right: -6px;
+      scrollbar-width: thin;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .planner-day-tab {
+      min-height: 48px;
+      font-size: 0.76rem;
+    }
+
+    .weekly-planner-panel {
+      padding: 14px 10px;
+    }
+
+    .planner-top-bar h2 {
+      font-size: 1.08rem;
+    }
+
+    .planner-top-bar .selector-sub {
+      font-size: 0.8rem;
+    }
+
+    .planner-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+      gap: 7px;
+    }
+
+    .planner-actions > button {
+      min-width: 0;
+      padding: 8px 6px;
+      font-size: 0.72rem;
+    }
+
+    .day-plan-card {
+      padding: 10px;
+      gap: 8px;
+    }
+
+    .day-card-header {
+      align-items: flex-start;
+    }
+
+    .gcal-day-link {
+      white-space: normal;
+      text-align: center;
+      font-size: 0.68rem;
+      padding: 5px 7px;
+    }
+
+    .meal-slot-box {
+      padding: 8px;
+    }
+
+    .meal-slot-top {
+      align-items: flex-start;
+    }
+
+    .meal-type-label {
+      font-size: 0.68rem;
+    }
+
+    .meal-slot-controls {
+      flex-shrink: 0;
+    }
+
+    .slot-mini-btn {
+      min-height: 32px;
+      padding: 4px 6px;
+      font-size: 0.66rem;
+    }
+
+    .combo-dish-link,
+    .combo-paired-link {
+      gap: 6px;
+      font-size: 0.8rem;
+      overflow-wrap: anywhere;
+    }
+
+    .view-recipe-pill {
+      flex-shrink: 0;
+    }
+
+    .combo-why-note {
+      font-size: 0.68rem;
+    }
+
+    .meal-slot-links {
+      font-size: 0.68rem;
+    }
+
+    .shopping-view-panel {
+      padding: 14px 10px;
+    }
+
+    .shopping-columns {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .shopping-col-card {
+      min-width: 0;
+      padding: 11px;
+    }
+
+    .purchase-needed-item {
+      align-items: flex-start;
+      flex-wrap: wrap;
+      overflow-wrap: anywhere;
+    }
   }
   .navbar,
   .bottom-nav,
