@@ -46,14 +46,16 @@ export default function InventoryPage() {
   const fetchInventory = async () => {
     setLoading(true);
     try {
-      const storedUserId = localStorage.getItem('appUserId') || '1';
-      const res = await fetch(`/api/inventory?lang=${encodeURIComponent(language)}&userId=${encodeURIComponent(storedUserId)}`);
+      const res = await fetch(`/api/inventory?lang=${encodeURIComponent(language)}`);
       const data = await res.json();
-      if (data.items) {
+      if (res.ok && data.items) {
         setItems(data.items);
+      } else {
+        setItems([]);
       }
     } catch (err) {
       console.error('Failed to fetch inventory', err);
+      setItems([]);
     } finally {
       setLoading(false);
     }

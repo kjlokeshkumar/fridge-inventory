@@ -1,4 +1,5 @@
 import { neon } from '@neondatabase/serverless';
+import { verifyPasskey } from '@/lib/passkeys';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let cachedSql: any = null;
@@ -32,6 +33,17 @@ const sql = ((strings: TemplateStringsArray, ...values: any[]) => {
 export async function initDb() {
   try {
     await sql`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        username VARCHAR(255) UNIQUE NOT NULL,
+        passkey VARCHAR(255) NOT NULL,
+        status VARCHAR(20) DEFAULT 'active',
+        role VARCHAR(20) DEFAULT 'user',
+        "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `;
+
+    await sql`
       CREATE TABLE IF NOT EXISTS inventory (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
@@ -40,6 +52,7 @@ export async function initDb() {
         category VARCHAR(100),
         expirationDate VARCHAR(25),
         imageUrl TEXT,
+        "userId" INTEGER,
         addedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
@@ -58,47 +71,47 @@ export async function initDb() {
         "dietaryPreference" VARCHAR(100) DEFAULT 'Any',
         allergies VARCHAR(255) DEFAULT '',
         avatar VARCHAR(50) DEFAULT '👤',
+        "userId" INTEGER,
         "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `;
 
-    // Create multi-tenant accounts table
+    // Add ownership columns to installations created before account scoping.
     await sql`
-      CREATE TABLE IF NOT EXISTS users (
-        id SERIAL PRIMARY KEY,
-        username VARCHAR(255) UNIQUE NOT NULL,
-        passkey VARCHAR(255) NOT NULL,
-        status VARCHAR(20) DEFAULT 'active',
-        role VARCHAR(20) DEFAULT 'user',
-        "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
+      ALTER TABLE inventory ADD COLUMN IF NOT EXISTS "userId" INTEGER
+    `;
+    await sql`ALTER TABLE inventory ALTER COLUMN "userId" DROP DEFAULT`;
+    await sql`ALTER TABLE profiles ADD COLUMN IF NOT EXISTS "userId" INTEGER`;
+
+    // Preserve legacy household data by assigning it to the oldest account.
+    // When no account exists yet, the first account created adopts these rows.
+    await sql`
+      UPDATE profiles
+      SET "userId" = (SELECT MIN(id) FROM users)
+      WHERE "userId" IS NULL AND EXISTS (SELECT 1 FROM users)
+    `;
+    await sql`
+      UPDATE inventory
+      SET "userId" = (SELECT MIN(id) FROM users)
+      WHERE "userId" IS NULL AND EXISTS (SELECT 1 FROM users)
+    `;
+    await sql`
+      UPDATE inventory
+      SET "userId" = (SELECT MIN(id) FROM users)
+      WHERE "userId" = 1
+        AND NOT EXISTS (SELECT 1 FROM users WHERE id = 1)
+        AND EXISTS (SELECT 1 FROM users)
     `;
 
-    // Safely add userId column to inventory for multi-tenant data isolation
-    await sql`
-      ALTER TABLE inventory ADD COLUMN IF NOT EXISTS "userId" INTEGER DEFAULT 1
+    // Disable the legacy built-in admin credential so it cannot survive the
+    // removal of the old hardcoded bootstrap account.
+    const seededAdmin = await sql`
+      SELECT id, passkey FROM users
+      WHERE username = 'admin' AND role = 'admin' AND status = 'active'
+      LIMIT 1
     `;
-
-    // Seed admin account if missing
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const existingAdmin = await (sql as any)`SELECT COUNT(*)::int as count FROM users WHERE username = 'admin'`;
-    if (existingAdmin && (existingAdmin[0]?.count || 0) === 0) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      await (sql as any)`
-        INSERT INTO users (username, passkey, status, role)
-        VALUES ('admin', 'admin123', 'active', 'admin')
-      `;
-    }
-
-    // Seed default primary profile if profiles table is empty
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const existingProfiles = await (sql as any)`SELECT COUNT(*)::int as count FROM profiles`;
-    if (existingProfiles && (existingProfiles[0]?.count || 0) === 0) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      await (sql as any)`
-        INSERT INTO profiles (name, "dietaryPreference", allergies, avatar)
-        VALUES ('Primary Profile', 'Any', '', '👤')
-      `;
+    if (seededAdmin[0] && (await verifyPasskey('admin123', seededAdmin[0].passkey)).valid) {
+      await sql`UPDATE users SET status = 'blocked' WHERE id = ${seededAdmin[0].id}`;
     }
     
     console.log("Database initialized successfully!");
@@ -108,11 +121,11 @@ export async function initDb() {
   }
 }
 
-export async function purgeOldItems() {
+export async function purgeOldItems(userId: number) {
   try {
     await sql`
       DELETE FROM inventory 
-      WHERE "addedAt" < NOW() - INTERVAL '14 days'
+      WHERE "userId" = ${userId} AND "addedAt" < NOW() - INTERVAL '14 days'
     `;
     console.log("Successfully purged inventory items older than 2 weeks.");
   } catch (error) {

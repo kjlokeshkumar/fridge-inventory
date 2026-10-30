@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Link from 'next/link';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 
@@ -33,6 +34,9 @@ export default function RootLayout({
         <main className="page-wrapper container">
           {children}
         </main>
+        <footer className="site-footer">
+          <Link href="/privacy">Privacy Policy</Link>
+        </footer>
       </body>
     </html>
   );

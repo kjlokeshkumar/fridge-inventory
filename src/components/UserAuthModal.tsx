@@ -18,19 +18,21 @@ export default function UserAuthModal() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('appUser');
-    if (storedUser) {
+    const syncSession = async () => {
       try {
-        const parsed = JSON.parse(storedUser);
-        setCurrentUser(parsed);
+        const response = await fetch('/api/auth');
+        const data = await response.json();
+        setCurrentUser(data.success ? data.user : null);
       } catch {
-        // Clear corrupt storage
-        localStorage.removeItem('appUser');
+        setCurrentUser(null);
       }
-    } else {
-      // Initialize default user session
-      loginUser('user_guest', '1234');
-    }
+    };
+    const handleAuth = (event: Event) => {
+      setCurrentUser((event as CustomEvent<AuthUser | null>).detail);
+    };
+    void syncSession();
+    window.addEventListener('userAuthChange', handleAuth);
+    return () => window.removeEventListener('userAuthChange', handleAuth);
   }, []);
 
   const loginUser = async (uname: string, pkey: string) => {
@@ -52,8 +54,6 @@ export default function UserAuthModal() {
 
       const user: AuthUser = data.user;
       setCurrentUser(user);
-      localStorage.setItem('appUser', JSON.stringify(user));
-      localStorage.setItem('appUserId', String(user.id));
       window.dispatchEvent(new CustomEvent('userAuthChange', { detail: user }));
       setIsOpen(false);
       setUsernameInput('');
@@ -69,6 +69,13 @@ export default function UserAuthModal() {
     e.preventDefault();
     if (!usernameInput.trim()) return;
     loginUser(usernameInput, passkeyInput);
+  };
+
+  const logoutUser = async () => {
+    await fetch('/api/auth', { method: 'DELETE' });
+    setCurrentUser(null);
+    window.dispatchEvent(new CustomEvent('userAuthChange', { detail: null }));
+    setIsOpen(false);
   };
 
   return (
@@ -117,9 +124,10 @@ export default function UserAuthModal() {
               </div>
 
               <div className="form-group">
-                <label>Passkey / PIN (Optional)</label>
+                <label>Passkey / PIN</label>
                 <input 
                   type="password"
+                  required
                   placeholder="e.g. 1234"
                   value={passkeyInput}
                   onChange={(e) => setPasskeyInput(e.target.value)}
@@ -128,6 +136,11 @@ export default function UserAuthModal() {
               </div>
 
               <div className="form-actions">
+                {currentUser && (
+                  <button type="button" onClick={logoutUser} className="btn-secondary">
+                    Sign out
+                  </button>
+                )}
                 <button 
                   type="button" 
                   onClick={() => setIsOpen(false)} 

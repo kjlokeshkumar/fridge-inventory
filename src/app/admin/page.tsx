@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './admin.css';
 
 interface AdminUser {
@@ -19,14 +19,6 @@ export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const storedKey = localStorage.getItem('adminSecretKey');
-    if (storedKey) {
-      setAdminKey(storedKey);
-      fetchAdminData(storedKey);
-    }
-  }, []);
-
   const fetchAdminData = async (key: string) => {
     setLoading(true);
     setError(null);
@@ -40,7 +32,6 @@ export default function AdminDashboardPage() {
       }
       setUsers(data.users || []);
       setIsAuthenticated(true);
-      localStorage.setItem('adminSecretKey', key);
     } catch (e: unknown) {
       const err = e as Error;
       setError(err.message || 'Access denied');
@@ -87,7 +78,7 @@ export default function AdminDashboardPage() {
           <div className="admin-icon-header">
             🛡️ <h2>Admin Security Dashboard</h2>
           </div>
-          <p className="admin-subtext">Restricted access for platform owner moderation</p>
+          <p className="admin-subtext">Sign in with an admin account, then enter the configured admin secret.</p>
 
           {error && <div className="admin-error-banner">⚠️ {error}</div>}
 
@@ -124,7 +115,7 @@ export default function AdminDashboardPage() {
           <p className="subtitle">Manage user accounts, block abusive users, and enforce modestness</p>
         </div>
         <button 
-          onClick={() => { localStorage.removeItem('adminSecretKey'); setIsAuthenticated(false); }} 
+          onClick={() => { setAdminKey(''); setIsAuthenticated(false); }}
           className="btn-secondary"
         >
           🔒 Lock Dashboard

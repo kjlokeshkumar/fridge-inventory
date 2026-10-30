@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getAuthenticatedUser, isAuthConfigurationError } from '@/lib/session';
 
 export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest) {
   try {
+    const user = await getAuthenticatedUser(req);
+    if (!user) {
+      return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
+    }
+
     const rawText = await req.text();
     let jsonBody;
     try {
@@ -114,9 +120,6 @@ export async function POST(req: NextRequest) {
 
     // Insert into Postgres database with multi-tenant userId isolation
     let insertedCount = 0;
-    const userIdParam = req.headers.get('x-user-id') || req.nextUrl.searchParams.get('userId') || '1';
-    const userId = parseInt(userIdParam, 10);
-    
     const mockImageUrl = `/api/placeholder?name=food`;
     
     for (const item of inventoryItems) {
@@ -131,7 +134,7 @@ export async function POST(req: NextRequest) {
           ${item.category || 'Other'}, 
           ${item.expirationDate || null}, 
           ${mockImageUrl},
-          ${userId}
+          ${user.id}
         )
       `;
       insertedCount++;
@@ -145,12 +148,14 @@ export async function POST(req: NextRequest) {
 
   } catch (error) {
     console.error('Error analyzing image:', error);
+    if (isAuthConfigurationError(error)) {
+      return NextResponse.json({ error: (error as Error).message }, { status: 503 });
+    }
     return NextResponse.json(
       { 
-        error: error instanceof Error ? error.message : 'Unknown server error',
-        stack: error instanceof Error ? error.stack : undefined 
+        error: 'Image analysis failed.'
       },
-      { status: 400 }
+      { status: 500 }
     );
   }
 }

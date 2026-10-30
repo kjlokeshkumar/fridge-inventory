@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getAuthenticatedUser, isAuthConfigurationError } from '@/lib/session';
 import {
   MADURAI_SOURASHTRA_BHURKOS,
   MADURAI_SOURASHTRA_RECIPES,
@@ -240,14 +241,15 @@ function formulateSourashtraRecipesFromFridge(
 
 export async function GET(req: NextRequest) {
   try {
+    const user = await getAuthenticatedUser(req);
+    if (!user) return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
     const { default: db, initDb } = await import('@/lib/db');
     await initDb();
 
-    const userIdParam = req.nextUrl.searchParams.get('userId') || req.headers.get('x-user-id');
     const customFridgeParam = req.nextUrl.searchParams.get('fridgeItems') || '';
     const shuffleParam = parseInt(req.nextUrl.searchParams.get('seed') || '0', 10) || 0;
 
-    // Fetch current inventory (scoped by userId if available, falling back to all positive inventory)
+    // Load only the authenticated account's inventory.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let items: any[] = [];
     if (customFridgeParam.trim()) {
@@ -258,12 +260,7 @@ export async function GET(req: NextRequest) {
         .map((name) => ({ name, quantity: 1, category: 'Fridge Selection' }));
     } else {
       try {
-        if (userIdParam) {
-          items = await db`SELECT name, quantity, category FROM inventory WHERE quantity > 0 AND "userId" = ${parseInt(userIdParam, 10)}`;
-        }
-        if (!items || items.length === 0) {
-          items = await db`SELECT name, quantity, category FROM inventory WHERE quantity > 0`;
-        }
+        items = await db`SELECT name, quantity, category FROM inventory WHERE quantity > 0 AND "userId" = ${user.id}`;
       } catch {
         items = [];
       }
@@ -288,15 +285,28 @@ export async function GET(req: NextRequest) {
     try {
       if (profileIdParam) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const res = await (db as any)`SELECT name, "dietaryPreference", allergies FROM profiles WHERE id = ${parseInt(profileIdParam, 10)}`;
-        if (res && res.length > 0) profileData = res[0];
+        const selectedProfileId = Number(profileIdParam);
+        if (Number.isSafeInteger(selectedProfileId) && selectedProfileId > 0) {
+          const res = await db`
+            SELECT name, "dietaryPreference", allergies
+            FROM profiles WHERE id = ${selectedProfileId} AND "userId" = ${user.id}
+          `;
+          if (res && res.length > 0) profileData = res[0];
+        }
       }
       if (!profileData) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const defaultRes = await (db as any)`SELECT name, "dietaryPreference", allergies FROM profiles ORDER BY id ASC LIMIT 1`;
+        const defaultRes = await db`
+          SELECT name, "dietaryPreference", allergies FROM profiles
+          WHERE "userId" = ${user.id} ORDER BY id ASC LIMIT 1
+        `;
         if (defaultRes && defaultRes.length > 0) profileData = defaultRes[0];
       }
-    } catch {
+    } catch (error) {
+      // Database failures may still return the built-in recipe sample, never other users' inventory.
+      if (isAuthConfigurationError(error)) {
+        return NextResponse.json({ error: (error as Error).message }, { status: 503 });
+      }
       // Fallback gracefully if profiles table is missing or DB connection is transient
     }
 

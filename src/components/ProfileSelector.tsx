@@ -38,14 +38,21 @@ export default function ProfileSelector() {
         if (!storedId || !match) {
           localStorage.setItem('activeProfileId', String(active.id));
         }
+      } else {
+        setProfiles([]);
+        setActiveProfile(null);
       }
     } catch (e) {
+      setProfiles([]);
+      setActiveProfile(null);
       console.warn('Failed to fetch profiles:', e);
     }
   };
 
   useEffect(() => {
     fetchProfiles();
+    window.addEventListener('userAuthChange', fetchProfiles);
+    return () => window.removeEventListener('userAuthChange', fetchProfiles);
   }, []);
 
   const selectProfile = (profile: UserProfile) => {

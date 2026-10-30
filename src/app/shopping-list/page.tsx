@@ -26,7 +26,11 @@ export default function ShoppingListPage() {
       setLanguage(newLang);
     };
     window.addEventListener('languageChange', handleLang);
-    return () => window.removeEventListener('languageChange', handleLang);
+    window.addEventListener('userAuthChange', fetchList);
+    return () => {
+      window.removeEventListener('languageChange', handleLang);
+      window.removeEventListener('userAuthChange', fetchList);
+    };
   }, []);
 
   useEffect(() => {
@@ -39,11 +43,14 @@ export default function ShoppingListPage() {
     try {
       const res = await fetch(`/api/shopping-list?lang=${encodeURIComponent(language)}`);
       const data = await res.json();
-      if (data.items) {
+      if (res.ok && data.items) {
         setItems(data.items);
+      } else {
+        setItems([]);
       }
     } catch (err) {
       console.error('Failed to fetch shopping list', err);
+      setItems([]);
     } finally {
       setLoading(false);
     }

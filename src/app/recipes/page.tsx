@@ -789,11 +789,20 @@ export default function RecipesPage() {
     const handleProfile = () => {
       fetchRecipes(selectedFridgeItems, shuffleSeed);
     };
+    const handleAuth = () => {
+      setSelectedFridgeItems([]);
+      setRecipes([]);
+      setCurrentFridgeInventory([]);
+      setIsUsingSampleBasket(false);
+      fetchRecipes([], shuffleSeed);
+    };
     window.addEventListener('languageChange', handleLang);
     window.addEventListener('profileChange', handleProfile);
+    window.addEventListener('userAuthChange', handleAuth);
     return () => {
       window.removeEventListener('languageChange', handleLang);
       window.removeEventListener('profileChange', handleProfile);
+      window.removeEventListener('userAuthChange', handleAuth);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -912,11 +921,10 @@ export default function RecipesPage() {
     setError(null);
     try {
       const storedProfileId = localStorage.getItem('activeProfileId') || '';
-      const storedUserId = localStorage.getItem('appUserId') || '1';
       const fridgeParam = customItems.length > 0 ? `&fridgeItems=${encodeURIComponent(customItems.join(','))}` : '';
       const seedParam = seed > 0 ? `&seed=${seed}` : '';
       const res = await fetch(
-        `/api/recipes?lang=${encodeURIComponent(language)}&profileId=${encodeURIComponent(storedProfileId)}&userId=${encodeURIComponent(storedUserId)}${fridgeParam}${seedParam}`
+        `/api/recipes?lang=${encodeURIComponent(language)}&profileId=${encodeURIComponent(storedProfileId)}${fridgeParam}${seedParam}`
       );
       const data = await res.json();
 

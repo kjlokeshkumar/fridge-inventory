@@ -1,16 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { toTamilTransliteration } from '@/lib/translations';
+import { getAuthenticatedUser, isAuthConfigurationError } from '@/lib/session';
 
 export async function GET(req: NextRequest) {
   try {
+    const user = await getAuthenticatedUser(req);
+    if (!user) return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
     const { default: db, initDb, purgeOldItems } = await import('@/lib/db');
     await initDb();
-    await purgeOldItems();
+    await purgeOldItems(user.id);
 
     const items = await db`
         SELECT * FROM inventory 
-        WHERE quantity <= 0 
-        OR ("expirationDate" IS NOT NULL AND "expirationDate" < CURRENT_DATE::text)
+        WHERE "userId" = ${user.id}
+        AND (quantity <= 0
+        OR ("expirationDate" IS NOT NULL AND "expirationDate" < CURRENT_DATE::text))
         ORDER BY name ASC
     `;
 
@@ -24,6 +28,9 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ items });
   } catch (error) {
+    if (isAuthConfigurationError(error)) {
+      return NextResponse.json({ error: (error as Error).message }, { status: 503 });
+    }
     console.error('Failed to fetch shopping list:', error);
     return NextResponse.json({ error: 'Failed to fetch shopping list' }, { status: 500 });
   }
