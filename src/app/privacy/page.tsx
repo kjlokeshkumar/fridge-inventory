@@ -2,22 +2,22 @@ import type { Metadata } from 'next';
 import styles from './privacy.module.css';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Fridge AI',
-  description: 'How Fridge AI collects, uses, and protects information.',
+  title: 'Privacy Policy | Sourashtra Chef',
+  description: 'How Sourashtra Chef collects, uses, and protects information.',
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <article className={`glass-pane ${styles.policy}`}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>FRIDGE AI</p>
+        <p className={styles.eyebrow}>SOURASHTRA CHEF</p>
         <h1 className="page-title">Privacy Policy</h1>
         <p className={styles.updated}>Effective date: October 30, 2026</p>
       </header>
 
       <p>
-        This policy describes how Fridge AI handles information when you use
-        the Fridge AI website or Android app. Fridge AI is published by Lokesh
+        This policy describes how Sourashtra Chef handles information when you use
+        the Sourashtra Chef website or Android app. Sourashtra Chef is published by Lokesh
         Kumar Kuttuva Jagadeesan (“we,” “us,” or “our”). For privacy questions
         or requests, contact{' '}
         <a href="mailto:kjlokeshkumar@gmail.com">kjlokeshkumar@gmail.com</a>.
@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
       <section>
         <h2>Service providers</h2>
         <p>
-          Fridge AI uses Vercel to host the app, Neon to store app records, and
+          Sourashtra Chef uses Vercel to host the app, Neon to store app records, and
           Google to authenticate accounts and Google Gemini to analyze images.
           Information needed for those
           functions is processed by the relevant provider under its own terms
@@ -107,7 +107,7 @@ export default function PrivacyPolicyPage() {
           You can also remove inventory items in the app. To ask us to delete an account
           or other information, email{' '}
           <a href="mailto:kjlokeshkumar@gmail.com">kjlokeshkumar@gmail.com</a>{' '}
-          from your Google account email address, or include your Fridge AI
+          from your Google account email address, or include your Sourashtra Chef
           username if you still use a legacy account. We may retain information when required to
           resolve disputes, enforce our terms, or meet legal obligations.
         </p>
@@ -127,14 +127,14 @@ export default function PrivacyPolicyPage() {
           retain salted, one-way passkey hashes while migration is pending. No
           internet transmission or storage method is completely secure, and
           these controls have not undergone an independent security
-          assessment. Do not use Fridge AI for highly sensitive information.
+          assessment. Do not use Sourashtra Chef for highly sensitive information.
         </p>
       </section>
 
       <section>
         <h2>Children</h2>
         <p>
-          Fridge AI is a general-audience household utility and is not
+          Sourashtra Chef is a general-audience household utility and is not
           intentionally directed to children. Children should use it only with
           a parent or guardian.
         </p>

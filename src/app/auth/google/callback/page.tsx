@@ -51,7 +51,7 @@ export default function GoogleSignInCallbackPage() {
         <h1 className="page-title">Google sign-in</h1>
         <p role="status">{message}</p>
         {message !== 'Completing Google sign-in…' && (
-          <Link className="btn-primary" href="/">Return to Fridge AI</Link>
+          <Link className="btn-primary" href="/">Return to Sourashtra Chef</Link>
         )}
       </section>
     </main>

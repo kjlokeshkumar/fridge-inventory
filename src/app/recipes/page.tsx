@@ -1159,7 +1159,7 @@ export default function RecipesPage() {
     const lines = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Fridge AI//Sourashtra 7-Day Meal Planner//EN',
+      'PRODID:-//Sourashtra Chef//Sourashtra 7-Day Meal Planner//EN',
       'CALSCALE:GREGORIAN'
     ];
 

@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.fridge.ai',
-  appName: 'Fridge AI',
+  appName: 'Sourashtra Chef',
   webDir: 'capacitor-web',
   android: {
     path: 'android-capacitor',

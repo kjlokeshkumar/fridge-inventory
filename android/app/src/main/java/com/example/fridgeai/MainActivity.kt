@@ -118,7 +118,7 @@ class MainActivity : ComponentActivity() {
                   verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                   Text(
-                    text = "❄️ Fridge AI",
+                  text = "👨‍🍳 Sourashtra Chef",
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White

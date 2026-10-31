@@ -5,13 +5,13 @@ import Navigation from '@/components/Navigation';
 import AppAccessGate from '@/components/AppAccessGate';
 
 export const metadata: Metadata = {
-  title: 'Fridge Inventory',
-  description: 'AI-powered fridge and pantry tracking',
+  title: 'Sourashtra Chef',
+  description: 'AI-powered fridge and pantry tracking for Sourashtra-inspired cooking',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Fridge Inventory',
+    title: 'Sourashtra Chef',
   },
 };
 

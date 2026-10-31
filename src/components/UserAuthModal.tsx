@@ -127,7 +127,7 @@ export default function UserAuthModal() {
   const logoutUser = async () => {
     try {
       const response = await fetch('/api/auth', { method: 'DELETE' });
-      if (!response.ok) throw new Error('Unable to sign out of Fridge AI.');
+      if (!response.ok) throw new Error('Unable to sign out of Sourashtra Chef.');
       setCurrentUser(null);
       window.dispatchEvent(new CustomEvent('userAuthChange', { detail: null }));
       setIsOpen(false);
@@ -202,7 +202,7 @@ export default function UserAuthModal() {
               <>
                 <p style={{ fontSize: '0.85rem', color: '#cbd5e1', marginBottom: '16px' }}>
                   Continue with your Google account to access your private inventory.
-                  Google passwords are never shared with Fridge AI.
+                  Google passwords are never shared with Sourashtra Chef.
                 </p>
 
                 {errorMsg && (

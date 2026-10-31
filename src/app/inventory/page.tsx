@@ -79,6 +79,20 @@ export default function InventoryPage() {
 
   const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
+  const getProduceEmoji = (name: string) => {
+    const lower = name.toLowerCase();
+    if (lower.includes('tomato') || lower.includes('capsicum') || lower.includes('pepper')) return '🍅';
+    if (lower.includes('onion') || lower.includes('shallot')) return '🧅';
+    if (lower.includes('spinach') || lower.includes('greens') || lower.includes('kale')) return '🥬';
+    if (lower.includes('paneer') || lower.includes('cheese') || lower.includes('milk') || lower.includes('butter') || lower.includes('yogurt') || lower.includes('curd')) return '🥛';
+    if (lower.includes('garlic') || lower.includes('ginger')) return '🧄';
+    if (lower.includes('coriander') || lower.includes('mint') || lower.includes('herb')) return '🌿';
+    if (lower.includes('egg') || lower.includes('eggplant') || lower.includes('brinjal')) return '🥚';
+    if (lower.includes('rice') || lower.includes('wheat') || lower.includes('flour')) return '🌾';
+    if (lower.includes('bean') || lower.includes('lentil') || lower.includes('dal')) return '🫘';
+    return '🥦';
+  };
+
   if (loading) {
     return (
       <div className="inventory-loading">
@@ -119,7 +133,12 @@ export default function InventoryPage() {
                   ✕
                 </button>
               </div>
-              <h3 className="item-name">{item.name}</h3>
+
+              <div className="item-main-row">
+                <div className="item-icon-badge" aria-hidden="true">{getProduceEmoji(item.name)}</div>
+                <h3 className="item-name">{item.name}</h3>
+              </div>
+
               <div className="item-details">
                 <span className="item-quantity">{t.qty}: {item.quantity}</span>
                 {item.expirationDate && (
