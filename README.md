@@ -204,7 +204,7 @@ npm run android:sync
 Before each new Play upload, open `android-capacitor/app/build.gradle` and set
 `versionCode` to a number higher than every version already uploaded to any
 Play track. Keep `versionName` meaningful for users. The current source is
-version name `1.2`, version code `3`; verify Play Console has no higher version
+version name `1.3`, version code `3`; verify Play Console has no higher version
 code uploaded before building.
 
 From the repository root, synchronize Capacitor and build the signed release
