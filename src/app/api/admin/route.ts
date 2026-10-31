@@ -41,10 +41,11 @@ export async function GET(request: Request) {
     if (!auth.user) return auth.response;
 
     const users = await sql`
-      SELECT u.id, u.username, u.status, u.role, u."createdAt", COUNT(i.id)::int AS "itemCount"
+      SELECT u.id, COALESCE(u."displayName", u.username) AS username,
+        u.status, u.role, u."createdAt", COUNT(i.id)::int AS "itemCount"
       FROM users u
       LEFT JOIN inventory i ON u.id = i."userId"
-      GROUP BY u.id, u.username, u.status, u.role, u."createdAt"
+      GROUP BY u.id, u.username, u."displayName", u.status, u.role, u."createdAt"
       ORDER BY u."createdAt" DESC
     `;
     return NextResponse.json({ success: true, users });

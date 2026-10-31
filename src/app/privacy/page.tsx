@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
       <header className={styles.header}>
         <p className={styles.eyebrow}>FRIDGE AI</p>
         <h1 className="page-title">Privacy Policy</h1>
-        <p className={styles.updated}>Effective date: October 29, 2026</p>
+        <p className={styles.updated}>Effective date: October 30, 2026</p>
       </header>
 
       <p>
@@ -27,10 +27,12 @@ export default function PrivacyPolicyPage() {
         <h2>Information we handle</h2>
         <ul>
           <li>
-            <strong>Account information:</strong> the username and passkey you
-            choose. Passkeys are stored as salted, one-way hashes. Existing
-            accounts created before this change are migrated to a hash when
-            they next sign in successfully.
+            <strong>Account information:</strong> when you use Google sign-in,
+            we receive your Google account identifier, verified email address,
+            and display name. We do not receive or store your Google password.
+            Earlier accounts may still have a salted passkey hash; Google
+            sign-in does not automatically connect those accounts or their
+            inventory.
           </li>
           <li>
             <strong>Household profiles:</strong> profile names, avatars,
@@ -70,7 +72,8 @@ export default function PrivacyPolicyPage() {
         <h2>Service providers</h2>
         <p>
           Fridge AI uses Vercel to host the app, Neon to store app records, and
-          Google Gemini to analyze images. Information needed for those
+          Google to authenticate accounts and Google Gemini to analyze images.
+          Information needed for those
           functions is processed by the relevant provider under its own terms
           and privacy practices. Review{' '}
           <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer">
@@ -83,6 +86,10 @@ export default function PrivacyPolicyPage() {
           , and{' '}
           <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noreferrer">
             Google&apos;s Gemini API terms
+          </a>
+          {' '}and{' '}
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">
+            Google&apos;s privacy policy
           </a>
           . The current app does not intentionally include an advertising or
           separate analytics SDK.
@@ -100,8 +107,8 @@ export default function PrivacyPolicyPage() {
           You can also remove inventory items in the app. To ask us to delete an account
           or other information, email{' '}
           <a href="mailto:kjlokeshkumar@gmail.com">kjlokeshkumar@gmail.com</a>{' '}
-          from your account email address, if applicable, and include your
-          Fridge AI username. We may retain information when required to
+          from your Google account email address, or include your Fridge AI
+          username if you still use a legacy account. We may retain information when required to
           resolve disputes, enforce our terms, or meet legal obligations.
         </p>
         <p>
@@ -114,12 +121,13 @@ export default function PrivacyPolicyPage() {
       <section>
         <h2>Security</h2>
         <p>
-          We use HTTPS for the hosted app and store account passkeys as salted,
-          one-way hashes. The app uses signed, HttpOnly sessions and scopes
-          profile and inventory access to the signed-in account. No internet
-          transmission or storage method is completely secure, and these
-          controls have not undergone an independent security assessment. Do
-          not use Fridge AI for highly sensitive information.
+          We use HTTPS for the hosted app, verify Google sign-in tokens on the
+          server, and use signed, HttpOnly sessions that scope profile and
+          inventory access to the signed-in account. Earlier accounts may
+          retain salted, one-way passkey hashes while migration is pending. No
+          internet transmission or storage method is completely secure, and
+          these controls have not undergone an independent security
+          assessment. Do not use Fridge AI for highly sensitive information.
         </p>
       </section>
 

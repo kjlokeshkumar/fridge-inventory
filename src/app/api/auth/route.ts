@@ -1,6 +1,6 @@
+import { OAuth2Client } from 'google-auth-library';
 import { NextResponse } from 'next/server';
 import sql, { initDb } from '@/lib/db';
-import { hashPasskey, verifyPasskey } from '@/lib/passkeys';
 import {
   clearSessionCookie,
   getAuthenticatedUser,
@@ -8,6 +8,15 @@ import {
   isAuthConfigurationError,
   setSessionCookie,
 } from '@/lib/session';
+import {
+  googleUsernameFromSubject,
+  isGoogleAdminEmail,
+  matchesGoogleNonce,
+} from '@/lib/google-identity';
+
+export const runtime = 'nodejs';
+
+const GOOGLE_NONCE_COOKIE = 'fridge_google_nonce';
 
 async function ensureUserData(userId: number, isFirstAccount: boolean) {
   if (isFirstAccount) {
@@ -24,81 +33,151 @@ async function ensureUserData(userId: number, isFirstAccount: boolean) {
   }
 }
 
+function readCookie(request: Request, name: string): string | null {
+  const cookieHeader = request.headers.get('cookie') || '';
+  for (const cookie of cookieHeader.split(';')) {
+    const separator = cookie.indexOf('=');
+    if (separator < 0 || cookie.slice(0, separator).trim() !== name) continue;
+    try {
+      return decodeURIComponent(cookie.slice(separator + 1).trim());
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
+function clearGoogleNonceCookie(response: NextResponse) {
+  response.cookies.set(GOOGLE_NONCE_COOKIE, '', {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    path: '/api/auth',
+    maxAge: 0,
+  });
+}
+
 export async function POST(request: Request) {
   try {
-    await initDb();
     getAuthSessionSecret();
-    const body = await request.json();
-    const { username, passkey } = body;
-
-    if (!username || typeof username !== 'string' || !username.trim()) {
+    const googleClientId = process.env.GOOGLE_CLIENT_ID;
+    if (!googleClientId) {
       return NextResponse.json(
-        { success: false, error: 'Unique username is required.' },
+        { success: false, error: 'Google sign-in is not configured on the server.' },
+        { status: 503 },
+      );
+    }
+
+    const body: unknown = await request.json();
+    if (typeof body !== 'object' || body === null || !('idToken' in body) ||
+      typeof body.idToken !== 'string' || !body.idToken) {
+      return NextResponse.json(
+        { success: false, error: 'A Google sign-in token is required.' },
         { status: 400 },
       );
     }
 
-    const cleanUsername = username.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '');
-    if (cleanUsername.length < 3) {
+    let payload;
+    try {
+      const ticket = await new OAuth2Client(googleClientId).verifyIdToken({
+        idToken: body.idToken,
+        audience: googleClientId,
+      });
+      payload = ticket.getPayload();
+    } catch {
       return NextResponse.json(
-        { success: false, error: 'Username must be at least 3 alphanumeric characters (a-z, 0-9, _, -).' },
-        { status: 400 },
+        { success: false, error: 'Google could not verify your sign-in. Please try again.' },
+        { status: 401 },
       );
     }
-    if (typeof passkey !== 'string' || !passkey.trim()) {
-      return NextResponse.json(
-        { success: false, error: 'Passkey is required.' },
-        { status: 400 },
-      );
-    }
-    const cleanPasskey = passkey.trim();
 
+    const nonce = readCookie(request, GOOGLE_NONCE_COOKIE);
+    if (!payload?.sub || !nonce || !matchesGoogleNonce(nonce, payload.nonce)) {
+      return NextResponse.json(
+        { success: false, error: 'Google sign-in expired. Please try again.' },
+        { status: 401 },
+      );
+    }
+
+    const email = payload.email?.trim().toLowerCase();
+    if (!email || payload.email_verified !== true) {
+      return NextResponse.json(
+        { success: false, error: 'Google did not provide a verified email address.' },
+        { status: 403 },
+      );
+    }
+
+    await initDb();
     const existingUsers = await sql`
-      SELECT id, username, passkey, status, role FROM users WHERE LOWER(username) = ${cleanUsername}
+      SELECT id, username, email, "displayName", status, role
+      FROM users WHERE "googleSub" = ${payload.sub}
     `;
 
-    let user;
-    if (existingUsers.length > 0) {
-      user = existingUsers[0];
+    let user = existingUsers[0];
+    let isFirstAccount = false;
+    if (user) {
       if (user.status !== 'active') {
         return NextResponse.json(
           { success: false, error: 'This user account has been suspended by Admin.' },
           { status: 403 },
         );
       }
-
-      const passkeyCheck = await verifyPasskey(cleanPasskey, user.passkey);
-      if (!passkeyCheck.valid) {
-        return NextResponse.json(
-          { success: false, error: 'Incorrect passkey for this username.' },
-          { status: 401 },
-        );
-      }
-      if (passkeyCheck.needsRehash) {
-        await sql`
-          UPDATE users SET passkey = ${await hashPasskey(cleanPasskey)} WHERE id = ${user.id}
-        `;
-      }
+      const updatedUsers = await sql`
+        UPDATE users
+        SET email = ${email}, "displayName" = ${payload.name?.trim() || email}
+        WHERE id = ${user.id}
+        RETURNING id, username, email, "displayName", status, role
+      `;
+      user = updatedUsers[0];
     } else {
       const count = await sql`SELECT COUNT(*)::int AS count FROM users`;
-      const isFirstAccount = count[0]?.count === 0;
-      const hashedPasskey = await hashPasskey(cleanPasskey);
-      const created = await sql`
-        INSERT INTO users (username, passkey, status, role)
-        VALUES (${cleanUsername}, ${hashedPasskey}, 'active', 'user')
-        RETURNING id, username, status, role
+      isFirstAccount = count[0]?.count === 0;
+      const role = isGoogleAdminEmail(email, process.env.GOOGLE_ADMIN_EMAILS) ? 'admin' : 'user';
+      const createdUsers = await sql`
+        INSERT INTO users (username, "googleSub", email, "displayName", status, role)
+        VALUES (
+          ${googleUsernameFromSubject(payload.sub)},
+          ${payload.sub},
+          ${email},
+          ${payload.name?.trim() || email},
+          'active',
+          ${role}
+        )
+        ON CONFLICT ("googleSub") DO NOTHING
+        RETURNING id, username, email, "displayName", status, role
       `;
-      user = created[0];
-      await ensureUserData(user.id, isFirstAccount);
+      user = createdUsers[0];
+      if (!user) {
+        const concurrentUsers = await sql`
+          SELECT id, username, email, "displayName", status, role
+          FROM users WHERE "googleSub" = ${payload.sub}
+        `;
+        user = concurrentUsers[0];
+        isFirstAccount = false;
+      }
+      if (!user) throw new Error('Unable to create or locate Google account.');
+      if (user.status !== 'active') {
+        return NextResponse.json(
+          { success: false, error: 'This user account has been suspended by Admin.' },
+          { status: 403 },
+        );
+      }
     }
 
-    await ensureUserData(user.id, false);
+    await ensureUserData(user.id, isFirstAccount);
     const response = NextResponse.json({
       success: true,
-      user: { id: user.id, username: user.username, status: user.status, role: user.role },
-      message: existingUsers.length > 0 ? 'Welcome back!' : 'Account created successfully!',
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        displayName: user.displayName,
+        status: user.status,
+        role: user.role,
+      },
     });
     setSessionCookie(response, user.id);
+    clearGoogleNonceCookie(response);
     return response;
   } catch (error: unknown) {
     if (isAuthConfigurationError(error)) {
@@ -107,6 +186,7 @@ export async function POST(request: Request) {
         { status: 503 },
       );
     }
+    console.error('Google authentication failed:', error);
     return NextResponse.json(
       { success: false, error: 'Authentication failed.' },
       { status: 500 },
@@ -123,7 +203,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ success: true, user });
   } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: isAuthConfigurationError(error) ? (error as Error).message : 'Server error.' },
+      {
+        success: false,
+        error: error instanceof Error && isAuthConfigurationError(error) ? error.message : 'Server error.',
+      },
       { status: isAuthConfigurationError(error) ? 503 : 500 },
     );
   }

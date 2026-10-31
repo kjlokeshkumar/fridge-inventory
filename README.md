@@ -41,9 +41,9 @@ connection.
 Use the source of truth in the API routes when preparing a privacy policy and
 Play Data safety form. Current app behavior includes:
 
-- Account usernames and passkeys; household profile names, dietary preferences,
-  and allergy information; inventory names, quantities, categories, and
-  estimated expiration dates.
+- Google account identifiers, verified email addresses, and display names;
+  household profile names, dietary preferences, and allergy information;
+  inventory names, quantities, categories, and estimated expiration dates.
 - Food photos are sent to the app server and Google Gemini for analysis. The
   inventory database stores the extracted food data and a placeholder image
   URL, not the uploaded photo itself.
@@ -56,10 +56,12 @@ Play Data safety form. Current app behavior includes:
   in browser/WebView local storage.
 - The app uses Vercel, Neon, and Google Gemini. No separate analytics SDK was
   identified during the source review.
-- Passkeys are stored as salted scrypt hashes; existing plaintext passkeys are
-  upgraded after a successful sign-in. Authentication uses a signed,
+- Google ID tokens are verified on the server. Google passwords are never
+  received or stored by Fridge AI. Authentication uses a signed,
   HttpOnly/SameSite=Lax session cookie, and profile and inventory APIs scope
-  records to the authenticated account.
+  records to the authenticated account. Existing passkey accounts are not
+  automatically linked to Google accounts; their inventory remains attached
+  to the old account until migrated separately.
 - The home dashboard, inventory, upload, shopping list, and admin areas require
   an active sign-in. The recipe catalog and privacy policy remain publicly
   accessible; signed-out recipe browsing is limited to the public recipe
@@ -93,12 +95,28 @@ npm run start
 ```
 
 The Next.js server needs environment variables from `.env.local` (at minimum
-`DATABASE_URL`, `GEMINI_API_KEY`, and `AUTH_SESSION_SECRET` for authenticated
-features. `AUTH_SESSION_SECRET` must be at least 32 bytes. `ADMIN_SECRET_KEY`
-must also be at least 32 bytes to use admin APIs. Configure production values in
-Vercel's environment settings. `.env.local` is gitignored; never print it,
-commit it, or copy its secrets into documentation. Stop a local server when
-finished if it is no longer needed.
+`DATABASE_URL`, `GEMINI_API_KEY`, `AUTH_SESSION_SECRET`, and `GOOGLE_CLIENT_ID`
+for authenticated features). Set `NEXT_PUBLIC_GOOGLE_CLIENT_ID` to the same
+Google **Web application** client ID for the sign-in button. Configure the web
+client's authorized JavaScript origins (`http://localhost:3000` and the
+production origin) and redirect URIs (`http://localhost:3000/auth/google/callback`
+and `https://fridge-inventory-one.vercel.app/auth/google/callback`) in Google
+Cloud Console. `AUTH_SESSION_SECRET` must be at least 32 bytes.
+`ADMIN_SECRET_KEY` must also be at least 32 bytes to use admin APIs. Optionally
+set `GOOGLE_ADMIN_EMAILS` to a comma-separated list of verified Google account
+emails that should receive the admin role when their account is first created.
+Configure production values in Vercel's environment settings.
+`.env.local` is gitignored; never print it, commit it, or copy its secrets into
+documentation.
+
+For Android, create an **Android OAuth client** in the same Google Cloud
+project, using application ID `com.fridge.ai` and the signing certificate's
+SHA-1 fingerprint. Add both the local debug certificate and the **Play app
+signing certificate** from Play Console; the upload certificate alone does not
+cover Play-distributed installs. The app continues to render the existing
+Fridge AI UI in its Capacitor WebView, while the Google account picker opens
+through Android's native sign-in flow. The Android client ID is not a runtime
+environment variable; the native plugin uses the Web client ID above.
 
 ## Android debug build
 
@@ -267,8 +285,9 @@ Console upload-key reset process is available and completed.
 
 1. **Keep the GitHub repository private.** This project is not intended for
    public source release.
-2. Configure `AUTH_SESSION_SECRET` in Vercel; configure `ADMIN_SECRET_KEY` and
-   provision an admin account only if admin features are needed. Verify the
+2. Configure Google OAuth client IDs, `AUTH_SESSION_SECRET`, and
+   `GOOGLE_ADMIN_EMAILS` in Vercel; configure `ADMIN_SECRET_KEY` only if admin
+   features are needed. Verify the
    legacy-data migration and account isolation against the production database
    before public release.
 3. Review the in-app privacy policy, deploy it, and confirm its public URL is

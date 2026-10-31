@@ -11,7 +11,8 @@ export default function AppAccessGate({ children }: { children: React.ReactNode 
   const [status, setStatus] = useState<AccessStatus>('checking');
   const authChangeVersion = useRef(0);
   const isPublicRoute = pathname === '/recipes' || pathname.startsWith('/recipes/') ||
-    pathname === '/privacy' || pathname.startsWith('/privacy/');
+    pathname === '/privacy' || pathname.startsWith('/privacy/') ||
+    pathname === '/auth/google/callback';
 
   const checkSession = useCallback(async () => {
     const version = authChangeVersion.current;

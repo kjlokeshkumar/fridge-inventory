@@ -95,6 +95,24 @@ body::before {
   border-color: var(--primary-color);
 }
 
+.google-sign-in-button {
+  background: #fff;
+  color: #202124;
+  border: 1px solid #dadce0;
+  box-shadow: none;
+}
+
+.google-sign-in-button:hover {
+  background: #f8f9fa;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.google-sign-in-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
 /* Base Layout Classes */
 .container {
   max-width: 1200px;

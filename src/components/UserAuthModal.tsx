@@ -2,19 +2,40 @@
 
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { Capacitor } from '@capacitor/core';
+import {
+  ErrorCode,
+  GoogleSignIn,
+} from '@capawesome/capacitor-google-sign-in';
 
 export interface AuthUser {
   id: number;
   username: string;
+  email: string | null;
+  displayName: string | null;
   role: string;
   status: string;
+}
+
+const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+const GOOGLE_CALLBACK_URL = '/auth/google/callback';
+
+function getErrorMessage(error: unknown): string {
+  if (typeof error === 'object' && error !== null && 'code' in error) {
+    if (error.code === ErrorCode.SignInCanceled) return 'Google sign-in was canceled.';
+    if (error.code === ErrorCode.NoCredentialAvailable) {
+      return 'No Google account is available on this device.';
+    }
+    if (error.code === ErrorCode.ProviderConfigurationError) {
+      return 'Google sign-in is unavailable. Check Google Play services and try again.';
+    }
+  }
+  return error instanceof Error ? error.message : 'Google sign-in failed. Please try again.';
 }
 
 export default function UserAuthModal() {
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [usernameInput, setUsernameInput] = useState('');
-  const [passkeyInput, setPasskeyInput] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -59,68 +80,90 @@ export default function UserAuthModal() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
-  const loginUser = async (uname: string, pkey: string) => {
+  const loginWithGoogle = async () => {
+    if (!GOOGLE_CLIENT_ID) {
+      setErrorMsg('Google sign-in is not configured. Please try again later.');
+      return;
+    }
+
     setLoading(true);
     setErrorMsg(null);
     try {
-      const res = await fetch('/api/auth', {
+      const nonceResponse = await fetch('/api/auth/google/nonce', { method: 'POST' });
+      const nonceData = await nonceResponse.json();
+      if (!nonceResponse.ok || !nonceData.success || typeof nonceData.nonce !== 'string') {
+        throw new Error(nonceData.error || 'Unable to start Google sign-in.');
+      }
+
+      const isWeb = Capacitor.getPlatform() === 'web';
+      await GoogleSignIn.initialize({
+        clientId: GOOGLE_CLIENT_ID,
+        ...(isWeb ? { redirectUrl: `${window.location.origin}${GOOGLE_CALLBACK_URL}` } : {}),
+      });
+      const result = await GoogleSignIn.signIn({ nonce: nonceData.nonce });
+      if (!result.idToken) throw new Error('Google did not return a sign-in token.');
+
+      const response = await fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: uname, passkey: pkey })
+        body: JSON.stringify({ idToken: result.idToken }),
       });
-      const data = await res.json();
-
-      if (!data.success) {
-        setErrorMsg(data.error || 'Authentication failed.');
-        setLoading(false);
-        return;
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Google sign-in failed.');
       }
 
       const user: AuthUser = data.user;
       setCurrentUser(user);
       window.dispatchEvent(new CustomEvent('userAuthChange', { detail: user }));
       setIsOpen(false);
-      setUsernameInput('');
-      setPasskeyInput('');
-    } catch {
-      setErrorMsg('Failed to connect to authentication server.');
+    } catch (error: unknown) {
+      setErrorMsg(getErrorMessage(error));
     } finally {
       setLoading(false);
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!usernameInput.trim()) return;
-    loginUser(usernameInput, passkeyInput);
+  const logoutUser = async () => {
+    try {
+      const response = await fetch('/api/auth', { method: 'DELETE' });
+      if (!response.ok) throw new Error('Unable to sign out of Fridge AI.');
+      setCurrentUser(null);
+      window.dispatchEvent(new CustomEvent('userAuthChange', { detail: null }));
+      setIsOpen(false);
+
+      if (GOOGLE_CLIENT_ID && Capacitor.isNativePlatform()) {
+        try {
+          await GoogleSignIn.initialize({ clientId: GOOGLE_CLIENT_ID });
+          await GoogleSignIn.signOut();
+        } catch (error) {
+          console.error('Unable to clear Google credential state:', error);
+        }
+      }
+    } catch (error: unknown) {
+      setErrorMsg(error instanceof Error ? error.message : 'Unable to sign out.');
+    }
   };
 
-  const logoutUser = async () => {
-    await fetch('/api/auth', { method: 'DELETE' });
-    setCurrentUser(null);
-    window.dispatchEvent(new CustomEvent('userAuthChange', { detail: null }));
-    setIsOpen(false);
-  };
+  const accountName = currentUser?.displayName || currentUser?.email || currentUser?.username;
 
   return (
     <div className="user-auth-wrapper">
-      {/* User Badge Button in Header */}
       <button
         onClick={() => {
           if (isSessionReady) setIsOpen(true);
         }}
         className="user-auth-badge"
-        title={currentUser ? `Signed in as ${currentUser.username}` : 'Sign in'}
-        aria-label={currentUser ? `Account: ${currentUser.username}` : 'Sign in'}
+        title={currentUser ? `Signed in as ${accountName}` : 'Sign in'}
+        aria-label={currentUser ? `Account: ${accountName}` : 'Sign in'}
         disabled={!isSessionReady}
       >
-        <span className="user-auth-icon">🔑</span>
+        <span className="user-auth-icon">👤</span>
         <span className="user-auth-name">
-          {isSessionReady ? currentUser?.username || 'Sign In' : 'Checking…'}
+          {isSessionReady ? accountName || 'Sign In' : 'Checking…'}
         </span>
       </button>
 
-      {/* Auth Modal */}
       {isOpen && isMounted && createPortal(
         <div className="modal-backdrop" onClick={() => setIsOpen(false)}>
           <div className="modal-content glass-pane" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
@@ -141,7 +184,7 @@ export default function UserAuthModal() {
             {currentUser ? (
               <div className="auth-account-summary">
                 <p>You’re signed in as</p>
-                <strong>{currentUser.username}</strong>
+                <strong>{accountName}</strong>
                 <div className="form-actions">
                   <button type="button" onClick={logoutUser} className="btn-secondary">
                     Sign out
@@ -158,53 +201,24 @@ export default function UserAuthModal() {
             ) : (
               <>
                 <p style={{ fontSize: '0.85rem', color: '#cbd5e1', marginBottom: '16px' }}>
-                  Sign in or create an account to access your private inventory.
+                  Continue with your Google account to access your private inventory.
+                  Google passwords are never shared with Fridge AI.
                 </p>
 
                 {errorMsg && (
-                  <div className="auth-error-banner">
+                  <div className="auth-error-banner" role="alert">
                     ⚠️ {errorMsg}
                   </div>
                 )}
 
-                <form onSubmit={handleFormSubmit} className="profile-form">
-                  <div className="form-group">
-                    <label>Unique Username (e.g. alex99, lokesh_cook)</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Enter unique username"
-                      value={usernameInput}
-                      onChange={(e) => setUsernameInput(e.target.value)}
-                      className="form-input"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Passkey / PIN</label>
-                    <input
-                      type="password"
-                      required
-                      placeholder="e.g. 1234"
-                      value={passkeyInput}
-                      onChange={(e) => setPasskeyInput(e.target.value)}
-                      className="form-input"
-                    />
-                  </div>
-
-                  <div className="form-actions">
-                    <button
-                      type="button"
-                      onClick={() => setIsOpen(false)}
-                      className="btn-secondary"
-                    >
-                      Cancel
-                    </button>
-                    <button type="submit" className="btn-primary" disabled={loading}>
-                      {loading ? 'Authenticating...' : 'Access My Inventory'}
-                    </button>
-                  </div>
-                </form>
+                <button
+                  type="button"
+                  onClick={loginWithGoogle}
+                  className="btn-primary full-width google-sign-in-button"
+                  disabled={loading}
+                >
+                  {loading ? 'Connecting to Google…' : 'Continue with Google'}
+                </button>
               </>
             )}
           </div>

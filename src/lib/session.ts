@@ -12,6 +12,8 @@ export { createSessionToken, verifySessionToken } from '@/lib/session-token';
 export interface AuthenticatedUser {
   id: number;
   username: string;
+  email: string | null;
+  displayName: string | null;
   status: string;
   role: string;
 }
@@ -47,7 +49,8 @@ export async function getAuthenticatedUser(request: Request): Promise<Authentica
   await initDb();
   // The role and account status are read from the database, not trusted from the cookie.
   const users = await sql`
-    SELECT id, username, status, role FROM users WHERE id = ${session.userId}
+    SELECT id, username, email, "displayName", status, role
+    FROM users WHERE id = ${session.userId}
   `;
   const user = users[0] as AuthenticatedUser | undefined;
   return user?.status === 'active' ? user : null;

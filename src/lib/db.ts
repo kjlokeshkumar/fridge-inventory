@@ -36,11 +36,22 @@ export async function initDb() {
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         username VARCHAR(255) UNIQUE NOT NULL,
-        passkey VARCHAR(255) NOT NULL,
+        passkey VARCHAR(255),
+        "googleSub" VARCHAR(255),
+        email VARCHAR(320),
+        "displayName" VARCHAR(255),
         status VARCHAR(20) DEFAULT 'active',
         role VARCHAR(20) DEFAULT 'user',
         "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
+    `;
+
+    await sql`ALTER TABLE users ALTER COLUMN passkey DROP NOT NULL`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS "googleSub" VARCHAR(255)`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS email VARCHAR(320)`;
+    await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS "displayName" VARCHAR(255)`;
+    await sql`
+      CREATE UNIQUE INDEX IF NOT EXISTS users_google_sub_unique_idx ON users ("googleSub")
     `;
 
     await sql`
@@ -107,7 +118,7 @@ export async function initDb() {
     // removal of the old hardcoded bootstrap account.
     const seededAdmin = await sql`
       SELECT id, passkey FROM users
-      WHERE username = 'admin' AND role = 'admin' AND status = 'active'
+      WHERE username = 'admin' AND role = 'admin' AND status = 'active' AND passkey IS NOT NULL
       LIMIT 1
     `;
     if (seededAdmin[0] && (await verifyPasskey('admin123', seededAdmin[0].passkey)).valid) {
