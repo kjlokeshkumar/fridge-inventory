@@ -23,30 +23,39 @@
 }
 
 .empty-state p {
-  color: #64748b;
+  color: var(--text-secondary);
   margin-bottom: 24px;
 }
 
 .inventory-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 .inventory-item {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: background-color 0.2s;
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.inventory-item.glass-pane {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .inventory-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(58, 73, 82, 0.12);
+  background: rgba(253, 238, 217, 0.4);
 }
 
 .inventory-item.expired::before {
@@ -77,10 +86,10 @@
 }
 
 .item-category {
-  background: rgba(92, 157, 173, 0.12);
-  color: #2b5362;
-  padding: 4px 10px;
-  border-radius: 12px;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0;
+  border-radius: 0;
   font-size: 0.73rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -118,14 +127,13 @@
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  background: linear-gradient(135deg, rgba(238, 231, 214, 0.9), rgba(174, 211, 202, 0.7));
-  box-shadow: inset 0 0 0 1px rgba(148,163,184,0.15);
+  background: var(--badge-item-yellow);
 }
 
 .item-name {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text-main);
   margin: 0;
 }
 
@@ -135,7 +143,7 @@
   align-items: center;
   margin-top: auto;
   font-size: 0.88rem;
-  color: #475569;
+  color: var(--text-secondary);
 }
 
 .item-quantity {
@@ -149,12 +157,12 @@
 }
 
 .expired .item-expiry {
-  color: #b94a4a;
+  color: var(--badge-warning-text);
   font-weight: 700;
 }
 
 .expiring-soon .item-expiry {
-  color: #b7801d;
+  color: var(--warning-color);
   font-weight: 700;
 }
 
@@ -164,4 +172,15 @@
   color: var(--accent-color);
   font-weight: 500;
   margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .inventory-item.glass-pane {
+    padding: 12px;
+    border-radius: 0;
+  }
+
+  .item-category {
+    padding: 0;
+  }
 }

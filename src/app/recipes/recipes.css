@@ -1114,3 +1114,214 @@
   border-color: #38bdf8;
   color: #ffffff;
 }
+
+/* Warm, flat culinary palette: readable type with minimal card treatment. */
+.recipes-container {
+  color: var(--text-main);
+}
+
+.recipes-container .glass-pane,
+.planner-recipe-modal {
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.recipe-view-tabs {
+  background: var(--bg-strip);
+  border: 0;
+  border-radius: 8px;
+}
+
+.recipe-view-tab,
+.planner-day-tab,
+.fridge-pill,
+.category-tab-btn,
+.slot-mini-btn,
+.modal-combo-tab {
+  background: transparent;
+  color: var(--text-main);
+  border-color: rgba(31, 26, 23, 0.18);
+  border-radius: 8px;
+}
+
+.recipe-view-tab.active,
+.planner-day-tab.active,
+.fridge-pill.active,
+.category-tab-btn.active,
+.slot-mini-btn.active,
+.modal-combo-tab.active {
+  background: var(--bg-strip);
+  border-color: var(--fab-border);
+  color: var(--text-main);
+}
+
+.selector-header h3,
+.recipe-header h3,
+.planner-top-bar h2,
+.day-title-group h4,
+.meal-slot-title,
+.combo-main-line,
+.weekly-shopping-box h3,
+.shopping-col-card h4,
+.bhurko-guide-panel h3,
+.bhurko-card h4 {
+  color: var(--text-main);
+}
+
+.selector-sub,
+.planner-day-tab small,
+.recipe-section h4,
+.bhurko-used-for,
+.day-date-sub,
+.combo-why-note {
+  color: var(--text-secondary);
+}
+
+.fridge-selector-panel,
+.catalog-filter-panel,
+.weekly-planner-panel,
+.day-plan-card,
+.weekly-shopping-box,
+.shopping-col-card,
+.bhurko-guide-panel,
+.bhurko-card,
+.recipe-card {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.groupSection h2,
+.selector-header,
+.planner-top-bar,
+.shopping-section-heading,
+.shopping-view-panel > h2 {
+  background: var(--bg-strip);
+}
+
+.recipe-search-input {
+  background: var(--bg-input);
+  color: var(--text-main);
+  border: 0;
+  border-radius: 9999px;
+}
+
+.recipe-search-input::placeholder,
+.recipe-search-input:focus {
+  color: var(--text-secondary);
+}
+
+.sample-basket-banner,
+.catalog-count-badge {
+  background: transparent;
+  border: 0;
+  color: var(--primary-teal);
+}
+
+.source-link-yt,
+.source-link-web {
+  background: transparent;
+  border: 0;
+  color: var(--primary-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.source-link-yt:hover,
+.source-link-web:hover,
+.fridge-pill:hover,
+.category-tab-btn:hover,
+.slot-mini-btn:hover,
+.recipe-view-tab:hover {
+  color: #194f56;
+  border-color: var(--primary-teal);
+}
+
+.recipe-category-badge,
+.meal-type-label {
+  color: var(--primary-teal);
+}
+
+.difficulty.easy { color: #26734d; }
+.difficulty.medium { color: #8a5a08; }
+.difficulty.hard { color: #a3312c; }
+
+.badge-fridge,
+.badge-pantry {
+  background: transparent;
+  border: 0;
+  color: var(--text-main);
+  padding-left: 0;
+}
+
+.bhurko-note-box,
+.combo-side-box,
+.meal-slot-box,
+.meal-slot-box.slot-pinned {
+  background: transparent;
+  color: var(--text-main);
+}
+
+.meal-slot-box {
+  border: 0;
+  border-bottom: 1px solid rgba(31, 26, 23, 0.12);
+  border-radius: 0;
+}
+
+.combo-side-label { color: var(--primary-teal); }
+.missing-list,
+.steps-list,
+.bhurko-ing-list,
+.bhurko-prep { color: var(--text-main); }
+
+.btn-pin-plan {
+  background: transparent;
+  border-color: var(--primary-teal);
+  color: var(--primary-teal);
+}
+
+.btn-pin-plan.pinned {
+  background: var(--primary-teal);
+  color: #fff;
+}
+
+.meal-slot-links a,
+.meal-slot-links a.web-ref {
+  color: var(--primary-teal);
+}
+
+.purchase-needed-item {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(31, 26, 23, 0.12);
+  border-radius: 0;
+  color: var(--text-main);
+}
+
+.purchase-days-tag {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.combo-dish-link,
+.combo-paired-link {
+  background: transparent;
+  color: var(--primary-teal);
+  border: 0;
+  text-decoration-color: currentColor;
+}
+
+.view-recipe-pill {
+  background: transparent;
+  color: var(--primary-teal);
+}
+
+.planner-recipe-modal {
+  border: 1px solid var(--fab-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(31, 26, 23, 0.16);
+}

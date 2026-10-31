@@ -37,6 +37,8 @@ export default function RootLayout({
         </main>
         <footer className="site-footer">
           <Link href="/privacy">Privacy Policy</Link>
+          {' · '}
+          <Link href="/delete-account">Delete Account</Link>
         </footer>
       </body>
     </html>

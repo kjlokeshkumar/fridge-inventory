@@ -1,19 +1,32 @@
 /* Local system font stack */
 
 :root {
-  --bg-color: #f7f1e8;
-  --text-color: #1f2937;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --border-color: rgba(148, 163, 184, 0.25);
-  --primary-color: #5c9dad;
-  --primary-glow: rgba(92, 157, 173, 0.18);
-  --accent-color: #2b7a78;
-  --accent-glow: rgba(43, 122, 120, 0.18);
-  --success-color: #159a6a;
-  --danger-color: #dd6b6b;
-  --warning-color: #d9a441;
-  --surface-soft: #f2eadf;
-  --surface-strong: #e8dcc7;
+  --font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
+  --bg-main: #fffdf6;
+  --bg-strip: #fdeed9;
+  --bg-input: #f6eadb;
+  --primary-teal: #2d6e77;
+  --fab-bg: #fce5b5;
+  --fab-border: #deb97e;
+  --text-main: #1f1a17;
+  --text-secondary: #7a6f68;
+  --badge-warning-bg: #fce4e4;
+  --badge-warning-text: #c25454;
+  --badge-item-yellow: #f2d184;
+  --badge-item-teal: #94c5c7;
+  --bg-color: var(--bg-main);
+  --text-color: var(--text-main);
+  --card-bg: #fffdf6;
+  --border-color: rgba(31, 26, 23, 0.12);
+  --primary-color: var(--primary-teal);
+  --primary-glow: rgba(45, 110, 119, 0.18);
+  --accent-color: #347b7c;
+  --accent-glow: rgba(45, 110, 119, 0.16);
+  --success-color: #26734d;
+  --danger-color: #b94a4a;
+  --warning-color: #a76b24;
+  --surface-soft: var(--bg-input);
+  --surface-strong: var(--bg-strip);
 }
 
 * {
@@ -23,10 +36,9 @@
 }
 
 body {
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.9), rgba(247,241,232,0.9) 30%, rgba(236,226,212,0.9) 100%);
+  background: var(--bg-main);
   color: var(--text-color);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-family);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -42,25 +54,20 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at center, rgba(99,102,241,0.08) 0%, rgba(13,15,26,0) 50%),
-              radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(6,182,212,0.06) 0%, rgba(13,15,26,0) 40%);
-  z-index: -1;
-  pointer-events: none;
+  display: none;
 }
 
 /* Glassmorphism Card Style */
 .glass-pane {
-  background: rgba(255, 255, 255, 0.74);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(87, 98, 102, 0.08);
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(31, 26, 23, 0.04);
 }
 
 /* Button Styles */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: var(--primary-teal);
   color: white;
   border: none;
   padding: 10px 24px;
@@ -94,7 +101,7 @@ body::before {
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-input);
   border-color: var(--primary-color);
 }
 
@@ -135,13 +142,13 @@ body::before {
 .site-footer {
   padding: 16px 24px;
   border-top: 1px solid var(--border-color);
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.85rem;
   text-align: center;
 }
 
 .site-footer a {
-  color: #a5b4fc;
+  color: #286d70;
   text-underline-offset: 3px;
 }
 
@@ -154,15 +161,12 @@ body::before {
 .page-title {
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #1f2937, #2d7f7b);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-main);
   margin-bottom: 8px;
 }
 
 .page-subtitle {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 1.1rem;
   margin-bottom: 32px;
 }
@@ -187,11 +191,11 @@ body::before {
 
 .access-gate p {
   max-width: 420px;
-  color: #cbd5e1;
+  color: #475569;
 }
 
 .access-gate-link {
-  color: #a5b4fc;
+  color: #286d70;
   text-underline-offset: 4px;
 }
 
@@ -238,10 +242,8 @@ body::before {
 
 /* Navbar Styles */
 .navbar {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  background: var(--bg-main);
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -265,14 +267,11 @@ body::before {
 }
 
 .logo-text {
-  color: #1f2937;
+  color: var(--text-main);
 }
 
 .logo-accent {
-  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--primary-teal);
 }
 
 .logo-icon {
@@ -286,7 +285,7 @@ body::before {
 }
 
 .nav-link {
-  color: #94a3b8;
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
@@ -340,18 +339,18 @@ body::before {
   text-decoration: none;
   color: var(--text-color);
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.78);
+  background: var(--bg-main);
 }
 
 .action-card:hover {
   transform: translateY(-5px);
   border-color: var(--primary-color);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 4px 12px rgba(31, 26, 23, 0.1);
 }
 
 .highlight-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(117, 176, 184, 0.12));
-  border-color: rgba(92, 157, 173, 0.3);
+  background: var(--bg-strip);
+  border-color: var(--fab-border);
 }
 
 .card-icon {
@@ -367,15 +366,15 @@ body::before {
 }
 
 .action-card p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin-bottom: 16px;
   flex-grow: 1;
 }
 
 .card-stats {
-  background: rgba(92, 157, 173, 0.14);
-  color: #183b45;
+  background: var(--bg-input);
+  color: var(--text-main);
   padding: 4px 12px;
   border-radius: 12px;
   font-size: 0.85rem;
@@ -399,9 +398,7 @@ body::before {
     right: 0;
     height: calc(68px + env(safe-area-inset-bottom, 0px));
     padding-bottom: env(safe-area-inset-bottom, 0px);
-    background: rgba(13, 15, 26, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: var(--bg-main);
     border-top: 1px solid var(--border-color);
     z-index: 100;
   }
@@ -413,7 +410,7 @@ body::before {
     justify-content: center;
     flex: 1;
     height: 100%;
-    color: #94a3b8;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.72rem;
     font-weight: 500;
@@ -422,7 +419,7 @@ body::before {
   }
 
   .bottom-nav-item:active, .bottom-nav-item.active {
-    color: var(--accent-color);
+    color: var(--primary-teal);
     transform: scale(1.05);
   }
 
@@ -446,7 +443,7 @@ body::before {
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 18px var(--primary-glow);
-    border: 4px solid var(--bg-color);
+    border: 4px solid #fffdf8;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
@@ -588,7 +585,7 @@ body::before {
 .lang-selector-container {
   display: inline-flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-main);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 6px 12px;
@@ -598,7 +595,7 @@ body::before {
 
 .lang-selector-container:focus-within, .lang-selector-container:hover {
   border-color: var(--accent-color);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-input);
 }
 
 .lang-globe-icon {
@@ -618,7 +615,7 @@ body::before {
 }
 
 .lang-selector option {
-  background: #141724;
+  background: var(--bg-main);
   color: var(--text-color);
   padding: 8px;
 }
@@ -627,8 +624,8 @@ body::before {
   display: flex;
   align-items: center;
   gap: 4px;
-  background: rgba(6, 182, 212, 0.15);
-  border: 1px solid rgba(6, 182, 212, 0.35);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
   padding: 4px 10px;
   border-radius: 20px;
   color: var(--text-color);
@@ -639,14 +636,14 @@ body::before {
 }
 
 .user-auth-badge:hover {
-  background: rgba(6, 182, 212, 0.25);
+  background: var(--bg-strip);
   border-color: var(--accent-color);
 }
 
 .auth-error-banner {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid #ef4444;
-  color: #f87171;
+  background: #fff1f0;
+  border: 1px solid #e6a09a;
+  color: #9f2d25;
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -663,7 +660,7 @@ body::before {
 }
 
 .auth-account-summary p {
-  color: #cbd5e1;
+  color: #475569;
 }
 
 .auth-account-summary > strong {
@@ -746,8 +743,8 @@ body::before {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
   padding: 5px 12px;
   border-radius: 20px;
   color: var(--text-color);
@@ -758,7 +755,7 @@ body::before {
 }
 
 .profile-badge-btn:hover {
-  background: rgba(99, 102, 241, 0.25);
+  background: var(--bg-strip);
   border-color: var(--primary-color);
   transform: translateY(-1px);
 }
@@ -773,7 +770,7 @@ body::before {
 
 .profile-diet-tag {
   background: var(--accent-color);
-  color: #0d0f1a;
+  color: #fff;
   font-size: 0.7rem;
   font-weight: 700;
   padding: 2px 6px;
@@ -863,7 +860,7 @@ body::before {
 }
 
 .profile-card {
-  background: rgba(15, 20, 35, 0.6);
+  background: var(--bg-main);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 14px 16px;
@@ -874,13 +871,13 @@ body::before {
 
 .profile-card:hover {
   border-color: var(--primary-color);
-  background: rgba(99, 102, 241, 0.1);
+  background: var(--bg-input);
 }
 
 .profile-card.active {
   border-color: var(--accent-color);
-  background: rgba(6, 182, 212, 0.12);
-  box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+  background: var(--bg-strip);
+  box-shadow: 0 0 8px rgba(45, 110, 119, 0.12);
 }
 
 .profile-card-top {
@@ -923,13 +920,13 @@ body::before {
   right: 14px;
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 0.8rem;
   cursor: pointer;
 }
 
 .profile-edit-icon:hover {
-  color: white;
+  color: #1f2937;
 }
 
 .avatar-picker {
@@ -941,7 +938,7 @@ body::before {
 
 .avatar-option {
   font-size: 1.4rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-main);
   border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 6px 10px;
@@ -963,22 +960,104 @@ body::before {
   display: block;
   font-size: 0.85rem;
   margin-bottom: 6px;
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 
 .form-input, .form-select {
   width: 100%;
   padding: 10px 14px;
-  background: rgba(15, 20, 35, 0.8);
+  background: var(--bg-main);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  color: white;
+  color: var(--text-main);
   font-size: 0.95rem;
 }
 
 .form-input:focus, .form-select:focus {
   outline: none;
   border-color: var(--accent-color);
+}
+
+.delete-account-confirmation {
+  width: 100%;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.delete-account-confirmation p {
+  color: var(--text-main);
+}
+
+.delete-account-btn {
+  padding: 10px 16px;
+  border: 1px solid #a93f3f;
+  border-radius: 8px;
+  background: #fff1ef;
+  color: #8f302e;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-account-btn:hover:not(:disabled) {
+  background: #fce4e4;
+}
+
+.delete-account-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.deletion-page {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: clamp(20px, 5vw, 40px);
+  color: var(--text-main);
+}
+
+.deletion-page header {
+  margin-bottom: 20px;
+}
+
+.deletion-page .page-title {
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+}
+
+.deletion-page p,
+.deletion-page li {
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+.deletion-page ol {
+  margin: 18px 0;
+  padding-left: 24px;
+}
+
+.deletion-page li + li {
+  margin-top: 6px;
+}
+
+.deletion-page a {
+  color: var(--primary-teal);
+  text-underline-offset: 3px;
+}
+
+.deletion-eyebrow {
+  margin-bottom: 8px;
+  color: var(--text-secondary) !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.deletion-success {
+  margin-bottom: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--primary-teal);
+  color: #26734d !important;
+  font-weight: 600;
 }
 
 .form-actions {
@@ -989,8 +1068,8 @@ body::before {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: var(--bg-main);
+  color: var(--text-main);
   border: 1px solid var(--border-color);
   padding: 10px 18px;
   border-radius: 8px;

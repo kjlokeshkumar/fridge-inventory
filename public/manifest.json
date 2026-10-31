@@ -4,8 +4,8 @@
   "description": "AI-Powered Fridge & Pantry Tracker with Sourashtra & Multilingual Support",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#fffdf6",
+  "theme_color": "#2d6e77",
   "icons": [
     {
       "src": "/logo.png",

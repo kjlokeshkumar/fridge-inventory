@@ -12,6 +12,7 @@ export default function AppAccessGate({ children }: { children: React.ReactNode 
   const authChangeVersion = useRef(0);
   const isPublicRoute = pathname === '/recipes' || pathname.startsWith('/recipes/') ||
     pathname === '/privacy' || pathname.startsWith('/privacy/') ||
+    pathname === '/delete-account' || pathname.startsWith('/delete-account/') ||
     pathname === '/auth/google/callback';
 
   const checkSession = useCallback(async () => {

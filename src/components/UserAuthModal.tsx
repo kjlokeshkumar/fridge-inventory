@@ -40,6 +40,8 @@ export default function UserAuthModal() {
   const [loading, setLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isSessionReady, setIsSessionReady] = useState(false);
+  const [deleteConfirmation, setDeleteConfirmation] = useState('');
+  const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -145,6 +147,52 @@ export default function UserAuthModal() {
     }
   };
 
+  const deleteAccount = async () => {
+    if (deleteConfirmation !== 'DELETE') return;
+
+    setLoading(true);
+    setErrorMsg(null);
+    try {
+      const response = await fetch('/api/account', { method: 'DELETE' });
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Unable to delete your account. Please try again.');
+      }
+
+      try {
+        localStorage.removeItem('activeProfileId');
+        localStorage.removeItem('currentSourashtraWeeklyCombosV3');
+        localStorage.removeItem('pinnedSourashtraWeeklyCombosV3');
+        for (let index = localStorage.length - 1; index >= 0; index -= 1) {
+          const key = localStorage.key(index);
+          if (key?.startsWith('checkedWeeklyShoppingItemsV1:')) {
+            localStorage.removeItem(key);
+          }
+        }
+      } catch (error) {
+        console.error('Unable to clear local account data after deletion:', error);
+      }
+
+      if (GOOGLE_CLIENT_ID && Capacitor.isNativePlatform()) {
+        try {
+          await GoogleSignIn.initialize({ clientId: GOOGLE_CLIENT_ID });
+          await GoogleSignIn.signOut();
+        } catch (error) {
+          console.error('Unable to clear Google credential state after account deletion:', error);
+        }
+      }
+
+      setCurrentUser(null);
+      window.dispatchEvent(new CustomEvent('userAuthChange', { detail: null }));
+      setIsOpen(false);
+      window.location.replace('/delete-account?deleted=1');
+    } catch (error: unknown) {
+      setErrorMsg(error instanceof Error ? error.message : 'Unable to delete your account. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const accountName = currentUser?.displayName || currentUser?.email || currentUser?.username;
 
   return (
@@ -185,22 +233,74 @@ export default function UserAuthModal() {
               <div className="auth-account-summary">
                 <p>You’re signed in as</p>
                 <strong>{accountName}</strong>
-                <div className="form-actions">
-                  <button type="button" onClick={logoutUser} className="btn-secondary">
-                    Sign out
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setIsOpen(false)}
-                    className="btn-primary"
-                  >
-                    Done
-                  </button>
-                </div>
+                {errorMsg && (
+                  <div className="auth-error-banner" role="alert">
+                    ⚠️ {errorMsg}
+                  </div>
+                )}
+                {isConfirmingDelete ? (
+                  <div className="delete-account-confirmation">
+                    <p>
+                      This permanently deletes your account, household profiles,
+                      and inventory. Type <strong>DELETE</strong> to confirm.
+                    </p>
+                    <input
+                      className="form-input"
+                      aria-label="Type DELETE to confirm account deletion"
+                      autoComplete="off"
+                      value={deleteConfirmation}
+                      onChange={(event) => setDeleteConfirmation(event.target.value.toUpperCase())}
+                    />
+                    <button
+                      type="button"
+                      className="delete-account-btn"
+                      onClick={deleteAccount}
+                      disabled={loading || deleteConfirmation !== 'DELETE'}
+                    >
+                      {loading ? 'Deleting account…' : 'Permanently delete account'}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn-secondary"
+                      onClick={() => {
+                        setIsConfirmingDelete(false);
+                        setDeleteConfirmation('');
+                        setErrorMsg(null);
+                      }}
+                      disabled={loading}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                ) : (
+                  <div className="form-actions">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsConfirmingDelete(true);
+                        setDeleteConfirmation('');
+                        setErrorMsg(null);
+                      }}
+                      className="delete-account-btn"
+                    >
+                      Delete account
+                    </button>
+                    <button type="button" onClick={logoutUser} className="btn-secondary">
+                      Sign out
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsOpen(false)}
+                      className="btn-primary"
+                    >
+                      Done
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
               <>
-                <p style={{ fontSize: '0.85rem', color: '#cbd5e1', marginBottom: '16px' }}>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '16px' }}>
                   Continue with your Google account to access your private inventory.
                   Google passwords are never shared with Sourashtra Chef.
                 </p>

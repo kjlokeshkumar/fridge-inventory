@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <article className={`glass-pane ${styles.policy}`}>
+    <article className={styles.policy}>
       <header className={styles.header}>
         <p className={styles.eyebrow}>SOURASHTRA CHEF</p>
         <h1 className="page-title">Privacy Policy</h1>
@@ -104,12 +104,17 @@ export default function PrivacyPolicyPage() {
           you access inventory or the shopping list. This cleanup is triggered
           by app requests, not by a background job. Account and household
           profile records do not currently have an automatic expiration period.
-          You can also remove inventory items in the app. To ask us to delete an account
-          or other information, email{' '}
+          You can remove inventory items in the app. To permanently delete your
+          account and associated household profiles and inventory, use the
+          Delete account option in your signed-in account menu. This also clears
+          saved meal plans and profile selection from the device where you
+          requested deletion. See our{' '}
+          <a href="/delete-account">account deletion instructions</a>. If you
+          cannot sign in, you may request deletion by emailing{' '}
           <a href="mailto:kjlokeshkumar@gmail.com">kjlokeshkumar@gmail.com</a>{' '}
-          from your Google account email address, or include your Sourashtra Chef
-          username if you still use a legacy account. We may retain information when required to
-          resolve disputes, enforce our terms, or meet legal obligations.
+          from the Google account email address associated with the account.
+          We may retain information when required to resolve disputes, enforce
+          our terms, or meet legal obligations.
         </p>
         <p>
           You can clear the app&apos;s local browser storage through your

@@ -10,7 +10,7 @@
   width: 100%;
   max-width: 420px;
   min-height: 860px;
-  background: #f6f0e8;
+  background: var(--bg-main);
   border-radius: 34px;
   border: 3px solid #171717;
   box-shadow: 0 22px 40px rgba(0, 0, 0, 0.15);
@@ -24,7 +24,7 @@
   align-items: center;
   padding: 18px 24px 10px;
   font-size: 0.95rem;
-  color: #1d1d1d;
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
@@ -60,9 +60,9 @@
 }
 
 .brandName {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-main);
 }
 
 .menuButton {
@@ -79,45 +79,53 @@
   padding: 0 18px 18px;
 }
 
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
 .title {
-  margin: 0 0 16px;
-  font-size: 1.05rem;
+  margin: 0;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #1f1f1f;
+  color: var(--text-main);
 }
 
 .scanButton {
-  width: 100%;
+  flex: 0 0 auto;
   border: none;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #d5f0ee, #b4dfe1);
-  color: #1f2d35;
-  height: 52px;
-  font-size: 1.05rem;
-  font-weight: 700;
+  border-radius: 999px;
+  background: var(--primary-teal);
+  color: #fffdf6;
+  min-height: 38px;
+  padding: 0 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  box-shadow: inset 0 0 0 1px rgba(39, 72, 78, 0.08);
-  margin-bottom: 16px;
+  gap: 7px;
+  text-decoration: none;
 }
 
 .scanIcon {
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 .searchBox {
-  background: #e9dfd1;
-  border: 1px solid rgba(104, 90, 73, 0.1);
+  background: var(--bg-input);
+  border: 0;
   border-radius: 22px;
-  height: 46px;
+  height: 42px;
   display: flex;
   align-items: center;
   padding: 0 16px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   font-size: 1.1rem;
-  color: #72685f;
+  color: var(--text-secondary);
 }
 
 .searchBox input {
@@ -127,32 +135,34 @@
   width: 100%;
   margin-left: 10px;
   font-size: 1rem;
-  color: #3f3a36;
+  color: var(--text-main);
 }
 
 .searchBox input::placeholder {
-  color: #6f6259;
+  color: var(--text-secondary);
 }
 
 .groupSection {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .groupSection h2 {
-  margin: 0 0 10px;
-  font-size: 1.05rem;
-  line-height: 1.2;
-  color: #1d1d1d;
-  font-weight: 800;
+  margin: 0 -18px 4px;
+  padding: 7px 18px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--text-main);
+  font-weight: 700;
+  background: var(--bg-strip);
 }
 
 .inventoryRow {
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(103, 92, 75, 0.12);
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(103, 92, 75, 0.1);
 }
 
 .checkColumn {
@@ -177,20 +187,19 @@
 }
 
 .itemIcon {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 7px;
   display: grid;
   place-items: center;
-  font-size: 1.3rem;
-  background: linear-gradient(135deg, #f0e7d8, #d9e5d6);
-  box-shadow: inset 0 0 0 1px rgba(108, 108, 108, 0.08);
+  font-size: 1.5rem;
+  background: var(--badge-item-yellow);
 }
 
 .itemName {
-  color: #1d1d1d;
-  font-size: 1.05rem;
-  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -199,24 +208,23 @@
 .quantityBlock {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   justify-content: flex-end;
-  min-width: 116px;
+  min-width: 106px;
 }
 
 .qtyButton {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: none;
-  background: #5d9aa9;
+  background: var(--primary-teal);
   color: white;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1;
   display: grid;
   place-items: center;
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.6);
 }
 
 .qtyValue {
@@ -233,24 +241,39 @@
   min-height: 28px;
   padding: 0 12px;
   border-radius: 999px;
-  background: #f3d6d8;
-  color: #683d42;
-  font-size: 0.7rem;
-  font-weight: 700;
+  background: var(--badge-warning-bg);
+  color: var(--badge-warning-text);
+  font-size: 0.75rem;
+  font-weight: 500;
   white-space: nowrap;
 }
 
 .recipeButton {
-  width: 100%;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
   margin-top: 18px;
-  height: 42px;
-  border: 1px solid rgba(131, 110, 68, 0.4);
+  height: 40px;
+  padding: 0 18px;
+  border: 1.5px solid var(--fab-border);
   border-radius: 999px;
-  background: linear-gradient(180deg, #f2dfb5, #e7d09d);
-  color: #1f1f1f;
-  font-size: 1.05rem;
-  font-weight: 800;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+  background: var(--fab-bg);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.statusMessage,
+.emptyState {
+  padding: 18px 0;
+  color: var(--text-secondary);
+}
+
+.emptyState a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--primary-teal);
 }
 
 @media (max-width: 460px) {
@@ -262,5 +285,44 @@
   .content {
     padding-left: 14px;
     padding-right: 14px;
+  }
+
+  .groupSection h2 {
+    margin-left: -14px;
+    margin-right: -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .titleRow {
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+
+  .scanButton {
+    padding: 0 10px;
+    font-size: 0.72rem;
+  }
+
+  .inventoryRow {
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .itemName {
+    font-size: 0.95rem;
+  }
+
+  .quantityBlock {
+    min-width: 96px;
+    gap: 6px;
+  }
+
+  .qtyButton {
+    width: 27px;
+    height: 27px;
   }
 }
