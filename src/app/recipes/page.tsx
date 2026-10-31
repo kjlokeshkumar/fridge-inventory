@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import './recipes.css';
 import { toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
@@ -757,7 +757,10 @@ export default function RecipesPage() {
   const [visibleCount, setVisibleCount] = useState(60);
   const [isUsingSampleBasket, setIsUsingSampleBasket] = useState(false);
   const [showBhurkoModal, setShowBhurkoModal] = useState(false);
-  const [activeRecipesTab, setActiveRecipesTab] = useState<'planner' | 'shopping' | 'recipes'>('planner');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
+  const [activeRecipesTab, setActiveRecipesTab] = useState<'planner' | 'shopping' | 'recipes'>('recipes');
+  const isAuthenticatedRef = useRef(false);
   const [selectedDayIndex, setSelectedDayIndex] = useState(0);
   const [weeklyPlan, setWeeklyPlan] = useState<DayMealPlan[]>([]);
   const [activePlannerModal, setActivePlannerModal] = useState<ActivePlannerModalState | null>(null);
@@ -772,23 +775,46 @@ export default function RecipesPage() {
     const stored = localStorage.getItem('appLanguage') || 'English';
     setLanguage(stored);
 
-    // Restore pinned weekly combo plan if saved (v3 schema with distinct Main & Paired recipes)
-    const savedPlan = localStorage.getItem('pinnedSourashtraWeeklyCombosV3');
-    if (savedPlan) {
-      try {
-        const parsed = JSON.parse(savedPlan);
-        if (Array.isArray(parsed) && parsed.length === 7 && parsed[0]?.breakfast?.mainDishTitle) {
-          setWeeklyPlan(parsed);
-          saveCurrentWeeklyPlan(parsed);
-          setIsWeekPinned(true);
+    let cancelled = false;
+    let authChangeVersion = 0;
+
+    const restoreWeeklyPlan = () => {
+      const savedPlan = localStorage.getItem('pinnedSourashtraWeeklyCombosV3');
+      if (savedPlan) {
+        try {
+          const parsed = JSON.parse(savedPlan);
+          if (Array.isArray(parsed) && parsed.length === 7 && parsed[0]?.breakfast?.mainDishTitle) {
+            setWeeklyPlan(parsed);
+            saveCurrentWeeklyPlan(parsed);
+            setIsWeekPinned(true);
+            return;
+          }
+        } catch {
+          console.error('Unable to restore the pinned weekly meal plan.');
         }
-      } catch {
-        // Ignore corrupt localStorage
       }
-    } else {
+
       const currentPlan = readCurrentWeeklyPlan();
       if (currentPlan.length > 0) setWeeklyPlan(currentPlan as DayMealPlan[]);
-    }
+      setIsWeekPinned(false);
+    };
+
+    const applyAuthState = (authenticated: boolean) => {
+      isAuthenticatedRef.current = authenticated;
+      setIsAuthenticated(authenticated);
+      setActiveRecipesTab(authenticated ? 'planner' : 'recipes');
+      if (authenticated) {
+        restoreWeeklyPlan();
+      } else {
+        setWeeklyPlan([]);
+        setIsWeekPinned(false);
+        setActivePlannerModal(null);
+        setSelectedFridgeItems([]);
+        setCurrentFridgeInventory([]);
+        setIsUsingSampleBasket(false);
+      }
+      setAuthChecked(true);
+    };
 
     const handleLang = (e: Event) => {
       const newLang = (e as CustomEvent).detail;
@@ -797,17 +823,32 @@ export default function RecipesPage() {
     const handleProfile = () => {
       fetchRecipes(selectedFridgeItems, shuffleSeed);
     };
-    const handleAuth = () => {
-      setSelectedFridgeItems([]);
-      setRecipes([]);
-      setCurrentFridgeInventory([]);
-      setIsUsingSampleBasket(false);
-      fetchRecipes([], shuffleSeed);
+    const handleAuth = (event: Event) => {
+      authChangeVersion += 1;
+      applyAuthState(Boolean((event as CustomEvent).detail));
     };
     window.addEventListener('languageChange', handleLang);
     window.addEventListener('profileChange', handleProfile);
     window.addEventListener('userAuthChange', handleAuth);
+    const requestVersion = authChangeVersion;
+    void fetch('/api/auth')
+      .then(async (response) => {
+        if (!response.ok && response.status !== 401) {
+          throw new Error(`Session check failed (${response.status}).`);
+        }
+        const data = response.ok ? await response.json() : null;
+        if (!cancelled && requestVersion === authChangeVersion) {
+          applyAuthState(Boolean(data?.success && data?.user));
+        }
+      })
+      .catch((error: unknown) => {
+        if (!cancelled && requestVersion === authChangeVersion) {
+          console.error('Unable to verify recipe-page sign-in:', error);
+          applyAuthState(false);
+        }
+      });
     return () => {
+      cancelled = true;
       window.removeEventListener('languageChange', handleLang);
       window.removeEventListener('profileChange', handleProfile);
       window.removeEventListener('userAuthChange', handleAuth);
@@ -816,9 +857,10 @@ export default function RecipesPage() {
   }, []);
 
   useEffect(() => {
+    if (!authChecked) return;
     fetchRecipes(selectedFridgeItems, shuffleSeed);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [language]);
+  }, [language, authChecked, isAuthenticated]);
 
   const generateOrUpdateWeeklyPlan = (
     catalog: Recipe[],
@@ -956,7 +998,7 @@ export default function RecipesPage() {
 
       const savedPlan = localStorage.getItem('pinnedSourashtraWeeklyCombosV3');
       const currentPlan = readCurrentWeeklyPlan();
-      if (loadedRecipes.length > 0 && (forceResamplePlanner || (!savedPlan && currentPlan.length === 0))) {
+      if (isAuthenticatedRef.current && loadedRecipes.length > 0 && (forceResamplePlanner || (!savedPlan && currentPlan.length === 0))) {
         const activeSeed = forceResamplePlanner ? seed : plannerSeed;
         generateOrUpdateWeeklyPlan(
           loadedRecipes,
@@ -1205,12 +1247,12 @@ export default function RecipesPage() {
             🍲 {t.recipesTitle} ({recipes.length > 0 ? `${recipes.length} ${t.dishCountLabel}` : t.recipesTitle})
           </h1>
           <p className="page-subtitle">
-            {t.recipesPageSubtitle}
+            {isAuthenticated ? t.recipesPageSubtitle : t.publicRecipesPageSubtitle}
           </p>
         </div>
       </header>
 
-      <div className="recipe-view-tabs" role="tablist" aria-label="Recipe sections">
+      {isAuthenticated && <div className="recipe-view-tabs" role="tablist" aria-label="Recipe sections">
         <button
           type="button"
           role="tab"
@@ -1238,8 +1280,7 @@ export default function RecipesPage() {
         >
           🍲 {t.recipesTab}
         </button>
-      </div>
-
+      </div>}
       {/* =====================================================================
           RECIPE VIEWER MODAL (OPENS WHEN ANY DISH IN THE 7-DAY PLANNER IS CLICKED,
           AND RETURNS DIRECTLY BACK TO THE 7-DAY PLANNER WHEN CLOSED)
@@ -1427,7 +1468,7 @@ export default function RecipesPage() {
       {/* =====================================================================
           7-DAY Sourashtra WEEKLY MEAL PLANNER (COMPLETE PAIRED MEALS)
           ===================================================================== */}
-      {activeRecipesTab === 'planner' && weeklyPlan.length > 0 && (
+      {isAuthenticated && activeRecipesTab === 'planner' && weeklyPlan.length > 0 && (
         <section className="weekly-planner-panel glass-pane mb-24">
           <div className="planner-top-bar">
             <div>
@@ -1642,14 +1683,14 @@ export default function RecipesPage() {
         </section>
       )}
 
-      {activeRecipesTab === 'planner' && weeklyPlan.length === 0 && (
+      {isAuthenticated && activeRecipesTab === 'planner' && weeklyPlan.length === 0 && (
         <div className="recipes-loading glass-pane">
           <div className="spinner" style={{ width: '40px', height: '40px' }}></div>
           <p>{t.loadingRecipes}</p>
         </div>
       )}
 
-      {activeRecipesTab === 'shopping' && (
+      {isAuthenticated && activeRecipesTab === 'shopping' && (
         <section className="weekly-shopping-box shopping-view-panel glass-pane">
           <h3>🛒 {t.weeklyShoppingList}</h3>
           <p className="selector-sub shopping-view-subtitle">{t.fullShoppingListDescription}</p>
@@ -1661,20 +1702,23 @@ export default function RecipesPage() {
 
       {activeRecipesTab === 'recipes' && (
         <>
-          <div className="recipe-tools-row">
-            <p className="selector-sub">
-              Match recipes to your fridge, or browse and search the full collection.
-            </p>
-            <button
-              type="button"
-              className="btn-secondary"
-              onClick={() => setShowBhurkoModal(!showBhurkoModal)}
-            >
-              🥣 {showBhurkoModal ? 'Hide Bhurko Guide' : 'Sourashtra Bhurko Spice Guide'}
-            </button>
-          </div>
+          {isAuthenticated && (
+            <div className="recipe-tools-row">
+              <p className="selector-sub">
+                Match recipes to your fridge, or browse and search the full collection.
+              </p>
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={() => setShowBhurkoModal(!showBhurkoModal)}
+              >
+                🥣 {showBhurkoModal ? 'Hide Bhurko Guide' : 'Sourashtra Bhurko Spice Guide'}
+              </button>
+            </div>
+          )}
       {/* Interactive Fridge Veggies & Meat Selector */}
-      <section className="fridge-selector-panel glass-pane mb-24">
+      {isAuthenticated && (
+        <section className="fridge-selector-panel glass-pane mb-24">
         <div className="selector-header">
           <div>
             <h3>🧊 {t.fridgeNow}</h3>
@@ -1721,7 +1765,8 @@ export default function RecipesPage() {
             💡 Ranking all <strong>{recipes.length} Sourashtra recipes</strong> for a classic Madurai fridge basket (<strong>Tomato, Brinjal, Potato, Onion, Mint &amp; Coriander</strong>). Tap any fridge items above to re-rank and update your 7-day shopping list!
           </div>
         )}
-      </section>
+        </section>
+      )}
 
       {/* Search & Category Filter Bar across all 320+ Sourashtra Recipes */}
       <section className="catalog-filter-panel glass-pane mb-24">
@@ -1770,7 +1815,7 @@ export default function RecipesPage() {
       </section>
 
       {/* Collapsible Sourashtra Bhurko (Spice Blend) Reference */}
-      {showBhurkoModal && bhurkoGuide.length > 0 && (
+      {isAuthenticated && showBhurkoModal && bhurkoGuide.length > 0 && (
         <section className="bhurko-guide-panel glass-pane mb-24">
           <h3>🥣 Authentic Sourashtra Bhurko (Homemade Spice Powders)</h3>
           <p className="selector-sub mb-16">

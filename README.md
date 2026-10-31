@@ -17,8 +17,8 @@ connection.
 - The user confirmed uploading version `1.1` to Play Console on October 30,
   2026. Check Play Console for its current track and release status; an upload
   is not the same as a published release.
-- `Fridge_AI_Friends_Guide.txt` contains the user-facing feature overview and
-  Play Store release-notes draft.
+- `Fridge_AI_Feature_List_and_Release_Notes.txt` contains the user-facing
+  feature overview and Play Store release-notes draft.
 
 ## Architecture
 
@@ -62,8 +62,10 @@ Play Data safety form. Current app behavior includes:
   records to the authenticated account.
 - The home dashboard, inventory, upload, shopping list, and admin areas require
   an active sign-in. The recipe catalog and privacy policy remain publicly
-  accessible; anonymous recipe browsing uses a sample ingredient basket rather
-  than anyone's account inventory.
+  accessible; signed-out recipe browsing is limited to the public recipe
+  catalog, while the weekly planner, shopping tools, and fridge matching
+  require sign-in. Anonymous recipe browsing uses a sample ingredient basket
+  rather than anyone's account inventory.
 - Admin APIs require an active account with the admin role and a separately
   configured `ADMIN_SECRET_KEY`. There is no self-service admin bootstrap;
   provision the role through a trusted database operation.
