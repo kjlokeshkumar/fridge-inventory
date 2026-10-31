@@ -23,8 +23,8 @@ test('finds planned ingredients absent from inventory and lists the days needed'
   );
 
   assert.deepEqual(analysis.toPurchase, [
-    { item: 'Onion', days: 'Mon' },
-    { item: 'Potato', days: 'Mon' }
+    { item: 'Onion', quantity: undefined },
+    { item: 'Potato', quantity: '2 pcs' }
   ]);
   assert.deepEqual(analysis.alreadyInFridge, ['Tomato']);
   assert.deepEqual(analysis.pantryChecklist, ['Salt']);
@@ -51,7 +51,7 @@ test('does not confuse one item in a combined ingredient with the other', () => 
     ['Green Chilli']
   );
 
-  assert.deepEqual(analysis.toPurchase, [{ item: 'Curry Leaves', days: 'Tue' }]);
+  assert.deepEqual(analysis.toPurchase, [{ item: 'Curry Leaves', quantity: undefined }]);
 });
 
 test('does not match egg with eggplant by substring', () => {
@@ -67,5 +67,48 @@ test('does not match egg with eggplant by substring', () => {
     ['Eggplant']
   );
 
-  assert.deepEqual(analysis.toPurchase, [{ item: 'Egg', days: 'Wed' }]);
+  assert.deepEqual(analysis.toPurchase, [{ item: 'Egg', quantity: undefined }]);
+});
+
+test('adds ingredient quantities across repeated plan meals', () => {
+  const analysis = calculateWeeklyShopping(
+    [
+      {
+        dayName: 'Monday',
+        breakfast: {
+          primaryRecipe: {
+            missingIngredients: ['Tomato (Takkali) - 200g', 'Onion - 150g']
+          }
+        }
+      },
+      {
+        dayName: 'Tuesday',
+        lunch: {
+          primaryRecipe: {
+            missingIngredients: ['Tomato (Takkali) - 200g', 'Onion - 150g']
+          }
+        }
+      }
+    ],
+    []
+  );
+
+  assert.deepEqual(analysis.toPurchase, [
+    { item: 'Tomato (Takkali)', quantity: '400 g' },
+    { item: 'Onion', quantity: '300 g' }
+  ]);
+});
+
+test('formats a clear seven-day share list without fake checkboxes or day clutter', async () => {
+  const { formatWeeklyShoppingShareText } = await import('../src/lib/weekly-shopping.ts');
+
+  assert.equal(
+    formatWeeklyShoppingShareText(
+      '7-Day Meal Plan Shopping List',
+      [{ item: 'Tomato', quantity: '400 g' }],
+      'quantity not specified'
+    ),
+    '🛒 7-Day Meal Plan Shopping List\n• Tomato — 400 g'
+  );
+  assert.equal(formatWeeklyShoppingShareText('List', [], 'unknown'), '');
 });

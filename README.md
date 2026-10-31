@@ -12,15 +12,13 @@ connection.
   database exports, `.env` files, signing keys, or signing passwords.
 - Remote: `origin` (`https://github.com/kjlokeshkumar/fridge-inventory.git`)
 - Branch: `master`
-- Latest pushed commit at this handoff: `1276233`
-  (`docs: document offline Play release workflow`).
 - A signed release AAB with version name `1.1` and version code `2` was built
   and signature-verified locally on October 30, 2026.
 - The user confirmed uploading version `1.1` to Play Console on October 30,
   2026. Check Play Console for its current track and release status; an upload
   is not the same as a published release.
-- `Fridge_AI_Friends_Guide.txt` is an unrelated, untracked user file. Leave it
-  untouched.
+- `Fridge_AI_Friends_Guide.txt` contains the user-facing feature overview and
+  Play Store release-notes draft.
 
 ## Architecture
 
@@ -293,8 +291,8 @@ in Play Console and Google's official developer documentation before submission.
 
 ## Checks last completed
 
-- `npm test` passed all 16 tests, including shopping and Tamil translation
-  coverage.
+- `npm test` passed all 18 tests, including shopping quantities, share text,
+  and Tamil translation coverage.
 - `npx tsc --noEmit` passed.
 - `npm run build` succeeded with one React Hook dependency warning in
   `src/app/shopping-list/page.tsx`.
@@ -306,10 +304,11 @@ in Play Console and Google's official developer documentation before submission.
 - `jarsigner -verify` accepted the release AAB signature.
 - Android output confirmed `com.fridge.ai`, target SDK 36, internet permission,
   and camera permission.
-- No physical-device install/camera test was completed. The user confirmed
-  uploading AAB version `1.1` to Play Console; its track and release status
-  have not been independently verified.
+- The user confirmed uploading AAB version `1.1` to Play Console and tested the
+  native share chooser on an Android device, including sharing to WhatsApp.
+  Camera behavior and the Play track/release status have not been independently
+  verified.
 
-The original checked-in database export and untracked guide may contain user
-data/content; keep the repository private and review their handling before
-changing repository visibility.
+The original checked-in database export may contain user data; keep the
+repository private and review its handling before changing repository
+visibility.

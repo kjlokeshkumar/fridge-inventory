@@ -5,9 +5,10 @@ import Link from 'next/link';
 import { Capacitor } from '@capacitor/core';
 import { Share } from '@capacitor/share';
 import './shopping.css';
-import { toTamilCategory, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
+import { toTamilCategory, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
 import {
   calculateWeeklyShopping,
+  formatWeeklyShoppingShareText,
   type WeeklyShoppingDay
 } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
@@ -161,14 +162,13 @@ export default function ShoppingListPage() {
   const checkedSet = useMemo(() => new Set(checkedItems), [checkedItems]);
   const uncheckedItems = analysis.toPurchase.filter((item) => !checkedSet.has(item.item.toLowerCase()));
   const formatItem = (name: string) => language === 'Tamil' ? toTamilItemName(name) : name;
-  const formatDay = (day: string) => language === 'Tamil' ? toTamilDayName(day) : day;
 
   const buildShareText = () => {
-    if (uncheckedItems.length === 0) return '';
-    return [
-      `🛒 ${t.shareTitle}`,
-      ...uncheckedItems.map((item) => `☐ ${formatItem(item.item)} (${t.forDays}: ${item.days})`)
-    ].join('\n');
+    return formatWeeklyShoppingShareText(
+      t.shareTitle,
+      uncheckedItems.map((item) => ({ ...item, item: formatItem(item.item) })),
+      t.quantityNotSpecified
+    );
   };
 
   const handleShare = async () => {
@@ -316,7 +316,7 @@ export default function ShoppingListPage() {
                     <span className="plan-shopping-name">{formatItem(item.item)}</span>
                   </label>
                   <span className="plan-shopping-days">
-                    {t.forDays}: {item.days.split(', ').map(formatDay).join(', ')}
+                    {t.quantityNeeded}: {item.quantity || t.quantityNotSpecified}
                   </span>
                 </li>
               );

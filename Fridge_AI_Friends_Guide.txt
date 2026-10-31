@@ -1,0 +1,56 @@
+🧊🍲 Fridge AI & Sourashtra Kitchen Planner
+
+🔗 Main App Link: https://fridge-inventory-one.vercel.app/
+🔗 7-Day Meal Planner & Recipe Collection: https://fridge-inventory-one.vercel.app/recipes
+
+Fridge AI helps households track food, plan meals, and prepare a shopping list. The web app works on desktop and mobile, and the Android app is available through its Google Play testing track.
+
+## Play Store release notes draft — version 1.1
+
+Plan a week of meals and make grocery shopping easier with Fridge AI.
+
+• Create and save a 7-day Sourashtra meal plan, with breakfast, lunch, and dinner ideas.
+• Compare planned ingredients with your inventory and see the estimated total quantity to buy.
+• Share the shopping list with WhatsApp, Messages, Keep, and other apps, or copy it.
+• Track household food inventory and review depleted or expiring items.
+• Browse 323+ Sourashtra recipes and use the AI fridge/receipt scanner.
+• Use the app on desktop, mobile web, or Android. English and Tamil interface options are available.
+
+## Feature overview
+
+1️⃣ 📅 **7-Day Sourashtra Meal Planner**
+• Generate breakfast, lunch, and dinner combinations for seven days.
+• Open meal details for ingredients, step-by-step instructions, and available recipe links.
+• Regenerate or resample meal ideas, swap individual meals, and pin favorites to keep them in the plan. Replacing a pinned plan requires confirmation.
+• Print the weekly menu or export it to Google Calendar.
+
+2️⃣ 🛒 **Weekly Shopping List**
+• Compares the saved meal plan with positive-quantity inventory and lists missing fresh ingredients.
+• Adds up the recipe quantities for repeated ingredients and shows a total amount to buy when the recipe data provides one.
+• Keeps pantry staples in a separate “check your pantry” section and shows depleted inventory alerts separately.
+• Check items off in the app, share the list using the Android share chooser (including WhatsApp and Messages when installed), or copy it for another app.
+
+3️⃣ 🍲 **323+ Sourashtra Recipes**
+• Browse and search the recipe collection across vegetarian and non-vegetarian categories.
+• Review fresh fridge ingredients separately from pantry and spice additions.
+• See the Sourashtra Bhurko spice guide and available YouTube or web recipe links.
+
+4️⃣ 📷 **AI Fridge and Receipt Scanner**
+• Submit a photo of fridge/pantry items or a grocery receipt for AI-assisted item recognition.
+• Review detected food names, quantities, categories, and estimated expiration dates before using the inventory.
+
+5️⃣ 👨‍👩‍👧‍👦 **Household Inventory and Profiles**
+• Sign in to manage a household food inventory and create profiles with dietary preferences and allergy information.
+• Track quantities and expiration dates, and review depleted or expired items.
+• Inventory cleanup is triggered when inventory or shopping data is accessed; it is not a continuous background service.
+
+6️⃣ 🌐 **Desktop, Mobile, and Language Options**
+• Use the responsive web app on desktop or mobile, or install the Android app.
+• Switch supported interface labels and common food names between English and Tamil. Some recipe titles and instructions remain in English.
+• Account, inventory, and AI scanning features need an internet connection.
+
+## Notes for release listing
+
+• The Android app uses the same hosted web application as the website; web updates may appear after the Vercel deployment without installing a new Android bundle.
+• The Play Console AAB for version 1.1 includes the native Android share integration. Users need to install/update to that version to open the Android app chooser from Share Shopping List.
+• Shopping quantities are estimates based on ingredient quantities in the selected recipes. If a recipe does not specify an amount, the list says that the quantity is not specified.
