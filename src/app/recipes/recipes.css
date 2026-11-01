@@ -2061,20 +2061,27 @@
   backdrop-filter: blur(4px);
 }
 
-/* Recipe Detail Modal Hero Image */
+/* Recipe Detail Modal Hero Image (Prominent Big Food Photo) */
 .modal-recipe-image-hero {
   width: 100%;
-  height: 200px;
+  height: 320px !important;
+  min-height: 320px !important;
+  max-height: 360px !important;
+  flex-shrink: 0 !important;
   overflow: hidden;
   position: relative;
-  border-bottom: 1.5px solid rgba(45, 110, 119, 0.2);
+  border-radius: 12px;
+  border: 1.5px solid rgba(45, 110, 119, 0.22);
   background: var(--bg-strip);
+  box-shadow: 0 4px 16px rgba(31, 26, 23, 0.08);
 }
 
 .modal-recipe-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* Refined, Non-Harsh Button Colors (Complement Light Cream Surfaces) */
@@ -2454,4 +2461,130 @@
 .recipe-image-difficulty.hard {
   color: #991b1b !important;
   border: 1.5px solid #dc2626 !important;
+}
+
+/* =========================================================
+   Mobile Viewport Responsive Optimizations (<= 640px)
+   ========================================================= */
+@media (max-width: 640px) {
+  /* 7-Day Tabs: Smooth horizontal touch scroll with generous tab width (No Text Overlap) */
+  .planner-day-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    padding: 4px 4px 10px !important;
+    margin: 0 -4px 14px !important;
+    scrollbar-width: thin;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .planner-day-tab {
+    flex: 0 0 78px !important;
+    min-width: 78px !important;
+    max-width: 86px !important;
+    min-height: 52px !important;
+    padding: 6px 4px !important;
+  }
+
+  .planner-day-tab > span {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .planner-day-tab small {
+    font-size: 0.68rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Planner Action Buttons: Compact 2-column grid */
+  .planner-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+  }
+
+  .planner-actions > button {
+    min-width: 0 !important;
+    padding: 8px 6px !important;
+    font-size: 0.76rem !important;
+  }
+
+  /* Dish Cards: Full-width spacious layout (Not a Compressed Column) */
+  .combo-dish-link,
+  .combo-paired-link {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    padding: 10px 12px !important;
+    gap: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .combo-dish-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .combo-dish-thumb {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    min-height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+    flex-shrink: 0 !important;
+    border-radius: 8px !important;
+    object-fit: cover !important;
+  }
+
+  .combo-dish-text {
+    flex: 1 !important;
+    min-width: 0 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  .view-recipe-pill {
+    align-self: flex-end !important;
+    margin-top: -2px !important;
+    font-size: 0.74rem !important;
+    padding: 4px 10px !important;
+    height: 26px !important;
+  }
+
+  /* Recipe Catalog Grid: 1 column on mobile */
+  .recipes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Recipe Detail Modal on Mobile */
+  .modal-recipe-image-hero {
+    height: 240px !important;
+    min-height: 240px !important;
+    max-height: 260px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .planner-recipe-modal {
+    width: 95% !important;
+    max-height: calc(100vh - 32px) !important;
+    margin: 16px auto !important;
+    padding: 14px 12px !important;
+  }
 }

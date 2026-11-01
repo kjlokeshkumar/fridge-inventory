@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import './recipes.css';
-import { formatCategory, formatDayName, formatDishTitle, formatItemName, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
+import { formatCategory, formatDishTitle, formatItemName, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
 import { MADURAI_SOURASHTRA_BHURKOS } from '@/lib/sourashtra-recipes';
 import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
@@ -761,7 +761,7 @@ export default function RecipesPage() {
   const [showBhurkoModal, setShowBhurkoModal] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
-  const [activeRecipesTab, setActiveRecipesTab] = useState<'planner' | 'shopping' | 'recipes'>('recipes');
+  const [activeRecipesTab, setActiveRecipesTab] = useState<'planner' | 'shopping' | 'recipes'>('planner');
   const isAuthenticatedRef = useRef(false);
   const [selectedDayIndex, setSelectedDayIndex] = useState(0);
   const [weeklyPlan, setWeeklyPlan] = useState<DayMealPlan[]>([]);
@@ -1569,10 +1569,18 @@ export default function RecipesPage() {
 
 
 
+      {/* Loading state before auth check */}
+      {!authChecked && (
+        <div className="recipes-loading glass-pane" style={{ margin: '36px auto', textAlign: 'center', padding: '36px 20px' }}>
+          <div className="spinner" style={{ width: '40px', height: '40px', margin: '0 auto 12px' }}></div>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{t.loadingRecipes}</p>
+        </div>
+      )}
+
       {/* =====================================================================
           7-DAY Sourashtra WEEKLY MEAL PLANNER (COMPLETE PAIRED MEALS)
           ===================================================================== */}
-      {isAuthenticated && activeRecipesTab === 'planner' && weeklyPlan.length > 0 && (
+      {authChecked && isAuthenticated && activeRecipesTab === 'planner' && weeklyPlan.length > 0 && (
         <section className="weekly-planner-panel glass-pane mb-24">
           <div className="planner-top-bar">
             <div>
@@ -1886,13 +1894,54 @@ export default function RecipesPage() {
         <section className="weekly-shopping-box shopping-view-panel glass-pane">
           <h3>🛒 {t.weeklyShoppingList}</h3>
           <p className="selector-sub shopping-view-subtitle">{t.fullShoppingListDescription}</p>
-          <Link href="/shopping-list" className="btn-primary">
-            {t.openFullShoppingList}
+
+          <div style={{ margin: '16px 0 20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ background: '#ffffff', borderRadius: '10px', padding: '14px 16px', border: '1.5px solid rgba(45, 110, 119, 0.22)' }}>
+              <h4 style={{ margin: '0 0 6px', color: 'var(--primary-teal)', fontSize: '0.95rem' }}>
+                🥬 {t.plannedItemsToBuy}
+              </h4>
+              <p style={{ margin: '0 0 10px', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>
+                {t.planShoppingDescription}
+              </p>
+              {weeklyShoppingAnalysis && weeklyShoppingAnalysis.toPurchase.length > 0 ? (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {weeklyShoppingAnalysis.toPurchase.map((item, idx) => (
+                    <span key={idx} className="badge-fridge" style={{ fontSize: '0.80rem', padding: '4px 10px' }}>
+                      {formatItemName(item.item, language)} {item.quantity ? `(${item.quantity})` : ''}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <p style={{ margin: 0, fontSize: '0.82rem', color: '#166534' }}>✓ {t.noPlannedItems}</p>
+              )}
+            </div>
+
+            <div style={{ background: '#fffdf6', borderRadius: '10px', padding: '14px 16px', border: '1.5px solid rgba(180, 83, 9, 0.25)' }}>
+              <h4 style={{ margin: '0 0 6px', color: '#78350f', fontSize: '0.95rem' }}>
+                🏺 {t.checkPantryTitle}
+              </h4>
+              <p style={{ margin: '0 0 10px', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>
+                {t.checkPantryDescription}
+              </p>
+              {weeklyShoppingAnalysis && weeklyShoppingAnalysis.pantryChecklist.length > 0 ? (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {weeklyShoppingAnalysis.pantryChecklist.map((item, idx) => (
+                    <span key={idx} className="badge-pantry" style={{ fontSize: '0.78rem', padding: '3px 9px' }}>
+                      {formatItemName(item, language)}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          <Link href="/shopping-list" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            {t.openFullShoppingList} →
           </Link>
         </section>
       )}
 
-      {activeRecipesTab === 'recipes' && (
+      {authChecked && activeRecipesTab === 'recipes' && (
         <>
           <div className="recipe-tools-row">
             <p className="selector-sub">
