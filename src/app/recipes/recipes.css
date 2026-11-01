@@ -2726,6 +2726,176 @@
     gap: 16px !important;
   }
 
+/* Floating Circular Close Button on Recipe Modal Image Hero */
+.modal-floating-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(31, 26, 23, 0.78);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 25;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease, background 0.15s ease;
+  touch-action: manipulation;
+}
+
+.modal-floating-close-btn:hover,
+.modal-floating-close-btn:active {
+  background: var(--primary-teal);
+  transform: scale(1.08);
+}
+
+/* Modal Bottom Sticky Bar with Safe Area Inset (Never overlaps Android Home Button) */
+.modal-bottom-sticky-bar {
+  position: sticky;
+  bottom: 0;
+  margin-top: 14px;
+  margin-left: -22px;
+  margin-right: -22px;
+  margin-bottom: -22px;
+  padding: 12px 22px calc(14px + env(safe-area-inset-bottom, 16px)) 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, #ffffff 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1.5px solid rgba(45, 110, 119, 0.18);
+  box-shadow: 0 -6px 20px rgba(31, 26, 23, 0.08);
+  z-index: 40;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-sticky-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px !important;
+  padding: 10px 20px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 3px 8px rgba(45, 110, 119, 0.22) !important;
+  touch-action: manipulation;
+}
+
+/* Justified Text Alignment for Recipe Popup & Bhurko Guide */
+.planner-recipe-modal .steps-list li,
+.planner-recipe-modal .bhurko-note-box,
+.planner-recipe-modal .recipe-section p,
+.planner-recipe-modal p,
+.bhurko-guide-modal p,
+.bhurko-guide-modal .bhurko-prep,
+.bhurko-guide-modal .bhurko-used-for,
+.recipe-section .steps-list li {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  hyphens: auto !important;
+  line-height: 1.6 !important;
+}
+
+/* Nutrition & Calorie Table with clear column borders */
+.recipe-nutrition-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1.5px solid rgba(45, 110, 119, 0.28);
+  box-shadow: 0 2px 8px rgba(31, 26, 23, 0.05);
+  margin-top: 10px;
+  background: #ffffff;
+}
+
+.recipe-nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+  color: var(--text-main);
+}
+
+.recipe-nutrition-table th {
+  background: linear-gradient(180deg, #faf6ee 0%, #f3ece0 100%);
+  color: var(--primary-teal);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 10px 12px;
+  border-bottom: 1.5px solid rgba(45, 110, 119, 0.24);
+  border-right: 1px solid rgba(45, 110, 119, 0.18);
+}
+
+.recipe-nutrition-table th:last-child {
+  border-right: none;
+}
+
+.recipe-nutrition-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(45, 110, 119, 0.12);
+  border-right: 1px solid rgba(45, 110, 119, 0.12);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.35;
+}
+
+.recipe-nutrition-table td:last-child {
+  border-right: none;
+}
+
+.recipe-nutrition-table tbody tr:nth-child(even) {
+  background: rgba(246, 240, 228, 0.35);
+}
+
+.recipe-nutrition-table tbody tr:hover {
+  background: rgba(45, 110, 119, 0.06);
+}
+
+.nutrition-col-item {
+  font-weight: 600;
+  color: var(--text-main);
+  text-align: left;
+}
+
+.nutrition-col-weight {
+  text-align: center;
+  color: #5c4d42;
+  white-space: nowrap;
+}
+
+.nutrition-col-cal {
+  text-align: right;
+  font-weight: 700;
+  color: var(--primary-teal);
+  white-space: nowrap;
+}
+
+.nutrition-total-row {
+  background: #faf6ee !important;
+  font-weight: 700;
+  border-top: 2px solid rgba(45, 110, 119, 0.25);
+}
+
+.nutrition-total-row td {
+  border-bottom: none;
+  padding: 11px 12px;
+  color: var(--text-main);
+}
+
+.nutrition-total-row .nutrition-col-cal {
+  color: #b45309;
+  font-size: 0.95rem;
+}
+
   /* Recipe Detail Modal on Mobile */
   .modal-recipe-image-hero {
     height: 240px !important;
@@ -2734,10 +2904,28 @@
     flex-shrink: 0 !important;
   }
 
+  .planner-recipe-modal-backdrop {
+    padding: 10px 10px calc(42px + env(safe-area-inset-bottom, 36px)) 10px !important;
+    align-items: flex-start !important;
+  }
+
   .planner-recipe-modal {
-    width: 95% !important;
-    max-height: calc(100vh - 32px) !important;
-    margin: 16px auto !important;
-    padding: 14px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: calc(100dvh - 32px - env(safe-area-inset-bottom, 36px)) !important;
+    margin: 4px auto 0 auto !important;
+    padding: 14px 12px 0 12px !important;
+  }
+
+  .modal-bottom-sticky-bar {
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+    margin-bottom: 0 !important;
+    padding: 10px 12px calc(14px + env(safe-area-inset-bottom, 24px)) 12px !important;
+  }
+
+  .modal-sticky-close-btn {
+    width: 100% !important;
+    min-height: 48px !important;
   }
 }

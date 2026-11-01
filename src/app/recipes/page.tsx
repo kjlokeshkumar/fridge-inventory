@@ -1339,6 +1339,14 @@ export default function RecipesPage() {
                 alt={safeString(modalRecipe?.title)}
                 className="modal-recipe-img"
               />
+              <button
+                type="button"
+                className="modal-floating-close-btn"
+                onClick={() => setActivePlannerModal(null)}
+                aria-label={language === 'Tamil' ? 'மூடு' : 'Close'}
+              >
+                ✕
+              </button>
             </div>
             <div className="modal-top-bar">
               <div>
@@ -1464,44 +1472,54 @@ export default function RecipesPage() {
             {/* 5. Calorie Breakdown */}
             <div className="recipe-section">
               <h4>
-                ⚖️ {language === 'Tamil' ? 'தேவையான பொருட்கள் & கலோரி' : 'Ingredients & Calories'} ({t.approx} {modalRecipe.totalCalories || 0} {t.kcal}):
+                ⚖️ {language === 'Tamil' ? 'தேவையான பொருட்கள் & கலோரி விவரம்' : 'Ingredients, Weight & Calories'} ({t.approx} {modalRecipe.totalCalories || 0} {t.kcal}):
               </h4>
               <div className="calorie-breakdown">
                 {Array.isArray(modalRecipe.ingredientsBreakdown) &&
                 modalRecipe.ingredientsBreakdown.length > 0 ? (
-                  <ul className="calorie-list" style={{ listStyleType: 'none', paddingLeft: 0 }}>
-                    {modalRecipe.ingredientsBreakdown.map((item, i) => (
-                      <li
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          padding: '4px 0',
-                          borderBottom: '1px solid rgba(255,255,255,0.05)'
-                        }}
-                      >
-                        <span>
-                          {formatItemName(safeString(item?.name), language)}{' '}
-                          <span style={{ opacity: 0.6, fontSize: '0.9em' }}>
-                            ({Number(item?.weightGrams) || 100}g)
-                          </span>
-                        </span>
-                        <span style={{ fontWeight: 'bold' }}>
-                          {Number(item?.calories) || 50} {t.kcal}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="recipe-nutrition-table-container">
+                    <table className="recipe-nutrition-table">
+                      <thead>
+                        <tr>
+                          <th style={{ textAlign: 'left' }}>{t.tableIngredient || (language === 'Tamil' ? 'பொருள்' : 'Ingredient')}</th>
+                          <th style={{ textAlign: 'center', width: '28%' }}>{t.tableWeight || (language === 'Tamil' ? 'எடை' : 'Weight')}</th>
+                          <th style={{ textAlign: 'right', width: '28%' }}>{t.tableCalories || (language === 'Tamil' ? 'கலோரி' : 'Calories')}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {modalRecipe.ingredientsBreakdown.map((item, i) => (
+                          <tr key={i}>
+                            <td className="nutrition-col-item">{formatItemName(safeString(item?.name), language)}</td>
+                            <td className="nutrition-col-weight">{Number(item?.weightGrams) || 100} g</td>
+                            <td className="nutrition-col-cal">{Number(item?.calories) || 50} {t.kcal}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                      <tfoot>
+                        <tr className="nutrition-total-row">
+                          <td><strong>{t.tableTotal || (language === 'Tamil' ? 'மொத்தம்' : 'Total')}</strong></td>
+                          <td className="nutrition-col-weight">
+                            <strong>
+                              {modalRecipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.weightGrams) || 100), 0)} g
+                            </strong>
+                          </td>
+                          <td className="nutrition-col-cal">
+                            <strong>{modalRecipe.totalCalories || modalRecipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.calories) || 50), 0)} {t.kcal}</strong>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
                 ) : (
                   <p>{t.noCalorieData}</p>
                 )}
               </div>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '8px' }}>
+            <div className="modal-bottom-sticky-bar">
               <button
                 type="button"
-                className="btn-back-planner"
+                className="btn-back-planner modal-sticky-close-btn"
                 onClick={() => setActivePlannerModal(null)}
               >
                 ← {language === 'Tamil' ? 'மூடிவிட்டு 7 நாள் உணவுத் திட்டத்திற்குச் செல்' : 'Close & Return to 7-Day Meal Planner'}
@@ -1600,6 +1618,16 @@ export default function RecipesPage() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="modal-bottom-sticky-bar">
+              <button
+                type="button"
+                className="btn-back-planner modal-sticky-close-btn"
+                onClick={() => setShowBhurkoModal(false)}
+              >
+                ✕ {t.hideBhurkoGuide || (language === 'Tamil' ? 'வழிகாட்டியை மூடு' : 'Close Guide')}
+              </button>
             </div>
           </div>
         </div>
@@ -2286,34 +2314,44 @@ export default function RecipesPage() {
 
                 {/* 6. Calorie & Weight Breakdown */}
                 <div className="recipe-section">
-                  <h4>⚖️ Ingredients &amp; Calories ({t.approx} {recipe.totalCalories || 0} {t.kcal}):</h4>
+                  <h4>⚖️ {language === 'Tamil' ? 'தேவையான பொருட்கள் & கலோரி விவரம்' : 'Ingredients, Weight & Calories'} ({t.approx} {recipe.totalCalories || 0} {t.kcal}):</h4>
                   <div className="calorie-breakdown">
                     {Array.isArray(recipe.ingredientsBreakdown) && recipe.ingredientsBreakdown.length > 0 ? (
-                      <ul className="calorie-list" style={{ listStyleType: 'none', paddingLeft: 0 }}>
-                        {recipe.ingredientsBreakdown.map((item, i) => (
-                          <li
-                            key={i}
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              padding: '4px 0',
-                              borderBottom: '1px solid rgba(255,255,255,0.05)'
-                            }}
-                          >
-                            <span>
-                              {safeString(item?.name)}{' '}
-                              <span style={{ opacity: 0.6, fontSize: '0.9em' }}>
-                                ({Number(item?.weightGrams) || 100}g)
-                              </span>
-                            </span>
-                            <span style={{ fontWeight: 'bold' }}>
-                              {Number(item?.calories) || 50} {t.kcal}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="recipe-nutrition-table-container">
+                        <table className="recipe-nutrition-table">
+                          <thead>
+                            <tr>
+                              <th style={{ textAlign: 'left' }}>{t.tableIngredient || (language === 'Tamil' ? 'பொருள்' : 'Ingredient')}</th>
+                              <th style={{ textAlign: 'center', width: '28%' }}>{t.tableWeight || (language === 'Tamil' ? 'எடை' : 'Weight')}</th>
+                              <th style={{ textAlign: 'right', width: '28%' }}>{t.tableCalories || (language === 'Tamil' ? 'கலோரி' : 'Calories')}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {recipe.ingredientsBreakdown.map((item, i) => (
+                              <tr key={i}>
+                                <td className="nutrition-col-item">{formatItemName(safeString(item?.name), language)}</td>
+                                <td className="nutrition-col-weight">{Number(item?.weightGrams) || 100} g</td>
+                                <td className="nutrition-col-cal">{Number(item?.calories) || 50} {t.kcal}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                          <tfoot>
+                            <tr className="nutrition-total-row">
+                              <td><strong>{t.tableTotal || (language === 'Tamil' ? 'மொத்தம்' : 'Total')}</strong></td>
+                              <td className="nutrition-col-weight">
+                                <strong>
+                                  {recipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.weightGrams) || 100), 0)} g
+                                </strong>
+                              </td>
+                              <td className="nutrition-col-cal">
+                                <strong>{recipe.totalCalories || recipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.calories) || 50), 0)} {t.kcal}</strong>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
                     ) : (
-                      <p>No calorie data available.</p>
+                      <p>{t.noCalorieData}</p>
                     )}
                   </div>
                 </div>
