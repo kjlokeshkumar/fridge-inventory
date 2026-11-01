@@ -146,6 +146,13 @@ export default function Home() {
           </Link>
         </div>
 
+        <div className={styles.inventoryInfoBanner} role="note">
+          <span className={styles.infoBannerIcon} aria-hidden="true">💡</span>
+          <p className={styles.infoBannerText}>
+            {t.inventoryPlanNotice}
+          </p>
+        </div>
+
         <label className={styles.searchBox}>
           <span className={styles.searchIcon} aria-hidden="true">🔍</span>
           <input
@@ -251,8 +258,12 @@ export default function Home() {
         )}
 
         <div className={styles.floatingCtaContainer}>
-          <Link href="/recipes" className={styles.floatingRecipeButton}>
-            Suggested Recipes
+          <Link
+            href="/recipes"
+            className={styles.floatingRecipeButton}
+            title={t.viewMealPlanner || "7-Day Meal Plan & Recipes"}
+          >
+            📅 {t.viewMealPlanner || "7-Day Meal Plan & Recipes"}
           </Link>
         </div>
       </main>

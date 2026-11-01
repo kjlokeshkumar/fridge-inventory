@@ -900,37 +900,193 @@
     }
 }
 
+.print-only {
+  display: none !important;
+}
+
+@page {
+  size: portrait;
+  margin: 8mm 10mm;
+}
+
 @media print {
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .screen-only,
   .navbar,
   .bottom-nav,
+  .navigation-header,
+  nav,
+  header,
+  footer,
+  .dashboard-header,
+  .recipe-view-tabs,
+  .planner-top-bar,
+  .planner-actions,
+  .planner-day-tabs,
+  .planner-recipe-modal-backdrop,
   .fridge-selector-panel,
   .catalog-filter-panel,
   .recipes-grid,
   .load-more-bar,
   .header-actions,
-  .planner-actions,
   .slot-mini-btn,
-  .gcal-day-link {
+  .gcal-day-link,
+  .btn-pin-plan,
+  .btn-resample-plan,
+  .recipe-tools-row,
+  .recipes-loading,
+  .floatingCtaContainer,
+  .floatingRecipeButton {
     display: none !important;
   }
-  .weekly-planner-panel,
-  .day-plan-card,
-  .meal-slot-box,
-  .weekly-shopping-box,
-  .shopping-col-card {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #cccccc !important;
+
+  .weekly-planner-panel {
+    background: transparent !important;
+    border: none !important;
     box-shadow: none !important;
-    break-inside: avoid;
+    padding: 0 !important;
+    margin: 0 !important;
   }
-  .planner-top-bar h2,
-  .day-title-group h4,
-  .meal-slot-title,
-  .weekly-shopping-box h3,
-  .shopping-col-card h4,
-  .purchase-needed-item {
-    color: #000000 !important;
+
+  .print-only,
+  .weekly-print-sheet {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .print-header {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #245961;
+    padding-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .print-title {
+    font-size: 14pt !important;
+    font-weight: 800 !important;
+    color: #245961 !important;
+    margin: 0 !important;
+  }
+
+  .print-subtitle {
+    font-size: 8.5pt !important;
+    color: #555555 !important;
+    margin: 0 !important;
+    font-weight: 600 !important;
+  }
+
+  .print-plan-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 12px !important;
+    font-size: 8.5pt !important;
+    page-break-inside: avoid;
+  }
+
+  .print-plan-table th,
+  .print-plan-table td {
+    border: 1px solid #777777 !important;
+    padding: 4px 6px !important;
+    vertical-align: top !important;
+    text-align: left !important;
+  }
+
+  .print-plan-table th {
+    background: #eef5f6 !important;
+    color: #245961 !important;
+    font-weight: 700 !important;
+    font-size: 8.5pt !important;
+  }
+
+  .print-day-col {
+    background: #faf8f5 !important;
+    white-space: nowrap;
+    width: 15% !important;
+  }
+
+  .print-day-col strong {
+    display: block;
+    font-size: 9pt;
+    color: #245961;
+  }
+
+  .print-day-date {
+    font-size: 7.5pt;
+    color: #666666;
+  }
+
+  .print-dish-main {
+    font-weight: 700;
+    color: #111111;
+    font-size: 8.5pt;
+    line-height: 1.25;
+  }
+
+  .print-dish-side {
+    font-size: 7.8pt;
+    color: #444444;
+    margin-top: 2px;
+    line-height: 1.2;
+  }
+
+  .print-shopping-section {
+    page-break-inside: avoid;
+    margin-top: 8px;
+    border-top: 1.5px dashed #888888;
+    padding-top: 6px;
+  }
+
+  .print-shopping-title {
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    margin: 0 0 6px 0 !important;
+    color: #245961 !important;
+  }
+
+  .print-shopping-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 3px 12px !important;
+    font-size: 7.8pt !important;
+  }
+
+  .print-shopping-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #111111;
+  }
+
+  .print-checkbox {
+    font-size: 9pt;
+    color: #555555;
+    line-height: 1;
+  }
+
+  .print-item-name {
+    color: #111111;
+  }
+
+  .print-item-qty {
+    color: #555555;
+    font-size: 7.2pt;
   }
 }
 
@@ -1037,28 +1193,36 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(2, 6, 23, 0.82);
+  background: rgba(31, 26, 23, 0.72);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 16px;
+  padding: 24px 16px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .planner-recipe-modal {
   width: 100%;
   max-width: 680px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #0f172a;
-  border: 1px solid rgba(251, 191, 36, 0.45);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain;
+  margin: auto 0;
+  background: #ffffff;
+  border: 1.5px solid rgba(45, 110, 119, 0.28);
   border-radius: 16px;
   padding: 22px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 20px 60px rgba(31, 26, 23, 0.22);
   display: flex;
   flex-direction: column;
   gap: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(45, 110, 119, 0.35) transparent;
 }
 
 .modal-top-bar {
@@ -1486,11 +1650,15 @@
 
 /* Modal Styling */
 .planner-recipe-modal {
-  background: #faf6ed;
-  border: 1px solid var(--fab-border);
+  background: #ffffff;
+  border: 1.5px solid rgba(45, 110, 119, 0.28);
   border-radius: 16px;
   box-shadow: 0 12px 36px rgba(31, 26, 23, 0.2);
-  overflow: hidden;
+  max-height: calc(100vh - 48px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain;
 }
 
 .modal-combo-tabs {
@@ -2099,23 +2267,34 @@
 }
 
 .btn-pin-plan.pinned {
-  background: #614619 !important;
+  background: var(--primary-teal) !important;
   color: #ffffff !important;
-  border-color: #614619 !important;
-  box-shadow: 0 2.5px 0 #3d2b0e !important;
+  border-color: #183e44 !important;
+  box-shadow: 0 2.5px 0 #183e44 !important;
+  font-weight: 700 !important;
 }
 
 .slot-mini-btn {
   background: linear-gradient(180deg, #fdfbf7 0%, #f5efe3 100%) !important;
   border: 1.5px solid rgba(45, 110, 119, 0.30) !important;
+  color: #245961 !important;
   box-shadow: 0 2px 0 rgba(45, 110, 119, 0.18) !important;
 }
 
 .slot-mini-btn:hover {
   background: linear-gradient(180deg, #ffffff 0%, #f0f7f8 100%) !important;
   border-color: #245961 !important;
+  color: #183e44 !important;
   transform: translateY(-1px) !important;
   box-shadow: 0 3px 0 rgba(45, 110, 119, 0.25) !important;
+}
+
+.slot-mini-btn.active {
+  background: var(--primary-teal) !important;
+  border-color: #183e44 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 0 #183e44 !important;
 }
 
 .view-recipe-pill {
@@ -2161,6 +2340,26 @@
   color: var(--text-main) !important;
   border: 1.5px solid rgba(45, 110, 119, 0.28) !important;
   box-shadow: 0 20px 60px rgba(31, 26, 23, 0.22) !important;
+  max-height: calc(100vh - 48px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+}
+
+.planner-recipe-modal::-webkit-scrollbar {
+  width: 8px;
+}
+.planner-recipe-modal::-webkit-scrollbar-track {
+  background: rgba(45, 110, 119, 0.06);
+  border-radius: 8px;
+}
+.planner-recipe-modal::-webkit-scrollbar-thumb {
+  background: rgba(45, 110, 119, 0.35);
+  border-radius: 8px;
+}
+.planner-recipe-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 110, 119, 0.6);
 }
 
 .modal-combo-tab {

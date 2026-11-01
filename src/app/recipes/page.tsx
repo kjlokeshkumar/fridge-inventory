@@ -859,6 +859,24 @@ export default function RecipesPage() {
   }, []);
 
   useEffect(() => {
+    if (activePlannerModal || showBhurkoModal) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setActivePlannerModal(null);
+          setShowBhurkoModal(false);
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [activePlannerModal, showBhurkoModal]);
+
+  useEffect(() => {
     if (!authChecked) return;
     fetchRecipes(selectedFridgeItems, shuffleSeed);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1365,7 +1383,7 @@ export default function RecipesPage() {
             {Array.isArray(modalRecipe.fridgeIngredientsUsed) &&
               modalRecipe.fridgeIngredientsUsed.length > 0 && (
                 <div className="recipe-section">
-                  <h4>🧊 {t.mainFridgeIngredients}</h4>
+                  <h4>{t.mainFridgeIngredients}</h4>
                   <div className="ingredient-badges">
                     {modalRecipe.fridgeIngredientsUsed.map((ing, i) => (
                       <span key={i} className="badge-fridge">{safeString(ing)}</span>
@@ -1378,7 +1396,7 @@ export default function RecipesPage() {
             {Array.isArray(modalRecipe.pantryAdditives) &&
               modalRecipe.pantryAdditives.length > 0 && (
                 <div className="recipe-section">
-                  <h4>🫙 {t.pantryAdditives}</h4>
+                  <h4>{t.pantryAdditives}</h4>
                   <div className="ingredient-badges">
                     {modalRecipe.pantryAdditives.map((add, i) => (
                       <span key={i} className="badge-pantry">{safeString(add)}</span>
@@ -1565,6 +1583,9 @@ export default function RecipesPage() {
                 </span>
               </h2>
               <p className="selector-sub">{t.chooseRecipePrompt}</p>
+              <p className="selector-sub planner-sync-sub" style={{ marginTop: '4px', fontSize: '0.82rem', color: '#5c4d42' }}>
+                💡 {t.plannerInventorySyncNotice}
+              </p>
             </div>
             <div className="planner-actions">
               <button
@@ -1606,7 +1627,7 @@ export default function RecipesPage() {
             </div>
           </div>
 
-          <div className="planner-day-tabs" role="tablist" aria-label="Choose a day">
+          <div className="planner-day-tabs screen-only" role="tablist" aria-label="Choose a day">
             {weeklyPlan.map((day, index) => (
               <button
                 key={day.isoDate}
@@ -1623,7 +1644,7 @@ export default function RecipesPage() {
           </div>
 
           {/* Show only the selected day's meals to keep the planner compact. */}
-          <div className="weekly-days-grid">
+          <div className="weekly-days-grid screen-only">
             {weeklyPlan[selectedDayIndex] && [weeklyPlan[selectedDayIndex]].map((day) => {
               const dIdx = selectedDayIndex;
               return (
@@ -1785,6 +1806,72 @@ export default function RecipesPage() {
               );
             })}
           </div>
+
+          {/* Dedicated 7-Day Print Sheet: Compact, ink-friendly, prints all 7 days + shopping checklist across 1-2 pages */}
+          <div className="print-only weekly-print-sheet" aria-hidden="true">
+            <div className="print-header">
+              <h1 className="print-title">🍲 {t.printPlanHeader || t.plannerTitle}</h1>
+              <p className="print-subtitle">
+                {t.sampleSet} #{plannerSeed + 1} • {t.completePairs}
+              </p>
+            </div>
+
+            <table className="print-plan-table">
+              <thead>
+                <tr>
+                  <th style={{ width: '15%' }}>{t.printDayCol || 'Day'}</th>
+                  <th style={{ width: '28%' }}>🌅 {t.breakfast}</th>
+                  <th style={{ width: '28%' }}>☀️ {t.lunch}</th>
+                  <th style={{ width: '29%' }}>🌙 {t.dinner}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {weeklyPlan.map((day) => (
+                  <tr key={day.isoDate}>
+                    <td className="print-day-col">
+                      <strong>{language === 'Tamil' ? toTamilDayName(day.dayName.split(' ')[0]) : day.dayName.split(' ')[0]}</strong>
+                      <span className="print-day-date">{day.dateLabel.split(',')[0]}</span>
+                    </td>
+                    <td>
+                      <div className="print-dish-main">🍽️ {formatDishTitle(safeString(day.breakfast?.mainDishTitle), language)}</div>
+                      {day.breakfast?.secondaryRecipe && (
+                        <div className="print-dish-side">+ {formatDishTitle(safeString(day.breakfast.pairedWithTitle), language)}</div>
+                      )}
+                    </td>
+                    <td>
+                      <div className="print-dish-main">🍽️ {formatDishTitle(safeString(day.lunch?.mainDishTitle), language)}</div>
+                      {day.lunch?.secondaryRecipe && (
+                        <div className="print-dish-side">+ {formatDishTitle(safeString(day.lunch.pairedWithTitle), language)}</div>
+                      )}
+                    </td>
+                    <td>
+                      <div className="print-dish-main">🍽️ {formatDishTitle(safeString(day.dinner?.mainDishTitle), language)}</div>
+                      {day.dinner?.secondaryRecipe && (
+                        <div className="print-dish-side">+ {formatDishTitle(safeString(day.dinner.pairedWithTitle), language)}</div>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            {weeklyShoppingAnalysis && weeklyShoppingAnalysis.toPurchase.length > 0 && (
+              <div className="print-shopping-section">
+                <h3 className="print-shopping-title">🛒 {t.printGroceryChecklist || t.weeklyShoppingList}</h3>
+                <div className="print-shopping-grid">
+                  {weeklyShoppingAnalysis.toPurchase.map((item, idx) => (
+                    <div key={idx} className="print-shopping-item">
+                      <span className="print-checkbox">☐</span>
+                      <span className="print-item-name">{formatItemName(item.item, language)}</span>
+                      {item.quantity ? (
+                        <span className="print-item-qty">({item.quantity})</span>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </section>
       )}
 
@@ -1824,7 +1911,7 @@ export default function RecipesPage() {
         <section className="fridge-selector-panel glass-pane mb-24">
         <div className="selector-header">
           <div>
-            <h3>🧊 {t.fridgeNow}</h3>
+            <h3>{t.fridgeNow}</h3>
             <p className="selector-sub">
                 {t.fridgeSelectionIntro}
             </p>
@@ -2035,7 +2122,7 @@ export default function RecipesPage() {
                 {/* 1. Main Fridge Ingredients Used */}
                 {Array.isArray(recipe.fridgeIngredientsUsed) && recipe.fridgeIngredientsUsed.length > 0 && (
                   <div className="recipe-section">
-                    <h4>🧊 {t.mainFridgeIngredients}</h4>
+                    <h4>{t.mainFridgeIngredients}</h4>
                     <div className="ingredient-badges">
                       {recipe.fridgeIngredientsUsed.map((ing, i) => (
                         <span key={i} className="badge-fridge">{safeString(ing)}</span>
@@ -2047,7 +2134,7 @@ export default function RecipesPage() {
                 {/* 2. Pantry Additives (Non-Fridge Items like Toor Dal, Tamarind, Bhurko, Salt, Oil) */}
                 {Array.isArray(recipe.pantryAdditives) && recipe.pantryAdditives.length > 0 && (
                   <div className="recipe-section">
-                    <h4>🫙 {t.pantryAdditives}</h4>
+                    <h4>{t.pantryAdditives}</h4>
                     <div className="ingredient-badges">
                       {recipe.pantryAdditives.map((add, i) => (
                         <span key={i} className="badge-pantry">{safeString(add)}</span>
