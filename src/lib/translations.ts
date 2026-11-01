@@ -584,6 +584,218 @@ export function formatDayName(dayName: string, language: string): string {
   return toEnglishDayName(dayName);
 }
 
+const TAMIL_MONTH_NAMES: Record<string, string> = {
+  Jan: "ஜன",
+  Feb: "பிப்",
+  Mar: "மார்ச்",
+  Apr: "ஏப்",
+  May: "மே",
+  Jun: "ஜூன்",
+  Jul: "ஜூலை",
+  Aug: "ஆக",
+  Sep: "செப்",
+  Oct: "அக்",
+  Nov: "நவ",
+  Dec: "டிச"
+};
+
+export function formatDateLabel(dateLabel: string, language: string): string {
+  if (!dateLabel) return '';
+  if (language !== 'Tamil') return dateLabel;
+  let result = dateLabel;
+  for (const [enMonth, taMonth] of Object.entries(TAMIL_MONTH_NAMES)) {
+    if (result.includes(enMonth)) {
+      result = result.replace(enMonth, taMonth);
+      break;
+    }
+  }
+  return result;
+}
+
+const DISH_TITLE_TRANSLATION_MAP: Record<string, string> = {
+  // Breakfast Combos
+  'Soft Phalar (Steamed Idli) & Crispy Diido (Dosa)': 'மென்மையான பலார் (இட்லி) & மொறுமொறு தீதோ (தோசை)',
+  'Thakkali Ounty (Tangy Tomato Gravy) & Nalar Chutni (Coconut Chutney)': 'தக்காளி அவ்வுண்டி & தேங்காய் சட்னி',
+  'Mudha Pongal (Velvety Milk & Ghee Ven Pongal)': 'முத்தா பொங்கல் (நெய் வெண் பொங்கல்)',
+  'Vangi Budith (Pressure-Cooked Brinjal Chutney) & Tiffin Sambar': 'வாங்கி புடித் (கத்திரிக்காய் சட்னி) & சாம்பார்',
+  'Crispy Roast Diido (Sourashtra Dosa) & Uttapam': 'மொறுமொறு ரோஸ்ட் தீதோ (தோசை) & ஊத்தப்பம்',
+  'Alla Chutni (Fiery Ginger-Tamarind Chutney) & White Coconut Chutney': 'அல்லா சட்னி (இஞ்சி-புளி சட்னி) & வெள்ளை தேங்காய் சட்னி',
+  'Dhowra Pongal / Muddha Ambat Bhaath (Pressure-Cooker Tamarind Pongal)': 'தௌரா பொங்கல் / புளிப் பொங்கல்',
+  'Odachakadalai Thuvaiyal (Roasted Gram / Chenna Chutney) & Crispy Appalam': 'பொட்டுக் கடலைத் துவையல் & அப்பளம்',
+  'Loni Appam / Madurai Karupatti Appam (Palm Jaggery & Butter Appam)': 'லோனி அப்பம் / கருப்பட்டி அப்பம்',
+  'Savory Kara Appam & Kandha Chutney (Madurai Thanni Onion-Tomato Chutney)': 'கார அப்பம் & கந்தா சட்னி (தண்ணி சட்னி)',
+  'Kenni Paes / Ulundhu Kanji (Nourishing Urad Dal & Coconut Milk Porridge)': 'கென்னி பேஸ் / உளுந்தங் கஞ்சி',
+  'Sourashtra Pudina Losto (Zero-Oil Fiery Mint-Tamarind Thogayal)': 'சௌராஷ்டிர புதினா லோஸ்டோ (புதினா துவையல்)',
+  'Mhuri Pongal (Sourashtra Mustard-Coconut Seasoned Rice)': 'முரி பொங்கல் (கடுகு-தேங்காய் சாதம்)',
+  'Bela Chutney (Roasted Chana Dal Chutney) & Curd': 'பேலா சட்னி (கடலைப் பருப்பு சட்னி) & தயிர்',
+  'Limbu Pongal (Lemon Rice) & Thoop Pongal (Ghee-Pepper "Love Birds" Rice)': 'லிம்பு பொங்கல் (எலுமிச்சை சாதம்) & தூப் பொங்கல் (லவ் பேர்ட்ஸ் சாதம்)',
+  'Vangi Chutni & Chenna Bhurko (Pottukadalai Podi)': 'வாங்கி சட்னி (கத்திரிக்காய் சட்னி) & சென்னா புர்கோ',
+  'Hot Steamed Phalar (Mini Idlis) & Medhu Vadai': 'சூடான பலார் (மினி இட்லி) & மெது வடை',
+  'Sourashtra Tiffin Sambar & Idli Chenna Bhurko with Gingelly Oil': 'டிபன் சாம்பார் & நல்லெண்ணெய் இட்லி பொடி',
+
+  // Lunch Combos
+  'Steamed Rice (Saadu) + Losan Kolkar (Whole Garlic & Sesame Oil Tamarind Gravy)': 'சாதம் + லோசன் கொல்கார் (பூண்டு குழம்பு)',
+  'Joman Pilchar (Wedding-Style Tomato Rasam) + Kachana Bela Kutkiri (Chana Dal Masiyal)': 'ஜோமன் பில்ச்சார் (கல்யாண ரசம்) + கச்சனா பேலா குத்கிரி (பருப்பு மசியல்)',
+  'Steamed Rice + Sengu-Vangi-Batata Sambar (Drumstick, Brinjal & Potato Sambar)': 'சாதம் + செங்கு-வாங்கி-படாடா சாம்பார் (முருங்கை, கத்திரி, உருளை சாம்பார்)',
+  'Thakkali Charu (Sourashtra Tomato Broth) + Polte Bhajji (Mashed Greens / Keerai Kadayal)': 'தக்காளி சாறு (ரசம்) + போல்டே பஜ்ஜி (கீரை கடையல்)',
+  'Sourashtra Ambat Bhaath (Roast Methi & Sesame Tamarind Rice) + Dhi Bhaath (Curd Rice)': 'அம்பாட் பாத் (புளி சாதம்) + தி பாத் (தயிர் சாதம்)',
+  'Pudina / Kothmir Losto + Nellika Rubbin (Zero-Oil Gooseberry Pickle) & Potato Fry': 'புதினா / கொத்தமல்லி லோஸ்டோ + நெல்லிக்காய் ஊறுகாய் & உருளை வறுவல்',
+  'Steamed Rice + Ancient Sourashtra Koduk Ounty (Fermented Rice-Starch Probiotic Gravy)': 'சாதம் + கொடுக் அவ்வுண்டி (பழைய சோறு புளிக்குழம்பு)',
+  'Polte Bhajji (Arai Keerai Masiyal) + Crispy Roasted Beans / Curd': 'போல்டே பஜ்ஜி (கீரை மசியல்) + பீன்ஸ் வறுவல் / தயிர்',
+  'Steamed Rice + Bhajji Charu (Keerai Chaaru — Greens, Coconut, Poppy Seed & Milk Broth)': 'சாதம் + பஜ்ஜி சாறு (கீரை பால் ரசம்)',
+  'Sourashtra Vangi / Pavakkai Pitla (Roasted Coconut-Chana Dal Curry) & Appalam': 'சௌராஷ்டிர வாங்கி / பாகற்காய் பிட்லா & அப்பளம்',
+  'Steamed Rice + Kachchana Ambat (Sourashtra Black Chickpea Gravy)': 'சாதம் + கச்சனா அம்பாட் (கருப்பு கொண்டைக்கடலை குழம்பு)',
+  'Kachana Pani (Spiced Black Chickpea Broth Rasam) + Kachamba Bhudith (Raw Mango Pachadi)': 'கச்சனா பானி (கொண்டைக்கடலை ரசம்) + கச்சாம்பா புடித் (மாங்காய் பச்சடி)',
+  'Steamed Rice + Mithi Kolkar (Vendhaya Kuzhambu) or Udith Nalar Ounty (Black Urad Coconut Curry)': 'சாதம் + மிதி கொல்கார் (வெந்தயக் குழம்பு) / உளுந்து தேங்காய் அவ்வுண்டி',
+  'Paruppu Rasam + Jinnavara Ambat (Cluster Beans Gravy)': 'பருப்பு ரசம் + ஜின்னவாரா அம்பாட் (கொத்தவரங்காய் குழம்பு)',
+  'Sunday Feast: Steamed Rice + Chaino Kolkar (Sourashtra Mutton Ounty)': 'ஞாயிறு விருந்து: சாதம் + சைனோ கொல்கார் (சௌராஷ்டிர மட்டன் குழம்பு)',
+  'Polte Chaino (Mutton Uppu Kari with Crunchy Coconut Bits) + Joman Pilchar': 'போல்டே சைனோ (மட்டன் உப்புக்கறி) + ஜோமன் பில்ச்சார்',
+  'Sunday Feast: Steamed Rice + Kajali Ambat (Madurai Special Veg Eral / Saiva Liver Gravy)': 'ஞாயிறு விருந்து: சாதம் + கஜலி அம்பாட் (சைவ ஈரல் குழம்பு)',
+  'Gullu Pongal (Sweet Jaggery Pongal) + Joman Pilchar (Wedding Rasam)': 'குல்லு பொங்கல் (சர்க்கரைப் பொங்கல்) + ஜோமன் பில்ச்சார்',
+  'Steamed Rice + Saurashtra Koli Ounty (Pepper & Poppy Seed Chicken Curry)': 'சாதம் + கோழி அவ்வுண்டி (சிக்கன் குழம்பு)',
+  'Pilchar Bhurko Koli Varuval (Rasam Powder Dry Chicken Roast) + Garlic Rasam': 'பில்ச்சார் புர்கோ கோழி வறுவல் + பூண்டு ரசம்',
+  'Steamed Rice + Beans & Batata Ambat (Double Beans & Potato Gravy)': 'சாதம் + பீன்ஸ் & படாடா அம்பாட் (டபுள் பீன்ஸ் & உருளை குழம்பு)',
+  'Dheim Ounty / More Kulambu (Spiced Buttermilk Curry) & Potato Roast': 'தேயிம் அவ்வுண்டி / மோர் குழம்பு & உருளை வறுவல்',
+  'Steamed Rice + Sourashtra Meen / Koddi Ounty (Tamarind & Whole Garlic Fish Curry)': 'சாதம் + மீன் / கொட்டி அவ்வுண்டி (மீன் குழம்பு)',
+  'Sourashtra Anda Ounty (Boiled Egg Masala) + Lemon Rasam (Limbu Pilchar)': 'முட்டை அவ்வுண்டி (முட்டை மசாலா) + எலுமிச்சை ரசம்',
+  'Steamed Rice + Sourashtra Bela Ounty (Wholesome Lentil-Vegetable Gravy)': 'சாதம் + பேலா அவ்வுண்டி (பருப்புக் குழம்பு)',
+  'Cauliflower Kulambu + Sourashtra Instant Pepper Rasam': 'காலிஃபிளவர் குழம்பு + உடனடி மிளகு ரசம்',
+
+  // Dinner Combos
+  'Pangarapaan Bhairi (Herbal Greens Fritters) & Nalar Bhairi (Crispy Coconut Rice Fritters)': 'பங்காரபான் பைரி (கீரை வடை) & நாலார் பைரி (தேங்காய் அரிசி வடை)',
+  'Chenna Bhurko (Spicy Roasted Gram Podi) & Thakkali Chutni': 'சென்னா புர்கோ (பொட்டுக்கடலை பொடி) & தக்காளி சட்னி',
+  'Soft Phulka / Chappathi & Idiyappam (String Hoppers)': 'சப்பாத்தி & இடியாப்பம்',
+  'Nalar Doodh Ounty (Thengai Paal Kulambu — Creamy Coconut Milk Gravy)': 'நாலார் தூத் அவ்வுண்டி (தேங்காய்ப்பால் குழம்பு)',
+  'Sevi / Doodhum Dhowlo (Creamy Milk Rice Dumplings)': 'சேவி / தூதும் தௌலோ (பால் கொழுக்கட்டை)',
+  'Savory Panim Dhowlo (Steamed Salted Dumplings) & Kothmir Chutni': 'பானிம் தௌலோ (கார கொழுக்கட்டை) & கொத்தமல்லி சட்னி',
+  'Sourashtra Thakkali Pongal (Cinnamon-Clove Spiced Tomato Pulao)': 'சௌராஷ்டிர தக்காளி பொங்கல் (தக்காளி சாதம்)',
+  'Bela Chutney (Roasted Chana Dal Chutney) & Onion-Curd Pachadi': 'பேலா சட்னி (கடலைப் பருப்பு சட்னி) & வெங்காய பச்சடி',
+  'Soft Sponge Kal Diido (Dosa) & Steamed Phalar (Idli)': 'கல் தீதோ (கல் தோசை) & சூடான பலார் (இட்லி)',
+  'Sourashtra Bela Ounty (Paruppu Kulambu) & Alla Chutni (Ginger Chutney)': 'பேலா அவ்வுண்டி (பருப்பு குழம்பு) & அல்லா சட்னி (இஞ்சி சட்னி)',
+  'Serki Bhaath (Traditional Cottonseed-Milk & Palm Jaggery Rice)': 'செர்கி பாத் (பருத்திப்பால் சாதம்)',
+  'Thengai Pooranam Dhowlo (Sweet Coconut-Jaggery Kozhukattai)': 'தேங்காய் பூரண தௌலோ (இனிப்பு கொழுக்கட்டை)',
+  'Hot Layered Chappathi / Coin Parotta': 'சப்பாத்தி / காயின் பரோட்டா',
+  'Sourashtra Meal Maker Ambat (Spiced Soya Chunks Gravy) & Onion Salad': 'மீல் மேக்கர் அம்பாட் (சோயா குழம்பு) & வெங்காய சாலட்',
+  'Hot Mini Phalar (Idlis) & Crispy Onion Uttapam': 'மினி பலார் (இட்லி) & வெங்காய ஊத்தப்பம்',
+  'Dheim Ounty (Seasoned Curd & Besan Gravy) & Sesame Oil Idli Bhurko': 'தேயிம் அவ்வுண்டி (மோர் குழம்பு) & நல்லெண்ணெய் இட்லி பொடி',
+
+  // Common Individual Dishes
+  'Thakkali Ounty': 'தக்காளி அவ்வுண்டி',
+  'Losan Kolkar': 'லோசன் கொல்கார் (பூண்டு குழம்பு)',
+  'Koduk Ounty': 'கொடுக் அவ்வுண்டி (பழைய சோறு புளிக்குழம்பு)',
+  'Vangi Budith': 'வாங்கி புடித் (கத்திரிக்காய் சட்னி)',
+  'Pudina Kothmir Losto': 'புதினா கொத்தமல்லி லோஸ்டோ',
+  'Polte Bhajji': 'போல்டே பஜ்ஜி (கீரை மசியல்)',
+  'Nellika Rubbin': 'நெல்லிக்காய் ருப்பின் (ஊறுகாய்)',
+  'Beans Batata Ambat': 'பீன்ஸ் படாடா அம்பாட்',
+  'Kachchana Ambat': 'கச்சனா அம்பாட் (கொண்டைக்கடலை குழம்பு)',
+  'Joman Pilchar': 'ஜோமன் பில்ச்சார் (கல்யாண ரசம்)',
+  'Mithi Kolkar': 'மிதி கொல்கார் (வெந்தயக் குழம்பு)',
+  'Chaino Kolkar': 'சைனோ கொல்கார் (மட்டன் குழம்பு)',
+  'Polte Chaino': 'போல்டே சைனோ (மட்டன் உப்புக்கறி)',
+  'Kajali Ambat': 'கஜலி அம்பாட் (சைவ ஈரல் குழம்பு)',
+  'Gullu Pongal': 'குல்லு பொங்கல் (சர்க்கரைப் பொங்கல்)',
+  'Koli Ounty': 'கோழி அவ்வுண்டி (சிக்கன் குழம்பு)',
+  'Pilchar Bhurko Koli Varuval': 'பில்ச்சார் புர்கோ கோழி வறுவல்',
+  'Dheim Ounty': 'தேயிம் அவ்வுண்டி (மோர் குழம்பு)',
+  'Meen Kodhi': 'மீன் கொட்டி (மீன் குழம்பு)',
+  'Anda Ounty': 'முட்டை அவ்வுண்டி',
+  'Bela Ounty': 'பேலா அவ்வுண்டி (பருப்புக் குழம்பு)',
+  'Cauliflower Kulambu': 'காலிஃபிளவர் குழம்பு',
+  'Pangarapaan Nalar Bhairi': 'பங்காரபான் நாலார் பைரி (வடை)',
+  'Nalar Doodh Ounty': 'நாலார் தூத் அவ்வுண்டி (தேங்காய்ப்பால் குழம்பு)',
+  'Sevi Doodhum Dhowlo': 'தூதும் தௌலோ (பால் கொழுக்கட்டை)',
+  'Panim Dhowlo': 'பானிம் தௌலோ (கார கொழுக்கட்டை)',
+  'Thakkali Pongal': 'தக்காளி பொங்கல்',
+  'Serki Bhaath': 'செர்கி பாத் (பருத்திப்பால் சாதம்)',
+  'Meal Maker Ambat': 'மீல் மேக்கர் அம்பாட்',
+  'Mudha Pongal': 'முத்தா பொங்கல் (வெண் பொங்கல்)',
+  'Dhowra Pongal': 'தௌரா பொங்கல் (புளிப் பொங்கல்)',
+  'Mhuri Pongal': 'முரி பொங்கல் (கடுகு சாதம்)',
+  'Ambat Bhaath': 'அம்பாட் பாத் (புளி சாதம்)'
+};
+
+const PAIRING_NOTE_TRANSLATION_MAP: Record<string, string> = {
+  'Classic Sourashtra morning tiffin—Ounty Bhurko thickened tomato gravy poured generously over hot Phalar (idli).':
+    'பாரம்பரிய சௌராஷ்டிர காலை உணவு—சூடான பலார் (இட்லி) மீது அவ்வுண்டி புர்கோ மணக்கும் தக்காளி குழம்பு.',
+  'The #1 iconic Sourashtra breakfast marriage—creamy pepper-cumin Mudha Pongal is always eaten with smoky Vangi Budith.':
+    'மிகப் புகழ்பெற்ற சௌராஷ்டிர காலை உணவு—மிளகு சீரக முத்தா பொங்கலுடன் சுவையான வாங்கி புடித் (கத்திரிக்காய் சட்னி).',
+  "Sugi Cooks' famous Madurai 'Killer Combo'—fiery sweet-tangy ginger chutney balanced with cool coconut chutney.":
+    'மதுரையின் புகழ்பெற்ற காம்போ—சுவையான அல்லா சட்னி (இஞ்சி சட்னி) மற்றும் குளிர்ச்சியான தேங்காய் சட்னி.',
+  'Traditional Madurai temple & household breakfast—soft tangy Dhowra Pongal paired with nutty roasted gram thuvaiyal.':
+    'பாரம்பரிய மதுரை காலை உணவு—சுவையான தௌரா பொங்கலுடன் பொட்டுக்கடலைத் துவையல்.',
+  'Famous Sourashtra morning street-style sweet & savory breakfast platter.':
+    'பிரபலமான சௌராஷ்டிர இனிப்பு மற்றும் கார அப்பம் காலை உணவு.',
+  'Traditional cooling morning kanji—creamy coconut-urad porridge contrasted with a fiery dab of Pudina Losto.':
+    'பாரம்பரிய காலை கஞ்சி—தேங்காய்ப்பால் உளுந்தங் கஞ்சியுடன் காரசாரமான புதினா லோஸ்டோ.',
+  'Unique Sourashtra tiffin rice flavored with freshly ground raw mustard and green chilli paste.':
+    'புதிதாக அரைத்த கடுகு-பச்சை மிளகாய் மசாலா மணக்கும் சௌராஷ்டிர முரி பொங்கல்.',
+  'In Sourashtra homes, tangy Limbu Pongal and mild ghee-pepper Thoop Pongal are served side-by-side as "Love Birds Rice".':
+    'சௌராஷ்டிர வீடுகளில் எலுமிச்சை சாதமும் நெய் மிளகு சாதமும் "லவ் பேர்ட்ஸ்" சாதமாகப் பரிமாறப்படுகிறது.',
+  'Classic Madurai tiffin—fluffy idlis dunked in aromatic Sourashtra Sambar with sesame oil and Bhurko.':
+    'மெதுவான இட்லியுடன் நல்லெண்ணெய், புர்கோ மணக்கும் சௌராஷ்டிர சாம்பார்.',
+  'Rich sesame-oil garlic Kolkar balanced with soothing chana dal kutkiri and pepper-cumin Joman Pilchar.':
+    'நல்லெண்ணெய் பூண்டு கொல்காருடன் பருப்பு மசியல் மற்றும் மிளகு-சீரக ஜோமன் பில்ச்சார் (ரசம்).',
+  'Everyday Sourashtra family lunch thali with freshly ground Sambar Bhurko and iron-rich mashed greens.':
+    'அரைத்து வைத்த சாம்பார் புர்கோவுடன் கூடிய அன்றாட மதிய உணவு மற்றும் சத்தான கீரை கடையல்.',
+  'Festival & travel favorite—tangy Ambat Bhaath followed by cool curd rice and fiery green Losto.':
+    'விழா மற்றும் பயண உணவு—சுவையான அம்பாட் பாத் (புளி சாதம்), தயிர் சாதம் மற்றும் புதினா லோஸ்டோ.',
+  'Centuries-old Sourashtra heritage lunch—tangy fermented kanji gravy is traditionally paired with mashed greens.':
+    'பாரம்பரிய சௌராஷ்டிர மதிய உணவு—பழைய சோறு புளிக்குழம்புடன் சத்தான கீரை மசியல்.',
+  'Mild, nourishing greens-and-milk broth paired with a hearty, spiced brinjal/bitter gourd Pitla.':
+    'சத்தான கீரை பால் ரசத்துடன் ருசியான கத்தரிக்காய்/பாகற்காய் பிட்லா.',
+  'Protein-rich Madurai meal where the boiled black chickpea stock is turned into aromatic Kachana Pani rasam.':
+    'புரதம் நிறைந்த மதிய உணவு—கருப்பு கொண்டைக்கடலை குழம்பு மற்றும் கொண்டைக்கடலை ரசம்.',
+  'Cooling fenugreek & black urad dal gravies that strengthen joints and digestion.':
+    'உடல் குளிர்ச்சி மற்றும் செரிமானத்திற்கு உகந்த வெந்தயக் குழம்பு மற்றும் உளுந்து குழம்பு.',
+  'The ultimate Sourashtra Sunday feast—bone-in Mutton Ounty paired with oil-free coconut-studded Polte Chaino and rasam.':
+    'சௌராஷ்டிர ஞாயிறு விருந்து—மட்டன் அவ்வுண்டி, தேங்காய் சேர்த்த மட்டன் உப்புக்கறி மற்றும் ரசம்.',
+  'Famous Sourashtra vegetarian feast curry (Kajali Ambat) served with sweet Gullu Pongal and wedding-style Pilchar.':
+    'பிரபலமான சௌராஷ்டிர சைவ விருந்து—கஜலி அம்பாட் (சைவ ஈரல் குழம்பு), சர்க்கரைப் பொங்கல் மற்றும் ரசம்.',
+  "Aromatic white poppy-pepper chicken gravy paired with Sugi Cooks' grandmother-style Pilchar Bhurko chicken roast.":
+    'கசகசா-மிளகு மணக்கும் கோழி குழம்புடன் பாரம்பரிய பில்ச்சார் புர்கோ கோழி வறுவல்.',
+  'Hearty Madurai feast double-beans curry paired with soothing spiced buttermilk Ounty.':
+    'மதுரை ஸ்பெஷல் டபுள் பீன்ஸ் குழம்புடன் இதமான மோர் அவ்வுண்டி.',
+  'No-coconut tangy Madurai fish/dry-fish curry simmered in gingelly oil with whole garlic pods.':
+    'தேங்காய் சேர்க்காமல் நல்லெண்ணெய் பூண்டுடன் சமைத்த மதுரை மீன் குழம்பு.',
+  'Comforting forgotten heritage lentil gravy paired with hot pepper rasam.':
+    'பாரம்பரிய பருப்புக் குழம்புடன் சூடான மிளகு ரசம்.',
+  'Iconic Sourashtra evening street-food tiffin—puffed crispy rice-and-greens Bhairi dipped in nutty Chenna Bhurko.':
+    'மாலையில் மொறுமொறு பங்காரபான் பைரி (கீரை வடை) மற்றும் சென்னா புர்கோ (பொட்டுக்கடலை பொடி).',
+  'Mild, aromatic coconut-milk curry that pairs effortlessly with evening chappathi, appam, or idiyappam.':
+    'மென்மையான சப்பாத்தி, ஆப்பம் அல்லது இடியாப்பத்துடன் அருமையான தேங்காய்ப்பால் குழம்பு.',
+  'Traditional Sourashtra steamed rice-flour dumpling duo—one simmered in cardamom milk and one tempered with mustard and sesame.':
+    'ஏலக்காய் மணக்கும் பால் கொழுக்கட்டை மற்றும் தாளித்த காரக் கொழுக்கட்டை.',
+  'One-pot pressure-cooker Madurai tomato pongal fragrant with cinnamon, mint, and coconut.':
+    'பட்டை கிராம்பு, புதினா மணக்கும் மதுரை தக்காளி பொங்கல்.',
+  'Light, digestible evening tiffin pairing fluffy kal dosas with lentil-based Bela Ounty.':
+    'எளிதில் செரிக்கும் மாலை டிபன்—மென்மையான கல் தோசையுடன் பருப்பு அவ்வுண்டி.',
+  'Nourishing evening heritage meal featuring Paruthi Paal (cottonseed milk) & palm jaggery.':
+    'பருத்திப்பால் மற்றும் பனை கருப்பட்டி கலந்த சத்தான பாரம்பரிய செர்கி பாத்.',
+  'High-protein Sourashtra dinner curry made with Ounty Bhurko and soya chunks.':
+    'அவ்வுண்டி புர்கோ மணக்கும் அதிக புரதம் கொண்ட சோயா சங்க்ஸ் அம்பாட்.',
+  'Comforting, light evening curd-based Ounty that settles the stomach at night.':
+    'இரவில் எளிதில் செரிக்கும் இதமான தயிர் அவ்வுண்டி மற்றும் இட்லி பொடி.',
+  'Authentic Sourashtra morning tiffin paired with freshly ground chutney/budith.':
+    'புதிதாக அரைத்த சட்னி/புடித்துடன் கூடிய பாரம்பரிய சௌராஷ்டிர காலை உணவு.',
+  'Traditional Sourashtra variety rice meal balanced with a tangy/spicy side dish and cool curd rice.':
+    'சுவையான வகை சாதம், காரசாரமான தொடுகறி மற்றும் குளிர்ச்சியான தயிர் சாதம்.',
+  'Wholesome Sourashtra evening tiffin combination.':
+    'ஆரோக்கியமான சௌராஷ்டிர மாலை உணவு காம்போ.'
+};
+
+export function formatPairingNote(note: string, language: string): string {
+  if (!note) return '';
+  if (language !== 'Tamil') return note;
+  if (PAIRING_NOTE_TRANSLATION_MAP[note]) {
+    return PAIRING_NOTE_TRANSLATION_MAP[note];
+  }
+  for (const [key, val] of Object.entries(PAIRING_NOTE_TRANSLATION_MAP)) {
+    if (note.includes(key) || key.includes(note)) return val;
+  }
+  return note;
+}
+
 export function formatDishTitle(title: string, language: string): string {
   if (!title) return '';
   if (language === 'English') {
@@ -593,6 +805,28 @@ export function formatDishTitle(title: string, language: string): string {
     return clean.trim();
   }
   // Tamil mode
+  if (DISH_TITLE_TRANSLATION_MAP[title]) {
+    return DISH_TITLE_TRANSLATION_MAP[title];
+  }
+  const trimmed = title.trim();
+  for (const [enKey, taVal] of Object.entries(DISH_TITLE_TRANSLATION_MAP)) {
+    if (enKey.toLowerCase() === trimmed.toLowerCase()) {
+      return taVal;
+    }
+  }
+  if (title.includes(' & ')) {
+    const parts = title.split(' & ');
+    return parts.map((p) => formatDishTitle(p.trim(), 'Tamil')).join(' & ');
+  }
+  if (title.includes(' + ')) {
+    const parts = title.split(' + ');
+    return parts.map((p) => formatDishTitle(p.trim(), 'Tamil')).join(' + ');
+  }
+  for (const [enKey, taVal] of Object.entries(DISH_TITLE_TRANSLATION_MAP)) {
+    if (enKey.length >= 8 && title.includes(enKey)) {
+      return title.replace(enKey, taVal);
+    }
+  }
   if (title.includes('புதினா தொவயல்') || title.toLowerCase().includes('losto')) {
     return 'புதினா தொவயல் (லோஸ்டோ)';
   }

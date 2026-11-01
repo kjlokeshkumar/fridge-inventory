@@ -10,7 +10,7 @@ import { UI_TRANSLATIONS } from '@/lib/translations';
 
 const LANGUAGES = [
   { code: 'English', label: 'English' },
-  { code: 'Tamil', label: 'Tamil (தமிழ்)' }
+  { code: 'Tamil', label: 'தமிழ்' }
 ];
 
 export default function Navigation() {
@@ -71,9 +71,10 @@ export default function Navigation() {
             <UserAuthModal />
             {isAuthenticated && <ProfileSelector />}
 
-            <div className="lang-selector-container">
-              <span className="lang-globe-icon">🌐</span>
+            <label htmlFor="header-lang-select" className="lang-selector-container">
+              <span className="lang-globe-icon" aria-hidden="true">🌐</span>
               <select 
+                id="header-lang-select"
                 value={selectedLanguage} 
                 onChange={handleLanguageChange}
                 className="lang-selector"
@@ -83,7 +84,7 @@ export default function Navigation() {
                   <option key={l.code} value={l.code}>{l.label}</option>
                 ))}
               </select>
-            </div>
+            </label>
 
             <div className="nav-links">
               <Link href="/recipes" className={`nav-link ${isActive('/recipes') ? 'active' : ''}`}>{t.navRecipes}</Link>

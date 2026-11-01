@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import './inventory.css';
-import { toTamilCategory, UI_TRANSLATIONS } from '@/lib/translations';
+import { formatItemName, toTamilCategory, UI_TRANSLATIONS } from '@/lib/translations';
 import { getProduceStyle } from '@/lib/produce-styles';
 import { isInventoryItemExpired, isInventoryItemExpiringSoon } from '@/lib/inventory-dates';
 
@@ -125,7 +125,7 @@ export default function InventoryPage() {
 
               <div className="item-main-row">
                 <div className="item-icon-badge" aria-hidden="true">{getProduceEmoji(item.name)}</div>
-                <h3 className="item-name">{item.name}</h3>
+                <h3 className="item-name">{formatItemName(item.name, language)}</h3>
               </div>
 
               <div className="item-details">

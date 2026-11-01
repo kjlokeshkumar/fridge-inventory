@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import './recipes.css';
-import { formatCategory, formatDishTitle, formatItemName, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
+import { formatCategory, formatDateLabel, formatDayName, formatDishTitle, formatItemName, formatPairingNote, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
 import { MADURAI_SOURASHTRA_BHURKOS } from '@/lib/sourashtra-recipes';
 import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
@@ -1305,7 +1305,7 @@ export default function RecipesPage() {
             <div className="modal-top-bar">
               <div>
                 <span className="recipe-category-badge">
-                  📅 {activePlannerModal.dayName} • {activePlannerModal.slotLabel}
+                  📅 {formatDayName(activePlannerModal.dayName, language)} • {activePlannerModal.slotLabel}
                 </span>
               </div>
               <button
@@ -1313,7 +1313,7 @@ export default function RecipesPage() {
                 className="btn-back-planner"
                 onClick={() => setActivePlannerModal(null)}
               >
-                ← Close &amp; Back to 7-Day Planner
+                ← {language === 'Tamil' ? 'மூடிவிட்டு 7 நாள் உணவுத் திட்டத்திற்குச் செல்' : 'Close & Back to 7-Day Planner'}
               </button>
             </div>
 
@@ -1326,7 +1326,7 @@ export default function RecipesPage() {
                   setActivePlannerModal({ ...activePlannerModal, activeTab: 'main' })
                 }
               >
-                🍽️ Main Dish: {activePlannerModal.combo.mainDishTitle}
+                🍽️ {language === 'Tamil' ? 'முக்கிய உணவு:' : 'Main Dish:'} {formatDishTitle(safeString(activePlannerModal.combo.mainDishTitle), language)}
               </button>
               {activePlannerModal.combo.secondaryRecipe && (
                 <button
@@ -1336,7 +1336,7 @@ export default function RecipesPage() {
                     setActivePlannerModal({ ...activePlannerModal, activeTab: 'paired' })
                   }
                 >
-                  🥣 Paired With: {activePlannerModal.combo.pairedWithTitle}
+                  🥣 {language === 'Tamil' ? 'துணை உணவு:' : 'Paired With:'} {formatDishTitle(safeString(activePlannerModal.combo.pairedWithTitle), language)}
                 </button>
               )}
             </div>
@@ -1346,7 +1346,7 @@ export default function RecipesPage() {
                 {modalRecipe.category && (
                   <span className="recipe-category-badge">{safeString(modalRecipe.category)}</span>
                 )}
-                <h3>{safeString(modalRecipe.title)}</h3>
+                <h3>{formatDishTitle(safeString(modalRecipe.title), language)}</h3>
               </div>
               <span className={`difficulty ${getDifficultyClass(modalRecipe.difficulty)}`}>
                 {safeString(modalRecipe.difficulty || 'Easy')}
@@ -1363,7 +1363,7 @@ export default function RecipesPage() {
                     rel="noopener noreferrer"
                     className="source-link-btn source-link-yt"
                   >
-                    ▶️ Watch on YouTube ({safeString(modalRecipe.sourceAttribution || 'Video')})
+                    ▶️ {language === 'Tamil' ? 'யூடியூபில் காணொளியைக் காண்க' : 'Watch on YouTube'} ({safeString(modalRecipe.sourceAttribution || 'Video')})
                   </a>
                 )}
                 {modalRecipe.webUrl && (
@@ -1373,7 +1373,7 @@ export default function RecipesPage() {
                     rel="noopener noreferrer"
                     className="source-link-btn source-link-web"
                   >
-                    🌐 Web Recipe Reference
+                    🌐 {language === 'Tamil' ? 'இணைய சமையல் குறிப்பு' : 'Web Recipe Reference'}
                   </a>
                 )}
               </div>
@@ -1386,7 +1386,7 @@ export default function RecipesPage() {
                   <h4>{t.mainFridgeIngredients}</h4>
                   <div className="ingredient-badges">
                     {modalRecipe.fridgeIngredientsUsed.map((ing, i) => (
-                      <span key={i} className="badge-fridge">{safeString(ing)}</span>
+                      <span key={i} className="badge-fridge">{formatItemName(safeString(ing), language)}</span>
                     ))}
                   </div>
                 </div>
@@ -1408,13 +1408,13 @@ export default function RecipesPage() {
             {/* 3. Sourashtra Secret */}
             {modalRecipe.bhurkoNote && (
               <div className="bhurko-note-box">
-                <strong>🥣 Sourashtra Secret:</strong> {safeString(modalRecipe.bhurkoNote)}
+                <strong>🥣 {language === 'Tamil' ? 'சௌராஷ்டிர ரகசியம்:' : 'Sourashtra Secret:'}</strong> {safeString(modalRecipe.bhurkoNote)}
               </div>
             )}
 
             {/* 4. Step-by-Step Cooking Process */}
             <div className="recipe-section">
-              <h4>👩‍🍳 Traditional Cooking Process ({t.instructions})</h4>
+              <h4>👩‍🍳 {language === 'Tamil' ? 'பாரம்பரிய சமையல் முறை' : 'Traditional Cooking Process'} ({t.instructions})</h4>
               <ol className="steps-list">
                 {Array.isArray(modalRecipe.steps) &&
                   modalRecipe.steps.map((step, i) => (
@@ -1426,7 +1426,7 @@ export default function RecipesPage() {
             {/* 5. Calorie Breakdown */}
             <div className="recipe-section">
               <h4>
-                ⚖️ Ingredients &amp; Calories ({t.approx} {modalRecipe.totalCalories || 0} {t.kcal}):
+                ⚖️ {language === 'Tamil' ? 'தேவையான பொருட்கள் & கலோரி' : 'Ingredients & Calories'} ({t.approx} {modalRecipe.totalCalories || 0} {t.kcal}):
               </h4>
               <div className="calorie-breakdown">
                 {Array.isArray(modalRecipe.ingredientsBreakdown) &&
@@ -1443,7 +1443,7 @@ export default function RecipesPage() {
                         }}
                       >
                         <span>
-                          {safeString(item?.name)}{' '}
+                          {formatItemName(safeString(item?.name), language)}{' '}
                           <span style={{ opacity: 0.6, fontSize: '0.9em' }}>
                             ({Number(item?.weightGrams) || 100}g)
                           </span>
@@ -1455,7 +1455,7 @@ export default function RecipesPage() {
                     ))}
                   </ul>
                 ) : (
-                  <p>No calorie data available.</p>
+                  <p>{t.noCalorieData}</p>
                 )}
               </div>
             </div>
@@ -1466,7 +1466,7 @@ export default function RecipesPage() {
                 className="btn-back-planner"
                 onClick={() => setActivePlannerModal(null)}
               >
-                ← Close &amp; Return to 7-Day Meal Planner
+                ← {language === 'Tamil' ? 'மூடிவிட்டு 7 நாள் உணவுத் திட்டத்திற்குச் செல்' : 'Close & Return to 7-Day Meal Planner'}
               </button>
             </div>
           </div>
@@ -1645,8 +1645,8 @@ export default function RecipesPage() {
                 className={`planner-day-tab ${selectedDayIndex === index ? 'active' : ''}`}
                 onClick={() => setSelectedDayIndex(index)}
               >
-                <span>{language === 'Tamil' ? toTamilDayName(day.dayName.split(' ')[0]) : day.dayName.split(' ')[0]}</span>
-                <small>{day.dateLabel.split(',')[0]}</small>
+                <span>{formatDayName(day.dayName.split(' ')[0], language)}</span>
+                <small>{formatDateLabel(day.dateLabel.split(',')[0], language)}</small>
               </button>
             ))}
           </div>
@@ -1659,8 +1659,8 @@ export default function RecipesPage() {
               <div key={day.isoDate} className="day-plan-card">
                 <div className="day-card-header">
                   <div className="day-title-group">
-                    <h4>{language === 'Tamil' ? toTamilDayName(day.dayName) : day.dayName}</h4>
-                    <span className="day-date-sub">{day.dateLabel}</span>
+                    <h4>{formatDayName(day.dayName, language)}</h4>
+                    <span className="day-date-sub">{formatDateLabel(day.dateLabel, language)}</span>
                   </div>
                   <a
                     href={buildGoogleCalendarDayUrl(day)}
@@ -1771,7 +1771,7 @@ export default function RecipesPage() {
                       {/* Traditional Pairing Note */}
                       {combo?.pairingTraditionNote && (
                         <div className="combo-why-note">
-                          ✨ {safeString(combo.pairingTraditionNote)}
+                          ✨ {formatPairingNote(safeString(combo.pairingTraditionNote), language)}
                         </div>
                       )}
 
@@ -2133,7 +2133,7 @@ export default function RecipesPage() {
                     {recipe.category && (
                       <span className="recipe-category-badge">{safeString(recipe.category)}</span>
                     )}
-                    <h3>{safeString(recipe.title)}</h3>
+                    <h3>{formatDishTitle(safeString(recipe.title), language)}</h3>
                   </div>
                   <span className={`difficulty ${getDifficultyClass(recipe.difficulty)}`}>
                     {safeString(recipe.difficulty || 'Easy')}
@@ -2151,7 +2151,7 @@ export default function RecipesPage() {
                         className="source-link-btn source-link-yt"
                         title={`Watch ${safeString(recipe.title)} on YouTube`}
                       >
-                        ▶️ Watch on YouTube ({safeString(recipe.sourceAttribution || 'Video')})
+                        ▶️ {language === 'Tamil' ? 'யூடியூபில் காண்க' : 'Watch on YouTube'} ({safeString(recipe.sourceAttribution || 'Video')})
                       </a>
                     )}
                     {recipe.webUrl && (
@@ -2162,7 +2162,7 @@ export default function RecipesPage() {
                         className="source-link-btn source-link-web"
                         title="Open Web Recipe Archive"
                       >
-                        🌐 Web Recipe Reference
+                        🌐 {language === 'Tamil' ? 'இணையக் குறிப்பு' : 'Web Recipe Reference'}
                       </a>
                     )}
                   </div>

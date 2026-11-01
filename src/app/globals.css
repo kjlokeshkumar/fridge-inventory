@@ -594,8 +594,10 @@ body::before {
   background: var(--bg-main);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  padding: 6px 12px;
+  padding: 4px 10px;
   gap: 6px;
+  touch-action: manipulation;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
@@ -606,24 +608,30 @@ body::before {
 
 .lang-globe-icon {
   font-size: 0.95rem;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .lang-selector {
-  background: transparent;
-  color: var(--text-color);
-  border: none;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: inherit !important;
+  background: transparent !important;
+  color: var(--text-main) !important;
+  border: none !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
   cursor: pointer;
-  outline: none;
-  padding-right: 4px;
+  outline: none !important;
+  padding: 0;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .lang-selector option {
-  background: var(--bg-main);
-  color: var(--text-color);
-  padding: 8px;
+  font-family: inherit !important;
+  background: #ffffff !important;
+  color: #1f1a17 !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  padding: 6px 10px;
 }
 
 .user-auth-badge {
@@ -706,11 +714,19 @@ body::before {
     max-width: none;
     justify-content: flex-end;
   }
-  .user-auth-badge, .profile-badge-btn, .lang-selector-container {
+  .user-auth-badge, .profile-badge-btn {
     padding: 2px 6px;
     font-size: 0.7rem;
     white-space: nowrap;
     border-radius: 12px;
+  }
+  .lang-selector-container {
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 8px;
+    gap: 4px;
+    white-space: nowrap;
+    touch-action: manipulation;
   }
   .user-auth-name, .profile-name {
     max-width: 36px;
@@ -722,19 +738,18 @@ body::before {
     display: none; /* Hide extra tag on mobile screens */
   }
   .lang-selector {
-    font-size: 0.7rem;
-    padding: 2px 2px;
-    width: 56px;
+    font-family: inherit !important;
+    font-size: 0.80rem !important;
+    font-weight: 600 !important;
+    padding: 0;
+    width: auto;
+    color: var(--text-main) !important;
   }
 }
 
 @media (max-width: 360px) {
   .user-auth-name, .profile-name {
     display: none;
-  }
-
-  .lang-selector {
-    width: 20px;
   }
 }
 
@@ -1113,27 +1128,31 @@ body::before {
 .lang-selector-container:hover {
   background: #faf6ed;
   border-color: var(--primary-teal);
-  transform: translateY(-1px);
   box-shadow: 0 3px 0 rgba(31, 26, 23, 0.12), 0 3px 6px rgba(31, 26, 23, 0.08);
 }
 
 .user-auth-badge:active,
-.profile-badge-btn:active,
-.lang-selector-container:active {
+.profile-badge-btn:active {
   transform: translateY(1px);
   box-shadow: 0 1px 0 rgba(31, 26, 23, 0.08);
 }
 
+.lang-selector-container:active {
+  transform: none !important;
+}
+
 .lang-selector {
-  background: transparent;
-  color: var(--text-main);
-  border: none;
-  font-size: 0.80rem;
-  font-weight: 600;
+  font-family: inherit !important;
+  background: transparent !important;
+  color: var(--text-main) !important;
+  border: none !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
   cursor: pointer;
-  outline: none;
+  outline: none !important;
   padding: 0;
   margin: 0;
+  line-height: 1.2;
 }
 
 .profile-diet-tag {
@@ -1261,10 +1280,13 @@ body::before {
 
 .user-auth-badge:active,
 .profile-badge-btn:active,
-.lang-selector-container:active,
 .btn-secondary:active {
   transform: translateY(1.5px);
   box-shadow: 0 1px 0 rgba(45, 110, 119, 0.2) !important;
+}
+
+.lang-selector-container:active {
+  transform: none !important;
 }
 
 
