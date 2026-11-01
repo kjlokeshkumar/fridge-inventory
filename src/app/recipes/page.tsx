@@ -8,6 +8,7 @@ import { MADURAI_SOURASHTRA_BHURKOS } from '@/lib/sourashtra-recipes';
 import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
 import { getRecipeImageUrl } from '@/lib/recipe-images';
+import { triggerSparkles, triggerSparklesAtElement } from '@/lib/sparkles';
 
 interface IngredientCalories {
   name: string;
@@ -783,10 +784,16 @@ export default function RecipesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [language, setLanguage] = useState('English');
+  const [showWalkthrough, setShowWalkthrough] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
     setLanguage(stored);
+
+    const walkthroughDismissed = localStorage.getItem('fridge_chef_walkthrough_dismissed_v1');
+    if (!walkthroughDismissed) {
+      setShowWalkthrough(true);
+    }
 
     let cancelled = false;
     let authChangeVersion = 0;
@@ -903,11 +910,71 @@ export default function RecipesPage() {
     }
   }, [weeklyPlan]);
 
-  const toggleCheckedShoppingItem = (itemName: string) => {
+  const dismissWalkthrough = () => {
+    localStorage.setItem('fridge_chef_walkthrough_dismissed_v1', 'true');
+    setShowWalkthrough(false);
+    triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'celebrate');
+  };
+
+  const openPlannerModal = (state: ActivePlannerModalState, e?: React.MouseEvent) => {
+    if (e) triggerSparklesAtElement(e.currentTarget as HTMLElement, 'open');
+    else triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'open');
+    setActivePlannerModal(state);
+  };
+
+  const closePlannerModal = () => {
+    triggerSparkles(window.innerWidth / 2, window.innerHeight / 2, 'close');
+    setActivePlannerModal(null);
+  };
+
+  const openBhurkoModal = (e?: React.MouseEvent) => {
+    if (e) triggerSparklesAtElement(e.currentTarget as HTMLElement, 'open');
+    else triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'open');
+    setShowBhurkoModal(true);
+  };
+
+  const closeBhurkoModal = () => {
+    triggerSparkles(window.innerWidth / 2, window.innerHeight / 2, 'close');
+    setShowBhurkoModal(false);
+  };
+
+  // Keyboard Shortcuts (Heuristic #7 - Flexibility & Efficiency)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (activePlannerModal) {
+          closePlannerModal();
+        } else if (showBhurkoModal) {
+          closeBhurkoModal();
+        } else if (showWalkthrough) {
+          setShowWalkthrough(false);
+        }
+      }
+      if (e.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes((e.target as HTMLElement)?.tagName)) {
+        e.preventDefault();
+        setActiveRecipesTab('recipes');
+        setTimeout(() => {
+          const searchInput = document.querySelector<HTMLInputElement>('input.search-input, input[type="search"]');
+          if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+          }
+        }, 80);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activePlannerModal, showBhurkoModal, showWalkthrough]);
+
+  const toggleCheckedShoppingItem = (itemName: string, e?: React.MouseEvent) => {
     const lower = itemName.toLowerCase();
-    const next = checkedShoppingItems.includes(lower)
-      ? checkedShoppingItems.filter((i) => i !== lower)
-      : [...checkedShoppingItems, lower];
+    const willCheck = !checkedShoppingItems.includes(lower);
+    if (willCheck && e) {
+      triggerSparklesAtElement(e.currentTarget as HTMLElement, 'celebrate');
+    }
+    const next = willCheck
+      ? [...checkedShoppingItems, lower]
+      : checkedShoppingItems.filter((i) => i !== lower);
     setCheckedShoppingItems(next);
     if (weeklyPlan.length > 0) {
       localStorage.setItem(getPlanCheckedKey(weeklyPlan), JSON.stringify(next));
@@ -1327,7 +1394,7 @@ export default function RecipesPage() {
       {activePlannerModal && modalRecipe && (
         <div
           className="planner-recipe-modal-backdrop"
-          onClick={() => setActivePlannerModal(null)}
+          onClick={closePlannerModal}
         >
           <div
             className="planner-recipe-modal"
@@ -1342,7 +1409,7 @@ export default function RecipesPage() {
               <button
                 type="button"
                 className="modal-floating-close-btn"
-                onClick={() => setActivePlannerModal(null)}
+                onClick={closePlannerModal}
                 aria-label={language === 'Tamil' ? 'மூடு' : 'Close'}
               >
                 ✕
@@ -1357,7 +1424,7 @@ export default function RecipesPage() {
               <button
                 type="button"
                 className="btn-back-planner"
-                onClick={() => setActivePlannerModal(null)}
+                onClick={closePlannerModal}
               >
                 ← {language === 'Tamil' ? 'மூடிவிட்டு 7 நாள் உணவுத் திட்டத்திற்குச் செல்' : 'Close & Back to 7-Day Planner'}
               </button>
@@ -1520,7 +1587,7 @@ export default function RecipesPage() {
               <button
                 type="button"
                 className="btn-back-planner modal-sticky-close-btn"
-                onClick={() => setActivePlannerModal(null)}
+                onClick={closePlannerModal}
               >
                 ← {language === 'Tamil' ? 'மூடிவிட்டு 7 நாள் உணவுத் திட்டத்திற்குச் செல்' : 'Close & Return to 7-Day Meal Planner'}
               </button>
@@ -1535,7 +1602,7 @@ export default function RecipesPage() {
       {showBhurkoModal && (
         <div
           className="planner-recipe-modal-backdrop"
-          onClick={() => setShowBhurkoModal(false)}
+          onClick={closeBhurkoModal}
         >
           <div
             className="planner-recipe-modal bhurko-guide-modal"
@@ -1552,7 +1619,7 @@ export default function RecipesPage() {
               <button
                 type="button"
                 className="btn-back-planner"
-                onClick={() => setShowBhurkoModal(false)}
+                onClick={closeBhurkoModal}
               >
                 ✕ {t.hideBhurkoGuide || 'Close Guide'}
               </button>
@@ -1624,7 +1691,7 @@ export default function RecipesPage() {
               <button
                 type="button"
                 className="btn-back-planner modal-sticky-close-btn"
-                onClick={() => setShowBhurkoModal(false)}
+                onClick={closeBhurkoModal}
               >
                 ✕ {t.hideBhurkoGuide || (language === 'Tamil' ? 'வழிகாட்டியை மூடு' : 'Close Guide')}
               </button>
@@ -1648,6 +1715,61 @@ export default function RecipesPage() {
           ===================================================================== */}
       {authChecked && isAuthenticated && activeRecipesTab === 'planner' && weeklyPlan.length > 0 && (
         <section className="weekly-planner-panel glass-pane mb-24">
+          {/* First-Time Walkthrough Card (Heuristic #10 - Help & Documentation) */}
+          {showWalkthrough && (
+            <div className="walkthrough-card glass-pane">
+              <div className="walkthrough-header">
+                <div className="walkthrough-title-row">
+                  <span className="walkthrough-sparkle-icon" aria-hidden="true">✨</span>
+                  <h3>{t.walkthroughTitle || 'How Sourashtra Chef Works'}</h3>
+                </div>
+                <button
+                  type="button"
+                  className="walkthrough-dismiss-btn"
+                  onClick={dismissWalkthrough}
+                  aria-label={t.gotIt || 'Got it'}
+                >
+                  ✕
+                </button>
+              </div>
+              <p className="walkthrough-intro">
+                {t.walkthroughIntro || 'Your authentic smart culinary companion in 3 simple steps:'}
+              </p>
+              <div className="walkthrough-steps-grid">
+                <div className="walkthrough-step">
+                  <div className="step-badge">1</div>
+                  <div className="step-content">
+                    <h4>🥗 {t.walkthroughStep1Title || 'Fridge Inventory'}</h4>
+                    <p>{t.walkthroughStep1Desc || 'Mark what fresh vegetables, dairy & groceries you have on hand in your kitchen.'}</p>
+                  </div>
+                </div>
+                <div className="walkthrough-step">
+                  <div className="step-badge">2</div>
+                  <div className="step-content">
+                    <h4>📅 {t.walkthroughStep2Title || '7-Day Meal Plan'}</h4>
+                    <p>{t.walkthroughStep2Desc || 'Enjoy complete authentic main dishes paired with traditional side dishes.'}</p>
+                  </div>
+                </div>
+                <div className="walkthrough-step">
+                  <div className="step-badge">3</div>
+                  <div className="step-content">
+                    <h4>🛒 {t.walkthroughStep3Title || 'Smart Shopping List'}</h4>
+                    <p>{t.walkthroughStep3Desc || 'Missing ingredients are calculated automatically. Check them off as you shop!'}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="walkthrough-actions">
+                <button
+                  type="button"
+                  className="btn-walkthrough-confirm"
+                  onClick={dismissWalkthrough}
+                >
+                  ✨ {t.gotIt || 'Got it, let’s cook!'}
+                </button>
+              </div>
+            </div>
+          )}
+
           <div className="planner-top-bar">
             <div>
               <h2>
@@ -1665,17 +1787,33 @@ export default function RecipesPage() {
               <button
                 type="button"
                 className={`btn-pin-plan ${isWeekPinned ? 'pinned' : ''}`}
-                onClick={togglePinEntireWeek}
+                onClick={(e) => {
+                  if (!isWeekPinned) triggerSparklesAtElement(e.currentTarget, 'celebrate');
+                  togglePinEntireWeek();
+                }}
               >
                 {isWeekPinned ? t.planPinned : t.pinAndSavePlan}
               </button>
               <button
                 type="button"
                 className="btn-resample-plan"
-                onClick={handleResampleWeek}
+                onClick={(e) => {
+                  triggerSparklesAtElement(e.currentTarget, 'add');
+                  handleResampleWeek();
+                }}
                 title="Shuffle and formulate fresh authentic Sourashtra combinations for unpinned days"
               >
                 {t.resamplePlan}
+              </button>
+              <button
+                type="button"
+                className="btn-secondary btn-sm"
+                onClick={() => {
+                  triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'open');
+                  setShowWalkthrough((v) => !v);
+                }}
+              >
+                ✨ {t.howItWorks || (language === 'Tamil' ? 'இது எப்படி வேலை செய்கிறது?' : 'How It Works')}
               </button>
               <button
                 type="button"
@@ -1694,7 +1832,7 @@ export default function RecipesPage() {
               <button
                 type="button"
                 className="btn-secondary btn-sm"
-                onClick={() => setShowBhurkoModal(true)}
+                onClick={(e) => openBhurkoModal(e)}
               >
                 🥣 {t.bhurkoSpiceGuide || 'Bhurko Spice Guide'}
               </button>
@@ -1781,13 +1919,13 @@ export default function RecipesPage() {
                       <button
                         type="button"
                         className="combo-dish-link"
-                        onClick={() =>
-                          setActivePlannerModal({
+                        onClick={(e) =>
+                          openPlannerModal({
                             dayName: day.dayName,
                             slotLabel: slotIcon,
                             combo,
                             activeTab: 'main'
-                          })
+                          }, e)
                         }
                         title="Click to view full recipe & returns to 7-Day Planner on close"
                       >
@@ -1807,13 +1945,13 @@ export default function RecipesPage() {
                       <button
                         type="button"
                         className="combo-paired-link"
-                        onClick={() =>
-                          setActivePlannerModal({
+                        onClick={(e) =>
+                          openPlannerModal({
                             dayName: day.dayName,
                             slotLabel: slotIcon,
                             combo,
                             activeTab: 'paired'
-                          })
+                          }, e)
                         }
                         title="Click to view paired side/curry recipe & returns to 7-Day Planner on close"
                       >
@@ -1994,7 +2132,7 @@ export default function RecipesPage() {
                         <input
                           type="checkbox"
                           checked={isChecked}
-                          onChange={() => toggleCheckedShoppingItem(item.item)}
+                          onChange={(e) => toggleCheckedShoppingItem(item.item, e as unknown as React.MouseEvent)}
                         />
                         <span className="planner-check-item-name">
                           {formatItemName(item.item, language)}

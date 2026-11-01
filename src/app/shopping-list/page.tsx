@@ -12,6 +12,7 @@ import {
   type WeeklyShoppingDay
 } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
+import { triggerSparklesAtElement } from '@/lib/sparkles';
 
 interface InventoryItem {
   id: number;
@@ -238,11 +239,15 @@ export default function ShoppingListPage() {
     }
   };
 
-  const toggleItemChecked = (itemName: string) => {
+  const toggleItemChecked = (itemName: string, e?: React.ChangeEvent) => {
     const key = itemName.toLowerCase();
-    const updated = checkedSet.has(key)
-      ? checkedItems.filter((item) => item !== key)
-      : [...checkedItems, key];
+    const willCheck = !checkedSet.has(key);
+    if (willCheck && e) {
+      triggerSparklesAtElement(e.currentTarget as HTMLElement, 'celebrate');
+    }
+    const updated = willCheck
+      ? [...checkedItems, key]
+      : checkedItems.filter((item) => item !== key);
     setCheckedItems(updated);
     localStorage.setItem(getCheckedItemsKey(plan), JSON.stringify(updated));
   };
@@ -311,7 +316,7 @@ export default function ShoppingListPage() {
                     <input
                       type="checkbox"
                       checked={checked}
-                      onChange={() => toggleItemChecked(item.item)}
+                      onChange={(e) => toggleItemChecked(item.item, e)}
                     />
                     <span className="plan-shopping-name">{formatItem(item.item)}</span>
                   </label>

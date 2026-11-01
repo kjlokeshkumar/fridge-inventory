@@ -1459,3 +1459,296 @@ body::before {
   line-height: 1.4 !important;
   word-break: break-word !important;
 }
+
+/* ==========================================================================
+   MAGIC SPRINKLES & DELIGHT PARTICLES
+   ========================================================================== */
+.sparkle-burst-container {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100000;
+  width: 0;
+  height: 0;
+}
+
+.sparkle-particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+  animation: sparkleFly 0.82s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(0.6);
+  will-change: transform, opacity;
+}
+
+.sparkle-dot {
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@keyframes sparkleFly {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.2) rotate(0deg);
+  }
+  18% {
+    opacity: 1;
+    transform: translate3d(calc(var(--dx) * 0.35), calc(var(--dy) * 0.35), 0) scale(1.25) rotate(calc(var(--rot) * 0.35));
+  }
+  75% {
+    opacity: 0.9;
+    transform: translate3d(calc(var(--dx) * 0.9), calc(var(--dy) * 0.9), 0) scale(1) rotate(calc(var(--rot) * 0.8));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--dx), calc(var(--dy) + 18px), 0) scale(0.3) rotate(var(--rot));
+  }
+}
+
+/* ==========================================================================
+   UNDO TOAST NOTIFICATION (Heuristic #3 - User Control & Freedom)
+   ========================================================================== */
+.undo-toast-banner {
+  position: fixed;
+  bottom: calc(24px + env(safe-area-inset-bottom, 24px));
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f1a17;
+  color: #ffffff;
+  border: 1.5px solid rgba(45, 110, 119, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  z-index: 99999;
+  min-width: 300px;
+  max-width: min(92vw, 440px);
+  overflow: hidden;
+  animation: slideUpToast 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpToast {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 24px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.undo-toast-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+}
+
+.undo-toast-text {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.undo-toast-btn {
+  background: var(--primary-teal, #245961);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.undo-toast-btn:hover,
+.undo-toast-btn:active {
+  background: #2dd4bf;
+  color: #0f172a;
+  transform: scale(1.04);
+}
+
+.undo-progress-bar {
+  height: 3.5px;
+  background: linear-gradient(90deg, #2dd4bf, #fbbf24);
+  width: 100%;
+  animation: toastProgress 5s linear forwards;
+}
+
+@keyframes toastProgress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* ==========================================================================
+   FIRST-TIME QUICK WALKTHROUGH CARD (Heuristic #10 - Help & Documentation)
+   ========================================================================== */
+.walkthrough-card {
+  background: linear-gradient(180deg, #fefdfb 0%, #f7f1e6 100%) !important;
+  border: 1.5px solid rgba(45, 110, 119, 0.28) !important;
+  border-radius: 14px !important;
+  padding: 18px 20px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 4px 18px rgba(31, 26, 23, 0.08) !important;
+  position: relative !important;
+  animation: fadeInWalkthrough 0.3s ease-out;
+}
+
+@keyframes fadeInWalkthrough {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.walkthrough-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.walkthrough-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.walkthrough-title-row h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  color: var(--primary-teal, #245961);
+  font-weight: 700;
+}
+
+.walkthrough-sparkle-icon {
+  font-size: 1.25rem;
+  display: inline-block;
+  animation: twinkleIcon 2s ease-in-out infinite;
+}
+
+@keyframes twinkleIcon {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(10deg); }
+}
+
+.walkthrough-dismiss-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.walkthrough-dismiss-btn:hover {
+  background: rgba(45, 110, 119, 0.1);
+  color: var(--text-main);
+}
+
+.walkthrough-intro {
+  margin: 0 0 14px 0;
+  font-size: 0.88rem;
+  color: #5c4d42;
+  line-height: 1.45;
+}
+
+.walkthrough-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.walkthrough-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #ffffff;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(45, 110, 119, 0.18);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.step-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary-teal, #245961);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.step-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 0.92rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #5c4d42;
+  line-height: 1.4;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.walkthrough-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.btn-walkthrough-confirm {
+  background: linear-gradient(135deg, #245961 0%, #174249 100%);
+  color: #ffffff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 3px 8px rgba(36, 89, 97, 0.28);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.btn-walkthrough-confirm:hover,
+.btn-walkthrough-confirm:active {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+

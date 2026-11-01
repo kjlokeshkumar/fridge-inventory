@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './page.module.css';
 import { formatCategory, formatItemName, UI_TRANSLATIONS } from '@/lib/translations';
 import { getProduceStyle } from '@/lib/produce-styles';
+import { triggerSparklesAtElement } from '@/lib/sparkles';
 
 interface InventoryItem {
   id: number;
@@ -67,8 +68,30 @@ export default function Home() {
     };
   }, [language]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes((e.target as HTMLElement)?.tagName)) {
+        e.preventDefault();
+        const searchInput = document.querySelector<HTMLInputElement>('input[type="search"]');
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      }
+      if (e.key === 'Escape') {
+        setSearch('');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const toggleCheck = (id: number, e: React.MouseEvent) => {
     e.stopPropagation();
+    const willCheck = !checkedItems.has(id);
+    if (willCheck) {
+      triggerSparklesAtElement(e.currentTarget as HTMLElement, 'celebrate');
+    }
     setCheckedItems(prev => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
@@ -79,6 +102,7 @@ export default function Home() {
 
   const updateQuantity = async (id: number, delta: number, e: React.MouseEvent) => {
     e.stopPropagation();
+    triggerSparklesAtElement(e.currentTarget as HTMLElement, delta > 0 ? 'add' : 'remove');
     const item = items.find(i => i.id === id);
     if (!item) return;
     const newQty = Math.max(0, item.quantity + delta);
