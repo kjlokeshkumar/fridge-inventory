@@ -1,21 +1,32 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Capacitor Plugin rules
+-keep public class * extends com.getcapacitor.Plugin {
+    public *;
+}
+-keep public class * extends com.getcapacitor.PluginMethod {
+    public *;
+}
+-keepclassmembers class * {
+    @com.getcapacitor.PluginMethod public *;
+}
+-keep class com.getcapacitor.** { *; }
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Bridge & Webview Javascript interface
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Capacitor Plugins
+-keep class com.capawesome.capacitor.googlesignin.** { *; }
+-keep class com.capacitorjs.plugins.camera.** { *; }
+-keep class com.capacitorjs.plugins.share.** { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Google Play Services & Auth
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
+
+# Coroutines & AndroidX
+-dontwarn kotlinx.coroutines.**
+
+# Preserve source file and line numbers for Google Play stack traces and deobfuscation
+-keepattributes SourceFile,LineNumberTable,*Annotation*
+-renamesourcefileattribute SourceFile
