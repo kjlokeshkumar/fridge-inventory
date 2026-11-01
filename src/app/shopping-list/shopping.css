@@ -168,8 +168,10 @@
   font-size: 0.8rem;
   font-weight: 600;
   text-align: right;
-  flex: 0 0 auto;
-  white-space: nowrap;
+  flex-shrink: 0;
+  white-space: normal;
+  max-width: 45%;
+  word-break: break-word;
 }
 
 /* Pantry Checklist Panel */
@@ -347,7 +349,36 @@
   }
 
   .plan-shopping-row {
-    padding: 12px 14px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    padding: 10px 14px !important;
+    min-height: auto !important;
+  }
+
+  .plan-shopping-row label {
+    width: 100% !important;
+    align-items: flex-start !important;
+  }
+
+  .plan-shopping-row input[type="checkbox"] {
+    margin-top: 2px !important;
+  }
+
+  .plan-shopping-name {
+    font-size: 0.90rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .plan-shopping-days {
+    align-self: flex-start !important;
+    margin-left: 31px !important; /* aligns right after the checkbox */
+    font-size: 0.74rem !important;
+    padding: 2px 8px !important;
+    max-width: calc(100% - 31px) !important;
+    text-align: left !important;
+    white-space: normal !important;
   }
 }
 

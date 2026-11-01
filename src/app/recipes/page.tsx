@@ -749,6 +749,16 @@ function getUpcoming7Days(): { dayName: string; dateLabel: string; isoDate: stri
   return result;
 }
 
+function getPlanCheckedKey(plan: DayMealPlan[]): string {
+  const signature = plan.map((day) => [
+    day.isoDate || day.dayName,
+    day.breakfast?.comboId || day.breakfast?.primaryRecipe?.title || '',
+    day.lunch?.comboId || day.lunch?.primaryRecipe?.title || '',
+    day.dinner?.comboId || day.dinner?.primaryRecipe?.title || ''
+  ].join(':')).join('|');
+  return `checkedWeeklyShoppingItemsV1:${signature || 'no-plan'}`;
+}
+
 export default function RecipesPage() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [bhurkoGuide, setBhurkoGuide] = useState<BhurkoGuideItem[]>(MADURAI_SOURASHTRA_BHURKOS as BhurkoGuideItem[]);
@@ -765,6 +775,7 @@ export default function RecipesPage() {
   const isAuthenticatedRef = useRef(false);
   const [selectedDayIndex, setSelectedDayIndex] = useState(0);
   const [weeklyPlan, setWeeklyPlan] = useState<DayMealPlan[]>([]);
+  const [checkedShoppingItems, setCheckedShoppingItems] = useState<string[]>([]);
   const [activePlannerModal, setActivePlannerModal] = useState<ActivePlannerModalState | null>(null);
   const [isWeekPinned, setIsWeekPinned] = useState(false);
   const [plannerSeed, setPlannerSeed] = useState(0);
@@ -875,6 +886,33 @@ export default function RecipesPage() {
       };
     }
   }, [activePlannerModal, showBhurkoModal]);
+
+  useEffect(() => {
+    if (weeklyPlan.length === 0) return;
+    const key = getPlanCheckedKey(weeklyPlan);
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) setCheckedShoppingItems(parsed);
+      } catch {
+        setCheckedShoppingItems([]);
+      }
+    } else {
+      setCheckedShoppingItems([]);
+    }
+  }, [weeklyPlan]);
+
+  const toggleCheckedShoppingItem = (itemName: string) => {
+    const lower = itemName.toLowerCase();
+    const next = checkedShoppingItems.includes(lower)
+      ? checkedShoppingItems.filter((i) => i !== lower)
+      : [...checkedShoppingItems, lower];
+    setCheckedShoppingItems(next);
+    if (weeklyPlan.length > 0) {
+      localStorage.setItem(getPlanCheckedKey(weeklyPlan), JSON.stringify(next));
+    }
+  };
 
   useEffect(() => {
     if (!authChecked) return;
@@ -1609,7 +1647,7 @@ export default function RecipesPage() {
                 onClick={handleResampleWeek}
                 title="Shuffle and formulate fresh authentic Sourashtra combinations for unpinned days"
               >
-                🎲 {t.resamplePlan}
+                {t.resamplePlan}
               </button>
               <button
                 type="button"
@@ -1892,24 +1930,53 @@ export default function RecipesPage() {
 
       {isAuthenticated && activeRecipesTab === 'shopping' && (
         <section className="weekly-shopping-box shopping-view-panel glass-pane">
-          <h3>🛒 {t.weeklyShoppingList}</h3>
-          <p className="selector-sub shopping-view-subtitle">{t.fullShoppingListDescription}</p>
+          <div className="shopping-section-heading" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '12px' }}>
+            <div>
+              <h3>🛒 {t.weeklyShoppingList}</h3>
+              <p className="selector-sub shopping-view-subtitle">{t.fullShoppingListDescription}</p>
+            </div>
+            <div className="shopping-share-actions">
+              <Link href="/shopping-list" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                {t.openFullShoppingList} →
+              </Link>
+            </div>
+          </div>
 
           <div style={{ margin: '16px 0 20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div style={{ background: '#ffffff', borderRadius: '10px', padding: '14px 16px', border: '1.5px solid rgba(45, 110, 119, 0.22)' }}>
-              <h4 style={{ margin: '0 0 6px', color: 'var(--primary-teal)', fontSize: '0.95rem' }}>
-                🥬 {t.plannedItemsToBuy}
-              </h4>
-              <p style={{ margin: '0 0 10px', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                <h4 style={{ margin: 0, color: 'var(--primary-teal)', fontSize: '0.98rem' }}>
+                  🥬 {t.plannedItemsToBuy}
+                </h4>
+                {weeklyShoppingAnalysis && weeklyShoppingAnalysis.toPurchase.length > 0 && (
+                  <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                    {checkedShoppingItems.length} / {weeklyShoppingAnalysis.toPurchase.length} {t.checkedOff}
+                  </span>
+                )}
+              </div>
+              <p style={{ margin: '0 0 12px', fontSize: '0.80rem', color: 'var(--text-secondary)' }}>
                 {t.planShoppingDescription}
               </p>
               {weeklyShoppingAnalysis && weeklyShoppingAnalysis.toPurchase.length > 0 ? (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {weeklyShoppingAnalysis.toPurchase.map((item, idx) => (
-                    <span key={idx} className="badge-fridge" style={{ fontSize: '0.80rem', padding: '4px 10px' }}>
-                      {formatItemName(item.item, language)} {item.quantity ? `(${item.quantity})` : ''}
-                    </span>
-                  ))}
+                <div className="planner-shopping-checklist">
+                  {weeklyShoppingAnalysis.toPurchase.map((item, idx) => {
+                    const isChecked = checkedShoppingItems.includes(item.item.toLowerCase());
+                    return (
+                      <label key={idx} className={`planner-shopping-check-row ${isChecked ? 'checked' : ''}`}>
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => toggleCheckedShoppingItem(item.item)}
+                        />
+                        <span className="planner-check-item-name">
+                          {formatItemName(item.item, language)}
+                        </span>
+                        <span className="planner-check-qty">
+                          {t.quantityNeeded}: {item.quantity || t.quantityNotSpecified}
+                        </span>
+                      </label>
+                    );
+                  })}
                 </div>
               ) : (
                 <p style={{ margin: 0, fontSize: '0.82rem', color: '#166534' }}>✓ {t.noPlannedItems}</p>
@@ -1934,10 +2001,6 @@ export default function RecipesPage() {
               ) : null}
             </div>
           </div>
-
-          <Link href="/shopping-list" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-            {t.openFullShoppingList} →
-          </Link>
         </section>
       )}
 

@@ -1889,14 +1889,104 @@
   box-shadow: 0 3px 0 #92400e, 0 4px 8px rgba(217, 119, 6, 0.35) !important;
 }
 
-/* Meal Slot Controls & Recipe Links (Clean & Tactile) */
+/* Minimalist Meal Slot Layout: Replaces box-in-box nesting with clean section dividers */
 .meal-slot-box {
-  background: #ffffff;
-  border: 1.5px solid rgba(45, 110, 119, 0.22);
-  border-radius: 10px;
-  padding: 10px 12px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 3px rgba(31, 26, 23, 0.04);
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 12px 0 !important;
+  margin-bottom: 8px !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(45, 110, 119, 0.14) !important;
+}
+
+.meal-slot-box:last-child {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.meal-slot-box.slot-pinned {
+  border-color: rgba(251, 191, 36, 0.45) !important;
+  background: rgba(251, 191, 36, 0.05) !important;
+  border-radius: 8px !important;
+  padding: 10px 8px !important;
+}
+
+/* Shopping Checklist inside Recipes Shopping Tab */
+.planner-shopping-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.planner-shopping-check-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #fbf9f4;
+  border: 1.5px solid rgba(45, 110, 119, 0.18);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.planner-shopping-check-row:hover {
+  background: #fdf5ea;
+  border-color: var(--primary-teal);
+}
+
+.planner-shopping-check-row.checked {
+  background: #f2eee6;
+  border-color: rgba(31, 26, 23, 0.12);
+}
+
+.planner-shopping-check-row input[type="checkbox"] {
+  width: 19px;
+  height: 19px;
+  accent-color: var(--primary-teal);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.planner-check-item-name {
+  font-weight: 600;
+  font-size: 0.90rem;
+  color: var(--text-main);
+  flex: 1;
+  min-width: 0;
+}
+
+.planner-shopping-check-row.checked .planner-check-item-name {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+.planner-check-qty {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary-teal);
+  background: rgba(45, 110, 119, 0.08);
+  border: 1px solid rgba(45, 110, 119, 0.18);
+  border-radius: 4px;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .planner-shopping-check-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 8px 10px;
+  }
+  .planner-check-qty {
+    margin-left: 28px;
+    white-space: normal;
+  }
 }
 
 .slot-mini-btn {
@@ -2090,31 +2180,34 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  height: 34px !important;
-  padding: 0 14px !important;
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  border-radius: 7px !important;
-  background: #ffffff !important;
-  border: 1.5px solid #245961 !important;
-  color: #245961 !important;
-  box-shadow: 0 2px 0 rgba(36, 89, 97, 0.15), 0 1px 3px rgba(31, 26, 23, 0.06) !important;
+  min-height: 36px;
+  height: auto;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 7px;
+  background: #ffffff;
+  border: 1.5px solid #245961;
+  color: #245961;
+  box-shadow: 0 2px 0 rgba(36, 89, 97, 0.15), 0 1px 3px rgba(31, 26, 23, 0.06);
   cursor: pointer;
   transition: all 0.15s ease;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
 }
 
 .btn-resample-plan:hover {
-  background: #edf7f8 !important;
-  border-color: #1a4349 !important;
-  color: #1a4349 !important;
+  background: #edf7f8;
+  border-color: #1a4349;
+  color: #1a4349;
   transform: translateY(-1px);
-  box-shadow: 0 3px 0 rgba(36, 89, 97, 0.22) !important;
+  box-shadow: 0 3px 0 rgba(36, 89, 97, 0.22);
 }
 
 .btn-resample-plan:active {
   transform: translateY(1px);
-  box-shadow: 0 1px 0 rgba(36, 89, 97, 0.15) !important;
+  box-shadow: 0 1px 0 rgba(36, 89, 97, 0.15);
 }
 
 .btn-pin-plan {
@@ -2122,17 +2215,21 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  height: 34px !important;
-  padding: 0 14px !important;
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  border-radius: 7px !important;
-  background: #ffffff !important;
-  border: 1.5px solid #82612b !important;
-  color: #614619 !important;
-  box-shadow: 0 2px 0 rgba(130, 97, 43, 0.15), 0 1px 3px rgba(31, 26, 23, 0.06) !important;
+  min-height: 36px;
+  height: auto;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 7px;
+  background: #ffffff;
+  border: 1.5px solid #82612b;
+  color: #614619;
+  box-shadow: 0 2px 0 rgba(130, 97, 43, 0.15), 0 1px 3px rgba(31, 26, 23, 0.06);
   cursor: pointer;
   transition: all 0.15s ease;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
   white-space: nowrap;
 }
 
@@ -2502,19 +2599,74 @@
     white-space: nowrap !important;
   }
 
-  /* Planner Action Buttons: Compact 2-column grid */
+  /* Planner Action Buttons: Compact flexible 2-column grid without bleeding */
   .planner-actions {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 8px !important;
     width: 100% !important;
-    margin-top: 12px !important;
+    margin-top: 10px !important;
   }
 
-  .planner-actions > button {
+  .planner-actions > button,
+  .btn-resample-plan,
+  .btn-pin-plan {
     min-width: 0 !important;
-    padding: 8px 6px !important;
-    font-size: 0.76rem !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 42px !important;
+    padding: 6px 8px !important;
+    font-size: 0.74rem !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Justified text alignment for planner instructions */
+  .planner-top-bar .selector-sub,
+  .planner-sync-sub {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Minimal box styling in 7-Day Meal Planner (eliminates box-in-box nesting to maximize content) */
+  .day-plan-card {
+    padding: 12px !important;
+    border-radius: 10px !important;
+    gap: 6px !important;
+  }
+
+  .meal-slot-box {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 8px 0 !important;
+    margin-bottom: 6px !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid rgba(45, 110, 119, 0.12) !important;
+  }
+
+  .meal-slot-box:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+  }
+
+  .combo-why-note {
+    background: #faf6ed !important;
+    border: none !important;
+    border-left: 3px solid var(--primary-teal, #245961) !important;
+    border-radius: 0 6px 6px 0 !important;
+    padding: 6px 10px !important;
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+    box-shadow: none !important;
   }
 
   /* Dish Cards: Full-width spacious layout (Not a Compressed Column) */
@@ -2525,9 +2677,10 @@
     align-items: stretch !important;
     justify-content: flex-start !important;
     padding: 10px 12px !important;
-    gap: 10px !important;
+    gap: 8px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    border-radius: 8px !important;
   }
 
   .combo-dish-content {
