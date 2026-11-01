@@ -326,7 +326,7 @@ export default function ShoppingListPage() {
 
         {plan.length > 0 && analysis.pantryChecklist.length > 0 && (
           <div className="pantry-check-panel glass-pane">
-            <h3>🫙 {t.checkPantryTitle}</h3>
+            <h3>{t.checkPantryTitle}</h3>
             <p className="selector-sub">{t.checkPantryDescription}</p>
             <div className="ingredient-badges">
               {analysis.pantryChecklist.map((item) => (

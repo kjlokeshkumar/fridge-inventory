@@ -42,6 +42,9 @@ export default function UserAuthModal() {
   const [isSessionReady, setIsSessionReady] = useState(false);
   const [deleteConfirmation, setDeleteConfirmation] = useState('');
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
+  const isLocalhost = typeof window !== 'undefined' && 
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '[::1]') &&
+    process.env.NODE_ENV !== 'production';
 
   useEffect(() => {
     setIsMounted(true);
@@ -81,6 +84,29 @@ export default function UserAuthModal() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
+
+  const loginWithDev = async () => {
+    setLoading(true);
+    setErrorMsg(null);
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ devLogin: true }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to sign in.');
+      }
+      setCurrentUser(data.user);
+      window.dispatchEvent(new CustomEvent('userAuthChange', { detail: data.user }));
+      setIsOpen(false);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Dev sign-in failed');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const loginWithGoogle = async () => {
     if (!GOOGLE_CLIENT_ID) {
@@ -319,6 +345,18 @@ export default function UserAuthModal() {
                 >
                   {loading ? 'Connecting to Google…' : 'Continue with Google'}
                 </button>
+                {isLocalhost && (
+                  <button
+                    type="button"
+                    onClick={loginWithDev}
+                    className="btn-secondary full-width"
+                    style={{ marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                    disabled={loading}
+                  >
+                    <span>🛠️</span>
+                    <span>{loading ? 'Signing in…' : 'Sign in as Local Developer'}</span>
+                  </button>
+                )}
               </>
             )}
           </div>

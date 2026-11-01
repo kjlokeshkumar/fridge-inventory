@@ -1,82 +1,63 @@
 .pageShell {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 12px 16px 80px;
   min-height: calc(100vh - 120px);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 12px 60px;
-}
-
-.phoneFrame {
-  width: 100%;
-  max-width: 420px;
-  min-height: 860px;
-  background: var(--bg-main);
-  border-radius: 34px;
-  border: 3px solid #171717;
-  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  position: relative;
-}
-
-.statusBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 24px 10px;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  font-weight: 600;
-}
-
-.statusIcons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
+  flex-direction: column;
 }
 
 .appHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 22px 14px;
+  padding: 4px 0 14px;
 }
 
 .brandRow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .avatar {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f7d08a, #d1724c);
+  background: linear-gradient(135deg, #fce5b5, #deb97e);
   display: grid;
   place-items: center;
   font-size: 1rem;
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.6);
 }
 
 .brandName {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-main);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main, #1f1a17);
+  letter-spacing: -0.01em;
 }
 
-.menuButton {
+.menuDotsButton {
   border: none;
   background: transparent;
-  color: #1f1f1f;
-  font-size: 1.8rem;
+  color: var(--text-main, #1f1a17);
+  font-size: 1.3rem;
   line-height: 1;
   cursor: pointer;
-  padding: 0 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.menuDotsButton:hover {
+  background: var(--bg-strip, #fdeed9);
 }
 
 .content {
-  padding: 0 18px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .titleRow {
@@ -90,42 +71,49 @@
 .title {
   margin: 0;
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-main);
+  font-weight: 600;
+  color: var(--text-main, #1f1a17);
+  letter-spacing: -0.02em;
 }
 
 .scanButton {
   flex: 0 0 auto;
   border: none;
-  border-radius: 999px;
-  background: var(--primary-teal);
-  color: #fffdf6;
-  min-height: 38px;
-  padding: 0 14px;
-  font-size: 0.82rem;
+  border-radius: 6px;
+  background: var(--primary-teal, #2d6e77);
+  color: #ffffff;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 0.78rem;
   font-weight: 600;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
   text-decoration: none;
+  box-shadow: 0 2px 6px rgba(45, 110, 119, 0.2);
+  transition: background-color 0.15s ease;
 }
 
-.scanIcon {
-  font-size: 1rem;
+.scanButton:hover {
+  background: #23575e;
 }
 
 .searchBox {
-  background: var(--bg-input);
-  border: 0;
-  border-radius: 22px;
-  height: 42px;
+  background: var(--bg-input, #f6eadb);
+  border: 1px solid rgba(45, 110, 119, 0.14);
+  border-radius: 8px;
+  height: 38px;
   display: flex;
   align-items: center;
-  padding: 0 16px;
-  margin-bottom: 16px;
-  font-size: 1.1rem;
-  color: var(--text-secondary);
+  padding: 0 12px;
+  margin-bottom: 14px;
+  font-size: 0.88rem;
+  color: var(--text-secondary, #7a6f68);
+}
+
+.searchIcon {
+  font-size: 0.9rem;
+  opacity: 0.65;
 }
 
 .searchBox input {
@@ -133,196 +121,341 @@
   background: transparent;
   outline: none;
   width: 100%;
-  margin-left: 10px;
-  font-size: 1rem;
-  color: var(--text-main);
+  margin-left: 8px;
+  font-size: 0.88rem;
+  color: var(--text-main, #1f1a17);
+  font-weight: 400;
 }
 
 .searchBox input::placeholder {
-  color: var(--text-secondary);
+  color: var(--text-secondary, #7a6f68);
+  font-weight: 400;
+}
+
+.inventoryGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .groupSection {
-  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-.groupSection h2 {
-  margin: 0 -18px 4px;
-  padding: 7px 18px;
-  font-size: 1rem;
-  line-height: 1.25;
-  color: var(--text-main);
+.inventoryTableCard {
+  background: #ffffff;
+  border: 1.5px solid rgba(45, 110, 119, 0.22);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(31, 26, 23, 0.05);
+}
+
+.groupBanner {
+  background: var(--bg-strip, #fdeed9);
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid rgba(45, 110, 119, 0.16);
+}
+
+.groupBanner h2 {
+  margin: 0;
+  font-size: 0.82rem;
   font-weight: 700;
-  background: var(--bg-strip);
+  color: #5c4d42;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.groupCountTag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #5c4d42;
+  background: rgba(45, 110, 119, 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.tableHeaderRow {
+  display: grid;
+  grid-template-columns: 34px minmax(130px, 1fr) 95px 105px;
+  align-items: center;
+  padding: 6px 12px;
+  background: #fbf8f2;
+  border-bottom: 1.5px solid rgba(45, 110, 119, 0.16);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #5c4d42;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.thCheck {
+  text-align: center;
+  color: var(--primary-teal, #245961);
+}
+
+.thItem {
+  padding-left: 6px;
+}
+
+.thCategory {
+  text-align: center;
+}
+
+.thStatus {
+  text-align: right;
+  padding-right: 4px;
+}
+
+.groupTable {
+  display: flex;
+  flex-direction: column;
 }
 
 .inventoryRow {
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) auto;
+  grid-template-columns: 34px minmax(130px, 1fr) 95px 105px;
   align-items: center;
-  gap: 10px;
-  padding: 7px 0;
-  border-bottom: 1px solid rgba(103, 92, 75, 0.1);
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(45, 110, 119, 0.12);
+  background: #ffffff;
+  transition: background-color 0.12s ease;
+}
+
+.inventoryRow:nth-child(even) {
+  background: #fdfbf7;
+}
+
+.inventoryRow:hover {
+  background: #faf4e8;
+}
+
+.inventoryRow:last-child {
+  border-bottom: none;
+}
+
+.inventoryRow.rowChecked {
+  background: #f2f8f5;
 }
 
 .checkColumn {
   display: flex;
+  align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .checkBox {
   width: 18px;
   height: 18px;
-  border-radius: 6px;
-  border: 2px solid rgba(44, 48, 52, 0.7);
+  border-radius: 4px;
+  border: 2px solid var(--control-border, #8fa5a7);
   display: inline-block;
-  background: rgba(255,255,255,0.2);
+  background: #ffffff;
+  position: relative;
+  transition: all 0.15s ease;
 }
 
-.itemMeta {
+.checkBox.checked {
+  background: var(--primary-teal, #245961);
+  border-color: var(--primary-teal, #245961);
+}
+
+.checkBox.checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.itemInfoCol {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-left: 6px;
   min-width: 0;
 }
 
-.itemIcon {
-  width: 36px;
-  height: 36px;
+.itemBadge {
+  width: 32px;
+  height: 32px;
   border-radius: 7px;
   display: grid;
   place-items: center;
-  font-size: 1.5rem;
-  background: var(--badge-item-yellow);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .itemName {
-  color: var(--text-main);
-  font-size: 0.95rem;
-  font-weight: 500;
+  color: var(--text-main, #1f1a17);
+  font-size: 0.90rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.quantityBlock {
+.categoryCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.categoryPill {
+  display: inline-block;
+  font-size: 0.70rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary-teal, #245961);
+  background: rgba(36, 89, 97, 0.08);
+  border: 1px solid rgba(36, 89, 97, 0.22);
+  padding: 2px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.itemActionArea {
   display: flex;
   align-items: center;
-  gap: 8px;
   justify-content: flex-end;
-  min-width: 106px;
+}
+
+.quantityBlock {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .qtyButton {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  background: var(--primary-teal);
-  color: white;
-  font-size: 1.5rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid rgba(36, 89, 97, 0.35);
+  background: var(--primary-teal, #245961);
+  color: #ffffff;
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 1;
   display: grid;
   place-items: center;
+  cursor: pointer;
+  box-shadow: 0 1.5px 0 #183e44;
+  transition: all 0.12s ease;
+  user-select: none;
+}
+
+.qtyButton:hover {
+  background: #1c484f;
+  transform: translateY(-1px);
+}
+
+.qtyButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 0.5px 0 #183e44;
 }
 
 .qtyValue {
-  min-width: 16px;
+  min-width: 20px;
   text-align: center;
-  color: #1d1d1d;
-  font-weight: 700;
+  color: var(--text-main, #1f1a17);
+  font-size: 0.88rem;
+  font-weight: 600;
 }
 
 .expiryPill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 28px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: var(--badge-warning-bg);
-  color: var(--badge-warning-text);
-  font-size: 0.75rem;
-  font-weight: 500;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: var(--badge-warning-bg, #fee2e2);
+  color: var(--badge-warning-text, #a82b2b);
+  border: 1px solid #fca5a5;
+  font-size: 0.72rem;
+  font-weight: 600;
   white-space: nowrap;
 }
 
-.recipeButton {
-  display: block;
-  width: fit-content;
-  margin-left: auto;
-  margin-top: 18px;
-  height: 40px;
-  padding: 0 18px;
-  border: 1.5px solid var(--fab-border);
-  border-radius: 999px;
-  background: var(--fab-bg);
-  color: var(--text-main);
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
+@media (max-width: 480px) {
+  .tableHeaderRow {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+  }
+  .thCategory {
+    display: none;
+  }
+  .inventoryRow {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    padding: 8px 8px;
+  }
+  .categoryCol {
+    display: none;
+  }
 }
 
-.statusMessage,
+.floatingCtaContainer {
+  margin-top: auto;
+  padding-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.floatingRecipeButton {
+  background: linear-gradient(135deg, #fce5b5, #f2d184);
+  color: #43331b;
+  border: 1px solid #deb97e;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(222, 185, 126, 0.35);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.floatingRecipeButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(222, 185, 126, 0.45);
+}
+
+.statusMessage {
+  text-align: center;
+  padding: 24px 0;
+  color: var(--text-secondary, #7a6f68);
+  font-size: 0.88rem;
+}
+
 .emptyState {
-  padding: 18px 0;
-  color: var(--text-secondary);
+  text-align: center;
+  padding: 32px 16px;
+  background: #ffffff;
+  border: 1px solid rgba(45, 110, 119, 0.14);
+  border-radius: 10px;
+}
+
+.emptyState p {
+  color: var(--text-secondary, #7a6f68);
+  font-size: 0.88rem;
+  margin-bottom: 12px;
 }
 
 .emptyState a {
-  display: inline-block;
-  margin-top: 10px;
-  color: var(--primary-teal);
-}
-
-@media (max-width: 460px) {
-  .phoneFrame {
-    border-radius: 24px;
-    min-height: auto;
-  }
-
-  .content {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .groupSection h2 {
-    margin-left: -14px;
-    margin-right: -14px;
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .titleRow {
-    gap: 8px;
-  }
-
-  .title {
-    font-size: 1.05rem;
-  }
-
-  .scanButton {
-    padding: 0 10px;
-    font-size: 0.72rem;
-  }
-
-  .inventoryRow {
-    grid-template-columns: 36px minmax(0, 1fr) auto;
-    gap: 8px;
-  }
-
-  .itemName {
-    font-size: 0.95rem;
-  }
-
-  .quantityBlock {
-    min-width: 96px;
-    gap: 6px;
-  }
-
-  .qtyButton {
-    width: 27px;
-    height: 27px;
-  }
+  color: var(--primary-teal, #2d6e77);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
 }

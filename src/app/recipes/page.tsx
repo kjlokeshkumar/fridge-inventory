@@ -6,6 +6,7 @@ import './recipes.css';
 import { toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
 import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
+import { getRecipeImageUrl } from '@/lib/recipe-images';
 
 interface IngredientCalories {
   name: string;
@@ -1024,29 +1025,7 @@ export default function RecipesPage() {
     fetchRecipes(updated, shuffleSeed, false);
   };
 
-  const handleRegenerate = () => {
-    if (
-      isWeekPinned &&
-      !window.confirm(t.pinnedPlanConfirmRegenerate)
-    ) {
-      return;
-    }
-
-    if (isWeekPinned) {
-      localStorage.removeItem('pinnedSourashtraWeeklyCombosV3');
-      setIsWeekPinned(false);
-    }
-
-    const nextSeed = Math.max(shuffleSeed, plannerSeed) + 1;
-    setShuffleSeed(nextSeed);
-    setPlannerSeed(nextSeed);
-    if (recipes.length > 0) {
-      generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan, false, false);
-    }
-    fetchRecipes(selectedFridgeItems, nextSeed, true, false);
-  };
-
-  // Weekly Planner Controls
+  // Weekly Planner Controls: Shuffle & re-formulate unpinned combinations
   const handleResampleWeek = () => {
     if (
       isWeekPinned &&
@@ -1063,7 +1042,10 @@ export default function RecipesPage() {
     const nextSeed = Math.max(plannerSeed, shuffleSeed) + 1;
     setPlannerSeed(nextSeed);
     setShuffleSeed(nextSeed);
-    generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan, false, false);
+    if (recipes.length > 0) {
+      generateOrUpdateWeeklyPlan(recipes, nextSeed, weeklyPlan, false, false);
+    }
+    fetchRecipes(selectedFridgeItems, nextSeed, true, false);
   };
 
   const toggleSlotPin = (dayIdx: number, slot: 'breakfast' | 'lunch' | 'dinner') => {
@@ -1294,6 +1276,13 @@ export default function RecipesPage() {
             className="planner-recipe-modal"
             onClick={(e) => e.stopPropagation()}
           >
+            <div className="modal-recipe-image-hero">
+              <img
+                src={getRecipeImageUrl(modalRecipe)}
+                alt={safeString(modalRecipe?.title)}
+                className="modal-recipe-img"
+              />
+            </div>
             <div className="modal-top-bar">
               <div>
                 <span className="recipe-category-badge">
@@ -1490,17 +1479,11 @@ export default function RecipesPage() {
               </button>
               <button
                 type="button"
-                className="btn-gold"
+                className="btn-resample-plan"
                 onClick={handleResampleWeek}
+                title="Shuffle and formulate fresh authentic Sourashtra combinations for unpinned days"
               >
-                {t.resamplePlan} (#{plannerSeed + 1})
-              </button>
-              <button
-                type="button"
-                className="btn-primary"
-                onClick={handleRegenerate}
-              >
-                {t.regenerate}
+                🎲 {t.resamplePlan}
               </button>
               <button
                 type="button"
@@ -1609,7 +1592,15 @@ export default function RecipesPage() {
                         }
                         title="Click to view full recipe & returns to 7-Day Planner on close"
                       >
-                        <span>🍽️ {safeString(combo?.mainDishTitle)}</span>
+                        <div className="combo-dish-content">
+                          <img
+                            src={getRecipeImageUrl(combo?.primaryRecipe)}
+                            alt=""
+                            className="combo-dish-thumb"
+                            aria-hidden="true"
+                          />
+                          <span className="combo-dish-text">🍽️ {safeString(combo?.mainDishTitle)}</span>
+                        </div>
                         <span className="view-recipe-pill">📖 {t.recipeLink} →</span>
                       </button>
 
@@ -1627,10 +1618,20 @@ export default function RecipesPage() {
                         }
                         title="Click to view paired side/curry recipe & returns to 7-Day Planner on close"
                       >
-                        <span>
-                          <strong className="combo-side-label">+ {t.pairedWith}</strong>
-                          {safeString(combo?.pairedWithTitle)}
-                        </span>
+                        <div className="combo-dish-content">
+                          {combo?.secondaryRecipe && (
+                            <img
+                              src={getRecipeImageUrl(combo.secondaryRecipe)}
+                              alt=""
+                              className="combo-dish-thumb"
+                              aria-hidden="true"
+                            />
+                          )}
+                          <span className="combo-dish-text">
+                            <strong className="combo-side-label">+ {t.pairedWith}</strong>
+                            {safeString(combo?.pairedWithTitle)}
+                          </span>
+                        </div>
                         <span className="view-recipe-pill">📖 {t.recipeLink} →</span>
                       </button>
 
@@ -1878,6 +1879,17 @@ export default function RecipesPage() {
           <div className="recipes-grid">
             {displayedRecipes.map((recipe, idx) => (
               <div key={recipe.id || idx} className="recipe-card glass-pane">
+                <div className="recipe-card-image-box">
+                  <img
+                    src={getRecipeImageUrl(recipe)}
+                    alt={safeString(recipe.title)}
+                    loading="lazy"
+                    className="recipe-card-image"
+                  />
+                  <span className={`recipe-image-difficulty ${getDifficultyClass(recipe.difficulty)}`}>
+                    {safeString(recipe.difficulty || 'Easy')}
+                  </span>
+                </div>
                 <div className="recipe-header">
                   <div>
                     {recipe.category && (

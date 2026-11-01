@@ -60,6 +60,41 @@ function clearGoogleNonceCookie(response: NextResponse) {
 export async function POST(request: Request) {
   try {
     getAuthSessionSecret();
+    const body: unknown = await request.json();
+
+    // Development local bypass: strictly allow one-click dev sign-in on localhost ONLY
+    const host = (request.headers.get('x-forwarded-host') || request.headers.get('host') || '').toLowerCase();
+    const isLocalhostHost = host.startsWith('localhost') || host.startsWith('127.0.0.1') || host.startsWith('[::1]');
+    const isDev = process.env.NODE_ENV !== 'production' && isLocalhostHost;
+    if (typeof body === 'object' && body !== null && 'devLogin' in body && body.devLogin === true) {
+      if (!isDev) {
+        return NextResponse.json(
+          { success: false, error: 'Developer login is strictly permitted on local development (localhost) only.' },
+          { status: 403 },
+        );
+      }
+      await initDb();
+      const existing = await sql`
+        SELECT id, username, email, "displayName", status, role
+        FROM users WHERE username = 'dev_user'
+      `;
+      let user = existing[0];
+      if (!user) {
+        const created = await sql`
+          INSERT INTO users (username, email, "displayName", status, role)
+          VALUES ('dev_user', 'dev@localhost', 'Developer (Local)', 'active', 'admin')
+          RETURNING id, username, email, "displayName", status, role
+        `;
+        user = created[0];
+      }
+      if (user) {
+        await ensureUserData(user.id, false);
+        const response = NextResponse.json({ success: true, user });
+        setSessionCookie(response, user.id);
+        return response;
+      }
+    }
+
     const googleClientId = process.env.GOOGLE_CLIENT_ID;
     if (!googleClientId) {
       return NextResponse.json(
@@ -67,8 +102,6 @@ export async function POST(request: Request) {
         { status: 503 },
       );
     }
-
-    const body: unknown = await request.json();
     if (typeof body !== 'object' || body === null || !('idToken' in body) ||
       typeof body.idToken !== 'string' || !body.idToken) {
       return NextResponse.json(
