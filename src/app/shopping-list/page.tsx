@@ -89,12 +89,23 @@ function readCheckedItems(key: string): string[] {
 export default function ShoppingListPage() {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
   const [alerts, setAlerts] = useState<ShoppingAlert[]>([]);
-  const [plan, setPlan] = useState<WeeklyShoppingDay[]>([]);
+  const [plan, setPlan] = useState<WeeklyShoppingDay[]>(() => {
+    if (typeof window !== 'undefined') {
+      return readCurrentWeeklyPlan();
+    }
+    return [];
+  });
+  const [checkedItems, setCheckedItems] = useState<string[]>(() => {
+    if (typeof window !== 'undefined') {
+      const currentPlan = readCurrentWeeklyPlan();
+      return readCheckedItems(getCheckedItemsKey(currentPlan));
+    }
+    return [];
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [language, setLanguage] = useState('English');
-  const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   const fetchShoppingData = useCallback(async () => {
     setLoading(true);
@@ -252,7 +263,7 @@ export default function ShoppingListPage() {
     localStorage.setItem(getCheckedItemsKey(plan), JSON.stringify(updated));
   };
 
-  if (loading) {
+  if (loading && plan.length === 0 && inventory.length === 0) {
     return (
       <div className="center-container">
         <div className="spinner"></div>
@@ -264,8 +275,18 @@ export default function ShoppingListPage() {
   return (
     <div className="shopping-container">
       <header className="dashboard-header">
-        <h1 className="page-title">{t.shoppingTitle}</h1>
-        <p className="page-subtitle">{t.shoppingSub}</p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+          <div>
+            <h1 className="page-title">{t.shoppingTitle}</h1>
+            <p className="page-subtitle">{t.shoppingSub}</p>
+          </div>
+          {loading && (
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+              <span className="spinner" style={{ width: '18px', height: '18px', borderWidth: '2px' }} />
+              <span>{t.loadingShopping}</span>
+            </div>
+          )}
+        </div>
       </header>
 
       {error && (

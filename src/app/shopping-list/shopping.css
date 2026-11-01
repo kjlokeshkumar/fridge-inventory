@@ -13,6 +13,22 @@
   gap: 16px;
 }
 
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3.5px solid rgba(45, 110, 119, 0.18);
+  border-top-color: var(--primary-teal, #2d6e77);
+  border-radius: 50%;
+  animation: spinLoader 0.75s linear infinite;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+@keyframes spinLoader {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .success-state {
   text-align: center;
   padding: 32px 20px;

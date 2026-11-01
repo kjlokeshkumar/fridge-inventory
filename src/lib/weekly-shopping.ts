@@ -96,8 +96,12 @@ export function calculateWeeklyShopping(
   plan: WeeklyShoppingDay[],
   inventoryNames: string[]
 ): WeeklyShoppingAnalysis {
-  const available = inventoryNames
-    .map((name) => normalizeIngredient(name.split(' (')[0]))
+  if (!Array.isArray(plan)) {
+    return { toPurchase: [], alreadyInFridge: [], pantryChecklist: [] };
+  }
+  const safeInventory = Array.isArray(inventoryNames) ? inventoryNames : [];
+  const available = safeInventory
+    .map((name) => (name ? normalizeIngredient(name.split(' (')[0]) : ''))
     .filter(Boolean);
   const neededQuantities = new Map<string, ShoppingQuantity>();
   const alreadyInFridge = new Set<string>();

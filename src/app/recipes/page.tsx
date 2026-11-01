@@ -1350,7 +1350,7 @@ export default function RecipesPage() {
       <header className="dashboard-header flex-header">
         <div>
           <h1 className="page-title">
-            🍲 {t.recipesTitle} ({recipes.length > 0 ? `${recipes.length} ${t.dishCountLabel}` : t.recipesTitle})
+            🍲 {t.recipesTitle}{recipes.length > 0 ? ` (${recipes.length} ${t.dishCountLabel})` : ''}
           </h1>
           <p className="page-subtitle">
             {isAuthenticated ? t.recipesPageSubtitle : t.publicRecipesPageSubtitle}
