@@ -11,7 +11,7 @@ export interface UserProfile {
   avatar: string;
 }
 
-const AVATARS = ['👤', '🧑‍🍳', '👩‍🍳', '👨‍👩‍👧', '👦', '👧', '👴', '👵', '🥗', '🥦', '🍖'];
+const AVATARS = ['🏠', '👤', '🧑‍🍳', '👩‍🍳', '👨‍👩‍👧', '👦', '👧', '👴', '👵', '🥗', '🥦', '🍖'];
 const DIETARY_OPTIONS = ['Any', 'Vegetarian', 'Non-Veg', 'Vegan', 'Jain', 'Eggitarian'];
 
 export default function ProfileSelector() {
@@ -24,7 +24,7 @@ export default function ProfileSelector() {
     name: '',
     dietaryPreference: 'Any',
     allergies: '',
-    avatar: '👤'
+    avatar: '🏠'
   });
 
   const fetchProfiles = async () => {
@@ -124,7 +124,7 @@ export default function ProfileSelector() {
         title="Manage Household Profiles"
         aria-label="Manage Household Profiles"
       >
-        <span className="profile-avatar">{activeProfile?.avatar || '👤'}</span>
+        <span className="profile-avatar">{activeProfile?.avatar && activeProfile.avatar !== '👤' ? activeProfile.avatar : '🏠'}</span>
         <span className="profile-name">{activeProfile?.name || 'Profile'}</span>
         {activeProfile?.dietaryPreference && activeProfile.dietaryPreference !== 'Any' && (
           <span className="profile-diet-tag">{activeProfile.dietaryPreference}</span>

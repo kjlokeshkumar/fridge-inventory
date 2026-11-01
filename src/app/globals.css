@@ -1223,3 +1223,46 @@ body::before {
   padding: 0 12px;
   font-size: 0.78rem;
 }
+
+
+.user-auth-icon,
+.profile-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 0.95rem !important;
+  line-height: 1 !important;
+  flex-shrink: 0;
+}
+
+
+/* Warm tactile tint & defined 3D raise for clickable elements */
+.user-auth-badge,
+.profile-badge-btn,
+.lang-selector-container,
+.btn-secondary {
+  background: linear-gradient(180deg, #fdfbf7 0%, #f6f0e4 100%) !important;
+  border: 1.5px solid rgba(45, 110, 119, 0.32) !important;
+  box-shadow: 0 2.5px 0 rgba(45, 110, 119, 0.22), 0 2px 4px rgba(31, 26, 23, 0.08) !important;
+  transition: all 0.15s ease;
+}
+
+.user-auth-badge:hover,
+.profile-badge-btn:hover,
+.lang-selector-container:hover,
+.btn-secondary:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #f4eae0 100%) !important;
+  border-color: #245961 !important;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 0 rgba(45, 110, 119, 0.28), 0 4px 8px rgba(31, 26, 23, 0.12) !important;
+}
+
+.user-auth-badge:active,
+.profile-badge-btn:active,
+.lang-selector-container:active,
+.btn-secondary:active {
+  transform: translateY(1.5px);
+  box-shadow: 0 1px 0 rgba(45, 110, 119, 0.2) !important;
+}
