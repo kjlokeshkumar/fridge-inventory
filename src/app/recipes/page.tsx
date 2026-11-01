@@ -3,7 +3,8 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import './recipes.css';
-import { toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
+import { formatCategory, formatDayName, formatDishTitle, formatItemName, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
+import { MADURAI_SOURASHTRA_BHURKOS } from '@/lib/sourashtra-recipes';
 import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
 import { getRecipeImageUrl } from '@/lib/recipe-images';
@@ -750,7 +751,7 @@ function getUpcoming7Days(): { dayName: string; dateLabel: string; isoDate: stri
 
 export default function RecipesPage() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [bhurkoGuide, setBhurkoGuide] = useState<BhurkoGuideItem[]>([]);
+  const [bhurkoGuide, setBhurkoGuide] = useState<BhurkoGuideItem[]>(MADURAI_SOURASHTRA_BHURKOS as BhurkoGuideItem[]);
   const [currentFridgeInventory, setCurrentFridgeInventory] = useState<string[]>([]);
   const [selectedFridgeItems, setSelectedFridgeItems] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -1455,6 +1456,102 @@ export default function RecipesPage() {
       )}
 
       {/* =====================================================================
+          AUTHENTIC SOURASHTRA BHURKO (SPICE BLEND) GUIDE MODAL
+          ===================================================================== */}
+      {showBhurkoModal && (
+        <div
+          className="planner-recipe-modal-backdrop"
+          onClick={() => setShowBhurkoModal(false)}
+        >
+          <div
+            className="planner-recipe-modal bhurko-guide-modal"
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: '820px', maxHeight: '90vh', overflowY: 'auto' }}
+          >
+            <div className="modal-top-bar">
+              <div>
+                <span className="recipe-category-badge">🥣 {t.bhurkoSpiceGuide || 'Sourashtra Bhurko Guide'}</span>
+                <h3 style={{ margin: '8px 0 2px 0', fontSize: '1.25rem', color: 'var(--primary-teal)' }}>
+                  {t.bhurkoModalTitle || 'Authentic Sourashtra Bhurko Spice Guide (Homemade Powders)'}
+                </h3>
+              </div>
+              <button
+                type="button"
+                className="btn-back-planner"
+                onClick={() => setShowBhurkoModal(false)}
+              >
+                ✕ {t.hideBhurkoGuide || 'Close Guide'}
+              </button>
+            </div>
+
+            <p className="selector-sub" style={{ margin: '4px 0 14px 0', lineHeight: 1.5 }}>
+              {t.bhurkoModalSub || 'In Sourashtra kitchens, these foundational sun-dried and roasted spice blends are kept in airtight glass jars and added to gravies (Ounty), broths (Pilchar), and stews (Sambar):'}
+            </p>
+
+            <div className="bhurko-modal-grid" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {bhurkoGuide.map((b, idx) => (
+                <div key={idx} className="bhurko-card" style={{ padding: '16px', borderRadius: '10px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px' }}>
+                    <h4 style={{ margin: 0, fontSize: '1.05rem', color: '#78350f' }}>{safeString(b.name)}</h4>
+                    <span className="recipe-category-badge">{safeString(b.sourashtraName || 'Bhurko')}</span>
+                  </div>
+
+                  <p className="bhurko-used-for" style={{ margin: '8px 0 10px 0', fontWeight: 600 }}>
+                    <strong>{t.bhurkoUsedFor || '🍲 Used in:'}</strong> {safeString(b.usedFor)}
+                  </p>
+
+                  <div style={{ background: '#fdfbf7', padding: '10px 14px', borderRadius: '8px', border: '1px solid rgba(45, 110, 119, 0.18)', margin: '8px 0' }}>
+                    <strong style={{ fontSize: '0.85rem', color: '#245961' }}>
+                      {t.bhurkoIngredients || '📋 Ingredients & Exact Proportions:'}
+                    </strong>
+                    <ul className="bhurko-ing-list" style={{ marginTop: '6px' }}>
+                      {Array.isArray(b.ingredients) && b.ingredients.map((ing, i) => (
+                        <li key={i}>{safeString(ing)}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div style={{ margin: '8px 0' }}>
+                    <strong style={{ fontSize: '0.85rem', color: '#245961' }}>
+                      {t.bhurkoMethod || '👩‍🍳 Traditional Roasting & Grinding Method:'}
+                    </strong>
+                    <p className="bhurko-prep" style={{ margin: '4px 0 0 0', lineHeight: 1.5 }}>
+                      {safeString(b.preparation)}
+                    </p>
+                  </div>
+
+                  <div className="recipe-source-links" style={{ marginTop: '10px' }}>
+                    {b.youtubeUrl && (
+                      <a
+                        href={b.youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="source-link-btn source-link-yt"
+                      >
+                        {t.bhurkoWatchVideo || '▶️ Watch Bhurko Preparation Video'}
+                      </a>
+                    )}
+                    {b.webUrl && (
+                      <a
+                        href={b.webUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="source-link-btn source-link-web"
+                      >
+                        {t.bhurkoWebRecipe || '🌐 Open Web Recipe Archive'}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+
+
+      {/* =====================================================================
           7-DAY Sourashtra WEEKLY MEAL PLANNER (COMPLETE PAIRED MEALS)
           ===================================================================== */}
       {isAuthenticated && activeRecipesTab === 'planner' && weeklyPlan.length > 0 && (
@@ -1498,6 +1595,13 @@ export default function RecipesPage() {
                 onClick={handleDownloadIcsCalendar}
               >
                 {t.exportCalendar}
+              </button>
+              <button
+                type="button"
+                className="btn-secondary btn-sm"
+                onClick={() => setShowBhurkoModal(true)}
+              >
+                🥣 {t.bhurkoSpiceGuide || 'Bhurko Spice Guide'}
               </button>
             </div>
           </div>
@@ -1599,7 +1703,7 @@ export default function RecipesPage() {
                             className="combo-dish-thumb"
                             aria-hidden="true"
                           />
-                          <span className="combo-dish-text">🍽️ {safeString(combo?.mainDishTitle)}</span>
+                          <span className="combo-dish-text">🍽️ {formatDishTitle(safeString(combo?.mainDishTitle), language)}</span>
                         </div>
                         <span className="view-recipe-pill">📖 {t.recipeLink} →</span>
                       </button>
@@ -1629,7 +1733,7 @@ export default function RecipesPage() {
                           )}
                           <span className="combo-dish-text">
                             <strong className="combo-side-label">+ {t.pairedWith}</strong>
-                            {safeString(combo?.pairedWithTitle)}
+                            {formatDishTitle(safeString(combo?.pairedWithTitle), language)}
                           </span>
                         </div>
                         <span className="view-recipe-pill">📖 {t.recipeLink} →</span>
@@ -1703,20 +1807,18 @@ export default function RecipesPage() {
 
       {activeRecipesTab === 'recipes' && (
         <>
-          {isAuthenticated && (
-            <div className="recipe-tools-row">
-              <p className="selector-sub">
-                Match recipes to your fridge, or browse and search the full collection.
-              </p>
-              <button
-                type="button"
-                className="btn-secondary"
-                onClick={() => setShowBhurkoModal(!showBhurkoModal)}
-              >
-                🥣 {showBhurkoModal ? 'Hide Bhurko Guide' : 'Sourashtra Bhurko Spice Guide'}
-              </button>
-            </div>
-          )}
+          <div className="recipe-tools-row">
+            <p className="selector-sub">
+              {language === 'Tamil' ? 'உங்கள் சரக்கிற்குப் பொருந்தும் குறிப்புகளைக் கண்டறியவும், அல்லது அனைத்தையும் பார்க்கவும்.' : 'Match recipes to your fridge, or browse and search the full collection.'}
+            </p>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={() => setShowBhurkoModal(true)}
+            >
+              🥣 {t.bhurkoSpiceGuide || 'Sourashtra Bhurko Spice Guide'}
+            </button>
+          </div>
       {/* Interactive Fridge Veggies & Meat Selector */}
       {isAuthenticated && (
         <section className="fridge-selector-panel glass-pane mb-24">
@@ -1809,7 +1911,7 @@ export default function RecipesPage() {
                 setVisibleCount(60);
               }}
             >
-              {cat} ({count})
+              {formatCategory(cat, language)} ({count})
             </button>
           ))}
         </div>

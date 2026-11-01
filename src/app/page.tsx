@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css';
-import { UI_TRANSLATIONS } from '@/lib/translations';
+import { formatCategory, formatItemName, UI_TRANSLATIONS } from '@/lib/translations';
+import { getProduceStyle } from '@/lib/produce-styles';
 
 interface InventoryItem {
   id: number;
@@ -11,23 +12,6 @@ interface InventoryItem {
   quantity: number;
   category: string | null;
   expirationDate: string | null;
-}
-
-function getProduceStyle(name: string): { icon: string; bg: string } {
-  const lowerName = name.toLowerCase();
-  if (lowerName.includes('tomato')) return { icon: '🍅', bg: '#fcd3b6' };
-  if (lowerName.includes('onion')) return { icon: '🧅', bg: '#f9c5d1' };
-  if (lowerName.includes('spinach') || lowerName.includes('greens')) return { icon: '🥬', bg: '#c7e9c0' };
-  if (lowerName.includes('pepper') || lowerName.includes('capsicum')) return { icon: '🫑', bg: '#fed99b' };
-  if (lowerName.includes('paneer') || lowerName.includes('cheese')) return { icon: '🧀', bg: '#b2dfdb' };
-  if (lowerName.includes('yogurt') || lowerName.includes('curd')) return { icon: '🥣', bg: '#bbdefb' };
-  if (lowerName.includes('butter')) return { icon: '🧈', bg: '#fff59d' };
-  if (lowerName.includes('garlic') || lowerName.includes('ginger') || lowerName.includes('paste')) return { icon: '🧄', bg: '#e0d2bc' };
-  if (lowerName.includes('coriander') || lowerName.includes('mint')) return { icon: '🌿', bg: '#c8e6c9' };
-  if (lowerName.includes('egg')) return { icon: '🥚', bg: '#ffecb3' };
-  if (lowerName.includes('rice') || lowerName.includes('wheat') || lowerName.includes('flour')) return { icon: '🌾', bg: '#d7ccc8' };
-  if (lowerName.includes('bean') || lowerName.includes('lentil') || lowerName.includes('dal')) return { icon: '🫘', bg: '#ffe0b2' };
-  return { icon: '🥦', bg: '#dcedc8' };
 }
 
 export default function Home() {
@@ -169,7 +153,7 @@ export default function Home() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             aria-label="Search inventory"
-            placeholder="Search"
+            placeholder={t.searchPlaceholder || "Search inventory..."}
           />
         </label>
 
@@ -188,18 +172,18 @@ export default function Home() {
               <section key={category} className={styles.groupSection}>
                 <div className={styles.inventoryTableCard}>
                   <div className={styles.groupBanner}>
-                    <h2>{category}</h2>
-                    <span className={styles.groupCountTag}>{groupItems.length} items</span>
+                    <h2>{formatCategory(category, language)}</h2>
+                    <span className={styles.groupCountTag}>{groupItems.length} {t.itemsCountLabel || 'items'}</span>
                   </div>
                   
                   <div className={styles.tableHeaderRow} aria-hidden="true">
-                    <span className={styles.thCheck}>✓</span>
-                    <span className={styles.thItem}>Item</span>
-                    <span className={styles.thCategory}>Category</span>
-                    <span className={styles.thStatus}>Qty / Status</span>
+                    <span className={styles.thCheck}>{t.thCheck || '✓'}</span>
+                    <span className={styles.thItem}>{t.thItem || 'Item'}</span>
+                    <span className={styles.thCategory}>{t.thCategory || 'Category'}</span>
+                    <span className={styles.thStatus}>{t.thStatus || 'Qty / Status'}</span>
                   </div>
 
-                  <div className={styles.groupTable} role="table" aria-label={`${category} Inventory Table`}>
+                  <div className={styles.groupTable} role="table" aria-label={`${formatCategory(category, language)} Inventory Table`}>
                     {groupItems.map((item) => {
                       const style = getProduceStyle(item.name);
                       const isChecked = checkedItems.has(item.id);
@@ -224,11 +208,11 @@ export default function Home() {
                             >
                               {style.icon}
                             </div>
-                            <span className={styles.itemName}>{item.name}</span>
+                            <span className={styles.itemName}>{formatItemName(item.name, language)}</span>
                           </div>
 
                           <div className={styles.categoryCol} role="cell">
-                            <span className={styles.categoryPill}>{category}</span>
+                            <span className={styles.categoryPill}>{formatCategory(category, language)}</span>
                           </div>
 
                           <div className={styles.itemActionArea} role="cell">

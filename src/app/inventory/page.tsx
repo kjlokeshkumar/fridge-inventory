@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import './inventory.css';
 import { toTamilCategory, UI_TRANSLATIONS } from '@/lib/translations';
+import { getProduceStyle } from '@/lib/produce-styles';
 import { isInventoryItemExpired, isInventoryItemExpiringSoon } from '@/lib/inventory-dates';
 
 interface InventoryItem {
@@ -79,19 +80,7 @@ export default function InventoryPage() {
 
   const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
-  const getProduceEmoji = (name: string) => {
-    const lower = name.toLowerCase();
-    if (lower.includes('tomato') || lower.includes('capsicum') || lower.includes('pepper')) return '🍅';
-    if (lower.includes('onion') || lower.includes('shallot')) return '🧅';
-    if (lower.includes('spinach') || lower.includes('greens') || lower.includes('kale')) return '🥬';
-    if (lower.includes('paneer') || lower.includes('cheese') || lower.includes('milk') || lower.includes('butter') || lower.includes('yogurt') || lower.includes('curd')) return '🥛';
-    if (lower.includes('garlic') || lower.includes('ginger')) return '🧄';
-    if (lower.includes('coriander') || lower.includes('mint') || lower.includes('herb')) return '🌿';
-    if (lower.includes('egg') || lower.includes('eggplant') || lower.includes('brinjal')) return '🥚';
-    if (lower.includes('rice') || lower.includes('wheat') || lower.includes('flour')) return '🌾';
-    if (lower.includes('bean') || lower.includes('lentil') || lower.includes('dal')) return '🫘';
-    return '🥦';
-  };
+  const getProduceEmoji = (name: string) => getProduceStyle(name).icon;
 
   if (loading) {
     return (

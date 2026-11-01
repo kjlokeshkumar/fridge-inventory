@@ -15,6 +15,11 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     dishCountLabel: "Dishes",
     itemCountLabel: "Item",
     itemsCountLabel: "Items",
+    thCheck: "✓",
+    thItem: "Item",
+    thCategory: "Category",
+    thStatus: "Qty / Status",
+    searchPlaceholder: "Search inventory...",
     recipesPageSubtitle: "Explore a weekly meal plan, a smart shopping list, or the Sourashtra recipe collection.",
     publicRecipesPageSubtitle: "Browse the Sourashtra recipe collection.",
     plannerTab: "7-Day Plan",
@@ -41,7 +46,7 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     googleCalendar: "+ Google Calendar",
     freshItemsToBuy: "Fresh items to purchase",
     alreadyInFridge: "Already in your fridge",
-    searchRecipesPlaceholder: "🔍 Search 320+ Sourashtra recipes",
+    searchRecipesPlaceholder: "🔍 Search 320+ Sourashtra recipes (e.g. Ounty, Budith, Pilchar, Ambat, Pongal)...",
     plannedItemsToBuy: "For your 7-day meal plan",
     planShoppingDescription: "Ingredients in your saved weekly plan that are not in your inventory.",
     checkPantryTitle: "Check pantry staples",
@@ -130,7 +135,28 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     compressing: "Compressing images...",
     analyzingBatch: "Analyzing batch",
     of: "of",
-    completeRedirecting: "Analysis complete! Redirecting..."
+    completeRedirecting: "Analysis complete! Redirecting...",
+
+    // Bhurko Spice Guide Modal
+    bhurkoSpiceGuide: "🥣 Sourashtra Bhurko Spice Guide",
+    hideBhurkoGuide: "✕ Close Bhurko Guide",
+    bhurkoModalTitle: "🥣 Authentic Sourashtra Bhurko Spice Guide (Homemade Powders)",
+    bhurkoModalSub: "In Sourashtra kitchens, these foundational sun-dried and roasted spice blends are kept in airtight jars and added to gravies (Ounty), broths (Pilchar), and stews (Sambar):",
+    bhurkoIngredients: "📋 Ingredients & Exact Proportions:",
+    bhurkoMethod: "👩‍🍳 Traditional Roasting & Grinding Method:",
+    bhurkoUsedFor: "🍲 Essential for Traditional Dishes:",
+    bhurkoWatchVideo: "▶️ Watch Bhurko Preparation Video",
+    bhurkoWebRecipe: "🌐 Open Web Recipe Archive",
+
+    // Access Gate & Auth
+    gateTitle: "Sign in to your private fridge",
+    gateDesc: "Inventory, scanning, and shopping lists are private to your account. Sign in or create an account to use these features.",
+    gateSignInBtn: "Sign in or create account",
+    gateBrowseRecipes: "Browse Sourashtra recipes without signing in",
+    gateChecking: "Checking your sign-in…",
+    gateError: "Can’t verify your sign-in",
+    gateConnectionCheck: "Please check your connection and try again.",
+    gateRetry: "Try again"
   },
   Tamil: {
     navHome: "முகப்பு",
@@ -148,6 +174,11 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     dishCountLabel: "உணவு வகைகள்",
     itemCountLabel: "பொருள்",
     itemsCountLabel: "பொருட்கள்",
+    thCheck: "✓",
+    thItem: "பொருள்",
+    thCategory: "பிரிவு",
+    thStatus: "அளவு / நிலை",
+    searchPlaceholder: "சரக்கில் தேடவும்...",
     recipesPageSubtitle: "வார உணவுத் திட்டம், வாங்க வேண்டிய பட்டியல் அல்லது சௌராஷ்டிர சமையல் குறிப்புகளைப் பாருங்கள்.",
     publicRecipesPageSubtitle: "சௌராஷ்டிர சமையல் குறிப்புகளைப் பாருங்கள்.",
     plannerTab: "7 நாள் திட்டம்",
@@ -174,7 +205,7 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     googleCalendar: "+ Google நாட்காட்டி",
     freshItemsToBuy: "வாங்க வேண்டிய புதிய பொருட்கள்",
     alreadyInFridge: "குளிர்சாதனப் பெட்டியில் உள்ளவை",
-    searchRecipesPlaceholder: "🔍 சௌராஷ்டிர சமையல் குறிப்புகளைத் தேடுங்கள்",
+    searchRecipesPlaceholder: "🔍 சௌராஷ்டிர சமையல் குறிப்புகளைத் தேடுங்கள் (எ.கா. அவ்வுண்டி, புடித், பில்ச்சார், அம்பாட்)...",
     plannedItemsToBuy: "7 நாள் உணவுத் திட்டத்திற்கானவை",
     planShoppingDescription: "வாரத் திட்டத்தில் உள்ளதும் உங்கள் சரக்கில் இல்லாததுமான பொருட்கள்.",
     checkPantryTitle: "அலமாரிப் பொருட்களைச் சரிபார்க்கவும்",
@@ -262,7 +293,28 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     compressing: "புகைப்படங்களைச் சுருக்குகிறது...",
     analyzingBatch: "பகுப்பாய்வு செய்கிறது",
     of: "இல்",
-    completeRedirecting: "பகுப்பாய்வு முடிந்தது! மாற்றப்படுகிறது..."
+    completeRedirecting: "பகுப்பாய்வு முடிந்தது! மாற்றப்படுகிறது...",
+
+    // Bhurko Spice Guide Modal
+    bhurkoSpiceGuide: "🥣 சௌராஷ்டிர புர்கோ மசாலா வழிகாட்டி",
+    hideBhurkoGuide: "✕ வழிகாட்டியை மூடு",
+    bhurkoModalTitle: "🥣 பாரம்பரிய சௌராஷ்டிர புர்கோ மசாலா வழிகாட்டி (வீட்டு பொடிகள்)",
+    bhurkoModalSub: "சௌராஷ்டிர சமையலறைகளில் அவ்வுண்டி, பில்ச்சார் (ரசம்) மற்றும் சாம்பாருக்கு இந்த பாரம்பரிய மசாலா பொடிகள் கண்ணாடி பாட்டில்களில் வைக்கப்படுகின்றன:",
+    bhurkoIngredients: "📋 தேவையான பொருட்கள் மற்றும் அளவுகள்:",
+    bhurkoMethod: "👩‍🍳 வறுத்து அரைக்கும் பாரம்பரிய செய்முறை:",
+    bhurkoUsedFor: "🍲 பயன்படுத்தப்படும் பாரம்பரிய உணவுகள்:",
+    bhurkoWatchVideo: "▶️ புர்கோ செய்முறை காணொளியைக் காண்க",
+    bhurkoWebRecipe: "🌐 இணைய சமையல் குறிப்பு",
+
+    // Access Gate & Auth
+    gateTitle: "உங்கள் தனிப்பட்ட சரக்கில் உள்நுழையவும்",
+    gateDesc: "சரக்கு, ஸ்கேனிங் மற்றும் வாங்க வேண்டிய பட்டியல் உங்கள் கணக்கிற்கு மட்டுமே உரியது. இவற்றைப் பயன்படுத்த உள்நுழையவும்.",
+    gateSignInBtn: "உள்நுழையவும் அல்லது புதிய கணக்கு உருவாக்கவும்",
+    gateBrowseRecipes: "உள்நுழையாமல் சௌராஷ்டிர சமையல் குறிப்புகளைப் பாருங்கள்",
+    gateChecking: "உள்நுழைவு சரிபார்க்கப்படுகிறது…",
+    gateError: "உள்நுழைவைச் சரிபார்க்க முடியவில்லை",
+    gateConnectionCheck: "உங்கள் இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+    gateRetry: "மீண்டும் முயற்சி"
   }
 };
 
@@ -349,6 +401,71 @@ const TAMIL_ITEM_TRANSLATION_MAP: Record<string, string> = {
   "tortilla chips": "டார்ட்டில்லா சிப்ஸ்"
 };
 
+// Reverse map: Tamil -> English
+const TAMIL_TO_ENGLISH_ITEM_MAP: Record<string, string> = {
+  "தக்காளி": "Tomato",
+  "வெங்காயம்": "Onion",
+  "சின்ன வெங்காயம்": "Shallots",
+  "உருளைக்கிழங்கு": "Potato",
+  "கத்திரிக்காய்": "Brinjal",
+  "முருங்கைக்காய்": "Drumstick",
+  "கேரட்": "Carrot",
+  "பீன்ஸ்": "Beans",
+  "பட்டாணி": "Peas",
+  "முட்டைக்கோஸ்": "Cabbage",
+  "காலிஃப்ளவர்": "Cauliflower",
+  "வெள்ளரிக்காய்": "Cucumber",
+  "பீட்ரூட்": "Beetroot",
+  "முள்ளங்கி": "Radish",
+  "பூசணிக்காய்": "Pumpkin",
+  "வெண்டைக்காய்": "Okra",
+  "பூண்டு": "Garlic",
+  "இஞ்சி": "Ginger",
+  "மிளகாய்": "Chilli",
+  "பச்சை மிளகாய்": "Green Chilli",
+  "கொத்தமல்லி": "Coriander",
+  "கறிவேப்பிலை": "Curry Leaves",
+  "புதினா": "Mint Leaves",
+  "கீரை": "Spinach",
+  "எலுமிச்சை": "Lemon",
+  "தேங்காய்": "Coconut",
+  "பால்": "Milk",
+  "தயிர்": "Curd",
+  "வெண்ணெய்": "Butter",
+  "நெய்": "Ghee",
+  "பனீர்": "Paneer",
+  "பாலாடைக்கட்டி": "Cheese",
+  "முட்டை": "Eggs",
+  "கோழி இறைச்சி": "Chicken",
+  "ஆட்டிறைச்சி": "Mutton",
+  "மீன்": "Fish",
+  "இறால்": "Prawns",
+  "நண்டு": "Crab",
+  "ஆப்பிள்": "Apple",
+  "வாழைப்பழம்": "Banana",
+  "மாம்பழம்": "Mango",
+  "ஆரஞ்சு": "Orange",
+  "திராட்சை": "Grapes",
+  "பப்பாளி": "Papaya",
+  "அரிசி": "Rice",
+  "மாவு": "Flour",
+  "கோதுமை மாவு": "Wheat Flour",
+  "பருப்பு": "Dal",
+  "துவரம் பருப்பு": "Toor Dal",
+  "உளுந்து": "Urad Dal",
+  "கடலைப் பருப்பு": "Chana Dal",
+  "கொண்டைக்கடலை": "Chickpeas",
+  "கருமிளகு": "Black Pepper",
+  "சீரகம்": "Cumin",
+  "மஞ்சள்": "Turmeric",
+  "உப்பு": "Salt",
+  "சர்க்கரை": "Sugar",
+  "எண்ணெய்": "Cooking Oil",
+  "ரொட்டி": "Bread",
+  "தண்ணீர்": "Water",
+  "டார்ட்டில்லா சிப்ஸ்": "Tortilla Chips"
+};
+
 export function toTamilItemName(name: string): string {
   const clean = (name || '').trim().split(' (')[0];
   const keys = Object.keys(TAMIL_ITEM_TRANSLATION_MAP)
@@ -360,9 +477,49 @@ export function toTamilItemName(name: string): string {
   });
 }
 
+export function toEnglishItemName(name: string): string {
+  if (!name) return '';
+  let result = name.trim();
+  const keys = Object.keys(TAMIL_TO_ENGLISH_ITEM_MAP).sort((a, b) => b.length - a.length);
+  for (const tamilWord of keys) {
+    if (result.includes(tamilWord)) {
+      result = result.replace(new RegExp(tamilWord, 'g'), TAMIL_TO_ENGLISH_ITEM_MAP[tamilWord]);
+    }
+  }
+  // Strip any remaining parenthesized Tamil
+  result = result.replace(/\s*\([\u0B80-\u0BFF\s/]+\)/g, '');
+  result = result.replace(/\s*\/[\u0B80-\u0BFF\s]+/g, '');
+  return result.trim();
+}
+
+export function formatItemName(name: string, language: string): string {
+  if (language === 'Tamil') {
+    return toTamilItemName(name);
+  }
+  return toEnglishItemName(name) || name;
+}
+
 export function toTamilCategory(category: string): string {
   const translationKey = `category${category}` as keyof typeof UI_TRANSLATIONS.Tamil;
   return UI_TRANSLATIONS.Tamil[translationKey] || category;
+}
+
+export function toEnglishCategory(category: string): string {
+  if (!category) return 'Other';
+  for (const [key, val] of Object.entries(UI_TRANSLATIONS.Tamil)) {
+    if (key.startsWith('category') && val === category) {
+      const engKey = key as keyof typeof UI_TRANSLATIONS.English;
+      return UI_TRANSLATIONS.English[engKey] || category;
+    }
+  }
+  return category;
+}
+
+export function formatCategory(category: string, language: string): string {
+  if (language === 'Tamil') {
+    return toTamilCategory(category);
+  }
+  return toEnglishCategory(category);
 }
 
 const TAMIL_DAY_NAMES: Record<string, string> = {
@@ -382,6 +539,16 @@ const TAMIL_DAY_NAMES: Record<string, string> = {
   Sat: "சனி"
 };
 
+const ENGLISH_DAY_NAMES: Record<string, string> = {
+  "ஞாயிறு": "Sunday",
+  "திங்கள்": "Monday",
+  "செவ்வாய்": "Tuesday",
+  "புதன்": "Wednesday",
+  "வியாழன்": "Thursday",
+  "வெள்ளி": "Friday",
+  "சனி": "Saturday"
+};
+
 export function toTamilDayName(dayName: string): string {
   if (dayName === 'Today') return 'இன்று';
   if (dayName.startsWith('Today (') && dayName.endsWith(')')) {
@@ -389,4 +556,33 @@ export function toTamilDayName(dayName: string): string {
     return `இன்று (${TAMIL_DAY_NAMES[weekday] || weekday})`;
   }
   return TAMIL_DAY_NAMES[dayName] || dayName;
+}
+
+export function toEnglishDayName(dayName: string): string {
+  if (dayName === 'இன்று') return 'Today';
+  if (dayName.startsWith('இன்று (') && dayName.endsWith(')')) {
+    const weekday = dayName.slice(7, -1);
+    return `Today (${ENGLISH_DAY_NAMES[weekday] || weekday})`;
+  }
+  return ENGLISH_DAY_NAMES[dayName] || dayName;
+}
+
+export function formatDayName(dayName: string, language: string): string {
+  if (language === 'Tamil') return toTamilDayName(dayName);
+  return toEnglishDayName(dayName);
+}
+
+export function formatDishTitle(title: string, language: string): string {
+  if (!title) return '';
+  if (language === 'English') {
+    // Clean up dual-script titles: "Losto(sourashtra)/புதினா தொவயல்" -> "Losto (Sourashtra Mint Chutney)"
+    let clean = title.replace(/\s*\/[\u0B80-\u0BFF\s]+/g, '');
+    clean = clean.replace(/Losto\(sourashtra\)/i, 'Losto (Sourashtra Mint Chutney)');
+    return clean.trim();
+  }
+  // Tamil mode
+  if (title.includes('புதினா தொவயல்') || title.toLowerCase().includes('losto')) {
+    return 'புதினா தொவயல் (லோஸ்டோ)';
+  }
+  return toTamilItemName(title);
 }

@@ -3,17 +3,21 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { UI_TRANSLATIONS } from '@/lib/translations';
 
 type AccessStatus = 'checking' | 'authenticated' | 'signed-out' | 'error';
 
 export default function AppAccessGate({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [status, setStatus] = useState<AccessStatus>('checking');
+  const [language, setLanguage] = useState('English');
   const authChangeVersion = useRef(0);
   const isPublicRoute = pathname === '/recipes' || pathname.startsWith('/recipes/') ||
     pathname === '/privacy' || pathname.startsWith('/privacy/') ||
     pathname === '/delete-account' || pathname.startsWith('/delete-account/') ||
     pathname === '/auth/google/callback';
+
+  const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
   const checkSession = useCallback(async () => {
     const version = authChangeVersion.current;
@@ -38,14 +42,24 @@ export default function AppAccessGate({ children }: { children: React.ReactNode 
   }, []);
 
   useEffect(() => {
+    setLanguage(localStorage.getItem('appLanguage') || 'English');
+
     const handleAuthChange = (event: Event) => {
       authChangeVersion.current += 1;
       setStatus((event as CustomEvent).detail ? 'authenticated' : 'signed-out');
     };
 
+    const handleLanguageChange = (event: Event) => {
+      setLanguage((event as CustomEvent<string>).detail || 'English');
+    };
+
     window.addEventListener('userAuthChange', handleAuthChange);
+    window.addEventListener('languageChange', handleLanguageChange);
     void checkSession();
-    return () => window.removeEventListener('userAuthChange', handleAuthChange);
+    return () => {
+      window.removeEventListener('userAuthChange', handleAuthChange);
+      window.removeEventListener('languageChange', handleLanguageChange);
+    };
   }, [checkSession]);
 
   if (isPublicRoute || status === 'authenticated') return children;
@@ -55,34 +69,33 @@ export default function AppAccessGate({ children }: { children: React.ReactNode 
       {status === 'checking' ? (
         <>
           <span className="spinner" />
-          <p>Checking your sign-in…</p>
+          <p>{t.gateChecking || 'Checking your sign-in…'}</p>
         </>
       ) : status === 'error' ? (
         <>
           <div className="card-icon" aria-hidden="true">⚠️</div>
-          <h1>Can’t verify your sign-in</h1>
-          <p>Please check your connection and try again.</p>
+          <h1>{t.gateError || 'Can’t verify your sign-in'}</h1>
+          <p>{t.gateConnectionCheck || 'Please check your connection and try again.'}</p>
           <button type="button" className="btn-primary" onClick={() => void checkSession()}>
-            Try again
+            {t.gateRetry || 'Try again'}
           </button>
         </>
       ) : (
         <>
           <div className="card-icon" aria-hidden="true">🔒</div>
-          <h1>Sign in to your private fridge</h1>
+          <h1>{t.gateTitle || 'Sign in to your private fridge'}</h1>
           <p>
-            Inventory, scanning, and shopping lists are private to your account.
-            Sign in or create an account to use these features.
+            {t.gateDesc || 'Inventory, scanning, and shopping lists are private to your account. Sign in or create an account to use these features.'}
           </p>
           <button
             type="button"
             className="btn-primary"
             onClick={() => window.dispatchEvent(new Event('openAuthModal'))}
           >
-            Sign in or create account
+            {t.gateSignInBtn || 'Sign in or create account'}
           </button>
           <Link href="/recipes" className="access-gate-link">
-            Browse Sourashtra recipes without signing in
+            {t.gateBrowseRecipes || 'Browse Sourashtra recipes without signing in'}
           </Link>
         </>
       )}

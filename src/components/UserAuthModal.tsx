@@ -279,7 +279,7 @@ export default function UserAuthModal() {
                     />
                     <button
                       type="button"
-                      className="delete-account-btn"
+                      className="btn-danger-modal delete-account-confirm-btn"
                       onClick={deleteAccount}
                       disabled={loading || deleteConfirmation !== 'DELETE'}
                     >
@@ -287,7 +287,7 @@ export default function UserAuthModal() {
                     </button>
                     <button
                       type="button"
-                      className="btn-secondary"
+                      className="btn-secondary-modal"
                       onClick={() => {
                         setIsConfirmingDelete(false);
                         setDeleteConfirmation('');
@@ -299,7 +299,7 @@ export default function UserAuthModal() {
                     </button>
                   </div>
                 ) : (
-                  <div className="form-actions">
+                  <div className="form-actions user-modal-actions">
                     <button
                       type="button"
                       onClick={() => {
@@ -307,17 +307,17 @@ export default function UserAuthModal() {
                         setDeleteConfirmation('');
                         setErrorMsg(null);
                       }}
-                      className="delete-account-btn"
+                      className="btn-danger-modal"
                     >
                       Delete account
                     </button>
-                    <button type="button" onClick={logoutUser} className="btn-secondary">
+                    <button type="button" onClick={logoutUser} className="btn-secondary-modal">
                       Sign out
                     </button>
                     <button
                       type="button"
                       onClick={() => setIsOpen(false)}
-                      className="btn-primary"
+                      className="btn-primary-modal"
                     >
                       Done
                     </button>
