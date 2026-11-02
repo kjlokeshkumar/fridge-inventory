@@ -24,6 +24,7 @@ interface PrepPlateItem {
   categoryLabelTa: string;
   weightGrams?: number;
   calories?: number;
+  image?: string;
 }
 
 function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdowns?: IngredientCalories[]): PrepPlateItem {
@@ -88,6 +89,7 @@ function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdo
     categoryLabelTa: ramekin.categoryLabelTa,
     weightGrams,
     calories,
+    image: ramekin.image,
   };
 }
 
@@ -140,6 +142,7 @@ function buildPrepPlateItems(recipe: Recipe | undefined): PrepPlateItem[] {
           categoryLabelTa: ramekin.categoryLabelTa,
           weightGrams: b.weightGrams,
           calories: b.calories,
+          image: ramekin.image,
         });
       }
     }
@@ -1684,13 +1687,22 @@ export default function RecipesPage() {
                               </span>
                               <div
                                 className="chef-ramekin-bowl"
-                                style={{ background: item.gradient || item.bg }}
+                                style={{ background: item.image ? '#f8fafc' : (item.gradient || item.bg) }}
                                 title={`${item.name} (${item.quantity})`}
                                 aria-label={`${item.name}: ${item.quantity}`}
                               >
-                                <div className="ramekin-inner-depth">
-                                  <span className="ramekin-ingredient-icon" aria-hidden="true">{item.icon}</span>
-                                </div>
+                                {item.image ? (
+                                  <img
+                                    src={item.image}
+                                    alt={item.name}
+                                    className="ramekin-photo-img"
+                                    loading="lazy"
+                                  />
+                                ) : (
+                                  <div className="ramekin-inner-depth">
+                                    <span className="ramekin-ingredient-icon" aria-hidden="true">{item.icon}</span>
+                                  </div>
+                                )}
                               </div>
                             </div>
                             <div className="ramekin-label">

@@ -3133,6 +3133,23 @@
   justify-content: center !important;
 }
 
+/* High-definition photographic food image fitted inside ceramic porcelain ramekin */
+.ramekin-photo-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  display: block !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.32) !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  user-select: none !important;
+  pointer-events: none !important;
+}
+
+.ramekin-item-card:hover .ramekin-photo-img {
+  transform: scale(1.08) !important;
+}
+
 /* Ingredient icon inside ramekin */
 .ramekin-ingredient-icon {
   font-size: 1.65rem !important;
