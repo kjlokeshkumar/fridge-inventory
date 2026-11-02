@@ -1659,49 +1659,57 @@ export default function RecipesPage() {
                 ✕
               </button>
             </div>
-            <div className="modal-top-bar">
-              <div>
-                <span className="recipe-category-badge">
-                  📅 {formatDayName(activePlannerModal.dayName, language)} • {activePlannerModal.slotLabel}
+            {/* Unified Metadata Pill Row: Calendar slot, category, difficulty */}
+            <div className="modal-recipe-meta-row">
+              <span className="modal-meta-chip meta-chip-calendar">
+                📅 {formatDayName(activePlannerModal.dayName, language)} • {activePlannerModal.slotLabel}
+              </span>
+              {modalRecipe.category && (
+                <span className="modal-meta-chip meta-chip-category">
+                  🏷️ {formatCategory(safeString(modalRecipe.category), language)}
                 </span>
-              </div>
+              )}
+              <span className={`modal-meta-chip meta-chip-diff ${getDifficultyClass(modalRecipe.difficulty)}`}>
+                {getDifficultyClass(modalRecipe.difficulty) === 'easy' ? '🟢' : getDifficultyClass(modalRecipe.difficulty) === 'medium' ? '🟡' : '🔴'} {safeString(modalRecipe.difficulty || 'Easy')}
+              </span>
             </div>
 
-            {/* Switcher Tabs between Main Dish Recipe & Paired Side Dish Recipe */}
-            <div className="modal-combo-tabs">
-              <button
-                type="button"
-                className={`modal-combo-tab ${activePlannerModal.activeTab === 'main' ? 'active' : ''}`}
-                onClick={() =>
-                  setActivePlannerModal({ ...activePlannerModal, activeTab: 'main' })
-                }
-              >
-                🍽️ {language === 'Tamil' ? 'முக்கிய உணவு:' : 'Main Dish:'} {formatDishTitle(safeString(activePlannerModal.combo.mainDishTitle), language)}
-              </button>
-              {activePlannerModal.combo.secondaryRecipe && (
+            {/* Harmonious Recipe Title */}
+            <div className="modal-recipe-title-group">
+              <h3 className="modal-recipe-title">
+                {formatDishTitle(safeString(modalRecipe.title), language)}
+              </h3>
+            </div>
+
+            {/* Symmetrical 50/50 Segmented Combo Switcher (only shown when secondary recipe exists) */}
+            {activePlannerModal.combo.secondaryRecipe && (
+              <div className="modal-segmented-combo-bar" role="tablist" aria-label="Combo Recipe Switcher">
                 <button
                   type="button"
-                  className={`modal-combo-tab ${activePlannerModal.activeTab === 'paired' ? 'active' : ''}`}
+                  role="tab"
+                  aria-selected={activePlannerModal.activeTab === 'main'}
+                  className={`modal-segmented-tab ${activePlannerModal.activeTab === 'main' ? 'active' : ''}`}
+                  onClick={() =>
+                    setActivePlannerModal({ ...activePlannerModal, activeTab: 'main' })
+                  }
+                  title={formatDishTitle(safeString(activePlannerModal.combo.mainDishTitle), language)}
+                >
+                  🍽️ <span className="tab-label-prefix">{language === 'Tamil' ? 'முக்கிய:' : 'Main:'}</span> <span className="tab-dish-name">{formatDishTitle(safeString(activePlannerModal.combo.mainDishTitle), language)}</span>
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activePlannerModal.activeTab === 'paired'}
+                  className={`modal-segmented-tab ${activePlannerModal.activeTab === 'paired' ? 'active' : ''}`}
                   onClick={() =>
                     setActivePlannerModal({ ...activePlannerModal, activeTab: 'paired' })
                   }
+                  title={formatDishTitle(safeString(activePlannerModal.combo.pairedWithTitle), language)}
                 >
-                  🥣 {language === 'Tamil' ? 'துணை உணவு:' : 'Paired With:'} {formatDishTitle(safeString(activePlannerModal.combo.pairedWithTitle), language)}
+                  🥣 <span className="tab-label-prefix">{language === 'Tamil' ? 'துணை:' : 'Side:'}</span> <span className="tab-dish-name">{formatDishTitle(safeString(activePlannerModal.combo.pairedWithTitle), language)}</span>
                 </button>
-              )}
-            </div>
-
-            <div className="recipe-header">
-              <div>
-                {modalRecipe.category && (
-                  <span className="recipe-category-badge">{safeString(modalRecipe.category)}</span>
-                )}
-                <h3>{formatDishTitle(safeString(modalRecipe.title), language)}</h3>
               </div>
-              <span className={`difficulty ${getDifficultyClass(modalRecipe.difficulty)}`}>
-                {safeString(modalRecipe.difficulty || 'Easy')}
-              </span>
-            </div>
+            )}
 
             {/* Direct YouTube & Web Recipe Links */}
             {(modalRecipe.youtubeUrl || modalRecipe.webUrl) && (

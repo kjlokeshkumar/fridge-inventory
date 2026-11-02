@@ -3884,3 +3884,149 @@
   margin: 0 !important;
   line-height: 1.3 !important;
 }
+
+/* ==========================================================================
+   Harmonized Recipe Modal Header Typography & Symmetrical Segmented Tabs
+   ========================================================================== */
+.modal-recipe-meta-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+  margin: 8px 0 4px 0 !important;
+}
+
+.modal-meta-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  height: 28px !important;
+  padding: 0 10px !important;
+  border-radius: 9999px !important;
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  border: 1px solid rgba(45, 110, 119, 0.2) !important;
+  background: #faf6ee !important;
+  color: #4a3e35 !important;
+}
+
+.modal-meta-chip.meta-chip-calendar {
+  background: #eaf4f4 !important;
+  color: #1a4d54 !important;
+  border-color: rgba(36, 89, 97, 0.3) !important;
+  font-weight: 700 !important;
+}
+
+.modal-meta-chip.meta-chip-category {
+  background: #fdf6ea !important;
+  color: #78350f !important;
+  border-color: rgba(180, 83, 9, 0.25) !important;
+}
+
+.modal-meta-chip.meta-chip-diff.easy {
+  background: #eaf8f0 !important;
+  color: #1e5a3c !important;
+  border-color: rgba(30, 90, 60, 0.28) !important;
+}
+
+.modal-meta-chip.meta-chip-diff.medium {
+  background: #fef3c7 !important;
+  color: #78350f !important;
+  border-color: rgba(180, 83, 9, 0.35) !important;
+}
+
+.modal-meta-chip.meta-chip-diff.hard {
+  background: #fdeeea !important;
+  color: #991b1b !important;
+  border-color: rgba(153, 27, 27, 0.3) !important;
+}
+
+.modal-recipe-title-group {
+  margin: 6px 0 10px 0 !important;
+}
+
+.modal-recipe-title {
+  font-size: 1.28rem !important;
+  font-weight: 700 !important;
+  color: var(--text-main, #1f1a17) !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.modal-segmented-combo-bar {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 6px !important;
+  background: #f0e9dc !important;
+  padding: 4px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(45, 110, 119, 0.22) !important;
+  margin: 0 0 12px 0 !important;
+  box-shadow: inset 0 1px 3px rgba(31, 26, 23, 0.08) !important;
+}
+
+.modal-segmented-tab {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  height: 38px !important;
+  padding: 0 10px !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 9px !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: #5c4d42 !important;
+  cursor: pointer !important;
+  min-width: 0 !important;
+  transition: all 0.18s ease-in-out !important;
+  text-align: center !important;
+}
+
+.modal-segmented-tab .tab-dish-name {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.modal-segmented-tab .tab-label-prefix {
+  flex-shrink: 0 !important;
+  opacity: 0.85 !important;
+  font-size: 0.78rem !important;
+}
+
+.modal-segmented-tab:hover {
+  background: rgba(255, 255, 255, 0.6) !important;
+  color: #1f1a17 !important;
+}
+
+.modal-segmented-tab.active {
+  background: #ffffff !important;
+  color: var(--primary-teal, #245961) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 6px rgba(31, 26, 23, 0.14) !important;
+}
+
+@media (max-width: 480px) {
+  .modal-recipe-title {
+    font-size: 1.15rem !important;
+  }
+  .modal-segmented-tab {
+    font-size: 0.76rem !important;
+    height: 36px !important;
+    padding: 0 6px !important;
+    gap: 4px !important;
+  }
+  .modal-segmented-tab .tab-label-prefix {
+    display: none !important;
+  }
+  .modal-meta-chip {
+    height: 25px !important;
+    font-size: 0.72rem !important;
+    padding: 0 8px !important;
+  }
+}
+

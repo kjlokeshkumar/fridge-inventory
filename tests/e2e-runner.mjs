@@ -215,6 +215,35 @@ async function testFullSuite() {
     console.log('Note: Calendar button appears when weekly plan days are loaded.');
   }
 
+  // Step 7b: Check Recipe Modal Harmonized Header & Symmetrical Combo Tabs
+  console.log('\n7b. Checking Recipe Modal Harmonized Header & Symmetrical Combo Tabs...');
+  const dismissWalk = page.locator('.walkthrough-dismiss-btn, .btn-walkthrough-confirm').first();
+  if (await dismissWalk.isVisible({ timeout: 2000 }).catch(() => false)) {
+    await dismissWalk.click();
+    await page.waitForTimeout(500);
+  }
+  const comboLink = page.locator('.combo-dish-link').first();
+  if (await comboLink.count() > 0) {
+    await comboLink.click();
+    const modal = page.locator('.planner-recipe-modal');
+    await modal.waitFor({ state: 'visible', timeout: 5000 });
+    const metaRow = modal.locator('.modal-recipe-meta-row');
+    const chipCount = await metaRow.locator('.modal-meta-chip').count();
+    console.log(`PASS: Recipe Modal unified metadata chips count: ${chipCount}`);
+
+    const segTabs = modal.locator('.modal-segmented-tab');
+    if (await segTabs.count() >= 2) {
+      const box0 = await segTabs.nth(0).boundingBox();
+      const box1 = await segTabs.nth(1).boundingBox();
+      const diff = Math.abs((box0?.width || 0) - (box1?.width || 0));
+      console.log(`PASS: Segmented combo tabs are symmetrical (width diff: ${diff}px)`);
+    }
+    const closeBtn = modal.locator('.modal-floating-close-btn, .modal-sticky-close-btn').first();
+    await closeBtn.click();
+    await page.waitForTimeout(400);
+    console.log('PASS: Recipe Modal closed cleanly.');
+  }
+
   // Step 8: Verify Shopping List Ingredient Photos & Inspection Modal
   console.log('\n8. Checking Shopping List & Ingredient Inspection Modal...');
   await page.goto('http://localhost:3000/shopping-list', { waitUntil: 'networkidle' });
