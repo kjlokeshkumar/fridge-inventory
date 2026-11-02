@@ -9,10 +9,12 @@ import { toTamilCategory, toTamilItemName, UI_TRANSLATIONS } from '@/lib/transla
 import {
   calculateWeeklyShopping,
   formatWeeklyShoppingShareText,
+  groupPantryItems,
   type WeeklyShoppingDay
 } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
 import { triggerSparklesAtElement } from '@/lib/sparkles';
+import { getIngredientImage } from '@/lib/produce-styles';
 
 interface InventoryItem {
   id: number;
@@ -99,6 +101,22 @@ export default function ShoppingListPage() {
     if (typeof window !== 'undefined') {
       const currentPlan = readCurrentWeeklyPlan();
       return readCheckedItems(getCheckedItemsKey(currentPlan));
+    }
+    return [];
+  });
+  const [checkedPantryItems, setCheckedPantryItems] = useState<string[]>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('checkedPantryItemsV1');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.every((x) => typeof x === 'string')) {
+            return parsed;
+          }
+        } catch {
+          // ignore parsing error
+        }
+      }
     }
     return [];
   });
@@ -263,6 +281,29 @@ export default function ShoppingListPage() {
     localStorage.setItem(getCheckedItemsKey(plan), JSON.stringify(updated));
   };
 
+  const checkedPantrySet = useMemo(() => new Set(checkedPantryItems), [checkedPantryItems]);
+  const pantryCategories = useMemo(
+    () => groupPantryItems(analysis.pantryChecklist),
+    [analysis.pantryChecklist]
+  );
+  const totalPantryCount = analysis.pantryChecklist.length;
+  const inStockPantryCount = analysis.pantryChecklist.filter((item) =>
+    checkedPantrySet.has(item.toLowerCase())
+  ).length;
+
+  const togglePantryChecked = (itemName: string, e?: React.SyntheticEvent) => {
+    const key = itemName.toLowerCase();
+    const willCheck = !checkedPantrySet.has(key);
+    if (willCheck && e?.currentTarget) {
+      triggerSparklesAtElement(e.currentTarget as HTMLElement, 'celebrate');
+    }
+    const updated = willCheck
+      ? [...checkedPantryItems, key]
+      : checkedPantryItems.filter((item) => item !== key);
+    setCheckedPantryItems(updated);
+    localStorage.setItem('checkedPantryItemsV1', JSON.stringify(updated));
+  };
+
   if (loading && plan.length === 0 && inventory.length === 0) {
     return (
       <div className="center-container">
@@ -352,14 +393,88 @@ export default function ShoppingListPage() {
 
         {plan.length > 0 && analysis.pantryChecklist.length > 0 && (
           <div className="pantry-check-panel glass-pane">
-            <h3>{t.checkPantryTitle}</h3>
-            <p className="selector-sub">{t.checkPantryDescription}</p>
-            <div className="ingredient-badges">
-              {analysis.pantryChecklist.map((item) => (
-                <span key={item} className="badge-pantry">
-                  {formatItem(item)}
-                </span>
-              ))}
+            <div className="pantry-panel-header">
+              <div>
+                <h3 className="pantry-panel-title">{t.checkPantryTitle}</h3>
+                <p className="selector-sub">{t.checkPantryDescription}</p>
+              </div>
+              <div className="pantry-stats-pill" title={`${inStockPantryCount} of ${totalPantryCount} in stock`}>
+                <span className="pantry-stats-count">{inStockPantryCount} / {totalPantryCount}</span>
+                <span className="pantry-stats-label">{t.pantryStockedCount}</span>
+              </div>
+            </div>
+
+            <div className="pantry-categories-grid">
+              {pantryCategories.map((group) => {
+                const groupTitle = language === 'Tamil' ? group.titleTa : group.titleEn;
+                const groupStocked = group.items.filter((item) =>
+                  checkedPantrySet.has(item.toLowerCase())
+                ).length;
+
+                return (
+                  <div key={group.id} className="pantry-category-card">
+                    <div className="pantry-category-header">
+                      <div className="pantry-category-title-wrap">
+                        <span className="pantry-category-icon" aria-hidden="true">{group.icon}</span>
+                        <h4 className="pantry-category-name">{groupTitle}</h4>
+                      </div>
+                      <span className="pantry-category-badge">
+                        {groupStocked}/{group.items.length}
+                      </span>
+                    </div>
+
+                    <ul className="pantry-category-items">
+                      {group.items.map((item) => {
+                        const key = item.toLowerCase();
+                        const isChecked = checkedPantrySet.has(key);
+                        const imageSrc = getIngredientImage(item);
+
+                        return (
+                          <li
+                            key={item}
+                            className={`pantry-item-row ${isChecked ? 'is-stocked' : 'needs-check'}`}
+                            onClick={(e) => togglePantryChecked(item, e)}
+                          >
+                            <div className="pantry-item-info">
+                              <input
+                                type="checkbox"
+                                checked={isChecked}
+                                onChange={(e) => togglePantryChecked(item, e)}
+                                onClick={(e) => e.stopPropagation()}
+                                className="pantry-item-checkbox"
+                                aria-label={`Mark ${formatItem(item)} as in pantry`}
+                              />
+                              <div className="pantry-item-thumb-bowl" aria-hidden="true">
+                                {imageSrc ? (
+                                  <img
+                                    src={imageSrc}
+                                    alt={item}
+                                    className="pantry-item-thumb-img"
+                                    loading="lazy"
+                                  />
+                                ) : (
+                                  <span className="pantry-item-thumb-fallback">{group.icon}</span>
+                                )}
+                              </div>
+                              <span className="pantry-item-title">{formatItem(item)}</span>
+                            </div>
+
+                            <span
+                              className={`pantry-stock-pill ${isChecked ? 'pill-in-pantry' : 'pill-check'}`}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                togglePantryChecked(item, e);
+                              }}
+                            >
+                              {isChecked ? `✓ ${t.inPantry}` : t.checkStock}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

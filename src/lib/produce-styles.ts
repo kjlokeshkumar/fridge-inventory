@@ -411,6 +411,120 @@ export function getIngredientImage(name: string): string | undefined {
     return '/images/ingredients/fish.jpg';
   }
 
+  // 37. Cashews (Mundhiri / Kaju)
+  if (
+    lower.includes('cashew') ||
+    lower.includes('mundhiri') ||
+    lower.includes('kaju') ||
+    lower.includes('முந்திரி')
+  ) {
+    return '/images/ingredients/cashews.jpg';
+  }
+
+  // 38. Raisins / Sultanas (Kismis)
+  if (
+    lower.includes('raisin') ||
+    lower.includes('kismis') ||
+    lower.includes('sultana') ||
+    lower.includes('உலர் திராட்சை') ||
+    lower.includes('திராட்சை')
+  ) {
+    return '/images/ingredients/raisins.jpg';
+  }
+
+  // 39. Cardamom Pods (Yelakkai / Elachi)
+  if (
+    lower.includes('cardamom') ||
+    lower.includes('yelakkai') ||
+    lower.includes('elachi') ||
+    lower.includes('ஏலக்காய்')
+  ) {
+    return '/images/ingredients/cardamom.jpg';
+  }
+
+  // 40. Cinnamon & Cloves (Lavangam / Pattai)
+  if (
+    lower.includes('cinnamon') ||
+    lower.includes('clove') ||
+    lower.includes('lavangam') ||
+    lower.includes('பட்டை') ||
+    lower.includes('கிராம்பு')
+  ) {
+    return '/images/ingredients/cinnamon_cloves.jpg';
+  }
+
+  // 41. Asafoetida / Hing (Perungayam)
+  if (
+    lower.includes('asafoetida') ||
+    lower.includes('hing') ||
+    lower.includes('பெருங்காயம்') ||
+    lower.includes('kaya')
+  ) {
+    return '/images/ingredients/asafoetida.jpg';
+  }
+
+  // 42. Poppy Seeds (Kas Kas / Khus Khus)
+  if (
+    lower.includes('poppy') ||
+    lower.includes('kas kas') ||
+    lower.includes('kaskas') ||
+    lower.includes('khus khus') ||
+    lower.includes('கசகசா')
+  ) {
+    return '/images/ingredients/poppy_seeds.jpg';
+  }
+
+  // 43. Bitter Gourd (Pavakkai / Karela)
+  if (
+    lower.includes('bitter gourd') ||
+    lower.includes('pavakkai') ||
+    lower.includes('பாகற்காய்') ||
+    lower.includes('karela')
+  ) {
+    return '/images/ingredients/bitter_gourd.jpg';
+  }
+
+  // 44. Curd / Yogurt / Milk / Buttermilk
+  if (
+    lower.includes('curd') ||
+    lower.includes('yogurt') ||
+    lower.includes('dheim') ||
+    lower.includes('thayir') ||
+    lower.includes('தயிர்') ||
+    lower.includes('taak') ||
+    lower.includes('buttermilk') ||
+    lower.includes('milk') ||
+    lower.includes('பால்') ||
+    lower.includes('doodh')
+  ) {
+    return '/images/ingredients/curd.jpg';
+  }
+
+  // 45. Peanuts (Verkadalai)
+  if (
+    lower.includes('peanut') ||
+    lower.includes('groundnut') ||
+    lower.includes('verkadalai') ||
+    lower.includes('வேர்க்கடலை')
+  ) {
+    return '/images/ingredients/peanuts.jpg';
+  }
+
+  // 46. Goat / Lamb (Mutton)
+  if (lower.includes('goat') || lower.includes('lamb')) {
+    return '/images/ingredients/mutton.jpg';
+  }
+
+  // 47. Butter (Vennai -> Ghee)
+  if (lower.includes('butter') || lower.includes('vennai') || lower.includes('வெண்ணெய்')) {
+    return '/images/ingredients/ghee.jpg';
+  }
+
+  // 48. Gooseberry / Amla (Nellika -> Lemon/Amla)
+  if (lower.includes('gooseberry') || lower.includes('amla') || lower.includes('nellika') || lower.includes('நெல்லிக்காய்')) {
+    return '/images/ingredients/lemon.jpg';
+  }
+
   return undefined;
 }
 

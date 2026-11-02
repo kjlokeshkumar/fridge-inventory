@@ -167,8 +167,150 @@ export function calculateWeeklyShopping(
       quantity: quantity.specified ? formatQuantity(quantity.amount, quantity.unit) : undefined
     })),
     alreadyInFridge: Array.from(alreadyInFridge),
-    pantryChecklist: Array.from(pantryNeeded).slice(0, 14)
+    pantryChecklist: Array.from(pantryNeeded).sort((a, b) => a.localeCompare(b))
   };
+}
+
+export interface PantryCategoryGroup {
+  id: 'dals' | 'spices' | 'oils' | 'nuts' | 'grains' | 'other';
+  titleEn: string;
+  titleTa: string;
+  icon: string;
+  items: string[];
+}
+
+export function groupPantryItems(items: string[]): PantryCategoryGroup[] {
+  const groups: Record<string, PantryCategoryGroup> = {
+    dals: {
+      id: 'dals',
+      titleEn: 'Dals & Pulses',
+      titleTa: 'பருப்பு வகைகள்',
+      icon: '🫘',
+      items: []
+    },
+    spices: {
+      id: 'spices',
+      titleEn: 'Spices, Powders & Masalas',
+      titleTa: 'மசாலா & மளிகை பொடிகள்',
+      icon: '🌶️',
+      items: []
+    },
+    oils: {
+      id: 'oils',
+      titleEn: 'Oils, Ghee & Souring',
+      titleTa: 'எண்ணெய், நெய் & புளிப்பு',
+      icon: '🫒',
+      items: []
+    },
+    nuts: {
+      id: 'nuts',
+      titleEn: 'Nuts, Dry Fruits & Sweeteners',
+      titleTa: 'நட்ஸ் & இனிப்பு பொருட்கள்',
+      icon: '🥜',
+      items: []
+    },
+    grains: {
+      id: 'grains',
+      titleEn: 'Grains & Flours',
+      titleTa: 'தானியங்கள் & மாவுகள்',
+      icon: '🌾',
+      items: []
+    },
+    other: {
+      id: 'other',
+      titleEn: 'Other Pantry Staples',
+      titleTa: 'இதர மளிகை பொருட்கள்',
+      icon: '🧂',
+      items: []
+    }
+  };
+
+  for (const item of items) {
+    const lower = item.toLowerCase();
+    if (
+      lower.includes('rice') ||
+      lower.includes('rava') ||
+      lower.includes('sooji') ||
+      lower.includes('flour') ||
+      lower.includes('maida') ||
+      lower.includes('atta') ||
+      lower.includes('besan') ||
+      lower.includes('poha') ||
+      lower.includes('aval') ||
+      lower.includes('vermicelli') ||
+      lower.includes('semiya')
+    ) {
+      groups.grains.items.push(item);
+    } else if (
+      lower.includes('dal') ||
+      lower.includes('gram') ||
+      lower.includes('pulse') ||
+      lower.includes('lentil') ||
+      lower.includes('chickpea') ||
+      lower.includes('peas') ||
+      lower.includes('payatham') ||
+      lower.includes('paruppu')
+    ) {
+      groups.dals.items.push(item);
+    } else if (
+      lower.includes('powder') ||
+      lower.includes('turmeric') ||
+      lower.includes('chilli') ||
+      lower.includes('pepper') ||
+      lower.includes('mustard') ||
+      lower.includes('cumin') ||
+      lower.includes('jeera') ||
+      lower.includes('coriander seed') ||
+      lower.includes('fenugreek') ||
+      lower.includes('methi') ||
+      lower.includes('hing') ||
+      lower.includes('asafoetida') ||
+      lower.includes('clove') ||
+      lower.includes('cinnamon') ||
+      lower.includes('fennel') ||
+      lower.includes('somph') ||
+      lower.includes('garam masala') ||
+      lower.includes('sambar') ||
+      lower.includes('rasam') ||
+      lower.includes('bhurko')
+    ) {
+      groups.spices.items.push(item);
+    } else if (
+      lower.includes('cashew') ||
+      lower.includes('mundhiri') ||
+      lower.includes('raisin') ||
+      lower.includes('kismis') ||
+      lower.includes('cardamom') ||
+      lower.includes('elachi') ||
+      lower.includes('jaggery') ||
+      lower.includes('sugar') ||
+      lower.includes('peanut') ||
+      lower.includes('groundnut') ||
+      lower.includes('kalkandu') ||
+      lower.includes('poppy') ||
+      lower.includes('kas kas') ||
+      lower.includes('coconut') ||
+      lower.includes('copra')
+    ) {
+      groups.nuts.items.push(item);
+    } else if (
+      /\boils?\b/i.test(lower) ||
+      lower.includes('gingelly') ||
+      lower.includes('sesame') ||
+      lower.includes('ghee') ||
+      lower.includes('tamarind') ||
+      lower.includes('puli') ||
+      lower.includes('vinegar') ||
+      lower.includes('lemon')
+    ) {
+      groups.oils.items.push(item);
+    } else {
+      groups.other.items.push(item);
+    }
+  }
+
+  return [groups.dals, groups.spices, groups.oils, groups.nuts, groups.grains, groups.other]
+    .filter((g) => g.items.length > 0);
 }
 
 export function formatWeeklyShoppingShareText(
