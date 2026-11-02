@@ -2725,6 +2725,7 @@
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
+}
 
 /* Floating Circular Close Button on Recipe Modal Image Hero */
 .modal-floating-close-btn {
@@ -2896,7 +2897,8 @@
   font-size: 0.95rem;
 }
 
-  /* Recipe Detail Modal on Mobile */
+/* Recipe Detail Modal on Mobile */
+@media (max-width: 640px) {
   .modal-recipe-image-hero {
     height: 240px !important;
     min-height: 240px !important;
@@ -2927,5 +2929,523 @@
   .modal-sticky-close-btn {
     width: 100% !important;
     min-height: 48px !important;
+  }
+}
+
+/* ===================================================================
+   CHEF'S FRESH PREP PLATE (MISE-EN-PLACE CERAMIC PLATTER)
+   =================================================================== */
+.culinary-prep-plate-container {
+  margin: 18px 0 22px !important;
+  width: 100% !important;
+}
+
+.prep-plate-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-bottom: 12px !important;
+}
+
+.prep-plate-title-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.prep-plate-icon {
+  font-size: 1.6rem !important;
+  line-height: 1 !important;
+}
+
+.prep-plate-title {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: var(--primary-teal, #245961) !important;
+  margin: 0 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.prep-plate-subtitle {
+  font-size: 0.78rem !important;
+  color: var(--text-secondary, #5c4d42) !important;
+  margin: 2px 0 0 !important;
+}
+
+.prep-plate-legend {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.legend-chip {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  padding: 3px 9px !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  line-height: 1.2 !important;
+}
+
+.legend-fridge {
+  background: #eef7f8 !important;
+  color: #194f56 !important;
+  border-color: rgba(36, 89, 97, 0.32) !important;
+}
+
+.legend-pantry {
+  background: #fef3c7 !important;
+  color: #78350f !important;
+  border-color: rgba(180, 83, 9, 0.36) !important;
+}
+
+/* Ceramic Prep Plate Platter */
+.culinary-prep-plate {
+  position: relative !important;
+  background: radial-gradient(ellipse at center, #ffffff 0%, #faf6ee 65%, #f2e7d7 100%) !important;
+  border: 2.5px solid rgba(45, 110, 119, 0.28) !important;
+  border-radius: 20px !important;
+  padding: 20px 16px !important;
+  box-shadow: inset 0 2px 10px rgba(31, 26, 23, 0.08), 0 6px 18px rgba(31, 26, 23, 0.08) !important;
+  overflow: visible !important;
+}
+
+.culinary-prep-plate::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 6px !important;
+  border: 1px dashed rgba(45, 110, 119, 0.22) !important;
+  border-radius: 14px !important;
+  pointer-events: none !important;
+}
+
+.prep-plate-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)) !important;
+  gap: 14px 10px !important;
+  justify-items: center !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Individual ingredient saucer card on the plate */
+.plate-ingredient-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(45, 110, 119, 0.18) !important;
+  border-radius: 12px !important;
+  padding: 10px 6px 8px !important;
+  width: 100% !important;
+  max-width: 104px !important;
+  box-shadow: 0 2px 6px rgba(31, 26, 23, 0.06), 0 1px 2px rgba(31, 26, 23, 0.04) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+.plate-ingredient-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(36, 89, 97, 0.15) !important;
+  border-color: var(--primary-teal, #245961) !important;
+}
+
+.plate-ingredient-card.source-fridge {
+  border-bottom: 3px solid #245961 !important;
+}
+
+.plate-ingredient-card.source-pantry {
+  border-bottom: 3px solid #b45309 !important;
+}
+
+/* Avatar container with floating quantity pill */
+.plate-item-avatar-wrap {
+  position: relative !important;
+  margin-bottom: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.plate-item-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid rgba(31, 26, 23, 0.08) !important;
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(31, 26, 23, 0.05) !important;
+}
+
+.plate-item-emoji {
+  font-size: 1.6rem !important;
+  line-height: 1 !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12)) !important;
+}
+
+/* Floating quantity pill hovering over picture */
+.plate-qty-hover-pill {
+  position: absolute !important;
+  top: -8px !important;
+  right: -8px !important;
+  background: var(--primary-teal, #245961) !important;
+  color: #ffffff !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  padding: 2px 7px !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 2px 5px rgba(24, 62, 68, 0.35) !important;
+  white-space: nowrap !important;
+  max-width: 72px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  border: 1.5px solid #ffffff !important;
+  letter-spacing: -0.01em !important;
+  z-index: 2 !important;
+  line-height: 1.2 !important;
+}
+
+.plate-ingredient-card.source-pantry .plate-qty-hover-pill {
+  background: #b45309 !important;
+}
+
+.plate-item-name {
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  color: var(--text-main, #1f1a17) !important;
+  text-align: center !important;
+  line-height: 1.25 !important;
+  margin-top: 2px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+  max-width: 100% !important;
+  min-height: 28px !important;
+}
+
+.plate-source-tag {
+  font-size: 0.64rem !important;
+  font-weight: 700 !important;
+  margin-top: 4px !important;
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+}
+
+.plate-source-tag.tag-fridge {
+  background: #eef7f8 !important;
+  color: #194f56 !important;
+}
+
+.plate-source-tag.tag-pantry {
+  background: #fef3c7 !important;
+  color: #78350f !important;
+}
+
+/* ===================================================================
+   WEIGHT & NUTRITION SUMMARY CARD (DEDUPLICATED & NON-REPETITIVE)
+   =================================================================== */
+.nutrition-summary-card {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(45, 110, 119, 0.22) !important;
+  border-radius: 14px !important;
+  padding: 16px 18px !important;
+  box-shadow: 0 2px 8px rgba(31, 26, 23, 0.05) !important;
+  margin-top: 8px !important;
+}
+
+.nutrition-stat-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  gap: 14px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(45, 110, 119, 0.14) !important;
+}
+
+.nutrition-stat-pill {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  flex: 1 !important;
+}
+
+.stat-label {
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary, #5c4d42) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+.stat-value {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: var(--primary-teal, #245961) !important;
+  margin-top: 2px !important;
+}
+
+.stat-value.cal-value {
+  color: #b45309 !important;
+}
+
+.nutrition-chips-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 12px !important;
+}
+
+.nutrition-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: #faf6ee !important;
+  border: 1px solid rgba(45, 110, 119, 0.18) !important;
+  padding: 4px 10px !important;
+  border-radius: 8px !important;
+  font-size: 0.78rem !important;
+}
+
+.nutrition-chip .chip-name {
+  font-weight: 600 !important;
+  color: var(--text-main, #1f1a17) !important;
+}
+
+.nutrition-chip .chip-detail {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  color: #78350f !important;
+  background: #ffffff !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(180, 83, 9, 0.22) !important;
+}
+
+/* ===================================================================
+   TRADITIONAL COOKING PROCESS STEPS CARDS
+   =================================================================== */
+.steps-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 10px 0 0 !important;
+}
+
+.step-card-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(45, 110, 119, 0.16) !important;
+  border-radius: 10px !important;
+  padding: 12px 14px !important;
+  box-shadow: 0 1px 4px rgba(31, 26, 23, 0.04) !important;
+  transition: transform 0.15s ease !important;
+}
+
+.step-card-item:hover {
+  transform: translateX(2px) !important;
+  border-color: rgba(45, 110, 119, 0.32) !important;
+}
+
+.step-number-badge {
+  background: linear-gradient(180deg, #2d6e77 0%, #245961 100%) !important;
+  color: #ffffff !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 1px 3px rgba(36, 89, 97, 0.25) !important;
+}
+
+.step-card-text {
+  font-size: 0.88rem !important;
+  line-height: 1.5 !important;
+  color: var(--text-main, #1f1a17) !important;
+  margin: 0 !important;
+  flex: 1 !important;
+}
+
+@media (max-width: 600px) {
+  .prep-plate-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px 8px !important;
+  }
+
+  .plate-ingredient-card {
+    max-width: 100% !important;
+    padding: 8px 4px 6px !important;
+  }
+
+  .plate-item-avatar {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .plate-item-emoji {
+    font-size: 1.4rem !important;
+  }
+
+  .plate-qty-hover-pill {
+    font-size: 0.62rem !important;
+    padding: 1.5px 5px !important;
+    top: -6px !important;
+    right: -6px !important;
+  }
+
+  .plate-item-name {
+    font-size: 0.72rem !important;
+    min-height: 26px !important;
+  }
+}
+
+/* ===================================================================
+   SLEEK RECIPE CATALOG CARDS & RESPONSIVE GRID (ZERO OVERFLOW)
+   =================================================================== */
+.recipes-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: 16px !important;
+}
+
+.recipe-card {
+  display: flex !important;
+  flex-direction: column !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(45, 110, 119, 0.20) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(31, 26, 23, 0.05) !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.recipe-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(36, 89, 97, 0.14) !important;
+  border-color: var(--primary-teal, #245961) !important;
+}
+
+.recipe-card-image-box {
+  width: 100% !important;
+  height: 170px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: var(--bg-strip, #fdeed9) !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+}
+
+.recipe-card-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.25s ease !important;
+}
+
+.recipe-card:hover .recipe-card-image {
+  transform: scale(1.04) !important;
+}
+
+.recipe-card-body {
+  padding: 14px 16px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.recipe-card-body .recipe-header {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.recipe-card-body .recipe-header h3 {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: var(--text-main, #1f1a17) !important;
+  line-height: 1.35 !important;
+  margin-top: 4px !important;
+  transition: color 0.15s ease !important;
+}
+
+.recipe-card-body .recipe-header h3:hover {
+  color: var(--primary-teal, #245961) !important;
+}
+
+.catalog-card-meta-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+  margin: 2px 0 6px !important;
+}
+
+.meta-badge {
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  color: var(--text-secondary, #5c4d42) !important;
+  background: #faf5ea !important;
+  border: 1px solid rgba(45, 110, 119, 0.18) !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.catalog-card-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-top: auto !important;
+  width: 100% !important;
+}
+
+.catalog-source-links {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+}
+
+@media (max-width: 680px) {
+  .recipes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .recipe-card {
+    border-radius: 12px !important;
+  }
+
+  .recipe-card-image-box {
+    height: 160px !important;
   }
 }

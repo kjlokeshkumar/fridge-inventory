@@ -242,28 +242,6 @@ export default function UploadPage() {
       </header>
 
       <div className="upload-content">
-        {previews.length > 0 && (
-          <div className="action-buttons top-action-bar" style={{ marginBottom: '16px' }}>
-            <button 
-              className="btn-primary btn-large glow-btn" 
-              onClick={handleUpload}
-              disabled={files.length === 0 || isAnalyzing}
-              style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', fontWeight: 'bold', boxShadow: '0 4px 20px rgba(59, 130, 246, 0.4)' }}
-            >
-              {isAnalyzing ? (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="spinner"></span> {t.analyzingBatch}...
-                  </div>
-                  {progressMsg && <span style={{ fontSize: '0.85rem', opacity: 0.9 }}>{progressMsg}</span>}
-                </div>
-              ) : (
-                `✨ ${t.analyzeWithAi} (${previews.length})`
-              )}
-            </button>
-          </div>
-        )}
-
         {previews.length === 0 ? (
           <div 
             className="drop-zone glass-pane"
@@ -285,7 +263,8 @@ export default function UploadPage() {
             {isNativePlatform && (
               <button
                 type="button"
-                className="btn-secondary btn-icon"
+                className="btn-secondary"
+                style={{ marginTop: '16px' }}
                 onClick={(event) => {
                   event.stopPropagation();
                   void handleTakePhoto();
@@ -296,41 +275,52 @@ export default function UploadPage() {
             )}
           </div>
         ) : (
-          <div className="preview-container glass-pane" style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center', padding: '20px' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', width: '100%' }}>
+          <div className="preview-container glass-pane">
+            <div className="preview-grid">
               {previews.map((preview, index) => (
-                <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '8px', borderRadius: '12px' }}>
+                <div key={index} className="preview-item-card">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
                     src={preview} 
                     alt={`Upload preview ${index + 1}`} 
                     className="preview-image" 
-                    style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} 
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       e.currentTarget.parentElement?.querySelector('.fallback-icon')?.classList.remove('hidden');
                     }}
                   />
-                  <div className="fallback-icon hidden" style={{ width: '100px', height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', border: '1px dashed rgba(255,255,255,0.3)', fontSize: '2rem' }}>
+                  <div className="fallback-icon hidden" style={{ width: '96px', height: '96px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.06)', borderRadius: '8px', border: '1px dashed rgba(45,110,119,0.3)', fontSize: '2rem' }}>
                     📄
                   </div>
-                  <span style={{ fontSize: '0.7rem', marginTop: '6px', maxWidth: '100px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', opacity: 0.8 }}>
+                  <span className="preview-filename">
                     {files[index]?.name}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div style={{ display: 'flex', gap: '12px', marginTop: '10px', width: '100%', justifyContent: 'center' }}>
+            <div className="preview-action-row">
               <button 
-                className="btn-secondary btn-icon" 
+                type="button"
+                className="btn-secondary" 
                 onClick={() => fileInputRef.current?.click()}
                 disabled={isAnalyzing}
               >
                 ➕ Add More
               </button>
+              {isNativePlatform && (
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={() => void handleTakePhoto()}
+                  disabled={isAnalyzing}
+                >
+                  📷 {t.takePhoto}
+                </button>
+              )}
               <button 
-                className="btn-secondary btn-icon" 
+                type="button"
+                className="btn-danger" 
                 onClick={() => {
                   setFiles([]);
                   setPreviews([]);
@@ -360,25 +350,32 @@ export default function UploadPage() {
 
         {error && <div className="error-message">{error}</div>}
 
-        <div className="action-buttons">
-          <button 
-            className="btn-primary btn-large glow-btn" 
-            onClick={handleUpload}
-            disabled={files.length === 0 || isAnalyzing}
-            style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', fontWeight: 'bold', boxShadow: '0 4px 20px rgba(59, 130, 246, 0.4)' }}
-          >
+        {previews.length > 0 && (
+          <div className="upload-submit-container">
             {isAnalyzing ? (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span className="spinner"></span> {t.analyzingBatch}...
+              <div className="analyzing-progress-banner" role="status" aria-live="polite">
+                <span className="spinner" aria-hidden="true" />
+                <div className="analyzing-progress-text">
+                  <strong>{t.analyzingBatch}...</strong>
+                  {progressMsg ? (
+                    <p>{progressMsg}</p>
+                  ) : (
+                    <p>Identifying ingredients, categories, and freshness with AI…</p>
+                  )}
                 </div>
-                {progressMsg && <span style={{ fontSize: '0.85rem', opacity: 0.9 }}>{progressMsg}</span>}
               </div>
             ) : (
-              `✨ ${t.analyzeWithAi}`
+              <button 
+                type="button"
+                className="btn-primary scan-analyze-btn" 
+                onClick={handleUpload}
+                disabled={files.length === 0}
+              >
+                ✨ {t.analyzeWithAi} ({previews.length})
+              </button>
             )}
-          </button>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

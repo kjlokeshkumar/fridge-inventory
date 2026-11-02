@@ -9,6 +9,129 @@ import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
 import { getRecipeImageUrl } from '@/lib/recipe-images';
 import { triggerSparkles, triggerSparklesAtElement } from '@/lib/sparkles';
+import { getProduceStyle } from '@/lib/produce-styles';
+
+interface PrepPlateItem {
+  name: string;
+  quantity: string;
+  source: 'fridge' | 'pantry';
+  icon: string;
+  bg: string;
+  weightGrams?: number;
+  calories?: number;
+}
+
+function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdowns?: IngredientCalories[]): PrepPlateItem {
+  const cleanRaw = raw.trim();
+  let name = cleanRaw;
+  let quantity = '';
+
+  const parenMatch = cleanRaw.match(/^(.*?)\s*\(([^)]+)\)$/);
+  if (parenMatch) {
+    name = parenMatch[1].trim();
+    const parenContent = parenMatch[2].trim();
+    if (/^\d+$/.test(parenContent)) {
+      quantity = `${parenContent} pcs`;
+    } else {
+      quantity = parenContent.replace(/^for\s+/i, '');
+    }
+  } else {
+    const dashMatch = cleanRaw.match(/^(.*?)\s*-\s*([0-9]+(?:\.[0-9]+)?\s*[a-zA-Z]+|[a-zA-Z0-9\s]+)$/);
+    if (dashMatch) {
+      name = dashMatch[1].trim();
+      quantity = dashMatch[2].trim();
+    }
+  }
+
+  let weightGrams: number | undefined;
+  let calories: number | undefined;
+  if (Array.isArray(breakdowns)) {
+    const lowerName = name.toLowerCase();
+    const matched = breakdowns.find((b) => {
+      const bLower = (b.name || '').toLowerCase();
+      return bLower.includes(lowerName) || lowerName.includes(bLower);
+    });
+    if (matched) {
+      weightGrams = Number(matched.weightGrams) || undefined;
+      calories = Number(matched.calories) || undefined;
+      if (!quantity && weightGrams) {
+        quantity = `${weightGrams}g`;
+      }
+    }
+  }
+
+  if (!quantity) {
+    quantity = source === 'fridge' ? 'Fresh' : 'To taste';
+  }
+
+  if (quantity.length > 0) {
+    quantity = quantity.charAt(0).toUpperCase() + quantity.slice(1);
+  }
+
+  const style = getProduceStyle(name);
+
+  return {
+    name,
+    quantity,
+    source,
+    icon: style.icon,
+    bg: style.bg,
+    weightGrams,
+    calories,
+  };
+}
+
+function buildPrepPlateItems(recipe: Recipe | undefined): PrepPlateItem[] {
+  if (!recipe) return [];
+  const items: PrepPlateItem[] = [];
+  const seen = new Set<string>();
+
+  if (Array.isArray(recipe.fridgeIngredientsUsed)) {
+    for (const raw of recipe.fridgeIngredientsUsed) {
+      if (!raw || typeof raw !== 'string') continue;
+      const parsed = parseIngredientString(raw, 'fridge', recipe.ingredientsBreakdown);
+      const key = parsed.name.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        items.push(parsed);
+      }
+    }
+  }
+
+  if (Array.isArray(recipe.pantryAdditives)) {
+    for (const raw of recipe.pantryAdditives) {
+      if (!raw || typeof raw !== 'string') continue;
+      const parsed = parseIngredientString(raw, 'pantry', recipe.ingredientsBreakdown);
+      const key = parsed.name.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        items.push(parsed);
+      }
+    }
+  }
+
+  if (items.length === 0 && Array.isArray(recipe.ingredientsBreakdown)) {
+    for (const b of recipe.ingredientsBreakdown) {
+      if (!b?.name) continue;
+      const key = b.name.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        const style = getProduceStyle(b.name);
+        items.push({
+          name: b.name,
+          quantity: `${Number(b.weightGrams) || 100}g`,
+          source: 'fridge',
+          icon: style.icon,
+          bg: style.bg,
+          weightGrams: b.weightGrams,
+          calories: b.calories,
+        });
+      }
+    }
+  }
+
+  return items;
+}
 
 interface IngredientCalories {
   name: string;
@@ -922,6 +1045,24 @@ export default function RecipesPage() {
     setActivePlannerModal(state);
   };
 
+  const openCatalogRecipeModal = (recipe: Recipe, e?: React.MouseEvent) => {
+    if (e) triggerSparklesAtElement(e.currentTarget as HTMLElement, 'open');
+    else triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'open');
+    setActivePlannerModal({
+      dayName: recipe.category || (language === 'Tamil' ? 'சௌராஷ்டிர பாரம்பரிய உணவு' : 'Sourashtra Classic'),
+      slotLabel: '🍽️ Traditional Recipe',
+      combo: {
+        comboId: recipe.id || String(recipe.title).toLowerCase().replace(/\s+/g, '-'),
+        mainDishTitle: recipe.title,
+        pairedWithTitle: '',
+        pairingTraditionNote: recipe.category || 'Traditional Recipe',
+        primaryRecipe: recipe,
+        secondaryRecipe: undefined,
+      },
+      activeTab: 'main',
+    });
+  };
+
   const closePlannerModal = () => {
     triggerSparkles(window.innerWidth / 2, window.innerHeight / 2, 'close');
     setActivePlannerModal(null);
@@ -1421,13 +1562,6 @@ export default function RecipesPage() {
                   📅 {formatDayName(activePlannerModal.dayName, language)} • {activePlannerModal.slotLabel}
                 </span>
               </div>
-              <button
-                type="button"
-                className="btn-back-planner"
-                onClick={closePlannerModal}
-              >
-                ← {language === 'Tamil' ? 'மூடிவிட்டு 7 நாள் உணவுத் திட்டத்திற்குச் செல்' : 'Close & Back to 7-Day Planner'}
-              </button>
             </div>
 
             {/* Switcher Tabs between Main Dish Recipe & Paired Side Dish Recipe */}
@@ -1492,96 +1626,113 @@ export default function RecipesPage() {
               </div>
             )}
 
-            {/* 1. Main Fridge Ingredients */}
-            {Array.isArray(modalRecipe.fridgeIngredientsUsed) &&
-              modalRecipe.fridgeIngredientsUsed.length > 0 && (
-                <div className="recipe-section">
-                  <h4>{t.mainFridgeIngredients}</h4>
-                  <div className="ingredient-badges">
-                    {modalRecipe.fridgeIngredientsUsed.map((ing, i) => (
-                      <span key={i} className="badge-fridge">{formatItemName(safeString(ing), language)}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
+            {/* 🍽️ Fresh Prep Plate • Ingredients at a Glance */}
+            {(() => {
+              const plateItems = buildPrepPlateItems(modalRecipe);
+              const totalWeight = Array.isArray(modalRecipe.ingredientsBreakdown)
+                ? modalRecipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.weightGrams) || 100), 0)
+                : 0;
+              const totalKcal = modalRecipe.totalCalories || (Array.isArray(modalRecipe.ingredientsBreakdown)
+                ? modalRecipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.calories) || 50), 0)
+                : 0);
 
-            {/* 2. Pantry Additives */}
-            {Array.isArray(modalRecipe.pantryAdditives) &&
-              modalRecipe.pantryAdditives.length > 0 && (
-                <div className="recipe-section">
-                  <h4>{t.pantryAdditives}</h4>
-                  <div className="ingredient-badges">
-                    {modalRecipe.pantryAdditives.map((add, i) => (
-                      <span key={i} className="badge-pantry">{safeString(add)}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
+              return (
+                <>
+                  <div className="culinary-prep-plate-container">
+                    <div className="prep-plate-header">
+                      <div className="prep-plate-title-group">
+                        <span className="prep-plate-icon" aria-hidden="true">🍽️</span>
+                        <div>
+                          <h4 className="prep-plate-title">
+                            {language === 'Tamil' ? 'பொருட்கள் தயாரிப்புத் தட்டு' : 'Fresh Prep Plate'}
+                          </h4>
+                          <p className="prep-plate-subtitle">
+                            {language === 'Tamil' ? 'சமையலுக்குத் தேவையான பொருட்கள் அளவுகளுடன்' : 'Ingredients at a glance with hovering quantities'}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="prep-plate-legend">
+                        <span className="legend-chip legend-fridge">🫙 {language === 'Tamil' ? 'குளிர்சாதனப் பெட்டி' : 'Fridge'}</span>
+                        <span className="legend-chip legend-pantry">🌾 {language === 'Tamil' ? 'அஞ்சறைப் பெட்டி' : 'Pantry'}</span>
+                      </div>
+                    </div>
 
-            {/* 3. Sourashtra Secret */}
-            {modalRecipe.bhurkoNote && (
-              <div className="bhurko-note-box">
-                <strong>🥣 {language === 'Tamil' ? 'சௌராஷ்டிர ரகசியம்:' : 'Sourashtra Secret:'}</strong> {safeString(modalRecipe.bhurkoNote)}
-              </div>
-            )}
-
-            {/* 4. Step-by-Step Cooking Process */}
-            <div className="recipe-section">
-              <h4>👩‍🍳 {language === 'Tamil' ? 'பாரம்பரிய சமையல் முறை' : 'Traditional Cooking Process'} ({t.instructions})</h4>
-              <ol className="steps-list">
-                {Array.isArray(modalRecipe.steps) &&
-                  modalRecipe.steps.map((step, i) => (
-                    <li key={i}>{safeString(step)}</li>
-                  ))}
-              </ol>
-            </div>
-
-            {/* 5. Calorie Breakdown */}
-            <div className="recipe-section">
-              <h4>
-                ⚖️ {language === 'Tamil' ? 'தேவையான பொருட்கள் & கலோரி விவரம்' : 'Ingredients, Weight & Calories'} ({t.approx} {modalRecipe.totalCalories || 0} {t.kcal}):
-              </h4>
-              <div className="calorie-breakdown">
-                {Array.isArray(modalRecipe.ingredientsBreakdown) &&
-                modalRecipe.ingredientsBreakdown.length > 0 ? (
-                  <div className="recipe-nutrition-table-container">
-                    <table className="recipe-nutrition-table">
-                      <thead>
-                        <tr>
-                          <th style={{ textAlign: 'left' }}>{t.tableIngredient || (language === 'Tamil' ? 'பொருள்' : 'Ingredient')}</th>
-                          <th style={{ textAlign: 'center', width: '28%' }}>{t.tableWeight || (language === 'Tamil' ? 'எடை' : 'Weight')}</th>
-                          <th style={{ textAlign: 'right', width: '28%' }}>{t.tableCalories || (language === 'Tamil' ? 'கலோரி' : 'Calories')}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {modalRecipe.ingredientsBreakdown.map((item, i) => (
-                          <tr key={i}>
-                            <td className="nutrition-col-item">{formatItemName(safeString(item?.name), language)}</td>
-                            <td className="nutrition-col-weight">{Number(item?.weightGrams) || 100} g</td>
-                            <td className="nutrition-col-cal">{Number(item?.calories) || 50} {t.kcal}</td>
-                          </tr>
+                    <div className="culinary-prep-plate">
+                      <div className="prep-plate-grid">
+                        {plateItems.map((item, idx) => (
+                          <div key={idx} className={`plate-ingredient-card source-${item.source}`}>
+                            <div className="plate-item-avatar-wrap">
+                              <span className="plate-qty-hover-pill" title={`Quantity: ${item.quantity}`}>
+                                {item.quantity}
+                              </span>
+                              <div className="plate-item-avatar" style={{ backgroundColor: item.bg }}>
+                                <span className="plate-item-emoji">{item.icon}</span>
+                              </div>
+                            </div>
+                            <span className="plate-item-name" title={item.name}>
+                              {formatItemName(safeString(item.name), language)}
+                            </span>
+                            <span className={`plate-source-tag tag-${item.source}`}>
+                              {item.source === 'fridge' ? '🫙 Fridge' : '🌾 Pantry'}
+                            </span>
+                          </div>
                         ))}
-                      </tbody>
-                      <tfoot>
-                        <tr className="nutrition-total-row">
-                          <td><strong>{t.tableTotal || (language === 'Tamil' ? 'மொத்தம்' : 'Total')}</strong></td>
-                          <td className="nutrition-col-weight">
-                            <strong>
-                              {modalRecipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.weightGrams) || 100), 0)} g
-                            </strong>
-                          </td>
-                          <td className="nutrition-col-cal">
-                            <strong>{modalRecipe.totalCalories || modalRecipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.calories) || 50), 0)} {t.kcal}</strong>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
+                      </div>
+                    </div>
                   </div>
-                ) : (
-                  <p>{t.noCalorieData}</p>
-                )}
-              </div>
-            </div>
+
+                  {/* Sourashtra Secret */}
+                  {modalRecipe.bhurkoNote && (
+                    <div className="bhurko-note-box">
+                      <strong>🥣 {language === 'Tamil' ? 'சௌராஷ்டிர ரகசியம்:' : 'Sourashtra Secret:'}</strong> {safeString(modalRecipe.bhurkoNote)}
+                    </div>
+                  )}
+
+                  {/* ⚖️ Weight & Nutrition Summary (Clean, Non-Repetitive) */}
+                  <div className="recipe-section nutrition-summary-section">
+                    <h4>
+                      ⚖️ {language === 'Tamil' ? 'எடை மற்றும் ஊட்டச்சத்து விவரம்' : 'Weight & Nutrition Summary'}
+                    </h4>
+                    <div className="nutrition-summary-card">
+                      <div className="nutrition-stat-row">
+                        <div className="nutrition-stat-pill">
+                          <span className="stat-label">{language === 'Tamil' ? 'மொத்த எடை' : 'Total Weight'}</span>
+                          <strong className="stat-value">{totalWeight > 0 ? `${totalWeight} g` : 'Approx. 400 g'}</strong>
+                        </div>
+                        <div className="nutrition-stat-pill">
+                          <span className="stat-label">{language === 'Tamil' ? 'மொத்த ஆற்றல்' : 'Total Energy'}</span>
+                          <strong className="stat-value cal-value">{totalKcal > 0 ? `${totalKcal} ${t.kcal}` : `320 ${t.kcal}`}</strong>
+                        </div>
+                      </div>
+                      {Array.isArray(modalRecipe.ingredientsBreakdown) && modalRecipe.ingredientsBreakdown.length > 0 && (
+                        <div className="nutrition-chips-grid">
+                          {modalRecipe.ingredientsBreakdown.map((item, i) => (
+                            <div key={i} className="nutrition-chip">
+                              <span className="chip-name">{formatItemName(safeString(item?.name), language)}</span>
+                              <span className="chip-detail">{item?.weightGrams}g • {item?.calories} {t.kcal}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Step-by-Step Cooking Process */}
+                  <div className="recipe-section">
+                    <h4>👩‍🍳 {language === 'Tamil' ? 'பாரம்பரிய சமையல் முறை' : 'Traditional Cooking Process'} ({t.instructions})</h4>
+                    <ol className="steps-list">
+                      {Array.isArray(modalRecipe.steps) &&
+                        modalRecipe.steps.map((step, i) => (
+                          <li key={i} className="step-card-item">
+                            <span className="step-number-badge">Step {i + 1}</span>
+                            <p className="step-card-text">{safeString(step)}</p>
+                          </li>
+                        ))}
+                    </ol>
+                  </div>
+                </>
+              );
+            })()}
 
             <div className="modal-bottom-sticky-bar">
               <button
@@ -2346,7 +2497,20 @@ export default function RecipesPage() {
           <div className="recipes-grid">
             {displayedRecipes.map((recipe, idx) => (
               <div key={recipe.id || idx} className="recipe-card glass-pane">
-                <div className="recipe-card-image-box">
+                <div
+                  className="recipe-card-image-box"
+                  onClick={() => openCatalogRecipeModal(recipe)}
+                  style={{ cursor: 'pointer' }}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openCatalogRecipeModal(recipe);
+                    }
+                  }}
+                  aria-label={`View recipe for ${safeString(recipe.title)}`}
+                >
                   <img
                     src={getRecipeImageUrl(recipe)}
                     alt={safeString(recipe.title)}
@@ -2357,139 +2521,64 @@ export default function RecipesPage() {
                     {safeString(recipe.difficulty || 'Easy')}
                   </span>
                 </div>
-                <div className="recipe-header">
-                  <div>
-                    {recipe.category && (
-                      <span className="recipe-category-badge">{safeString(recipe.category)}</span>
-                    )}
-                    <h3>{formatDishTitle(safeString(recipe.title), language)}</h3>
-                  </div>
-                  <span className={`difficulty ${getDifficultyClass(recipe.difficulty)}`}>
-                    {safeString(recipe.difficulty || 'Easy')}
-                  </span>
-                </div>
 
-                {/* Direct YouTube Video & Web Archive Hyperlinks */}
-                {(recipe.youtubeUrl || recipe.webUrl) && (
-                  <div className="recipe-source-links">
-                    {recipe.youtubeUrl && (
-                      <a
-                        href={recipe.youtubeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="source-link-btn source-link-yt"
-                        title={`Watch ${safeString(recipe.title)} on YouTube`}
+                <div className="recipe-card-body">
+                  <div className="recipe-header">
+                    <div>
+                      {recipe.category && (
+                        <span className="recipe-category-badge">{safeString(recipe.category)}</span>
+                      )}
+                      <h3
+                        onClick={() => openCatalogRecipeModal(recipe)}
+                        style={{ cursor: 'pointer' }}
                       >
-                        ▶️ {language === 'Tamil' ? 'யூடியூபில் காண்க' : 'Watch on YouTube'} ({safeString(recipe.sourceAttribution || 'Video')})
-                      </a>
-                    )}
-                    {recipe.webUrl && (
-                      <a
-                        href={recipe.webUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="source-link-btn source-link-web"
-                        title="Open Web Recipe Archive"
-                      >
-                        🌐 {language === 'Tamil' ? 'இணையக் குறிப்பு' : 'Web Recipe Reference'}
-                      </a>
-                    )}
-                  </div>
-                )}
-
-                {/* 1. Main Fridge Ingredients Used */}
-                {Array.isArray(recipe.fridgeIngredientsUsed) && recipe.fridgeIngredientsUsed.length > 0 && (
-                  <div className="recipe-section">
-                    <h4>{t.mainFridgeIngredients}</h4>
-                    <div className="ingredient-badges">
-                      {recipe.fridgeIngredientsUsed.map((ing, i) => (
-                        <span key={i} className="badge-fridge">{safeString(ing)}</span>
-                      ))}
+                        {formatDishTitle(safeString(recipe.title), language)}
+                      </h3>
                     </div>
                   </div>
-                )}
 
-                {/* 2. Pantry Additives (Non-Fridge Items like Toor Dal, Tamarind, Bhurko, Salt, Oil) */}
-                {Array.isArray(recipe.pantryAdditives) && recipe.pantryAdditives.length > 0 && (
-                  <div className="recipe-section">
-                    <h4>{t.pantryAdditives}</h4>
-                    <div className="ingredient-badges">
-                      {recipe.pantryAdditives.map((add, i) => (
-                        <span key={i} className="badge-pantry">{safeString(add)}</span>
-                      ))}
-                    </div>
+                  <div className="catalog-card-meta-row">
+                    <span className="meta-badge">
+                      🍽️ {recipe.fridgeIngredientsUsed?.length || recipe.ingredientsBreakdown?.length || 4} {language === 'Tamil' ? 'பொருட்கள்' : 'items'}
+                    </span>
+                    <span className="meta-badge">
+                      ⚖️ {recipe.totalCalories || 300} {t.kcal}
+                    </span>
                   </div>
-                )}
 
-                {/* 3. Signature Sourashtra Bhurko / Culinary Note */}
-                {recipe.bhurkoNote && (
-                  <div className="bhurko-note-box">
-                    <strong>🥣 Sourashtra Secret:</strong> {safeString(recipe.bhurkoNote)}
-                  </div>
-                )}
-
-                {/* 4. Optional Missing Fresh Items */}
-                {Array.isArray(recipe.missingIngredients) && recipe.missingIngredients.length > 0 && (
-                  <div className="recipe-section">
-                    <h4>🛒 Optional Fresh Add-ons:</h4>
-                    <ul className="missing-list">
-                      {recipe.missingIngredients.map((ing, i) => (
-                        <li key={i}>{safeString(ing)}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* 5. Step-by-Step Cooking Instructions */}
-                <div className="recipe-section">
-                  <h4>👩‍🍳 Traditional Cooking Process ({t.instructions})</h4>
-                  <ol className="steps-list">
-                    {Array.isArray(recipe.steps) && recipe.steps.map((step, i) => (
-                      <li key={i}>{safeString(step)}</li>
-                    ))}
-                  </ol>
-                </div>
-
-                {/* 6. Calorie & Weight Breakdown */}
-                <div className="recipe-section">
-                  <h4>⚖️ {language === 'Tamil' ? 'தேவையான பொருட்கள் & கலோரி விவரம்' : 'Ingredients, Weight & Calories'} ({t.approx} {recipe.totalCalories || 0} {t.kcal}):</h4>
-                  <div className="calorie-breakdown">
-                    {Array.isArray(recipe.ingredientsBreakdown) && recipe.ingredientsBreakdown.length > 0 ? (
-                      <div className="recipe-nutrition-table-container">
-                        <table className="recipe-nutrition-table">
-                          <thead>
-                            <tr>
-                              <th style={{ textAlign: 'left' }}>{t.tableIngredient || (language === 'Tamil' ? 'பொருள்' : 'Ingredient')}</th>
-                              <th style={{ textAlign: 'center', width: '28%' }}>{t.tableWeight || (language === 'Tamil' ? 'எடை' : 'Weight')}</th>
-                              <th style={{ textAlign: 'right', width: '28%' }}>{t.tableCalories || (language === 'Tamil' ? 'கலோரி' : 'Calories')}</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {recipe.ingredientsBreakdown.map((item, i) => (
-                              <tr key={i}>
-                                <td className="nutrition-col-item">{formatItemName(safeString(item?.name), language)}</td>
-                                <td className="nutrition-col-weight">{Number(item?.weightGrams) || 100} g</td>
-                                <td className="nutrition-col-cal">{Number(item?.calories) || 50} {t.kcal}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                          <tfoot>
-                            <tr className="nutrition-total-row">
-                              <td><strong>{t.tableTotal || (language === 'Tamil' ? 'மொத்தம்' : 'Total')}</strong></td>
-                              <td className="nutrition-col-weight">
-                                <strong>
-                                  {recipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.weightGrams) || 100), 0)} g
-                                </strong>
-                              </td>
-                              <td className="nutrition-col-cal">
-                                <strong>{recipe.totalCalories || recipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.calories) || 50), 0)} {t.kcal}</strong>
-                              </td>
-                            </tr>
-                          </tfoot>
-                        </table>
+                  <div className="catalog-card-actions">
+                    <button
+                      type="button"
+                      className="btn-primary full-width"
+                      onClick={() => openCatalogRecipeModal(recipe)}
+                    >
+                      📖 {language === 'Tamil' ? 'செய்முறை & தட்டு விவரம்' : 'View Recipe & Prep Plate'}
+                    </button>
+                    {(recipe.youtubeUrl || recipe.webUrl) && (
+                      <div className="catalog-source-links">
+                        {recipe.youtubeUrl && (
+                          <a
+                            href={recipe.youtubeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="source-link-btn source-link-yt"
+                            title={`Watch ${safeString(recipe.title)} on YouTube`}
+                          >
+                            ▶️ Video
+                          </a>
+                        )}
+                        {recipe.webUrl && (
+                          <a
+                            href={recipe.webUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="source-link-btn source-link-web"
+                            title="Web Recipe Reference"
+                          >
+                            🌐 Web
+                          </a>
+                        )}
                       </div>
-                    ) : (
-                      <p>{t.noCalorieData}</p>
                     )}
                   </div>
                 </div>

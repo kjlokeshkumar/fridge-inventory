@@ -146,22 +146,6 @@ export default function Home() {
 
   return (
     <div className={styles.pageShell}>
-      <header className={styles.appHeader}>
-        <div className={styles.brandRow}>
-          <div className={styles.avatar} aria-hidden="true">👨‍🍳</div>
-          <span className={styles.brandName}>Sourashtra Chef</span>
-        </div>
-        <button
-          type="button"
-          className={styles.menuDotsButton}
-          onClick={() => window.dispatchEvent(new Event('openAuthModal'))}
-          title="Options / Account"
-          aria-label="Account Options"
-        >
-          ⋮
-        </button>
-      </header>
-
       <main className={styles.content}>
         <div className={styles.titleRow}>
           <h1 className={styles.title}>{t.inventoryTitle}</h1>

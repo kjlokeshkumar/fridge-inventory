@@ -314,13 +314,6 @@ export default function UserAuthModal() {
                     <button type="button" onClick={logoutUser} className="btn-secondary-modal">
                       Sign out
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => setIsOpen(false)}
-                      className="btn-primary-modal"
-                    >
-                      Done
-                    </button>
                   </div>
                 )}
               </div>
