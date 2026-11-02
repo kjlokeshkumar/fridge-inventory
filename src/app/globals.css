@@ -288,6 +288,12 @@ body::before {
 
 .logo-icon {
   font-size: 1.8rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
 }
 
 .nav-links {
@@ -720,26 +726,38 @@ body::before {
     padding: 12px 16px calc(88px + env(safe-area-inset-bottom, 0px));
   }
 
-  /* On mobile, align logo left and controls right cleanly without overlapping */
+  /* On mobile, align logo left and controls right cleanly without overlapping or squishing */
   .logo {
     margin: 0 !important;
-    font-size: 1.05rem;
-    gap: 6px;
+    gap: 5px !important;
     flex-shrink: 0 !important;
     min-width: max-content !important;
     display: inline-flex !important;
     align-items: center !important;
+    text-decoration: none !important;
   }
   .logo-icon {
-    font-size: 1.4rem !important;
-    flex-shrink: 0 !important;
+    font-size: 1.35rem !important;
     line-height: 1 !important;
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    aspect-ratio: 1 / 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    font-style: normal !important;
+    user-select: none !important;
   }
   .logo-text {
-    font-size: 0.90rem !important;
+    font-size: clamp(0.78rem, 3.4vw, 0.88rem) !important;
     font-weight: 700 !important;
     white-space: nowrap !important;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em !important;
+    flex-shrink: 0 !important;
+    overflow: visible !important;
   }
   .navbar .nav-content,
   .nav-content {
@@ -748,40 +766,42 @@ body::before {
     align-items: center !important;
     width: 100% !important;
     max-width: 100% !important;
-    padding-left: max(14px, env(safe-area-inset-left, 0px)) !important;
-    padding-right: max(14px, env(safe-area-inset-right, 0px)) !important;
+    padding-left: max(10px, env(safe-area-inset-left, 0px)) !important;
+    padding-right: max(10px, env(safe-area-inset-right, 0px)) !important;
     height: 56px;
-    gap: 6px;
+    gap: 4px !important;
     box-sizing: border-box !important;
   }
   .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    justify-content: flex-end;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    flex-wrap: nowrap !important;
+    flex-shrink: 0 !important;
+    justify-content: flex-end !important;
   }
   .user-auth-badge, .profile-badge-btn {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
     padding: 0 !important;
     border-radius: 50% !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
   }
   .lang-selector-container {
-    height: 32px;
-    padding: 0 6px !important;
-    border-radius: 8px;
-    gap: 4px;
-    white-space: nowrap;
-    touch-action: manipulation;
-    flex-shrink: 0;
-    box-sizing: border-box;
+    height: 30px !important;
+    padding: 0 4px 0 6px !important;
+    border-radius: 7px !important;
+    gap: 3px !important;
+    white-space: nowrap !important;
+    touch-action: manipulation !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+    max-width: 84px !important;
   }
   .user-auth-name, .profile-name {
     display: none !important;
@@ -789,11 +809,15 @@ body::before {
   .profile-diet-tag {
     display: none !important; /* Hide extra tag on mobile screens */
   }
+  .lang-globe-icon {
+    font-size: 0.85rem !important;
+    flex-shrink: 0 !important;
+  }
   .lang-selector {
     font-family: inherit !important;
-    font-size: 0.76rem !important;
+    font-size: 0.74rem !important;
     font-weight: 600 !important;
-    padding: 0 12px 0 0 !important;
+    padding: 0 10px 0 0 !important;
     margin: 0 !important;
     width: auto;
     color: var(--text-main) !important;
@@ -803,7 +827,41 @@ body::before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23245961' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E") !important;
     background-repeat: no-repeat !important;
     background-position: right 0 center !important;
-    background-size: 7px 4.5px !important;
+    background-size: 6px 4px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    gap: 4px !important;
+  }
+  .logo-icon {
+    font-size: 1.25rem !important;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+  }
+  .logo-text {
+    font-size: 0.80rem !important;
+    letter-spacing: -0.025em !important;
+  }
+  .navbar .nav-content,
+  .nav-content {
+    padding-left: max(8px, env(safe-area-inset-left, 0px)) !important;
+    padding-right: max(8px, env(safe-area-inset-right, 0px)) !important;
+    gap: 3px !important;
+  }
+  .nav-controls {
+    gap: 3px !important;
+  }
+  .lang-selector-container {
+    padding: 0 3px 0 4px !important;
+    max-width: 78px !important;
+  }
+  .lang-selector {
+    font-size: 0.70rem !important;
+    padding: 0 8px 0 0 !important;
   }
 }
 
