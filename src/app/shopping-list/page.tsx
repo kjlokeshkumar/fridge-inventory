@@ -15,6 +15,7 @@ import {
 import { readCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
 import { triggerSparklesAtElement } from '@/lib/sparkles';
 import { getIngredientImage } from '@/lib/produce-styles';
+import IngredientInspectionModal from '@/components/IngredientInspectionModal';
 
 interface InventoryItem {
   id: number;
@@ -124,6 +125,7 @@ export default function ShoppingListPage() {
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [language, setLanguage] = useState('English');
+  const [inspectingIngredient, setInspectingIngredient] = useState<string | null>(null);
 
   const fetchShoppingData = useCallback(async () => {
     setLoading(true);
@@ -372,15 +374,39 @@ export default function ShoppingListPage() {
           <ul className="plan-shopping-list">
             {analysis.toPurchase.map((item) => {
               const checked = checkedSet.has(item.item.toLowerCase());
+              const imageSrc = getIngredientImage(item.item);
               return (
                 <li key={item.item} className={`plan-shopping-row ${checked ? 'checked' : ''}`}>
-                  <label>
+                  <label className="plan-shopping-label">
                     <input
                       type="checkbox"
                       checked={checked}
                       onChange={(e) => toggleItemChecked(item.item, e)}
                     />
-                    <span className="plan-shopping-name">{formatItem(item.item)}</span>
+                    <div
+                      className="pantry-item-thumb-bowl"
+                      aria-hidden="true"
+                      title="Click to view large photo & visual guide"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        setInspectingIngredient(item.item);
+                      }}
+                    >
+                      {imageSrc ? (
+                        <img
+                          src={imageSrc}
+                          alt={item.item}
+                          className="pantry-item-thumb-img"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span className="pantry-item-thumb-fallback">🥬</span>
+                      )}
+                    </div>
+                    <span className="plan-shopping-name" title={formatItem(item.item)}>
+                      {formatItem(item.item)}
+                    </span>
                   </label>
                   <span className="plan-shopping-days">
                     {t.quantityNeeded}: {item.quantity || t.quantityNotSpecified}
@@ -444,7 +470,16 @@ export default function ShoppingListPage() {
                                 className="pantry-item-checkbox"
                                 aria-label={`Mark ${formatItem(item)} as in pantry`}
                               />
-                              <div className="pantry-item-thumb-bowl" aria-hidden="true">
+                              <div
+                                className="pantry-item-thumb-bowl"
+                                aria-hidden="true"
+                                title="Click to view large photo & visual guide"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  e.preventDefault();
+                                  setInspectingIngredient(item);
+                                }}
+                              >
                                 {imageSrc ? (
                                   <img
                                     src={imageSrc}
@@ -519,6 +554,13 @@ export default function ShoppingListPage() {
           </div>
         )}
       </section>
+
+      <IngredientInspectionModal
+        isOpen={Boolean(inspectingIngredient)}
+        onClose={() => setInspectingIngredient(null)}
+        ingredientName={inspectingIngredient || ''}
+        language={language}
+      />
     </div>
   );
 }

@@ -17,23 +17,26 @@ async function main() {
   });
   console.log('Login status:', loginRes.status());
 
-  // 2. Open recipes page to pin the 7-day plan
+  // 2. Visit landing page to initialize session
+  await page.goto('http://localhost:3000/', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1000);
+
+  // 3. Open recipes page and pin plan
   await page.goto('http://localhost:3000/recipes', { waitUntil: 'networkidle' });
   await page.waitForTimeout(1000);
 
-  // Pin & save the weekly plan so shopping list has items
   const pinBtn = page.locator('button:has-text("Pin & Save"), button:has-text("Save")').first();
   if (await pinBtn.count() > 0) {
     await pinBtn.click();
     await page.waitForTimeout(600);
   }
 
-  // 3. Open Shopping list
+  // 4. Open shopping list
   await page.goto('http://localhost:3000/shopping-list', { waitUntil: 'networkidle' });
-  await page.waitForSelector('.pantry-check-panel', { timeout: 15000 });
-  await page.waitForTimeout(1000);
+  await page.waitForSelector('.plan-shopping-list', { timeout: 15000 });
+  await page.waitForTimeout(1500);
 
-  const shoppingPath = path.resolve('c:/Users/reksl/.gemini/antigravity-cli/brain/c13f3cc0-5a81-439a-9ed4-41539aa80d40/pantry_checklist_categorized.png');
+  const shoppingPath = path.resolve('c:/Users/reksl/.gemini/antigravity-cli/brain/c13f3cc0-5a81-439a-9ed4-41539aa80d40/shopping_list_with_photos.png');
   await page.screenshot({ path: shoppingPath, fullPage: true });
   console.log('Saved shopping list screenshot to:', shoppingPath);
 

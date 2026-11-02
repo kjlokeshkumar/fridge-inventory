@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
+import { Capacitor } from '@capacitor/core';
+import { Share } from '@capacitor/share';
 import './recipes.css';
 import { formatCategory, formatDateLabel, formatDayName, formatDishTitle, formatItemName, formatPairingNote, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
 import { MADURAI_SOURASHTRA_BHURKOS } from '@/lib/sourashtra-recipes';
@@ -10,6 +12,7 @@ import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-
 import { getRecipeImageUrl } from '@/lib/recipe-images';
 import { triggerSparkles, triggerSparklesAtElement } from '@/lib/sparkles';
 import { getRamekinStyle, CulinaryCategory } from '@/lib/produce-styles';
+import IngredientInspectionModal from '@/components/IngredientInspectionModal';
 
 interface PrepPlateItem {
   name: string;
@@ -25,6 +28,13 @@ interface PrepPlateItem {
   weightGrams?: number;
   calories?: number;
   image?: string;
+}
+
+function isAbortError(error: unknown): boolean {
+  return (
+    (error instanceof DOMException && error.name === 'AbortError') ||
+    (error instanceof Error && /share canceled|share cancelled/i.test(error.message))
+  );
 }
 
 function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdowns?: IngredientCalories[]): PrepPlateItem {
@@ -926,6 +936,7 @@ export default function RecipesPage() {
   const [error, setError] = useState<string | null>(null);
   const [language, setLanguage] = useState('English');
   const [showWalkthrough, setShowWalkthrough] = useState(false);
+  const [inspectingIngredient, setInspectingIngredient] = useState<string | null>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
@@ -1420,6 +1431,64 @@ export default function RecipesPage() {
     )}&dates=${dates}&details=${encodeURIComponent(details)}`;
   };
 
+  const handleAddToNativeCalendar = async (day: DayMealPlan) => {
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Sourashtra Chef//Day Meal Plan//EN',
+      'CALSCALE:GREGORIAN'
+    ];
+
+    const slots: { label: string; timeStart: string; timeEnd: string; combo?: MealCombo }[] = [
+      { label: '🌅 Sourashtra Breakfast', timeStart: '080000', timeEnd: '090000', combo: day.breakfast },
+      { label: '☀️ Sourashtra Lunch', timeStart: '130000', timeEnd: '140000', combo: day.lunch },
+      { label: '🌙 Sourashtra Dinner', timeStart: '193000', timeEnd: '203000', combo: day.dinner }
+    ];
+
+    for (const s of slots) {
+      if (!s.combo) continue;
+      const summary = `${s.label}: ${s.combo.mainDishTitle} + ${s.combo.pairedWithTitle}`;
+      const desc = `Main: ${s.combo.mainDishTitle}\\nPaired With: ${s.combo.pairedWithTitle}\\nNotes: ${s.combo.pairingTraditionNote}\\nYouTube: ${s.combo.primaryRecipe?.youtubeUrl || 'N/A'}`;
+      lines.push(
+        'BEGIN:VEVENT',
+        `DTSTART:${day.isoDate}T${s.timeStart}`,
+        `DTEND:${day.isoDate}T${s.timeEnd}`,
+        `SUMMARY:${summary.replace(/[,;]/g, ' ')}`,
+        `DESCRIPTION:${desc}`,
+        'END:VEVENT'
+      );
+    }
+    lines.push('END:VCALENDAR');
+
+    const icsContent = lines.join('\r\n');
+    const filename = `Sourashtra_Menu_${day.isoDate || day.dayName}.ics`;
+
+    if (Capacitor.isNativePlatform()) {
+      try {
+        await Share.share({
+          title: `🍲 Sourashtra Menu (${day.dayName})`,
+          text: `Sourashtra meal plan for ${day.dayName}`,
+          dialogTitle: t.addToCalendar
+        });
+        return;
+      } catch (shareErr) {
+        if (!isAbortError(shareErr)) {
+          console.warn('Native share failed, falling back to download:', shareErr);
+        } else {
+          return;
+        }
+      }
+    }
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const handleDownloadIcsCalendar = () => {
     const lines = [
       'BEGIN:VCALENDAR',
@@ -1688,8 +1757,9 @@ export default function RecipesPage() {
                               <div
                                 className="chef-ramekin-bowl"
                                 style={{ background: item.image ? '#f8fafc' : (item.gradient || item.bg) }}
-                                title={`${item.name} (${item.quantity})`}
+                                title={`${item.name} (${item.quantity}) - Click to inspect`}
                                 aria-label={`${item.name}: ${item.quantity}`}
+                                onClick={() => setInspectingIngredient(item.name)}
                               >
                                 {item.image ? (
                                   <img
@@ -2072,15 +2142,14 @@ export default function RecipesPage() {
                     <h4>{formatDayName(day.dayName, language)}</h4>
                     <span className="day-date-sub">{formatDateLabel(day.dateLabel, language)}</span>
                   </div>
-                  <a
-                    href={buildGoogleCalendarDayUrl(day)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => void handleAddToNativeCalendar(day)}
                     className="gcal-day-link"
-                    title={`${t.googleCalendar} ${day.dayName}`}
+                    title={`${t.addToCalendar} (${day.dayName})`}
                   >
-                    📆 {t.googleCalendar}
-                  </a>
+                    📆 {t.addToCalendar}
+                  </button>
                 </div>
 
                 {/* Breakfast, Lunch, Dinner Paired Combination Slots */}
@@ -2663,6 +2732,13 @@ export default function RecipesPage() {
       )}
         </>
       )}
+
+      <IngredientInspectionModal
+        isOpen={Boolean(inspectingIngredient)}
+        onClose={() => setInspectingIngredient(null)}
+        ingredientName={inspectingIngredient || ''}
+        language={language}
+      />
     </div>
   );
 }

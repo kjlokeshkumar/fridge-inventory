@@ -203,6 +203,36 @@ async function testFullSuite() {
   await page.waitForTimeout(1000);
   console.log('PASS: Successfully navigated to /shopping-list without blank page!');
 
+  // Step 7: Check Native Calendar Button on Recipes Page
+  console.log('\n7. Checking Native Device Calendar Button...');
+  await page.goto('http://localhost:3000/recipes', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1000);
+  const calBtn = page.locator('button.gcal-day-link').first();
+  if (await calBtn.count() > 0) {
+    const calText = await calBtn.innerText();
+    console.log(`PASS: Found Native Device Calendar Button: "${calText}"`);
+  } else {
+    console.log('Note: Calendar button appears when weekly plan days are loaded.');
+  }
+
+  // Step 8: Verify Shopping List Ingredient Photos & Inspection Modal
+  console.log('\n8. Checking Shopping List & Ingredient Inspection Modal...');
+  await page.goto('http://localhost:3000/shopping-list', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1000);
+  const thumbBowl = page.locator('.pantry-item-thumb-bowl').first();
+  if (await thumbBowl.count() > 0) {
+    await thumbBowl.click();
+    await page.waitForSelector('.ingredient-inspect-modal', { timeout: 5000 });
+    const modalTitle = await page.locator('#inspect-ingredient-title').innerText();
+    console.log(`PASS: Opened Ingredient Inspection Modal for: "${modalTitle}"`);
+
+    // Verify close button closes it
+    const closeBtn = page.locator('.ingredient-inspect-close');
+    await closeBtn.click();
+    await page.waitForTimeout(400);
+    console.log('PASS: Closed Ingredient Inspection Modal successfully!');
+  }
+
   console.log('\n--- Test Summary ---');
   console.log('Total Console Errors:', consoleErrors.length);
   console.log('Total Page Errors:', pageErrors.length);

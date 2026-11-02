@@ -92,6 +92,113 @@ function formatQuantity(amount: number, unit: string): string {
   return `${formattedAmount} ${unit}`;
 }
 
+export function extractCanonicalPantryItems(rawAdditive: string): string[] {
+  if (!rawAdditive || rawAdditive.startsWith('Channel Ingredient Note:')) return [];
+
+  // Remove parenthesis and notes (e.g. quantities, "optional", etc.)
+  const cleaned = rawAdditive.replace(/\(.*?\)/g, '').trim();
+
+  // Split by & , and , or , /
+  const tokens = cleaned
+    .split(/\s*(?:&|,|\band\b|\bor\b|\/)\s*/i)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const results: string[] = [];
+
+  for (const token of tokens) {
+    const lower = token.toLowerCase();
+
+    if (lower.includes('mustard') || lower.includes('kadugu')) {
+      results.push('Mustard Seeds');
+    } else if (lower.includes('cumin') || lower.includes('jeera')) {
+      results.push('Cumin Seeds');
+    } else if (lower.includes('black pepper') || lower.includes('peppercorn')) {
+      results.push('Black Pepper');
+    } else if (lower.includes('fenugreek') || lower.includes('methi') || lower.includes('vendhayam')) {
+      results.push('Fenugreek Seeds');
+    } else if (lower.includes('fennel') || lower.includes('somph') || lower.includes('saunf')) {
+      results.push('Fennel Seeds (Somph)');
+    } else if (lower.includes('asafoetida') || lower.includes('hing') || lower.includes('perungayam')) {
+      results.push('Asafoetida (Hing)');
+    } else if (lower.includes('turmeric') || lower.includes('manjal')) {
+      results.push('Turmeric Powder');
+    } else if (lower.includes('dry red chilli') || lower.includes('red chillies') || lower.includes('milagai')) {
+      results.push('Dry Red Chilli');
+    } else if (lower.includes('coriander seed')) {
+      results.push('Coriander Seeds');
+    } else if (lower.includes('coriander powder')) {
+      results.push('Coriander Powder');
+    } else if (lower.includes('sambar bhurko') || lower.includes('sambar powder')) {
+      results.push('Sambar Powder / Bhurko');
+    } else if (lower.includes('pilchar bhurko') || lower.includes('rasam powder')) {
+      results.push('Pilchar (Rasam) Bhurko');
+    } else if (lower.includes('ounty bhurko') || lower.includes('kulambu podi')) {
+      results.push('Ounty Bhurko');
+    } else if (lower.includes('chenna bhurko') || lower.includes('idli bhurko')) {
+      results.push('Chenna Bhurko (Chutney Podi)');
+    } else if (lower.includes('garam masala')) {
+      results.push('Garam Masala');
+    } else if (lower.includes('clove') || lower.includes('lavangam')) {
+      results.push('Cloves');
+    } else if (lower.includes('cinnamon') || lower.includes('pattai')) {
+      results.push('Cinnamon');
+    } else if (lower.includes('cardamom') || lower.includes('yelakkai') || lower.includes('elachi')) {
+      results.push('Cardamom Pods');
+    } else if (lower.includes('cashew') || lower.includes('mundhiri') || lower.includes('kaju')) {
+      results.push('Cashews');
+    } else if (lower.includes('raisin') || lower.includes('kismis')) {
+      results.push('Raisins');
+    } else if (lower.includes('poppy') || lower.includes('kas kas') || lower.includes('khus khus')) {
+      results.push('Poppy Seeds (Kas Kas)');
+    } else if (lower.includes('toor dal') || lower.includes('tuvaram')) {
+      results.push('Toor Dal');
+    } else if (lower.includes('chana dal') || lower.includes('kadala')) {
+      results.push('Chana Dal');
+    } else if (lower.includes('urad dal') || lower.includes('black gram') || lower.includes('ulundhu')) {
+      results.push('Urad Dal');
+    } else if (lower.includes('moong dal') || lower.includes('payatham') || lower.includes('pasi')) {
+      results.push('Moong Dal');
+    } else if (lower.includes('roasted gram') || lower.includes('pottukadalai')) {
+      results.push('Roasted Gram (Pottukadalai)');
+    } else if (lower.includes('chickpea') || lower.includes('chana') || lower.includes('kondakadalai')) {
+      results.push('Chickpeas');
+    } else if (lower.includes('raw rice')) {
+      results.push('Raw Rice');
+    } else if (lower.includes('idli rice') || lower.includes('parboiled rice')) {
+      results.push('Idli / Parboiled Rice');
+    } else if (lower.includes('rice flour')) {
+      results.push('Rice Flour');
+    } else if (lower.includes('besan') || lower.includes('gram flour')) {
+      results.push('Besan (Gram Flour)');
+    } else if (lower.includes('rava') || lower.includes('sooji')) {
+      results.push('Rava (Sooji)');
+    } else if (lower.includes('poha') || lower.includes('aval')) {
+      results.push('Poha / Aval');
+    } else if (lower.includes('gingelly') || lower.includes('sesame oil') || lower.includes('nallennai')) {
+      results.push('Gingelly / Sesame Oil');
+    } else if (lower.includes('cooking oil') || lower === 'oil') {
+      results.push('Cooking Oil');
+    } else if (lower.includes('ghee') || lower.includes('thup')) {
+      results.push('Ghee');
+    } else if (lower.includes('tamarind') || lower.includes('puli')) {
+      results.push('Tamarind');
+    } else if (lower.includes('palm jaggery') || lower.includes('karupatti')) {
+      results.push('Palm Jaggery (Karupatti)');
+    } else if (lower.includes('jaggery') || lower.includes('gullu')) {
+      results.push('Jaggery (Gullu)');
+    } else if (lower.includes('sugar')) {
+      results.push('Sugar');
+    } else if (lower.includes('salt') || lower.includes('lenu')) {
+      results.push('Salt');
+    } else if (token.length > 2) {
+      results.push(token);
+    }
+  }
+
+  return Array.from(new Set(results));
+}
+
 export function calculateWeeklyShopping(
   plan: WeeklyShoppingDay[],
   inventoryNames: string[]
@@ -153,8 +260,8 @@ export function calculateWeeklyShopping(
         }
 
         for (const additive of recipe.pantryAdditives || []) {
-          if (!additive.startsWith('Channel Ingredient Note:')) {
-            pantryNeeded.add(additive.split(' (')[0].trim());
+          for (const canonicalItem of extractCanonicalPantryItems(additive)) {
+            pantryNeeded.add(canonicalItem);
           }
         }
       }
