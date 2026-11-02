@@ -192,9 +192,16 @@ class MainActivity : ComponentActivity() {
                           return false
                         }
                         try {
-                          val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                          context.startActivity(intent)
-                          return true
+                          val intent = if (url.startsWith("intent://")) {
+                            Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+                          } else {
+                            Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                          }
+                          if (intent != null) {
+                            context.startActivity(intent)
+                            return true
+                          }
+                          return false
                         } catch (e: Exception) {
                           return false
                         }

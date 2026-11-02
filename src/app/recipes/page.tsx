@@ -928,6 +928,7 @@ export default function RecipesPage() {
   const [language, setLanguage] = useState('English');
   const [showWalkthrough, setShowWalkthrough] = useState(false);
   const [inspectingIngredient, setInspectingIngredient] = useState<string | null>(null);
+  const [calendarTargetDay, setCalendarTargetDay] = useState<DayMealPlan | null>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
@@ -1399,7 +1400,7 @@ export default function RecipesPage() {
     return calculateWeeklyShopping(weeklyPlan, activeFridge);
   }, [weeklyPlan, selectedFridgeItems, isUsingSampleBasket, currentFridgeInventory]);
 
-  const _buildGoogleCalendarDayUrl = (day: DayMealPlan) => {
+  const buildGoogleCalendarDayUrl = (day: DayMealPlan): string => {
     const title = `🍲 Sourashtra Menu (${day.dayName})`;
     const details = [
       `🌅 BREAKFAST: ${day.breakfast?.mainDishTitle} + ${day.breakfast?.pairedWithTitle}`,
@@ -1416,41 +1417,14 @@ export default function RecipesPage() {
       .filter(Boolean)
       .join('\n');
 
-    const dates = `${day.isoDate}/${day.isoDate}`;
+    const cleanDate = (day.isoDate || '').replace(/-/g, '');
+    const dates = cleanDate ? `${cleanDate}T080000/${cleanDate}T210000` : '';
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
       title
     )}&dates=${dates}&details=${encodeURIComponent(details)}`;
   };
 
-  const handleAddToNativeCalendar = async (day: DayMealPlan) => {
-    // 1. If on Android (Moto G, Samsung, Pixel, etc.), trigger the direct native Android Calendar Intent
-    const isAndroid = typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent);
-
-    if (isAndroid) {
-      const mealLines: string[] = [];
-      if (day.breakfast) mealLines.push(`🌅 Breakfast: ${day.breakfast.mainDishTitle} + ${day.breakfast.pairedWithTitle}`);
-      if (day.lunch) mealLines.push(`☀️ Lunch: ${day.lunch.mainDishTitle} + ${day.lunch.pairedWithTitle}`);
-      if (day.dinner) mealLines.push(`🌙 Dinner: ${day.dinner.mainDishTitle} + ${day.dinner.pairedWithTitle}`);
-      const descText = mealLines.join('\n');
-      const titleText = `🍲 Sourashtra Menu (${day.dayName})`;
-
-      const startIso = day.isoDate ? `${day.isoDate}T08:00:00` : new Date().toISOString();
-      const endIso = day.isoDate ? `${day.isoDate}T21:00:00` : new Date().toISOString();
-      const startTimeMs = new Date(startIso).getTime() || Date.now();
-      const endTimeMs = new Date(endIso).getTime() || (Date.now() + 12 * 3600 * 1000);
-
-      const androidCalendarIntent = `intent://#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;S.title=${encodeURIComponent(titleText)};S.description=${encodeURIComponent(descText)};l.beginTime=${startTimeMs};l.endTime=${endTimeMs};end`;
-
-      const link = document.createElement('a');
-      link.href = androidCalendarIntent;
-      link.rel = 'noopener noreferrer';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      return;
-    }
-
-    // 2. Universal RFC 5545 iCalendar standard for iOS (Safari opens event importer) and Desktop (Outlook/Apple Calendar)
+  const handleDownloadDayIcs = (day: DayMealPlan) => {
     const lines = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
@@ -1464,14 +1438,15 @@ export default function RecipesPage() {
       { label: '🌙 Sourashtra Dinner', timeStart: '193000', timeEnd: '203000', combo: day.dinner }
     ];
 
+    const cleanDate = (day.isoDate || '').replace(/-/g, '');
     for (const s of slots) {
       if (!s.combo) continue;
       const summary = `${s.label}: ${s.combo.mainDishTitle} + ${s.combo.pairedWithTitle}`;
       const desc = `Main: ${s.combo.mainDishTitle}\\nPaired With: ${s.combo.pairedWithTitle}\\nNotes: ${s.combo.pairingTraditionNote}\\nYouTube: ${s.combo.primaryRecipe?.youtubeUrl || 'N/A'}`;
       lines.push(
         'BEGIN:VEVENT',
-        `DTSTART:${day.isoDate}T${s.timeStart}`,
-        `DTEND:${day.isoDate}T${s.timeEnd}`,
+        `DTSTART:${cleanDate}T${s.timeStart}`,
+        `DTEND:${cleanDate}T${s.timeEnd}`,
         `SUMMARY:${summary.replace(/[,;]/g, ' ')}`,
         `DESCRIPTION:${desc}`,
         'END:VEVENT'
@@ -1491,6 +1466,43 @@ export default function RecipesPage() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const handleLaunchCalendarSync = (day: DayMealPlan, type: 'google' | 'device') => {
+    if (type === 'google') {
+      const gcalUrl = buildGoogleCalendarDayUrl(day);
+      window.open(gcalUrl, '_blank', 'noopener,noreferrer');
+      setCalendarTargetDay(null);
+      return;
+    }
+
+    if (type === 'device') {
+      const isAndroid = typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent);
+      if (isAndroid) {
+        const mealLines: string[] = [];
+        if (day.breakfast) mealLines.push(`🌅 Breakfast: ${day.breakfast.mainDishTitle} + ${day.breakfast.pairedWithTitle}`);
+        if (day.lunch) mealLines.push(`☀️ Lunch: ${day.lunch.mainDishTitle} + ${day.lunch.pairedWithTitle}`);
+        if (day.dinner) mealLines.push(`🌙 Dinner: ${day.dinner.mainDishTitle} + ${day.dinner.pairedWithTitle}`);
+        const descText = mealLines.join('\n');
+        const titleText = `🍲 Sourashtra Menu (${day.dayName})`;
+
+        const startIso = day.isoDate ? `${day.isoDate}T08:00:00` : new Date().toISOString();
+        const endIso = day.isoDate ? `${day.isoDate}T21:00:00` : new Date().toISOString();
+        const startTimeMs = new Date(startIso).getTime() || Date.now();
+        const endTimeMs = new Date(endIso).getTime() || (Date.now() + 12 * 3600 * 1000);
+
+        const androidCalendarIntent = `intent://#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;S.title=${encodeURIComponent(titleText)};S.description=${encodeURIComponent(descText)};l.beginTime=${startTimeMs};l.endTime=${endTimeMs};end`;
+
+        try {
+          window.location.href = androidCalendarIntent;
+        } catch (_) {
+          handleDownloadDayIcs(day);
+        }
+      } else {
+        handleDownloadDayIcs(day);
+      }
+      setCalendarTargetDay(null);
+    }
   };
 
   const handleDownloadIcsCalendar = () => {
@@ -2148,7 +2160,7 @@ export default function RecipesPage() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => void handleAddToNativeCalendar(day)}
+                    onClick={() => setCalendarTargetDay(day)}
                     className="gcal-day-link"
                     title={`${t.addToCalendar} (${day.dayName})`}
                   >
@@ -2743,6 +2755,97 @@ export default function RecipesPage() {
         ingredientName={inspectingIngredient || ''}
         language={language}
       />
+
+      {calendarTargetDay && (
+        <div
+          className="calendar-choice-overlay"
+          onClick={() => setCalendarTargetDay(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="calendar-modal-title"
+        >
+          <div
+            className="calendar-choice-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="calendar-choice-close"
+              onClick={() => setCalendarTargetDay(null)}
+              aria-label="Close calendar options"
+            >
+              ✕
+            </button>
+
+            <div className="cal-modal-header">
+              <h3 id="calendar-modal-title" className="cal-modal-title">
+                📆 {t.calendarModalTitle || 'Add to Calendar'}
+              </h3>
+              <p className="cal-modal-sub">
+                {t.calendarModalSubtitle || "Sync this day's Sourashtra meal plan with your device calendar"}
+              </p>
+            </div>
+
+            <div className="cal-preview-box">
+              <span className="cal-preview-day-badge">
+                🗓️ {formatDayName(calendarTargetDay.dayName, language)} • {formatDateLabel(calendarTargetDay.dateLabel, language)}
+              </span>
+              <div className="cal-preview-meals">
+                {calendarTargetDay.breakfast && (
+                  <div>
+                    <strong>🌅 {language === 'Tamil' ? 'காலை:' : 'Breakfast:'}</strong>{' '}
+                    {calendarTargetDay.breakfast.mainDishTitle} + {calendarTargetDay.breakfast.pairedWithTitle}
+                  </div>
+                )}
+                {calendarTargetDay.lunch && (
+                  <div>
+                    <strong>☀️ {language === 'Tamil' ? 'மதியம்:' : 'Lunch:'}</strong>{' '}
+                    {calendarTargetDay.lunch.mainDishTitle} + {calendarTargetDay.lunch.pairedWithTitle}
+                  </div>
+                )}
+                {calendarTargetDay.dinner && (
+                  <div>
+                    <strong>🌙 {language === 'Tamil' ? 'இரவு:' : 'Dinner:'}</strong>{' '}
+                    {calendarTargetDay.dinner.mainDishTitle} + {calendarTargetDay.dinner.pairedWithTitle}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="cal-options-list">
+              <button
+                type="button"
+                className="cal-option-btn cal-btn-google"
+                onClick={() => handleLaunchCalendarSync(calendarTargetDay, 'google')}
+              >
+                <span className="cal-btn-primary-text">
+                  🗓️ {t.calendarGoogleBtn || 'Google Calendar (App / Web)'}
+                </span>
+                <span className="cal-btn-sub-text">
+                  {t.calendarGoogleSub || 'Instant 1-click sync to your Google Calendar app'}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                className="cal-option-btn cal-btn-device"
+                onClick={() => handleLaunchCalendarSync(calendarTargetDay, 'device')}
+              >
+                <span className="cal-btn-primary-text">
+                  📱 {t.calendarDeviceBtn || 'Device Calendar (Samsung / Apple / .ics)'}
+                </span>
+                <span className="cal-btn-sub-text">
+                  {t.calendarDeviceSub || 'Export standard event file for Samsung Calendar or Outlook'}
+                </span>
+              </button>
+            </div>
+
+            <p className="cal-modal-footer-note">
+              ✓ Compatible with Samsung Galaxy Flip 5, Moto G, Google Pixel, iPhone & Desktop
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
