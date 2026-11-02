@@ -456,7 +456,9 @@ export default function ShoppingListPage() {
                                   <span className="pantry-item-thumb-fallback">{group.icon}</span>
                                 )}
                               </div>
-                              <span className="pantry-item-title">{formatItem(item)}</span>
+                              <span className="pantry-item-title" title={formatItem(item)}>
+                                {formatItem(item)}
+                              </span>
                             </div>
 
                             <span

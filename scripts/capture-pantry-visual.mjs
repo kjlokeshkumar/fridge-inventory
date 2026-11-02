@@ -28,37 +28,10 @@ async function main() {
     await page.waitForTimeout(600);
   }
 
-  // Open recipe modal for a recipe that uses cashews / spices (e.g. sweet pongal, kesari, or kurma)
-  const recipeButtons = page.locator('.combo-recipe-btn');
-  const count = await recipeButtons.count();
-  console.log(`Found ${count} recipe buttons`);
-  if (count > 0) {
-    // Click recipe button
-    await recipeButtons.first().click();
-    await page.waitForTimeout(1200);
-
-    const modalPath = path.resolve('c:/Users/reksl/.gemini/antigravity-cli/brain/c13f3cc0-5a81-439a-9ed4-41539aa80d40/recipe_modal_updated.png');
-    await page.screenshot({ path: modalPath, fullPage: true });
-    console.log('Saved recipe modal screenshot to:', modalPath);
-
-    // Close modal
-    const closeBtn = page.locator('.modal-close-btn, button:has-text("✕")').first();
-    if (await closeBtn.count() > 0) {
-      await closeBtn.click();
-      await page.waitForTimeout(500);
-    }
-  }
-
   // 3. Open Shopping list
   await page.goto('http://localhost:3000/shopping-list', { waitUntil: 'networkidle' });
-  await page.waitForTimeout(1500);
-
-  // Check off a couple of items to test interactive state
-  const firstCheckbox = page.locator('.pantry-item-checkbox').first();
-  if (await firstCheckbox.count() > 0) {
-    await firstCheckbox.click();
-    await page.waitForTimeout(400);
-  }
+  await page.waitForSelector('.pantry-check-panel', { timeout: 15000 });
+  await page.waitForTimeout(1000);
 
   const shoppingPath = path.resolve('c:/Users/reksl/.gemini/antigravity-cli/brain/c13f3cc0-5a81-439a-9ed4-41539aa80d40/pantry_checklist_categorized.png');
   await page.screenshot({ path: shoppingPath, fullPage: true });
