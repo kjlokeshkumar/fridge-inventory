@@ -153,6 +153,62 @@ export const INGREDIENT_VISUAL_GUIDE: Record<string, IngredientVisualInfo> = {
     visualCue: 'Golden, clarified melted butterfat with a granular texture when solid.',
     visualDifferenceNote: 'Nutty, buttery aroma that elevates rice dishes, vadai, and sweets.',
     culinaryUse: 'Drizzled hot over Phalar, Pongal, and used to fry cashews.'
+  },
+  'yellow capsicum': {
+    name: 'Yellow Bell Pepper (Yellow Capsicum)',
+    tamilName: 'மஞ்சள் குடைமிளகாய்',
+    visualCue: 'Bright sunny-yellow glossy diced cubes with thick, succulent sweet walls.',
+    visualDifferenceNote: 'vs. Sweet Corn: Chunky thick-walled cubic vegetable cuts, distinctly larger and crisper than corn kernels.',
+    culinaryUse: 'Adds vivid golden brightness, sweetness, and crisp texture to vegetable rice and poriyals.'
+  },
+  'capsicum': {
+    name: 'Green Bell Pepper (Capsicum / Shimla Mirch)',
+    tamilName: 'பச்சை குடைமிளகாய்',
+    visualCue: 'Vibrant jade-green diced squares with glossy skin and tender spongy white inner flesh.',
+    visualDifferenceNote: 'vs. Green Chilies: Mild, sweet vegetable pepper with zero heat (chilies are slender, thin, and fiery hot).',
+    culinaryUse: 'Aromatic crunch for rice baths, kurmas, and vegetable sautes.'
+  },
+  'red cabbage': {
+    name: 'Red / Purple Cabbage',
+    tamilName: 'சிவப்பு முட்டைக்கோஸ்',
+    visualCue: 'Finely shredded violet-purple ribbon leaves with crisp white ribs.',
+    visualDifferenceNote: 'vs. Red Onions: Waxy crunchy leaf layers that don’t weep moisture or sting eyes; retains purple hue.',
+    culinaryUse: 'Fresh crunchy poriyals and vibrant culinary salads.'
+  },
+  'cabbage': {
+    name: 'Green Cabbage (Muttaikose)',
+    tamilName: 'முட்டைக்கோஸ்',
+    visualCue: 'Pale spring-green and ivory shredded crunchy leaves.',
+    visualDifferenceNote: 'Tender layered leaves with sweet earthy cabbage aroma when cooked.',
+    culinaryUse: 'Standard for classic Sourashtra vegetable poriyal and kootu.'
+  },
+  'radish': {
+    name: 'White Radish / Mooli (Mullangi)',
+    tamilName: 'முள்ளங்கி',
+    visualCue: 'Crisp, dense, snow-white solid diced cubes.',
+    visualDifferenceNote: 'vs. Diced Onions: Solid dense flesh with no layers or translucent membranes; pungent peppery raw aroma.',
+    culinaryUse: 'Infuses deep earthy aroma into iconic Mullangi Sambar and Ounty.'
+  },
+  'carrot': {
+    name: 'Fresh Carrots',
+    tamilName: 'கேரட்',
+    visualCue: 'Vivid deep orange, dense, firm cubic dice with crisp snap.',
+    visualDifferenceNote: 'vs. Pumpkin: Denser, firmer texture with clean sharp geometric edges that hold shape in boiling stew.',
+    culinaryUse: 'Core vegetable in sambar, aviyal, poriyal, and sweet halwa.'
+  },
+  'onion': {
+    name: 'Red Onions / Shallots (Kando / Vengayam)',
+    tamilName: 'வெங்காயம் / சின்ன வெங்காயம்',
+    visualCue: 'Diced translucent layers with magenta-pink outer skin and juicy crisp bite.',
+    visualDifferenceNote: 'vs. Cabbage: Multi-layered bulb that caramelizes into rich golden sweetness when sauteed in oil.',
+    culinaryUse: 'Aromatic backbone of virtually all gravies, sambars, and curries.'
+  },
+  'salt': {
+    name: 'Salt / Sea Salt (Lunu / Uppu)',
+    tamilName: 'உப்பு',
+    visualCue: 'Sparkling fine white granular crystals or coarse rock crystals.',
+    visualDifferenceNote: 'Essential mineral seasoning; elevates and binds all other spices together.',
+    culinaryUse: 'Foundational seasoning measured precisely for taste and balance.'
   }
 };
 

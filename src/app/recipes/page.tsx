@@ -2,8 +2,6 @@
 
 import { useEffect, useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
-import { Capacitor } from '@capacitor/core';
-import { Share } from '@capacitor/share';
 import './recipes.css';
 import { formatCategory, formatDateLabel, formatDayName, formatDishTitle, formatItemName, formatPairingNote, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
 import { MADURAI_SOURASHTRA_BHURKOS } from '@/lib/sourashtra-recipes';
@@ -28,13 +26,6 @@ interface PrepPlateItem {
   weightGrams?: number;
   calories?: number;
   image?: string;
-}
-
-function isAbortError(error: unknown): boolean {
-  return (
-    (error instanceof DOMException && error.name === 'AbortError') ||
-    (error instanceof Error && /share canceled|share cancelled/i.test(error.message))
-  );
 }
 
 function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdowns?: IngredientCalories[]): PrepPlateItem {
@@ -1408,7 +1399,7 @@ export default function RecipesPage() {
     return calculateWeeklyShopping(weeklyPlan, activeFridge);
   }, [weeklyPlan, selectedFridgeItems, isUsingSampleBasket, currentFridgeInventory]);
 
-  const buildGoogleCalendarDayUrl = (day: DayMealPlan) => {
+  const _buildGoogleCalendarDayUrl = (day: DayMealPlan) => {
     const title = `🍲 Sourashtra Menu (${day.dayName})`;
     const details = [
       `🌅 BREAKFAST: ${day.breakfast?.mainDishTitle} + ${day.breakfast?.pairedWithTitle}`,
@@ -1432,6 +1423,34 @@ export default function RecipesPage() {
   };
 
   const handleAddToNativeCalendar = async (day: DayMealPlan) => {
+    // 1. If on Android (Moto G, Samsung, Pixel, etc.), trigger the direct native Android Calendar Intent
+    const isAndroid = typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent);
+
+    if (isAndroid) {
+      const mealLines: string[] = [];
+      if (day.breakfast) mealLines.push(`🌅 Breakfast: ${day.breakfast.mainDishTitle} + ${day.breakfast.pairedWithTitle}`);
+      if (day.lunch) mealLines.push(`☀️ Lunch: ${day.lunch.mainDishTitle} + ${day.lunch.pairedWithTitle}`);
+      if (day.dinner) mealLines.push(`🌙 Dinner: ${day.dinner.mainDishTitle} + ${day.dinner.pairedWithTitle}`);
+      const descText = mealLines.join('\n');
+      const titleText = `🍲 Sourashtra Menu (${day.dayName})`;
+
+      const startIso = day.isoDate ? `${day.isoDate}T08:00:00` : new Date().toISOString();
+      const endIso = day.isoDate ? `${day.isoDate}T21:00:00` : new Date().toISOString();
+      const startTimeMs = new Date(startIso).getTime() || Date.now();
+      const endTimeMs = new Date(endIso).getTime() || (Date.now() + 12 * 3600 * 1000);
+
+      const androidCalendarIntent = `intent://#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;S.title=${encodeURIComponent(titleText)};S.description=${encodeURIComponent(descText)};l.beginTime=${startTimeMs};l.endTime=${endTimeMs};end`;
+
+      const link = document.createElement('a');
+      link.href = androidCalendarIntent;
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
+
+    // 2. Universal RFC 5545 iCalendar standard for iOS (Safari opens event importer) and Desktop (Outlook/Apple Calendar)
     const lines = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
@@ -1463,29 +1482,14 @@ export default function RecipesPage() {
     const icsContent = lines.join('\r\n');
     const filename = `Sourashtra_Menu_${day.isoDate || day.dayName}.ics`;
 
-    if (Capacitor.isNativePlatform()) {
-      try {
-        await Share.share({
-          title: `🍲 Sourashtra Menu (${day.dayName})`,
-          text: `Sourashtra meal plan for ${day.dayName}`,
-          dialogTitle: t.addToCalendar
-        });
-        return;
-      } catch (shareErr) {
-        if (!isAbortError(shareErr)) {
-          console.warn('Native share failed, falling back to download:', shareErr);
-        } else {
-          return;
-        }
-      }
-    }
-
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
     a.download = filename;
+    document.body.appendChild(a);
     a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 

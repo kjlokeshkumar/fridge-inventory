@@ -38,13 +38,38 @@ export function getIngredientImage(name: string): string | undefined {
   }
 
   // 2. Capsicum / Bell Pepper
+  if (lower.includes('yellow') && (lower.includes('capsicum') || lower.includes('bell pepper'))) {
+    return '/images/ingredients/yellow_capsicum.jpg';
+  }
   if (
     lower.includes('capsicum') ||
     lower.includes('bell pepper') ||
     lower.includes('shimla') ||
     lower.includes('குடைமிளகாய்')
   ) {
-    return '/images/ingredients/capsicum.jpg';
+    return '/images/ingredients/capsicum_green.jpg';
+  }
+
+  // 2b. Cabbage / Red Cabbage
+  if (
+    lower.includes('cabbage') ||
+    lower.includes('முட்டைக்கோஸ்') ||
+    lower.includes('patta gobhi')
+  ) {
+    return '/images/ingredients/red_cabbage.jpg';
+  }
+
+  // 2c. Radish / Mooli / Turnip
+  if (
+    lower.includes('radish') ||
+    lower.includes('mooli') ||
+    lower.includes('முள்ளங்கி') ||
+    lower.includes('turnip') ||
+    lower.includes('noolkol') ||
+    lower.includes('chow') ||
+    lower.includes('chayote')
+  ) {
+    return '/images/ingredients/radish_diced.jpg';
   }
 
   // 3. Tomato
