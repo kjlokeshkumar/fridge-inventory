@@ -9,7 +9,7 @@ import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
 import { getRecipeImageUrl } from '@/lib/recipe-images';
 import { triggerSparkles, triggerSparklesAtElement } from '@/lib/sparkles';
-import { getProduceStyle } from '@/lib/produce-styles';
+import { getRamekinStyle, CulinaryCategory } from '@/lib/produce-styles';
 
 interface PrepPlateItem {
   name: string;
@@ -17,6 +17,11 @@ interface PrepPlateItem {
   source: 'fridge' | 'pantry';
   icon: string;
   bg: string;
+  gradient: string;
+  accentColor: string;
+  category: CulinaryCategory;
+  categoryLabelEn: string;
+  categoryLabelTa: string;
   weightGrams?: number;
   calories?: number;
 }
@@ -68,14 +73,19 @@ function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdo
     quantity = quantity.charAt(0).toUpperCase() + quantity.slice(1);
   }
 
-  const style = getProduceStyle(name);
+  const ramekin = getRamekinStyle(name);
 
   return {
     name,
     quantity,
     source,
-    icon: style.icon,
-    bg: style.bg,
+    icon: ramekin.icon,
+    bg: ramekin.bg,
+    gradient: ramekin.gradient,
+    accentColor: ramekin.accentColor,
+    category: ramekin.category,
+    categoryLabelEn: ramekin.categoryLabelEn,
+    categoryLabelTa: ramekin.categoryLabelTa,
     weightGrams,
     calories,
   };
@@ -116,13 +126,18 @@ function buildPrepPlateItems(recipe: Recipe | undefined): PrepPlateItem[] {
       const key = b.name.toLowerCase();
       if (!seen.has(key)) {
         seen.add(key);
-        const style = getProduceStyle(b.name);
+        const ramekin = getRamekinStyle(b.name);
         items.push({
           name: b.name,
           quantity: `${Number(b.weightGrams) || 100}g`,
           source: 'fridge',
-          icon: style.icon,
-          bg: style.bg,
+          icon: ramekin.icon,
+          bg: ramekin.bg,
+          gradient: ramekin.gradient,
+          accentColor: ramekin.accentColor,
+          category: ramekin.category,
+          categoryLabelEn: ramekin.categoryLabelEn,
+          categoryLabelTa: ramekin.categoryLabelTa,
           weightGrams: b.weightGrams,
           calories: b.calories,
         });
@@ -1641,13 +1656,15 @@ export default function RecipesPage() {
                   <div className="culinary-prep-plate-container">
                     <div className="prep-plate-header">
                       <div className="prep-plate-title-group">
-                        <span className="prep-plate-icon" aria-hidden="true">🍽️</span>
+                        <span className="prep-plate-icon" aria-hidden="true">👨‍🍳</span>
                         <div>
                           <h4 className="prep-plate-title">
-                            {language === 'Tamil' ? 'பொருட்கள் தயாரிப்புத் தட்டு' : 'Fresh Prep Plate'}
+                            {language === 'Tamil' ? "செஃப் மிஸ்-என்-பிளேஸ் பலகை" : "Chef's Porcelain Mise-en-Place"}
                           </h4>
                           <p className="prep-plate-subtitle">
-                            {language === 'Tamil' ? 'சமையலுக்குத் தேவையான பொருட்கள் அளவுகளுடன்' : 'Ingredients at a glance with hovering quantities'}
+                            {language === 'Tamil'
+                              ? 'சமையலுக்குத் தேவையான பொருட்கள் பீங்கான் கிண்ணங்களில் அளவுகளுடன்'
+                              : 'Prepped ingredients in porcelain ramekins with hovering quantities'}
                           </p>
                         </div>
                       </div>
@@ -1657,24 +1674,35 @@ export default function RecipesPage() {
                       </div>
                     </div>
 
-                    <div className="culinary-prep-plate">
-                      <div className="prep-plate-grid">
+                    <div className="ramekin-mise-en-place-board" role="region" aria-label="Mise-en-place ingredients board">
+                      <div className="ramekin-grid">
                         {plateItems.map((item, idx) => (
-                          <div key={idx} className={`plate-ingredient-card source-${item.source}`}>
-                            <div className="plate-item-avatar-wrap">
+                          <div key={idx} className={`ramekin-item-card source-${item.source} cat-${item.category}`}>
+                            <div className="ramekin-bowl-wrap">
                               <span className="plate-qty-hover-pill" title={`Quantity: ${item.quantity}`}>
                                 {item.quantity}
                               </span>
-                              <div className="plate-item-avatar" style={{ backgroundColor: item.bg }}>
-                                <span className="plate-item-emoji">{item.icon}</span>
+                              <div
+                                className="chef-ramekin-bowl"
+                                style={{ background: item.gradient || item.bg }}
+                                title={`${item.name} (${item.quantity})`}
+                                aria-label={`${item.name}: ${item.quantity}`}
+                              >
+                                <div className="ramekin-inner-depth">
+                                  <span className="ramekin-ingredient-icon" aria-hidden="true">{item.icon}</span>
+                                </div>
                               </div>
                             </div>
-                            <span className="plate-item-name" title={item.name}>
-                              {formatItemName(safeString(item.name), language)}
-                            </span>
-                            <span className={`plate-source-tag tag-${item.source}`}>
-                              {item.source === 'fridge' ? '🫙 Fridge' : '🌾 Pantry'}
-                            </span>
+                            <div className="ramekin-label">
+                              <span className="ramekin-name" title={item.name}>
+                                {formatItemName(safeString(item.name), language)}
+                              </span>
+                              <span className={`ramekin-source-tag tag-${item.source}`}>
+                                {item.source === 'fridge'
+                                  ? (language === 'Tamil' ? '🫙 குளிர்சாதனம்' : '🫙 Fridge')
+                                  : (language === 'Tamil' ? '🌾 அஞ்சறை' : '🌾 Pantry')}
+                              </span>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -1688,33 +1716,48 @@ export default function RecipesPage() {
                     </div>
                   )}
 
-                  {/* ⚖️ Weight & Nutrition Summary (Clean, Non-Repetitive) */}
+                  {/* ⚖️ Weight & Nutrition Breakdown Table */}
                   <div className="recipe-section nutrition-summary-section">
                     <h4>
-                      ⚖️ {language === 'Tamil' ? 'எடை மற்றும் ஊட்டச்சத்து விவரம்' : 'Weight & Nutrition Summary'}
+                      ⚖️ {language === 'Tamil' ? 'எடை மற்றும் ஊட்டச்சத்து விவரம்' : 'Weight & Nutrition Breakdown'} ({t.approx} {totalKcal > 0 ? totalKcal : 320} {t.kcal})
                     </h4>
-                    <div className="nutrition-summary-card">
-                      <div className="nutrition-stat-row">
-                        <div className="nutrition-stat-pill">
-                          <span className="stat-label">{language === 'Tamil' ? 'மொத்த எடை' : 'Total Weight'}</span>
-                          <strong className="stat-value">{totalWeight > 0 ? `${totalWeight} g` : 'Approx. 400 g'}</strong>
-                        </div>
-                        <div className="nutrition-stat-pill">
-                          <span className="stat-label">{language === 'Tamil' ? 'மொத்த ஆற்றல்' : 'Total Energy'}</span>
-                          <strong className="stat-value cal-value">{totalKcal > 0 ? `${totalKcal} ${t.kcal}` : `320 ${t.kcal}`}</strong>
-                        </div>
+                    {Array.isArray(modalRecipe.ingredientsBreakdown) && modalRecipe.ingredientsBreakdown.length > 0 ? (
+                      <div className="recipe-nutrition-table-container">
+                        <table className="recipe-nutrition-table">
+                          <thead>
+                            <tr>
+                              <th style={{ textAlign: 'left' }}>{t.tableIngredient || (language === 'Tamil' ? 'பொருள்' : 'Ingredient')}</th>
+                              <th style={{ textAlign: 'center', width: '28%' }}>{t.tableWeight || (language === 'Tamil' ? 'எடை' : 'Weight')}</th>
+                              <th style={{ textAlign: 'right', width: '28%' }}>{t.tableCalories || (language === 'Tamil' ? 'கலோரி' : 'Calories')}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {modalRecipe.ingredientsBreakdown.map((item, i) => (
+                              <tr key={i}>
+                                <td className="nutrition-col-item">{formatItemName(safeString(item?.name), language)}</td>
+                                <td className="nutrition-col-weight">{Number(item?.weightGrams) || 100} g</td>
+                                <td className="nutrition-col-cal">{Number(item?.calories) || 50} {t.kcal}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                          <tfoot>
+                            <tr className="nutrition-total-row">
+                              <td><strong>{t.tableTotal || (language === 'Tamil' ? 'மொத்தம்' : 'Total')}</strong></td>
+                              <td className="nutrition-col-weight">
+                                <strong>
+                                  {totalWeight > 0 ? `${totalWeight} g` : 'Approx. 400 g'}
+                                </strong>
+                              </td>
+                              <td className="nutrition-col-cal">
+                                <strong>{totalKcal > 0 ? `${totalKcal} ${t.kcal}` : `320 ${t.kcal}`}</strong>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
                       </div>
-                      {Array.isArray(modalRecipe.ingredientsBreakdown) && modalRecipe.ingredientsBreakdown.length > 0 && (
-                        <div className="nutrition-chips-grid">
-                          {modalRecipe.ingredientsBreakdown.map((item, i) => (
-                            <div key={i} className="nutrition-chip">
-                              <span className="chip-name">{formatItemName(safeString(item?.name), language)}</span>
-                              <span className="chip-detail">{item?.weightGrams}g • {item?.calories} {t.kcal}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    ) : (
+                      <p>{t.noCalorieData || 'No calorie data available.'}</p>
+                    )}
                   </div>
 
                   {/* Step-by-Step Cooking Process */}

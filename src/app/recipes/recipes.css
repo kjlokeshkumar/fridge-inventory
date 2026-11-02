@@ -2907,7 +2907,10 @@
   }
 
   .planner-recipe-modal-backdrop {
-    padding: 10px 10px calc(42px + env(safe-area-inset-bottom, 36px)) 10px !important;
+    padding-top: max(24px, env(safe-area-inset-top, 20px)) !important;
+    padding-left: max(10px, env(safe-area-inset-left, 0px)) !important;
+    padding-right: max(10px, env(safe-area-inset-right, 0px)) !important;
+    padding-bottom: calc(42px + env(safe-area-inset-bottom, 36px)) !important;
     align-items: flex-start !important;
   }
 
@@ -3001,7 +3004,222 @@
   border-color: rgba(180, 83, 9, 0.36) !important;
 }
 
-/* Ceramic Prep Plate Platter */
+/* ===================================================================
+   CHEF'S PORCELAIN RAMEKIN MISE-EN-PLACE PLATTER
+   =================================================================== */
+
+/* Rich warm wood grain culinary cutting board surface with beveled edge */
+.ramekin-mise-en-place-board {
+  position: relative !important;
+  background: linear-gradient(145deg, #442a1b 0%, #2f1b11 38%, #4a2d1e 72%, #26150b 100%) !important;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 235, 205, 0.025) 0px,
+      rgba(255, 235, 205, 0.025) 2px,
+      transparent 2px,
+      transparent 10px
+    ),
+    linear-gradient(145deg, #442a1b 0%, #2f1b11 38%, #4a2d1e 72%, #26150b 100%) !important;
+  border: 3.5px solid #633b24 !important;
+  border-radius: 20px !important;
+  padding: 24px 18px !important;
+  box-shadow:
+    0 12px 30px rgba(25, 12, 6, 0.42),
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 235, 205, 0.22),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.55) !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* Subtle beveled inner wood groove */
+.ramekin-mise-en-place-board::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 7px !important;
+  border: 1.5px solid rgba(255, 225, 190, 0.12) !important;
+  border-radius: 14px !important;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4) !important;
+  pointer-events: none !important;
+}
+
+/* Responsive grid: 4-5 columns on desktop/tablet */
+.ramekin-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)) !important;
+  gap: 20px 14px !important;
+  justify-items: center !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Individual Ramekin Item Card */
+.ramekin-item-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  position: relative !important;
+  width: 100% !important;
+  max-width: 110px !important;
+  box-sizing: border-box !important;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.ramekin-item-card:hover {
+  transform: translateY(-3px) !important;
+}
+
+.ramekin-bowl-wrap {
+  position: relative !important;
+  margin-bottom: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Chef's Porcelain Ramekin Bowl: Realistic round porcelain bowl with 3D glossy white ceramic rim */
+.chef-ramekin-bowl {
+  width: 66px !important;
+  height: 66px !important;
+  border-radius: 50% !important;
+  border: 3.5px solid #ffffff !important;
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.25),
+    0 6px 14px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(220, 225, 230, 0.75) !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease !important;
+  overflow: hidden !important;
+  cursor: default !important;
+  box-sizing: border-box !important;
+}
+
+.ramekin-item-card:hover .chef-ramekin-bowl {
+  transform: scale(1.06) !important;
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.22),
+    0 10px 22px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px #ffffff !important;
+}
+
+/* Specular glazed ceramic reflection on top of porcelain rim */
+.chef-ramekin-bowl::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 3px !important;
+  left: 7px !important;
+  width: 22px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%) !important;
+  transform: rotate(-25deg) !important;
+  pointer-events: none !important;
+}
+
+/* Realistic inner bowl depth */
+.ramekin-inner-depth {
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 50% !important;
+  box-shadow:
+    inset 0 3px 8px rgba(0, 0, 0, 0.35),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.22) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ingredient icon inside ramekin */
+.ramekin-ingredient-icon {
+  font-size: 1.65rem !important;
+  line-height: 1 !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45)) !important;
+  transform: translateY(-1px) !important;
+  user-select: none !important;
+}
+
+/* Floating gold/cream glassmorphic badge with bold quantity */
+.plate-qty-hover-pill {
+  position: absolute !important;
+  top: -8px !important;
+  right: -8px !important;
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.95) 0%, rgba(253, 230, 138, 0.92) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #78350f !important;
+  font-size: 0.68rem !important;
+  font-weight: 800 !important;
+  padding: 2.5px 8px !important;
+  border-radius: 9999px !important;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95) !important;
+  white-space: nowrap !important;
+  max-width: 84px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+  letter-spacing: -0.01em !important;
+  z-index: 3 !important;
+  line-height: 1.25 !important;
+}
+
+/* Clean typography below each bowl with ingredient name and source tag */
+.ramekin-label {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  gap: 3px !important;
+}
+
+.ramekin-name {
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  color: #fff9f3 !important;
+  text-align: center !important;
+  line-height: 1.25 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+  max-width: 100% !important;
+  min-height: 28px !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75) !important;
+}
+
+.ramekin-source-tag {
+  font-size: 0.62rem !important;
+  font-weight: 700 !important;
+  padding: 2px 7px !important;
+  border-radius: 9999px !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  white-space: nowrap !important;
+}
+
+.ramekin-source-tag.tag-fridge {
+  background: rgba(36, 89, 97, 0.88) !important;
+  color: #e6fffa !important;
+  border: 1px solid rgba(77, 208, 185, 0.45) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+}
+
+.ramekin-source-tag.tag-pantry {
+  background: rgba(180, 83, 9, 0.88) !important;
+  color: #fef3c7 !important;
+  border: 1px solid rgba(251, 191, 36, 0.45) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Retain legacy class aliases for backward compatibility */
 .culinary-prep-plate {
   position: relative !important;
   background: radial-gradient(ellipse at center, #ffffff 0%, #faf6ee 65%, #f2e7d7 100%) !important;
@@ -3030,7 +3248,6 @@
   z-index: 1 !important;
 }
 
-/* Individual ingredient saucer card on the plate */
 .plate-ingredient-card {
   display: flex !important;
   flex-direction: column !important;
@@ -3061,7 +3278,6 @@
   border-bottom: 3px solid #b45309 !important;
 }
 
-/* Avatar container with floating quantity pill */
 .plate-item-avatar-wrap {
   position: relative !important;
   margin-bottom: 6px !important;
@@ -3085,32 +3301,6 @@
   font-size: 1.6rem !important;
   line-height: 1 !important;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12)) !important;
-}
-
-/* Floating quantity pill hovering over picture */
-.plate-qty-hover-pill {
-  position: absolute !important;
-  top: -8px !important;
-  right: -8px !important;
-  background: var(--primary-teal, #245961) !important;
-  color: #ffffff !important;
-  font-size: 0.68rem !important;
-  font-weight: 700 !important;
-  padding: 2px 7px !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 2px 5px rgba(24, 62, 68, 0.35) !important;
-  white-space: nowrap !important;
-  max-width: 72px !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  border: 1.5px solid #ffffff !important;
-  letter-spacing: -0.01em !important;
-  z-index: 2 !important;
-  line-height: 1.2 !important;
-}
-
-.plate-ingredient-card.source-pantry .plate-qty-hover-pill {
-  background: #b45309 !important;
 }
 
 .plate-item-name {
@@ -3280,6 +3470,49 @@
 }
 
 @media (max-width: 600px) {
+  .ramekin-mise-en-place-board {
+    padding: 16px 10px !important;
+    border-radius: 16px !important;
+    border-width: 3px !important;
+  }
+
+  .ramekin-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 14px 6px !important;
+  }
+
+  .ramekin-item-card {
+    max-width: 100% !important;
+  }
+
+  .chef-ramekin-bowl {
+    width: 56px !important;
+    height: 56px !important;
+    border-width: 3px !important;
+  }
+
+  .ramekin-ingredient-icon {
+    font-size: 1.4rem !important;
+  }
+
+  .plate-qty-hover-pill {
+    font-size: 0.60rem !important;
+    padding: 2px 6px !important;
+    top: -6px !important;
+    right: -6px !important;
+    max-width: 68px !important;
+  }
+
+  .ramekin-name {
+    font-size: 0.72rem !important;
+    min-height: 26px !important;
+  }
+
+  .ramekin-source-tag {
+    font-size: 0.58rem !important;
+    padding: 1.5px 5px !important;
+  }
+
   .prep-plate-grid {
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 10px 8px !important;
@@ -3297,13 +3530,6 @@
 
   .plate-item-emoji {
     font-size: 1.4rem !important;
-  }
-
-  .plate-qty-hover-pill {
-    font-size: 0.62rem !important;
-    padding: 1.5px 5px !important;
-    top: -6px !important;
-    right: -6px !important;
   }
 
   .plate-item-name {
