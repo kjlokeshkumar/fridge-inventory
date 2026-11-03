@@ -73,20 +73,24 @@ export default function RecipesPrintPage() {
       } catch (_) {}
     }
 
-    // 2. Mobile Android / iOS WebViews do NOT implement window.print() and will freeze the UI thread!
-    const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobile) {
-      handleShare();
-      return;
-    }
-
-    // 3. Desktop browsers (Chrome, Edge, Firefox, Safari on PC/Mac)
+    // 2. Standard browser print (invokes native Android Print Spooler with 'Save as PDF' on Chrome/Samsung Internet, and desktop print dialog)
     try {
       window.print();
     } catch (_) {
       handleShare();
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.search.includes('auto=1') && weeklyPlan.length > 0) {
+      const timer = setTimeout(() => {
+        try {
+          window.print();
+        } catch (_) {}
+      }, 700);
+      return () => clearTimeout(timer);
+    }
+  }, [weeklyPlan]);
 
   const handleShare = async () => {
     const lines = [

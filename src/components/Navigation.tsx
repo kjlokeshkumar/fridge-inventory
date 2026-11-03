@@ -107,47 +107,41 @@ export default function Navigation() {
       </nav>
 
       <nav className="bottom-nav">
-        {isAuthenticated && (
-          <>
-            <Link href="/" className={`bottom-nav-item ${isActive('/') ? 'active' : ''}`}>
-              <span className="bottom-nav-icon">🏠</span>
-              <span className="bottom-nav-label">{t.navHome}</span>
-            </Link>
-            <Link href="/inventory" className={`bottom-nav-item ${isActive('/inventory') ? 'active' : ''}`}>
-              <span className="bottom-nav-icon">🫙</span>
-              <span className="bottom-nav-label">{t.navInventory}</span>
-            </Link>
-            <Link href="/upload" className="bottom-nav-item scan-btn" title={t.homeScanTitle} aria-label={t.homeScanTitle || "Scan Fridge"}>
-              <div className="scan-icon-container">
-                <svg
-                  width="26"
-                  height="26"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#ffffff"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="scan-camera-svg"
-                  aria-hidden="true"
-                >
-                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                  <circle cx="12" cy="13" r="4"/>
-                </svg>
-              </div>
-            </Link>
-          </>
-        )}
+        <Link href="/" className={`bottom-nav-item ${isActive('/') ? 'active' : ''}`}>
+          <span className="bottom-nav-icon">🏠</span>
+          <span className="bottom-nav-label">{t.navHome}</span>
+        </Link>
+        <Link href="/inventory" className={`bottom-nav-item ${isActive('/inventory') ? 'active' : ''}`}>
+          <span className="bottom-nav-icon">🫙</span>
+          <span className="bottom-nav-label">{t.navInventory}</span>
+        </Link>
+        <Link href="/upload" className="bottom-nav-item scan-btn" title={t.homeScanTitle} aria-label={t.homeScanTitle || "Scan Fridge"}>
+          <div className="scan-icon-container">
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="scan-camera-svg"
+              aria-hidden="true"
+            >
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+        </Link>
         <Link href="/recipes" className={`bottom-nav-item ${isActive('/recipes') ? 'active' : ''}`}>
           <span className="bottom-nav-icon">🍳</span>
           <span className="bottom-nav-label">{t.navRecipes}</span>
         </Link>
-        {isAuthenticated && (
-          <Link href="/shopping-list" className={`bottom-nav-item ${isActive('/shopping-list') ? 'active' : ''}`}>
-            <span className="bottom-nav-icon">🛒</span>
-            <span className="bottom-nav-label">{t.navShopping}</span>
-          </Link>
-        )}
+        <Link href="/shopping-list" className={`bottom-nav-item ${isActive('/shopping-list') ? 'active' : ''}`}>
+          <span className="bottom-nav-icon">🛒</span>
+          <span className="bottom-nav-label">{t.navShopping}</span>
+        </Link>
       </nav>
     </>
   );

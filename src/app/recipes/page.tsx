@@ -1489,39 +1489,50 @@ export default function RecipesPage() {
 
   const handleOpenOrShareIcs = async (url: string, filename: string, title: string, text: string) => {
     try {
-      showToast('⏳ Opening calendar event...');
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('Failed to fetch calendar');
-      const icsText = await res.text();
+      showToast('⏳ Downloading calendar (.ics)...');
+      const fullUrl = url.startsWith('http') ? url : `${window.location.origin}${url}`;
+      const isAndroid = typeof navigator !== 'undefined' && /Android/i.test(navigator.userAgent);
 
-      const blob = new Blob([icsText], { type: 'text/calendar;charset=utf-8' });
-      const file = new File([blob], filename, { type: 'text/calendar' });
+      if (isAndroid) {
+        // Direct intent launch so Android DownloadManager catches the file download and places it directly in /sdcard/Download
+        const cleanUrl = fullUrl.replace(/^https?:\/\//, '');
+        window.location.href = `intent://${cleanUrl}#Intent;scheme=https;action=android.intent.action.VIEW;end`;
+        showToast('✓ Calendar (.ics) downloading to Downloads folder!');
+        return;
+      }
 
-      // 1. Native Web Share with .ics file (Opens Samsung Calendar / Google Calendar import directly on Android)
-      if (typeof navigator !== 'undefined' && navigator.canShare && navigator.canShare({ files: [file] })) {
+      // 1. Native Web Share with .ics file (for supported mobile browsers)
+      if (typeof navigator !== 'undefined' && navigator.share) {
         try {
-          await navigator.share({
-            files: [file],
-            title: title || 'Sourashtra Meal Plan Calendar',
-            text: text || 'Import this meal plan into your calendar app.'
-          });
-          showToast('✓ Opened in Calendar app!');
-          return;
+          const res = await fetch(url);
+          if (res.ok) {
+            const icsText = await res.text();
+            const blob = new Blob([icsText], { type: 'text/calendar;charset=utf-8' });
+            const file = new File([blob], filename, { type: 'text/calendar' });
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+              await navigator.share({
+                files: [file],
+                title: title || 'Sourashtra Meal Plan Calendar',
+                text: text || 'Import this meal plan into your calendar app.'
+              });
+              showToast('✓ Opened in Calendar app!');
+              return;
+            }
+          }
         } catch (e: unknown) {
           if (e instanceof Error && e.name === 'AbortError') return;
         }
       }
 
-      // 2. Client-side Blob download trigger (reliable for mobile browsers & desktop)
-      const blobUrl = URL.createObjectURL(blob);
+      // 2. Client-side Blob download trigger (desktop & other browsers)
       const a = document.createElement('a');
-      a.href = blobUrl;
+      a.href = fullUrl;
       a.download = filename;
+      a.target = '_blank';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
-      showToast('✓ Calendar (.ics) downloaded! Tap to add to your calendar.');
+      showToast('✓ Calendar (.ics) downloaded!');
     } catch (_) {
       try {
         window.location.href = url;
@@ -1726,6 +1737,69 @@ export default function RecipesPage() {
       });
     } else {
       showToast('✓ 7-Day Plan text ready');
+    }
+  };
+
+  const handleDownloadOfflinePlan = () => {
+    try {
+      showToast('⏳ Generating offline meal plan document...');
+      const rows = weeklyPlan.map(d => `
+        <tr style="border-bottom: 1px solid #e2d9cd;">
+          <td style="padding: 10px; font-weight: bold; background: #faf4e8; vertical-align: top;">${d.dayName}<br><span style="font-size: 0.8rem; color: #5c4d42; font-weight: normal;">${d.dateLabel}</span></td>
+          <td style="padding: 10px; vertical-align: top;">🍽️ ${safeString(d.breakfast?.mainDishTitle)}${d.breakfast?.pairedWithTitle ? `<br><span style="color:#245961; font-size:0.85rem;">+ ${safeString(d.breakfast?.pairedWithTitle)}</span>` : ''}</td>
+          <td style="padding: 10px; vertical-align: top;">🍽️ ${safeString(d.lunch?.mainDishTitle)}${d.lunch?.pairedWithTitle ? `<br><span style="color:#245961; font-size:0.85rem;">+ ${safeString(d.lunch?.pairedWithTitle)}</span>` : ''}</td>
+          <td style="padding: 10px; vertical-align: top;">🍽️ ${safeString(d.dinner?.mainDishTitle)}${d.dinner?.pairedWithTitle ? `<br><span style="color:#245961; font-size:0.85rem;">+ ${safeString(d.dinner?.pairedWithTitle)}</span>` : ''}</td>
+        </tr>
+      `).join('');
+
+      const groceryList = weeklyShoppingAnalysis && weeklyShoppingAnalysis.toPurchase.length > 0
+        ? `<div style="margin-top: 24px; padding: 16px; background: #faf4e8; border-radius: 8px; border: 1.5px solid #245961;">
+             <h3 style="margin-top: 0; color: #245961; font-size: 1.05rem;">🛒 Weekly Grocery Checklist (${weeklyShoppingAnalysis.toPurchase.length} items to buy)</h3>
+             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px;">
+               ${weeklyShoppingAnalysis.toPurchase.map(i => `<div style="background: #fff; padding: 6px 10px; border-radius: 6px; border: 1px solid #d5c8b7; font-size: 0.88rem;">☐ <strong>${formatItemName(i.item, language)}</strong> ${i.quantity ? `<span style="color:#5c4d42;">(${i.quantity})</span>` : ''}</div>`).join('')}
+             </div>
+           </div>`
+        : '';
+
+      const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sourashtra Chef - 7-Day Meal Plan & Grocery Checklist</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fffdf6; color: #1f1a17; padding: 18px; line-height: 1.5; margin: 0; }
+h1 { color: #245961; margin: 0 0 4px 0; font-size: 1.35rem; }
+p { color: #5c4d42; margin: 0 0 16px 0; font-size: 0.9rem; }
+table { width: 100%; border-collapse: collapse; background: #ffffff; border: 1.5px solid #245961; border-radius: 8px; overflow: hidden; }
+th { background: #245961; color: #ffffff; text-align: left; padding: 10px; font-size: 0.85rem; font-weight: 600; }
+@media print { body { padding: 0; } }
+</style>
+</head>
+<body>
+<h1>🍲 Sourashtra Chef — 7-Day Meal Plan</h1>
+<p>Traditional Madurai Sourashtra Breakfast, Lunch & Dinner with Paired Combinations</p>
+<table>
+<thead><tr><th style="width: 18%;">Day</th><th style="width: 27%;">🌅 Breakfast</th><th style="width: 27%;">☀️ Lunch</th><th style="width: 28%;">🌙 Dinner</th></tr></thead>
+<tbody>${rows}</tbody>
+</table>
+${groceryList}
+</body>
+</html>`;
+
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const filename = `Sourashtra_7Day_Meal_Plan_${new Date().toISOString().slice(0, 10)}.html`;
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+      showToast('✓ Saved offline meal plan to Downloads folder!');
+    } catch (_) {
+      showToast('Could not save offline plan.');
     }
   };
 
@@ -3209,11 +3283,12 @@ export default function RecipesPage() {
 
                   const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
                   if (isMobile) {
-                    // On mobile WebView, avoid opening a confusing second popup or calling window.print()
-                    // Use native share sheet which allows direct "Save to Drive as PDF", "Print", or WhatsApp
-                    handleCopyFullPlan();
+                    // Open dedicated print view with auto-print in system browser / Chrome so native Print Spooler invokes
+                    const printUrl = `${window.location.origin}/recipes/print?auto=1`;
+                    const cleanUrl = printUrl.replace(/^https?:\/\//, '');
+                    window.location.href = `intent://${cleanUrl}#Intent;scheme=https;action=android.intent.action.VIEW;end`;
                   } else {
-                    window.open('/recipes/print', '_blank');
+                    window.open('/recipes/print?auto=1', '_blank');
                   }
                 }}
               >
@@ -3221,10 +3296,17 @@ export default function RecipesPage() {
               </button>
               <button
                 type="button"
+                className="print-modal-btn print-modal-btn-download"
+                onClick={handleDownloadOfflinePlan}
+              >
+                📥 Save Offline Plan (.html)
+              </button>
+              <button
+                type="button"
                 className="print-modal-btn print-modal-btn-copy"
                 onClick={handleCopyFullPlan}
               >
-                {t.printModalCopyBtn || '📲 Share / Save as PDF'}
+                📋 Copy Text Plan
               </button>
               <button
                 type="button"
