@@ -1,10 +1,9 @@
-# Fridge AI
+# Sourashtra Chef (Fridge AI)
 
-Fridge AI is a Next.js web app for tracking household food inventory, scanning
-fridge/pantry photos, and generating recipes. The desktop website and Android
+Sourashtra Chef (Fridge AI) is a Next.js web app for tracking household food inventory, scanning
+fridge/pantry photos, meal planning, and authentic culinary recipe generation (featuring Sourashtra cuisine with Madurai & Salem dialects, English and Tamil translations, mise-en-place ingredient platters, and 7-day meal planning). The desktop website and Android
 app share the same hosted web UI and API. Android is a Capacitor WebView that
-loads the production Vercel app, so API-backed features require an internet
-connection.
+loads the production Vercel app, enhanced with native Android bridges for printing, calendar sync, file downloads, and hardware back-button navigation.
 
 ## Repository and current handoff
 
@@ -12,11 +11,13 @@ connection.
   database exports, `.env` files, signing keys, or signing passwords.
 - Remote: `origin` (`https://github.com/kjlokeshkumar/fridge-inventory.git`)
 - Branch: `master`
-- A signed release AAB with version name `1.1` and version code `2` was built
-  and signature-verified locally on October 30, 2026.
-- The user confirmed uploading version `1.1` to Play Console on October 30,
-  2026. Check Play Console for its current track and release status; an upload
-  is not the same as a published release.
+- **Release Version**: Signed release AAB version `1.8` (`versionCode 8`, `versionName "1.8"`) is built and signature-verified locally with the official upload certificate (`CN=Fridge AI Upload`).
+- Output: `android-capacitor/app/build/outputs/bundle/release/app-release.aab`
+- **Package ID & Store Name**:
+  - Internal Android Package ID: `com.fridge.ai` (Target SDK: 36).
+  - Public Store & Launcher Name: **Sourashtra Chef** (defined in `strings.xml`, `manifest.json`, and Play Console store listing).
+- **Google Play App Signing & Package ID Immutability**:
+  - The Android application ID `com.fridge.ai` and the upload keystore (`fridge-ai-upload.p12`) are permanently registered in the Google Play Console. **Do not attempt to change the package name or generate a new upload key**, as Google Play will reject bundle uploads with package or certificate fingerprint mismatches. Internal technical IDs do not impact public branding.
 - `Fridge_AI_Feature_List_and_Release_Notes.txt` contains the user-facing
   feature overview and Play Store release-notes draft.
 
@@ -204,7 +205,7 @@ npm run android:sync
 Before each new Play upload, open `android-capacitor/app/build.gradle` and set
 `versionCode` to a number higher than every version already uploaded to any
 Play track. Keep `versionName` meaningful for users. The current source is
-version name `1.3`, version code `3`; verify Play Console has no higher version
+version name `1.8`, version code `8`; verify Play Console has no higher version
 code uploaded before building.
 
 From the repository root, synchronize Capacitor and build the signed release
@@ -311,23 +312,18 @@ in Play Console and Google's official developer documentation before submission.
 
 ## Checks last completed
 
-- `npm test` passed all 18 tests, including shopping quantities, share text,
-  and Tamil translation coverage.
+- `npm test` passed all 26 unit tests (including recipe pairings, pantry categorizations, shopping list deduplication, share text, and Tamil translation coverage).
 - `npx tsc --noEmit` passed.
-- `npm run build` succeeded with one React Hook dependency warning in
-  `src/app/shopping-list/page.tsx`.
+- `npm run build` succeeded, compiling all 25 Next.js static and dynamic routes cleanly.
 - `git diff --check` passed.
-- Web UI was checked locally in a browser at desktop, 390px, and 320px widths;
-  no horizontal page/header overflow was measured.
-- Capacitor debug APK and signed release AAB version `1.1` (version code `2`)
-  built successfully on October 30, 2026.
-- `jarsigner -verify` accepted the release AAB signature.
-- Android output confirmed `com.fridge.ai`, target SDK 36, internet permission,
-  and camera permission.
-- The user confirmed uploading AAB version `1.1` to Play Console and tested the
-  native share chooser on an Android device, including sharing to WhatsApp.
-  Camera behavior and the Play track/release status have not been independently
-  verified.
+- Web UI tested across responsive viewports (Desktop, Galaxy Z Flip 5 412px, 390px, and 320px); zero horizontal overflow.
+- Signed release AAB version `1.8` (version code `8`) built and signed with `CN=Fridge AI Upload`.
+- Verified signature via `jarsigner`: `X.509, CN=Fridge AI Upload, O=Fridge AI, C=US`.
+- Verified on live connected Samsung Galaxy Z Flip 5 (`SM-F731U`):
+  - Permanent bottom navigation tabs with zero layout flicker or vanishing icons on cold starts.
+  - Direct `.ics` calendar file downloads directly to `/sdcard/Download` via `DownloadManager`.
+  - Android Print Spooler / "Save as PDF" bridge and offline `.html` meal plan exports.
+  - Hardware/gesture back-button navigation in `MainActivity.java` pops active webview history instead of exiting app.
 
 The original checked-in database export may contain user data; keep the
 repository private and review its handling before changing repository
