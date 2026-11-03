@@ -954,6 +954,45 @@ export default function RecipesPage() {
     }, 4500);
   };
 
+  // Synchronize modal open states with browser history so the Android hardware / gesture Back button
+  // smoothly closes open modals instead of exiting the entire app to the home screen!
+  useEffect(() => {
+    const isAnyModalOpen = Boolean(
+      activePlannerModal ||
+      calendarTargetDay ||
+      showMobilePrintModal ||
+      showBhurkoModal ||
+      inspectingIngredient ||
+      showWalkthrough
+    );
+
+    if (isAnyModalOpen) {
+      window.history.pushState({ modalOpen: true }, '');
+    }
+
+    const handlePopState = () => {
+      setActivePlannerModal(null);
+      setCalendarTargetDay(null);
+      setCalendarSyncStatus('idle');
+      setShowMobilePrintModal(false);
+      setShowBhurkoModal(false);
+      setInspectingIngredient(null);
+      setShowWalkthrough(false);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [
+    activePlannerModal,
+    calendarTargetDay,
+    showMobilePrintModal,
+    showBhurkoModal,
+    inspectingIngredient,
+    showWalkthrough
+  ]);
+
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
     setLanguage(stored);
@@ -1448,6 +1487,48 @@ export default function RecipesPage() {
     )}&dates=${dates}&details=${encodeURIComponent(details)}`;
   };
 
+  const handleOpenOrShareIcs = async (url: string, filename: string, title: string, text: string) => {
+    try {
+      showToast('⏳ Opening calendar event...');
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Failed to fetch calendar');
+      const icsText = await res.text();
+
+      const blob = new Blob([icsText], { type: 'text/calendar;charset=utf-8' });
+      const file = new File([blob], filename, { type: 'text/calendar' });
+
+      // 1. Native Web Share with .ics file (Opens Samsung Calendar / Google Calendar import directly on Android)
+      if (typeof navigator !== 'undefined' && navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            files: [file],
+            title: title || 'Sourashtra Meal Plan Calendar',
+            text: text || 'Import this meal plan into your calendar app.'
+          });
+          showToast('✓ Opened in Calendar app!');
+          return;
+        } catch (e: unknown) {
+          if (e instanceof Error && e.name === 'AbortError') return;
+        }
+      }
+
+      // 2. Client-side Blob download trigger (reliable for mobile browsers & desktop)
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+      showToast('✓ Calendar (.ics) downloaded! Tap to add to your calendar.');
+    } catch (_) {
+      try {
+        window.location.href = url;
+      } catch (_) {}
+    }
+  };
+
   const handleDownloadDayIcs = (day: DayMealPlan) => {
     const params = new URLSearchParams({
       type: 'day',
@@ -1466,13 +1547,12 @@ export default function RecipesPage() {
 
     const serverUrl = `/api/calendar/ics?${params.toString()}`;
     setLastIcsDownloadUrl(serverUrl);
-
-    // Reliable top-level download trigger for mobile browsers (Chrome / Samsung Internet / Safari)
-    try {
-      window.open(serverUrl, '_blank');
-    } catch (_) {
-      window.location.assign(serverUrl);
-    }
+    handleOpenOrShareIcs(
+      serverUrl,
+      `Sourashtra_Menu_${day.isoDate || day.dayName}.ics`,
+      `Sourashtra Menu (${day.dayName})`,
+      `Breakfast: ${day.breakfast?.mainDishTitle || ''}\nLunch: ${day.lunch?.mainDishTitle || ''}\nDinner: ${day.dinner?.mainDishTitle || ''}`
+    );
   };
 
   const handleLaunchCalendarSync = (day: DayMealPlan, type: 'google' | 'device') => {
@@ -1497,7 +1577,6 @@ export default function RecipesPage() {
       const endTimeMs = new Date(endIso).getTime() || (Date.now() + 12 * 3600 * 1000);
 
       // 1. If running inside the Android App (AAB / APK) with AndroidCalendarBridge:
-      // Direct native Samsung / Google Calendar Event Intent
       if (
         typeof window !== 'undefined' &&
         (window as unknown as { AndroidCalendarBridge?: { openCalendarEvent?: (t: string, d: string, s: number, e: number) => boolean } })
@@ -1506,15 +1585,13 @@ export default function RecipesPage() {
         try {
           const bridge = (window as unknown as { AndroidCalendarBridge: { openCalendarEvent: (t: string, d: string, s: number, e: number) => boolean } }).AndroidCalendarBridge;
           bridge.openCalendarEvent(titleText, descText, startTimeMs, endTimeMs);
-        } catch (_) {
-          // Fall through
-        }
+          setCalendarSyncStatus('sent');
+          return;
+        } catch (_) {}
       }
 
-      // 2. Trigger real HTTP .ics download for Android / iOS / Desktop:
+      // 2. Trigger real HTTP .ics download / share for Android / iOS / Desktop:
       handleDownloadDayIcs(day);
-
-      // 3. Keep modal OPEN with confirmation state so user never experiences "it just closes"
       setCalendarSyncStatus('sent');
     }
   };
@@ -1549,13 +1626,12 @@ export default function RecipesPage() {
       url += `&plan=${encodeURIComponent(b64)}`;
     } catch (_) {}
 
-    try {
-      window.open(url, '_blank');
-    } catch (_) {
-      window.location.assign(url);
-    }
-
-    showToast('📅 7-Day Meal Plan (.ics) downloading! Open the file to add to your calendar app.');
+    handleOpenOrShareIcs(
+      url,
+      'Sourashtra_7Day_Meal_Plan.ics',
+      '7-Day Sourashtra Meal Plan Calendar',
+      'Full 7-day breakfast, lunch and dinner meal schedule.'
+    );
   };
 
   const handlePrintPlan = () => {
@@ -2976,18 +3052,20 @@ export default function RecipesPage() {
 
                 <div className="cal-success-actions">
                   {lastIcsDownloadUrl && (
-                    <a
-                      href={lastIcsDownloadUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      download={`Sourashtra_Menu_${calendarTargetDay.isoDate || calendarTargetDay.dayName}.ics`}
+                    <button
+                      type="button"
                       className="cal-success-btn cal-download-btn"
                       onClick={() => {
-                        window.open(lastIcsDownloadUrl, '_blank');
+                        handleOpenOrShareIcs(
+                          lastIcsDownloadUrl,
+                          `Sourashtra_Menu_${calendarTargetDay.isoDate || calendarTargetDay.dayName}.ics`,
+                          `Sourashtra Menu (${calendarTargetDay.dayName})`,
+                          `Breakfast: ${calendarTargetDay.breakfast?.mainDishTitle || ''}\nLunch: ${calendarTargetDay.lunch?.mainDishTitle || ''}\nDinner: ${calendarTargetDay.dinner?.mainDishTitle || ''}`
+                        );
                       }}
                     >
                       {t.calendarDownloadIcs || '⬇️ Download / Open .ics File'}
-                    </a>
+                    </button>
                   )}
                   <button
                     type="button"
