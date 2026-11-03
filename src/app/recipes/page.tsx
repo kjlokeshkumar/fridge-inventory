@@ -942,6 +942,17 @@ export default function RecipesPage() {
   const [showWalkthrough, setShowWalkthrough] = useState(false);
   const [inspectingIngredient, setInspectingIngredient] = useState<string | null>(null);
   const [calendarTargetDay, setCalendarTargetDay] = useState<DayMealPlan | null>(null);
+  const [calendarSyncStatus, setCalendarSyncStatus] = useState<'idle' | 'sent' | 'google_opened'>('idle');
+  const [lastIcsDownloadUrl, setLastIcsDownloadUrl] = useState<string | null>(null);
+  const [showMobilePrintModal, setShowMobilePrintModal] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => {
+      setToastMessage((cur) => (cur === msg ? null : cur));
+    }, 4500);
+  };
 
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
@@ -1438,54 +1449,43 @@ export default function RecipesPage() {
   };
 
   const handleDownloadDayIcs = (day: DayMealPlan) => {
-    const lines = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Sourashtra Chef//Day Meal Plan//EN',
-      'CALSCALE:GREGORIAN'
-    ];
+    const params = new URLSearchParams({
+      type: 'day',
+      isoDate: day.isoDate || '',
+      dayName: day.dayName || '',
+      breakfast: day.breakfast?.mainDishTitle || '',
+      b_side: day.breakfast?.pairedWithTitle || '',
+      b_note: day.breakfast?.pairingTraditionNote || '',
+      lunch: day.lunch?.mainDishTitle || '',
+      l_side: day.lunch?.pairedWithTitle || '',
+      l_note: day.lunch?.pairingTraditionNote || '',
+      dinner: day.dinner?.mainDishTitle || '',
+      d_side: day.dinner?.pairedWithTitle || '',
+      d_note: day.dinner?.pairingTraditionNote || ''
+    });
 
-    const slots: { label: string; timeStart: string; timeEnd: string; combo?: MealCombo }[] = [
-      { label: '🌅 Sourashtra Breakfast', timeStart: '080000', timeEnd: '090000', combo: day.breakfast },
-      { label: '☀️ Sourashtra Lunch', timeStart: '130000', timeEnd: '140000', combo: day.lunch },
-      { label: '🌙 Sourashtra Dinner', timeStart: '193000', timeEnd: '203000', combo: day.dinner }
-    ];
+    const serverUrl = `/api/calendar/ics?${params.toString()}`;
+    setLastIcsDownloadUrl(serverUrl);
 
-    const cleanDate = (day.isoDate || '').replace(/-/g, '');
-    for (const s of slots) {
-      if (!s.combo) continue;
-      const summary = `${s.label}: ${s.combo.mainDishTitle} + ${s.combo.pairedWithTitle}`;
-      const desc = `Main: ${s.combo.mainDishTitle}\\nPaired With: ${s.combo.pairedWithTitle}\\nNotes: ${s.combo.pairingTraditionNote}\\nYouTube: ${s.combo.primaryRecipe?.youtubeUrl || 'N/A'}`;
-      lines.push(
-        'BEGIN:VEVENT',
-        `DTSTART:${cleanDate}T${s.timeStart}`,
-        `DTEND:${cleanDate}T${s.timeEnd}`,
-        `SUMMARY:${summary.replace(/[,;]/g, ' ')}`,
-        `DESCRIPTION:${desc}`,
-        'END:VEVENT'
-      );
-    }
-    lines.push('END:VCALENDAR');
-
-    const icsContent = lines.join('\r\n');
+    // Standard HTTP Anchor Click (triggers Android/Samsung download manager & opens with Calendar)
     const filename = `Sourashtra_Menu_${day.isoDate || day.dayName}.ics`;
-
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
+    a.href = serverUrl;
     a.download = filename;
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    setTimeout(() => {
+      try {
+        document.body.removeChild(a);
+      } catch (_) {}
+    }, 1000);
   };
 
   const handleLaunchCalendarSync = (day: DayMealPlan, type: 'google' | 'device') => {
     if (type === 'google') {
       const gcalUrl = buildGoogleCalendarDayUrl(day);
       window.open(gcalUrl, '_blank', 'noopener,noreferrer');
-      setCalendarTargetDay(null);
+      setCalendarSyncStatus('google_opened');
       return;
     }
 
@@ -1503,7 +1503,7 @@ export default function RecipesPage() {
       const endTimeMs = new Date(endIso).getTime() || (Date.now() + 12 * 3600 * 1000);
 
       // 1. If running inside the Android App (AAB / APK) with AndroidCalendarBridge:
-      // Direct native Samsung / Google Calendar Event Editor Intent!
+      // Direct native Samsung / Google Calendar Event Intent
       if (
         typeof window !== 'undefined' &&
         (window as unknown as { AndroidCalendarBridge?: { openCalendarEvent?: (t: string, d: string, s: number, e: number) => boolean } })
@@ -1511,62 +1511,126 @@ export default function RecipesPage() {
       ) {
         try {
           const bridge = (window as unknown as { AndroidCalendarBridge: { openCalendarEvent: (t: string, d: string, s: number, e: number) => boolean } }).AndroidCalendarBridge;
-          const success = bridge.openCalendarEvent(titleText, descText, startTimeMs, endTimeMs);
-          if (success) {
-            setCalendarTargetDay(null);
-            return;
-          }
+          bridge.openCalendarEvent(titleText, descText, startTimeMs, endTimeMs);
         } catch (_) {
-          // Fall through to standard .ics download if bridge failed
+          // Fall through
         }
       }
 
-      // 2. Standard Universal RFC 5545 .ics Calendar File Download:
-      // Works across all Android phones, iPhones, iPads, Macs, and Windows PCs.
-      // On Android / Samsung, downloading the .ics prompts to "Open with Calendar" and imports all meals with 1 tap.
+      // 2. Trigger real HTTP .ics download for Android / iOS / Desktop:
       handleDownloadDayIcs(day);
-      setCalendarTargetDay(null);
+
+      // 3. Keep modal OPEN with confirmation state so user never experiences "it just closes"
+      setCalendarSyncStatus('sent');
     }
   };
 
   const handleDownloadIcsCalendar = () => {
-    const lines = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Sourashtra Chef//Sourashtra 7-Day Meal Planner//EN',
-      'CALSCALE:GREGORIAN'
-    ];
+    let url = '/api/calendar/ics?type=week';
+    try {
+      const daysPayload = weeklyPlan.map((d) => ({
+        dayName: d.dayName,
+        isoDate: d.isoDate,
+        breakfast: {
+          mainDishTitle: d.breakfast?.mainDishTitle,
+          pairedWithTitle: d.breakfast?.pairedWithTitle,
+          pairingTraditionNote: d.breakfast?.pairingTraditionNote,
+          youtubeUrl: d.breakfast?.primaryRecipe?.youtubeUrl
+        },
+        lunch: {
+          mainDishTitle: d.lunch?.mainDishTitle,
+          pairedWithTitle: d.lunch?.pairedWithTitle,
+          pairingTraditionNote: d.lunch?.pairingTraditionNote,
+          youtubeUrl: d.lunch?.primaryRecipe?.youtubeUrl
+        },
+        dinner: {
+          mainDishTitle: d.dinner?.mainDishTitle,
+          pairedWithTitle: d.dinner?.pairedWithTitle,
+          pairingTraditionNote: d.dinner?.pairingTraditionNote,
+          youtubeUrl: d.dinner?.primaryRecipe?.youtubeUrl
+        }
+      }));
+      const json = JSON.stringify(daysPayload);
+      const b64 = btoa(unescape(encodeURIComponent(json)));
+      url += `&plan=${encodeURIComponent(b64)}`;
+    } catch (_) {}
 
-    for (const day of weeklyPlan) {
-      const slots: { label: string; timeStart: string; timeEnd: string; combo: MealCombo }[] = [
-        { label: '🌅 Sourashtra Breakfast', timeStart: '080000', timeEnd: '090000', combo: day.breakfast },
-        { label: '☀️ Sourashtra Lunch', timeStart: '130000', timeEnd: '140000', combo: day.lunch },
-        { label: '🌙 Sourashtra Dinner', timeStart: '193000', timeEnd: '203000', combo: day.dinner }
-      ];
-
-      for (const s of slots) {
-        if (!s.combo) continue;
-        const summary = `${s.label}: ${s.combo.mainDishTitle} + ${s.combo.pairedWithTitle}`;
-        const desc = `Main: ${s.combo.mainDishTitle}\\nPaired With: ${s.combo.pairedWithTitle}\\nWhy: ${s.combo.pairingTraditionNote}\\nYouTube: ${s.combo.primaryRecipe?.youtubeUrl || 'N/A'}`;
-        lines.push(
-          'BEGIN:VEVENT',
-          `DTSTART:${day.isoDate}T${s.timeStart}`,
-          `DTEND:${day.isoDate}T${s.timeEnd}`,
-          `SUMMARY:${summary.replace(/[,;]/g, ' ')}`,
-          `DESCRIPTION:${desc}`,
-          'END:VEVENT'
-        );
-      }
-    }
-
-    lines.push('END:VCALENDAR');
-    const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
     a.download = 'Madurai_Sourashtra_7Day_Meal_Plan.ics';
+    document.body.appendChild(a);
     a.click();
-    URL.revokeObjectURL(url);
+    setTimeout(() => {
+      try {
+        document.body.removeChild(a);
+      } catch (_) {}
+    }, 1000);
+
+    showToast('📅 7-Day Meal Plan (.ics) downloading! Open the file to add to your calendar app.');
+  };
+
+  const handlePrintPlan = () => {
+    // 1. If running inside Android WebView with native PrintBridge
+    if (
+      typeof window !== 'undefined' &&
+      (window as unknown as { AndroidPrintBridge?: { print?: (docName: string) => boolean } })
+        .AndroidPrintBridge?.print
+    ) {
+      try {
+        const bridge = (window as unknown as { AndroidPrintBridge: { print: (docName: string) => boolean } }).AndroidPrintBridge;
+        const res = bridge.print('Sourashtra Chef 7-Day Meal Plan');
+        if (res) return;
+      } catch (_) {}
+    }
+
+    // 2. On desktop, trigger native window.print()
+    const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || /Android|iPhone|iPad/i.test(navigator.userAgent));
+    if (!isMobile) {
+      window.print();
+      return;
+    }
+
+    // 3. On mobile phone (Galaxy Flip 5 / Android / iOS):
+    // Open dedicated mobile print & export preview modal with 1-tap Print / Save PDF and Copy Checklist!
+    setShowMobilePrintModal(true);
+  };
+
+  const handleCopyFullPlan = () => {
+    const lines: string[] = [
+      `🍲 ${t.printPlanHeader || '7-Day Sourashtra Meal Plan'}`,
+      '===================================='
+    ];
+
+    for (const d of weeklyPlan) {
+      lines.push(`\n🗓️ ${formatDayName(d.dayName, language)} (${formatDateLabel(d.dateLabel, language)})`);
+      if (d.breakfast) {
+        lines.push(`  🌅 Breakfast: ${d.breakfast.mainDishTitle} + ${d.breakfast.pairedWithTitle}`);
+      }
+      if (d.lunch) {
+        lines.push(`  ☀️ Lunch: ${d.lunch.mainDishTitle} + ${d.lunch.pairedWithTitle}`);
+      }
+      if (d.dinner) {
+        lines.push(`  🌙 Dinner: ${d.dinner.mainDishTitle} + ${d.dinner.pairedWithTitle}`);
+      }
+    }
+
+    if (weeklyShoppingAnalysis && weeklyShoppingAnalysis.toPurchase.length > 0) {
+      lines.push('\n🛒 WEEKLY GROCERY CHECKLIST (TO BUY):');
+      lines.push('------------------------------------');
+      for (const item of weeklyShoppingAnalysis.toPurchase) {
+        lines.push(`  ☐ ${formatItemName(item.item, language)}${item.quantity ? ` (${item.quantity})` : ''}`);
+      }
+    }
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(lines.join('\n')).then(() => {
+        showToast(t.copyPlanSuccess || '✓ 7-Day Plan & Grocery List copied to clipboard!');
+      }).catch(() => {
+        showToast('✓ 7-Day Plan text ready');
+      });
+    } else {
+      showToast('✓ 7-Day Plan text ready');
+    }
   };
 
   const categoryList = useMemo(() => {
@@ -2142,7 +2206,7 @@ export default function RecipesPage() {
               <button
                 type="button"
                 className="btn-secondary btn-sm"
-                onClick={() => window.print()}
+                onClick={handlePrintPlan}
               >
                 {t.printPlan}
               </button>
@@ -2791,7 +2855,10 @@ export default function RecipesPage() {
       {calendarTargetDay && (
         <div
           className="calendar-choice-overlay"
-          onClick={() => setCalendarTargetDay(null)}
+          onClick={() => {
+            setCalendarTargetDay(null);
+            setCalendarSyncStatus('idle');
+          }}
           role="dialog"
           aria-modal="true"
           aria-labelledby="calendar-modal-title"
@@ -2803,7 +2870,10 @@ export default function RecipesPage() {
             <button
               type="button"
               className="calendar-choice-close"
-              onClick={() => setCalendarTargetDay(null)}
+              onClick={() => {
+                setCalendarTargetDay(null);
+                setCalendarSyncStatus('idle');
+              }}
               aria-label="Close calendar options"
             >
               ✕
@@ -2844,38 +2914,229 @@ export default function RecipesPage() {
               </div>
             </div>
 
-            <div className="cal-options-list">
-              <button
-                type="button"
-                className="cal-option-btn cal-btn-google"
-                onClick={() => handleLaunchCalendarSync(calendarTargetDay, 'google')}
-              >
-                <span className="cal-btn-primary-text">
-                  🗓️ {t.calendarGoogleBtn || 'Google Calendar (App / Web)'}
-                </span>
-                <span className="cal-btn-sub-text">
-                  {t.calendarGoogleSub || 'Instant 1-click sync to your Google Calendar app'}
-                </span>
-              </button>
+            {calendarSyncStatus === 'idle' ? (
+              <div className="cal-options-list">
+                <button
+                  type="button"
+                  className="cal-option-btn cal-btn-google"
+                  onClick={() => handleLaunchCalendarSync(calendarTargetDay, 'google')}
+                >
+                  <span className="cal-btn-primary-text">
+                    🗓️ {t.calendarGoogleBtn || 'Google Calendar (App / Web)'}
+                  </span>
+                  <span className="cal-btn-sub-text">
+                    {t.calendarGoogleSub || 'Instant 1-click sync to your Google Calendar app'}
+                  </span>
+                </button>
 
-              <button
-                type="button"
-                className="cal-option-btn cal-btn-device"
-                onClick={() => handleLaunchCalendarSync(calendarTargetDay, 'device')}
-              >
-                <span className="cal-btn-primary-text">
-                  📱 {t.calendarDeviceBtn || 'Default Device Calendar (Android / iOS / Standard .ics)'}
-                </span>
-                <span className="cal-btn-sub-text">
-                  {t.calendarDeviceSub || 'Universal standard event for any phone calendar app (Android, iPhone, iPad & Desktop)'}
-                </span>
-              </button>
-            </div>
+                <button
+                  type="button"
+                  className="cal-option-btn cal-btn-device"
+                  onClick={() => handleLaunchCalendarSync(calendarTargetDay, 'device')}
+                >
+                  <span className="cal-btn-primary-text">
+                    📱 {t.calendarDeviceBtn || 'Default Device Calendar (Android / iOS / Standard .ics)'}
+                  </span>
+                  <span className="cal-btn-sub-text">
+                    {t.calendarDeviceSub || 'Universal standard event for any phone calendar app (Android, iPhone, iPad & Desktop)'}
+                  </span>
+                </button>
+              </div>
+            ) : (
+              <div className="cal-sync-success-card">
+                <div className="cal-success-icon">✅</div>
+                <h4 className="cal-success-title">
+                  {t.calendarEventSent || 'Event Ready for Your Calendar!'}
+                </h4>
+                <p className="cal-success-sub">
+                  {calendarSyncStatus === 'sent'
+                    ? (t.calendarEventSentSub || 'We prepared the event for your device calendar. If it did not open automatically, tap below to download the .ics file or open with Google Calendar.')
+                    : (t.calendarGoogleSub || 'Opened in Google Calendar. You can add it directly to your schedule.')}
+                </p>
+
+                <div className="cal-success-actions">
+                  {lastIcsDownloadUrl && (
+                    <a
+                      href={lastIcsDownloadUrl}
+                      download={`Sourashtra_Menu_${calendarTargetDay.isoDate || calendarTargetDay.dayName}.ics`}
+                      className="cal-success-btn cal-download-btn"
+                    >
+                      {t.calendarDownloadIcs || '⬇️ Download / Open .ics File'}
+                    </a>
+                  )}
+                  <button
+                    type="button"
+                    className="cal-success-btn cal-gcal-fallback-btn"
+                    onClick={() => {
+                      const gcalUrl = buildGoogleCalendarDayUrl(calendarTargetDay);
+                      window.open(gcalUrl, '_blank', 'noopener,noreferrer');
+                    }}
+                  >
+                    {t.calendarOpenGoogle || '🗓️ Open in Google Calendar'}
+                  </button>
+                  <button
+                    type="button"
+                    className="cal-success-btn cal-done-btn"
+                    onClick={() => {
+                      setCalendarTargetDay(null);
+                      setCalendarSyncStatus('idle');
+                    }}
+                  >
+                    {t.calendarDoneBtn || 'Done / Close'}
+                  </button>
+                </div>
+              </div>
+            )}
 
             <p className="cal-modal-footer-note">
               {t.calendarModalFooterNote || '✓ Universally supported on all Android phones, iPhones, tablets and desktop calendars'}
             </p>
           </div>
+        </div>
+      )}
+
+      {/* Mobile Print & Export Sheet Modal */}
+      {showMobilePrintModal && (
+        <div
+          className="print-modal-overlay"
+          onClick={() => setShowMobilePrintModal(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="print-modal-container"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="print-modal-header">
+              <div className="print-modal-header-titles">
+                <h3 className="print-modal-title">
+                  {t.printModalTitle || '🖨️ 7-Day Sourashtra Menu & Grocery Checklist'}
+                </h3>
+                <p className="print-modal-sub">
+                  {t.printPlanHeader || 'Full 7-Day Breakfast, Lunch & Dinner with Paired Sides'}
+                </p>
+              </div>
+              <button
+                type="button"
+                className="print-modal-close"
+                onClick={() => setShowMobilePrintModal(false)}
+                aria-label="Close print sheet"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="print-modal-body">
+              {/* 7-Day Meal Plan Table */}
+              <div className="print-modal-table-wrap">
+                <table className="print-modal-table">
+                  <thead>
+                    <tr>
+                      <th style={{ width: '18%' }}>{t.printDayCol || 'Day'}</th>
+                      <th style={{ width: '27%' }}>🌅 {t.breakfast}</th>
+                      <th style={{ width: '27%' }}>☀️ {t.lunch}</th>
+                      <th style={{ width: '28%' }}>🌙 {t.dinner}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {weeklyPlan.map((day) => (
+                      <tr key={day.isoDate}>
+                        <td className="print-modal-day-cell">
+                          <strong>{language === 'Tamil' ? toTamilDayName(day.dayName.split(' ')[0]) : day.dayName.split(' ')[0]}</strong>
+                          <span>{day.dateLabel.split(',')[0]}</span>
+                        </td>
+                        <td>
+                          <div className="print-modal-dish-main">🍽️ {formatDishTitle(safeString(day.breakfast?.mainDishTitle), language)}</div>
+                          {day.breakfast?.pairedWithTitle && (
+                            <div className="print-modal-dish-side">+ {formatDishTitle(safeString(day.breakfast.pairedWithTitle), language)}</div>
+                          )}
+                        </td>
+                        <td>
+                          <div className="print-modal-dish-main">🍽️ {formatDishTitle(safeString(day.lunch?.mainDishTitle), language)}</div>
+                          {day.lunch?.pairedWithTitle && (
+                            <div className="print-modal-dish-side">+ {formatDishTitle(safeString(day.lunch.pairedWithTitle), language)}</div>
+                          )}
+                        </td>
+                        <td>
+                          <div className="print-modal-dish-main">🍽️ {formatDishTitle(safeString(day.dinner?.mainDishTitle), language)}</div>
+                          {day.dinner?.pairedWithTitle && (
+                            <div className="print-modal-dish-side">+ {formatDishTitle(safeString(day.dinner.pairedWithTitle), language)}</div>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Weekly Grocery Checklist */}
+              {weeklyShoppingAnalysis && weeklyShoppingAnalysis.toPurchase.length > 0 && (
+                <div className="print-modal-grocery-wrap">
+                  <h4 className="print-modal-grocery-title">
+                    🛒 {t.printGroceryChecklist || t.weeklyShoppingList} ({weeklyShoppingAnalysis.toPurchase.length} {t.items || 'items'})
+                  </h4>
+                  <div className="print-modal-grocery-grid">
+                    {weeklyShoppingAnalysis.toPurchase.map((item, idx) => (
+                      <div key={idx} className="print-modal-grocery-item">
+                        <span className="print-modal-checkbox">☐</span>
+                        <span className="print-modal-item-name">{formatItemName(item.item, language)}</span>
+                        {item.quantity && <span className="print-modal-item-qty">({item.quantity})</span>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="print-modal-footer">
+              <button
+                type="button"
+                className="print-modal-btn print-modal-btn-print"
+                onClick={() => {
+                  if (
+                    typeof window !== 'undefined' &&
+                    (window as unknown as { AndroidPrintBridge?: { print?: (n: string) => boolean } })
+                      .AndroidPrintBridge?.print
+                  ) {
+                    (window as unknown as { AndroidPrintBridge: { print: (n: string) => boolean } }).AndroidPrintBridge.print('Sourashtra Chef 7-Day Plan');
+                  } else {
+                    window.print();
+                  }
+                }}
+              >
+                {t.printModalPrintBtn || '🖨️ Print / Save as PDF'}
+              </button>
+              <button
+                type="button"
+                className="print-modal-btn print-modal-btn-copy"
+                onClick={handleCopyFullPlan}
+              >
+                {t.printModalCopyBtn || '📋 Copy Full Plan to Clipboard'}
+              </button>
+              <button
+                type="button"
+                className="print-modal-btn print-modal-btn-close"
+                onClick={() => setShowMobilePrintModal(false)}
+              >
+                ✕ {t.close || 'Close'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating Mobile Toast Notification */}
+      {toastMessage && (
+        <div className="mobile-toast-notification" role="status" aria-live="polite">
+          <span>{toastMessage}</span>
+          <button
+            type="button"
+            className="toast-close-btn"
+            onClick={() => setToastMessage(null)}
+            aria-label="Dismiss toast"
+          >
+            ✕
+          </button>
         </div>
       )}
     </div>

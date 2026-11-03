@@ -9,6 +9,8 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.print.PrintAttributes
+import android.print.PrintManager
 import android.provider.CalendarContract
 import android.provider.MediaStore
 import android.webkit.JavascriptInterface
@@ -185,6 +187,35 @@ class MainActivity : ComponentActivity() {
                     settings.mediaPlaybackRequiresUserGesture = false
 
                     addJavascriptInterface(AndroidCalendarBridge(this@MainActivity), "AndroidCalendarBridge")
+                    addJavascriptInterface(AndroidPrintBridge(this@MainActivity, this), "AndroidPrintBridge")
+
+                    setDownloadListener { url, _, _, mimetype, _ ->
+                      try {
+                        val mime = if (url.contains(".ics", ignoreCase = true) || mimetype?.contains("calendar", ignoreCase = true) == true) {
+                          "text/calendar"
+                        } else if (!mimetype.isNullOrEmpty()) {
+                          mimetype
+                        } else {
+                          "*/*"
+                        }
+                        val intent = Intent(Intent.ACTION_VIEW).apply {
+                          setDataAndType(Uri.parse(url), mime)
+                          addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        }
+                        val chooser = Intent.createChooser(intent, "Open or Download File")
+                        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        this@MainActivity.startActivity(chooser)
+                      } catch (e: Exception) {
+                        try {
+                          val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                          }
+                          this@MainActivity.startActivity(browserIntent)
+                        } catch (e2: Exception) {
+                          Toast.makeText(this@MainActivity, "Cannot download file", Toast.LENGTH_SHORT).show()
+                        }
+                      }
+                    }
 
                     webViewClient = object : WebViewClient() {
                       override fun shouldOverrideUrlLoading(
@@ -192,6 +223,20 @@ class MainActivity : ComponentActivity() {
                         request: WebResourceRequest?
                       ): Boolean {
                         val url = request?.url?.toString() ?: return false
+                        if (url.contains("/api/calendar/ics") || url.endsWith(".ics", ignoreCase = true)) {
+                          try {
+                            val intent = Intent(Intent.ACTION_VIEW).apply {
+                              setDataAndType(Uri.parse(url), "text/calendar")
+                              addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            }
+                            val chooser = Intent.createChooser(intent, "Open Calendar")
+                            chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            this@MainActivity.startActivity(chooser)
+                            return true
+                          } catch (_: Exception) {
+                            return false
+                          }
+                        }
                         if (url.startsWith("http://") || url.startsWith("https://")) {
                           return false
                         }
@@ -300,32 +345,58 @@ class MainActivity : ComponentActivity() {
 class AndroidCalendarBridge(private val activity: ComponentActivity) {
   @JavascriptInterface
   fun openCalendarEvent(title: String, description: String, startTimeMs: Long, endTimeMs: Long): Boolean {
-    return try {
-      val intent = Intent(Intent.ACTION_INSERT).apply {
-        data = CalendarContract.Events.CONTENT_URI
-        putExtra(CalendarContract.Events.TITLE, title)
-        putExtra(CalendarContract.Events.DESCRIPTION, description)
-        putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTimeMs)
-        putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTimeMs)
-        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-      }
-      activity.startActivity(intent)
-      true
-    } catch (e: Exception) {
+    activity.runOnUiThread {
       try {
-        val fallback = Intent(Intent.ACTION_EDIT).apply {
-          type = "vnd.android.cursor.item/event"
+        val intent = Intent(Intent.ACTION_INSERT).apply {
+          data = CalendarContract.Events.CONTENT_URI
           putExtra(CalendarContract.Events.TITLE, title)
           putExtra(CalendarContract.Events.DESCRIPTION, description)
           putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTimeMs)
           putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTimeMs)
           addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
-        activity.startActivity(fallback)
-        true
-      } catch (e2: Exception) {
-        false
+        val chooser = Intent.createChooser(intent, "Add to Calendar")
+        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        activity.startActivity(chooser)
+      } catch (e: Exception) {
+        try {
+          val fallback = Intent(Intent.ACTION_EDIT).apply {
+            type = "vnd.android.cursor.item/event"
+            putExtra(CalendarContract.Events.TITLE, title)
+            putExtra(CalendarContract.Events.DESCRIPTION, description)
+            putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTimeMs)
+            putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTimeMs)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+          }
+          val chooser = Intent.createChooser(fallback, "Add to Calendar")
+          chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+          activity.startActivity(chooser)
+        } catch (e2: Exception) {
+          Toast.makeText(activity, "No calendar app found on this device", Toast.LENGTH_SHORT).show()
+        }
       }
+    }
+    return true
+  }
+}
+
+class AndroidPrintBridge(private val activity: ComponentActivity, private val webView: WebView) {
+  @JavascriptInterface
+  fun print(jobName: String? = null): Boolean {
+    return try {
+      activity.runOnUiThread {
+        val printManager = activity.getSystemService(Context.PRINT_SERVICE) as? PrintManager
+        if (printManager != null) {
+          val docName = jobName ?: "Sourashtra Chef 7-Day Plan"
+          val adapter = webView.createPrintDocumentAdapter(docName)
+          printManager.print(docName, adapter, PrintAttributes.Builder().build())
+        } else {
+          Toast.makeText(activity, "Printing is not supported on this device", Toast.LENGTH_SHORT).show()
+        }
+      }
+      true
+    } catch (e: Exception) {
+      false
     }
   }
 }
