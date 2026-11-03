@@ -385,14 +385,12 @@ export function getIngredientImage(name: string): string | undefined {
     return '/images/ingredients/ghee.jpg';
   }
 
-  // 32. Lemon / Amla
+  // 32. Lemon
   if (
     lower.includes('lemon') ||
     lower.includes('limbu') ||
     lower.includes('எலுமிச்சை') ||
-    lower.includes('lime') ||
-    lower.includes('amla') ||
-    lower.includes('nellika')
+    lower.includes('lime')
   ) {
     return '/images/ingredients/lemon.jpg';
   }
@@ -545,9 +543,9 @@ export function getIngredientImage(name: string): string | undefined {
     return '/images/ingredients/ghee.jpg';
   }
 
-  // 48. Gooseberry / Amla (Nellika -> Lemon/Amla)
+  // 48. Gooseberry / Amla (Nellika)
   if (lower.includes('gooseberry') || lower.includes('amla') || lower.includes('nellika') || lower.includes('நெல்லிக்காய்')) {
-    return '/images/ingredients/lemon.jpg';
+    return '/images/ingredients/gooseberry.jpg';
   }
 
   return undefined;

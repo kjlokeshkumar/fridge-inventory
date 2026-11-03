@@ -2,6 +2,7 @@ package com.example.fridgeai
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.DownloadManager
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
@@ -204,23 +205,36 @@ class MainActivity : ComponentActivity() {
                     addJavascriptInterface(AndroidPrintBridge(this@MainActivity, this), "AndroidPrintBridge")
                     addJavascriptInterface(AndroidShareBridge(this@MainActivity), "AndroidShareBridge")
 
-                    setDownloadListener { url, _, _, mimetype, _ ->
+                    val handleCalendarDownload: (String) -> Boolean = { downloadUrl ->
                       try {
-                        val mime = if (url.contains(".ics", ignoreCase = true) || mimetype?.contains("calendar", ignoreCase = true) == true) {
-                          "text/calendar"
-                        } else if (!mimetype.isNullOrEmpty()) {
-                          mimetype
-                        } else {
-                          "*/*"
+                        val dm = this@MainActivity.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                        val req = DownloadManager.Request(Uri.parse(downloadUrl)).apply {
+                          setMimeType("text/calendar")
+                          setTitle("Sourashtra Meal Plan (.ics)")
+                          setDescription("Downloading Sourashtra meal plan calendar event...")
+                          setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                          setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Sourashtra_Menu_${System.currentTimeMillis()}.ics")
                         }
-                        val intent = Intent(Intent.ACTION_VIEW).apply {
-                          setDataAndType(Uri.parse(url), mime)
-                          addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        dm.enqueue(req)
+                        Toast.makeText(this@MainActivity, "Downloading calendar file to your device...", Toast.LENGTH_SHORT).show()
+                        true
+                      } catch (_: Exception) {
+                        try {
+                          val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(downloadUrl)).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                          }
+                          this@MainActivity.startActivity(browserIntent)
+                          true
+                        } catch (_2: Exception) {
+                          false
                         }
-                        val chooser = Intent.createChooser(intent, "Open or Download File")
-                        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        this@MainActivity.startActivity(chooser)
-                      } catch (e: Exception) {
+                      }
+                    }
+
+                    setDownloadListener { url, _, _, mimetype, _ ->
+                      if (url.contains("/api/calendar/ics") || url.endsWith(".ics", ignoreCase = true) || mimetype?.contains("calendar", ignoreCase = true) == true) {
+                        handleCalendarDownload(url)
+                      } else {
                         try {
                           val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -244,18 +258,7 @@ class MainActivity : ComponentActivity() {
 
                         // 1. Calendar .ics download / API
                         if (url.contains("/api/calendar/ics") || url.endsWith(".ics", ignoreCase = true)) {
-                          try {
-                            val intent = Intent(Intent.ACTION_VIEW).apply {
-                              setDataAndType(Uri.parse(url), "text/calendar")
-                              addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            }
-                            val chooser = Intent.createChooser(intent, "Open Calendar")
-                            chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            this@MainActivity.startActivity(chooser)
-                            return true
-                          } catch (_: Exception) {
-                            return false
-                          }
+                          return handleCalendarDownload(url)
                         }
 
                         // 2. External destinations: YouTube app, Google Calendar, social apps, external websites

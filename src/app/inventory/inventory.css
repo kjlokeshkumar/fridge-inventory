@@ -188,3 +188,39 @@
   font-weight: 500;
   margin-top: 4px;
 }
+
+.item-clickable-preview {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px 6px;
+  margin: -4px -6px;
+  transition: all 0.15s ease;
+}
+
+.item-clickable-preview:hover {
+  background: rgba(36, 89, 97, 0.06);
+  transform: translateY(-1px);
+}
+
+.item-clickable-preview:active {
+  transform: scale(0.98);
+}
+
+.item-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.inventory-item-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}

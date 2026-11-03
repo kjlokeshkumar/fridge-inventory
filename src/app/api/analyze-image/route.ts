@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuthenticatedUser, isAuthConfigurationError } from '@/lib/session';
+import { getIngredientImage } from '@/lib/produce-styles';
 
 export const runtime = 'nodejs';
 
@@ -120,7 +121,7 @@ export async function POST(req: NextRequest) {
 
     // Insert into Postgres database with multi-tenant userId isolation
     let insertedCount = 0;
-    const mockImageUrl = `/api/placeholder?name=food`;
+
     
     for (const item of inventoryItems) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -133,7 +134,7 @@ export async function POST(req: NextRequest) {
           ${item.quantity || 1}, 
           ${item.category || 'Other'}, 
           ${item.expirationDate || null}, 
-          ${mockImageUrl},
+          ${getIngredientImage(item.name || '') || null},
           ${user.id}
         )
       `;

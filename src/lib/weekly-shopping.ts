@@ -38,6 +38,36 @@ function normalizeIngredient(value: string): string {
     .toLowerCase();
 }
 
+export function canonicalizeFreshIngredient(rawName: string): string {
+  if (!rawName) return '';
+  const lower = rawName
+    .replace(/\(.*?\)/g, '')
+    .trim()
+    .toLowerCase();
+
+  // 1. Coriander / Cilantro / Kothmir duplicates
+  if (lower.includes('coriander') || lower.includes('cilantro') || lower.includes('kothmir') || lower.includes('கொத்தமல்லி')) {
+    return 'Fresh Coriander Leaves (Kothmir)';
+  }
+
+  // 2. Gooseberry / Amla / Nellika duplicates
+  if (lower.includes('gooseberry') || lower.includes('amla') || lower.includes('nellika') || lower.includes('நெல்லிக்காய்')) {
+    return 'Gooseberry / Amla (Nellika)';
+  }
+
+  // 3. Curry Leaves plural/singular
+  if (lower === 'curry leaf' || lower === 'curry leaves' || lower.includes('kariveppilai') || lower.includes('கருவேப்பிலை')) {
+    return rawName.includes('(') ? rawName : 'Curry Leaves';
+  }
+
+  // 4. Mint Leaves / Pudina
+  if (lower === 'mint' || lower === 'mint leaves' || lower.includes('pudina') || lower.includes('புதினா')) {
+    return rawName.includes('(') ? rawName : 'Mint Leaves';
+  }
+
+  return rawName.trim();
+}
+
 interface ParsedIngredient {
   name: string;
   amount?: number;
@@ -231,7 +261,8 @@ export function calculateWeeklyShopping(
           if (!parsed.name) continue;
 
           for (const ingredientName of parsed.name.split(/\s*&\s*/).map((part) => part.trim()).filter(Boolean)) {
-            const normalizedName = normalizeIngredient(ingredientName);
+            const canonicalName = canonicalizeFreshIngredient(ingredientName);
+            const normalizedName = normalizeIngredient(canonicalName);
             if (!normalizedName || recipeIngredients.has(normalizedName)) continue;
             recipeIngredients.add(normalizedName);
 
@@ -242,9 +273,9 @@ export function calculateWeeklyShopping(
                 ingredientWords.some((word) => inventoryWords.includes(word));
             });
             if (inInventory) {
-              alreadyInFridge.add(ingredientName);
+              alreadyInFridge.add(canonicalName);
             } else {
-              const quantity = neededQuantities.get(ingredientName) || {
+              const quantity = neededQuantities.get(canonicalName) || {
                 amount: 0,
                 unit: parsed.unit || '',
                 specified: true
@@ -254,7 +285,7 @@ export function calculateWeeklyShopping(
               } else {
                 quantity.amount += parsed.amount;
               }
-              neededQuantities.set(ingredientName, quantity);
+              neededQuantities.set(canonicalName, quantity);
             }
           }
         }

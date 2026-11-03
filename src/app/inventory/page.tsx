@@ -3,9 +3,10 @@
 import { useEffect, useState, useRef } from 'react';
 import './inventory.css';
 import { formatItemName, toTamilCategory, UI_TRANSLATIONS } from '@/lib/translations';
-import { getProduceStyle } from '@/lib/produce-styles';
+import { getProduceStyle, getIngredientImage } from '@/lib/produce-styles';
 import { isInventoryItemExpired, isInventoryItemExpiringSoon } from '@/lib/inventory-dates';
 import { triggerSparkles, triggerSparklesAtElement } from '@/lib/sparkles';
+import IngredientInspectionModal from '@/components/IngredientInspectionModal';
 
 interface InventoryItem {
   id: number;
@@ -20,6 +21,7 @@ export default function InventoryPage() {
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [language, setLanguage] = useState('English');
+  const [inspectingIngredient, setInspectingIngredient] = useState<string | null>(null);
   const [pendingDeletedItem, setPendingDeletedItem] = useState<InventoryItem | null>(null);
   const [undoCountdown, setUndoCountdown] = useState(5);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -366,10 +368,33 @@ export default function InventoryPage() {
                 </button>
               </div>
 
-              <div className="item-main-row">
-                <div className="item-icon-badge" aria-hidden="true">{getProduceEmoji(item.name)}</div>
-                <h3 className="item-name">{formatItemName(item.name, language)}</h3>
-              </div>
+              {(() => {
+                const itemImg = item.imageUrl || getIngredientImage(item.name);
+                return (
+                  <div
+                    className="item-main-row item-clickable-preview"
+                    onClick={() => setInspectingIngredient(item.name)}
+                    title="Click to view authentic ingredient photo & guide"
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setInspectingIngredient(item.name);
+                      }
+                    }}
+                  >
+                    <div className="item-icon-badge" aria-hidden="true">
+                      {itemImg ? (
+                        <img src={itemImg} alt={item.name} className="inventory-item-thumb" />
+                      ) : (
+                        getProduceEmoji(item.name)
+                      )}
+                    </div>
+                    <h3 className="item-name">{formatItemName(item.name, language)}</h3>
+                  </div>
+                );
+              })()}
 
               <div className="item-details">
                 <span className="item-quantity">{t.qty}: {item.quantity}</span>
@@ -402,6 +427,13 @@ export default function InventoryPage() {
           <div className="undo-progress-bar" />
         </div>
       )}
+
+      <IngredientInspectionModal
+        isOpen={Boolean(inspectingIngredient)}
+        onClose={() => setInspectingIngredient(null)}
+        ingredientName={inspectingIngredient || ''}
+        language={language}
+      />
     </div>
   );
 }

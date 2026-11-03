@@ -1467,18 +1467,12 @@ export default function RecipesPage() {
     const serverUrl = `/api/calendar/ics?${params.toString()}`;
     setLastIcsDownloadUrl(serverUrl);
 
-    // Standard HTTP Anchor Click (triggers Android/Samsung download manager & opens with Calendar)
-    const filename = `Sourashtra_Menu_${day.isoDate || day.dayName}.ics`;
-    const a = document.createElement('a');
-    a.href = serverUrl;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => {
-      try {
-        document.body.removeChild(a);
-      } catch (_) {}
-    }, 1000);
+    // Reliable top-level download trigger for mobile browsers (Chrome / Samsung Internet / Safari)
+    try {
+      window.open(serverUrl, '_blank');
+    } catch (_) {
+      window.location.assign(serverUrl);
+    }
   };
 
   const handleLaunchCalendarSync = (day: DayMealPlan, type: 'google' | 'device') => {
@@ -1555,16 +1549,11 @@ export default function RecipesPage() {
       url += `&plan=${encodeURIComponent(b64)}`;
     } catch (_) {}
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Madurai_Sourashtra_7Day_Meal_Plan.ics';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => {
-      try {
-        document.body.removeChild(a);
-      } catch (_) {}
-    }, 1000);
+    try {
+      window.open(url, '_blank');
+    } catch (_) {
+      window.location.assign(url);
+    }
 
     showToast('📅 7-Day Meal Plan (.ics) downloading! Open the file to add to your calendar app.');
   };
@@ -2972,8 +2961,13 @@ export default function RecipesPage() {
                   {lastIcsDownloadUrl && (
                     <a
                       href={lastIcsDownloadUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       download={`Sourashtra_Menu_${calendarTargetDay.isoDate || calendarTargetDay.dayName}.ics`}
                       className="cal-success-btn cal-download-btn"
+                      onClick={() => {
+                        window.open(lastIcsDownloadUrl, '_blank');
+                      }}
                     >
                       {t.calendarDownloadIcs || '⬇️ Download / Open .ics File'}
                     </a>
@@ -3114,7 +3108,7 @@ export default function RecipesPage() {
                   ) {
                     (window as unknown as { AndroidPrintBridge: { print: (n: string) => boolean } }).AndroidPrintBridge.print('Sourashtra Chef 7-Day Plan');
                   } else {
-                    window.print();
+                    window.open('/recipes/print', '_blank');
                   }
                 }}
               >
@@ -3125,7 +3119,7 @@ export default function RecipesPage() {
                 className="print-modal-btn print-modal-btn-copy"
                 onClick={handleCopyFullPlan}
               >
-                {t.printModalCopyBtn || '📋 Copy Full Plan to Clipboard'}
+                {t.printModalCopyBtn || '📋 Copy / Share Full Plan'}
               </button>
               <button
                 type="button"
