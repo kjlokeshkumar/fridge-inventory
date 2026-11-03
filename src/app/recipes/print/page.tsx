@@ -159,8 +159,26 @@ export default function RecipesPrintPage() {
           <button type="button" className="btn btn-primary" onClick={handlePrint}>
             🖨️ Print / Save as PDF
           </button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => {
+              const htmlContent = document.documentElement.outerHTML;
+              const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `Sourashtra_7Day_Meal_Plan_${new Date().toISOString().slice(0, 10)}.html`;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              setTimeout(() => URL.revokeObjectURL(url), 10000);
+            }}
+          >
+            📥 Save Offline Plan (.html)
+          </button>
           <button type="button" className="btn btn-secondary" onClick={handleShare}>
-            {copied ? '✓ Copied!' : '📲 Share / Copy Plan'}
+            {copied ? '✓ Copied!' : '📋 Copy Text Plan'}
           </button>
         </div>
       </div>

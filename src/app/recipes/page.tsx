@@ -1491,40 +1491,8 @@ export default function RecipesPage() {
     try {
       showToast('⏳ Downloading calendar (.ics)...');
       const fullUrl = url.startsWith('http') ? url : `${window.location.origin}${url}`;
-      const isAndroid = typeof navigator !== 'undefined' && /Android/i.test(navigator.userAgent);
 
-      if (isAndroid) {
-        // Direct intent launch so Android DownloadManager catches the file download and places it directly in /sdcard/Download
-        const cleanUrl = fullUrl.replace(/^https?:\/\//, '');
-        window.location.href = `intent://${cleanUrl}#Intent;scheme=https;action=android.intent.action.VIEW;end`;
-        showToast('✓ Calendar (.ics) downloading to Downloads folder!');
-        return;
-      }
-
-      // 1. Native Web Share with .ics file (for supported mobile browsers)
-      if (typeof navigator !== 'undefined' && navigator.share) {
-        try {
-          const res = await fetch(url);
-          if (res.ok) {
-            const icsText = await res.text();
-            const blob = new Blob([icsText], { type: 'text/calendar;charset=utf-8' });
-            const file = new File([blob], filename, { type: 'text/calendar' });
-            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-              await navigator.share({
-                files: [file],
-                title: title || 'Sourashtra Meal Plan Calendar',
-                text: text || 'Import this meal plan into your calendar app.'
-              });
-              showToast('✓ Opened in Calendar app!');
-              return;
-            }
-          }
-        } catch (e: unknown) {
-          if (e instanceof Error && e.name === 'AbortError') return;
-        }
-      }
-
-      // 2. Client-side Blob download trigger (desktop & other browsers)
+      // Standard direct download with Content-Disposition
       const a = document.createElement('a');
       a.href = fullUrl;
       a.download = filename;
@@ -1532,7 +1500,7 @@ export default function RecipesPage() {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      showToast('✓ Calendar (.ics) downloaded!');
+      showToast('✓ Calendar (.ics) downloading! Check your Downloads folder.');
     } catch (_) {
       try {
         window.location.href = url;
@@ -3283,12 +3251,9 @@ ${groceryList}
 
                   const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
                   if (isMobile) {
-                    // Open dedicated print view with auto-print in system browser / Chrome so native Print Spooler invokes
-                    const printUrl = `${window.location.origin}/recipes/print?auto=1`;
-                    const cleanUrl = printUrl.replace(/^https?:\/\//, '');
-                    window.location.href = `intent://${cleanUrl}#Intent;scheme=https;action=android.intent.action.VIEW;end`;
+                    window.location.href = '/recipes/print';
                   } else {
-                    window.open('/recipes/print?auto=1', '_blank');
+                    window.open('/recipes/print', '_blank');
                   }
                 }}
               >
