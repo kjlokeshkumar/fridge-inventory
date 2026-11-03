@@ -50,8 +50,42 @@ export default function RecipesPrintPage() {
 
   const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
+  const handleClose = () => {
+    if (typeof window !== 'undefined') {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = '/recipes';
+      }
+    }
+  };
+
   const handlePrint = () => {
-    window.print();
+    // 1. Check for native Android print bridge (inside native app wrapper)
+    const bridge = typeof window !== 'undefined'
+      ? (window as unknown as { AndroidPrintBridge?: { print?: (n: string) => boolean } })?.AndroidPrintBridge
+      : undefined;
+
+    if (bridge?.print) {
+      try {
+        bridge.print('Sourashtra Chef 7-Day Plan');
+        return;
+      } catch (_) {}
+    }
+
+    // 2. Mobile Android / iOS WebViews do NOT implement window.print() and will freeze the UI thread!
+    const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      handleShare();
+      return;
+    }
+
+    // 3. Desktop browsers (Chrome, Edge, Firefox, Safari on PC/Mac)
+    try {
+      window.print();
+    } catch (_) {
+      handleShare();
+    }
   };
 
   const handleShare = async () => {
@@ -74,7 +108,7 @@ export default function RecipesPrintPage() {
     }
     const fullText = lines.join('\n');
 
-    if (navigator.share) {
+    if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
           title: t.printPlanHeader || '7-Day Sourashtra Meal Plan',
@@ -84,7 +118,7 @@ export default function RecipesPrintPage() {
       } catch (_) {}
     }
 
-    if (navigator.clipboard) {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
       await navigator.clipboard.writeText(fullText);
       setCopied(true);
       setTimeout(() => setCopied(false), 3000);
@@ -115,14 +149,14 @@ export default function RecipesPrintPage() {
           <p style={{ margin: '4px 0 0 0', fontSize: '13px', color: '#64748b' }}>Ink-friendly print layout. Use the buttons below or browser menu to Print / Save as PDF.</p>
         </div>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <button type="button" className="btn btn-secondary" onClick={handleClose}>
+            ← Back to Meal Planner
+          </button>
           <button type="button" className="btn btn-primary" onClick={handlePrint}>
             🖨️ Print / Save as PDF
           </button>
           <button type="button" className="btn btn-secondary" onClick={handleShare}>
             {copied ? '✓ Copied!' : '📲 Share / Copy Plan'}
-          </button>
-          <button type="button" className="btn btn-secondary" onClick={() => window.close()}>
-            ✕ Close
           </button>
         </div>
       </div>

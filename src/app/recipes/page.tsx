@@ -1584,7 +1584,7 @@ export default function RecipesPage() {
     setShowMobilePrintModal(true);
   };
 
-  const handleCopyFullPlan = () => {
+  const handleCopyFullPlan = async () => {
     const lines: string[] = [
       `🍲 ${t.printPlanHeader || '7-Day Sourashtra Meal Plan'}`,
       '===================================='
@@ -1611,13 +1611,15 @@ export default function RecipesPage() {
       }
     }
 
+    const fullText = lines.join('\n');
+
     if (
       typeof window !== 'undefined' &&
       (window as unknown as { AndroidShareBridge?: { shareText?: (t: string, text: string) => boolean } })
         .AndroidShareBridge?.shareText
     ) {
       try {
-        const ok = (window as unknown as { AndroidShareBridge: { shareText: (t: string, text: string) => boolean } }).AndroidShareBridge.shareText(t.printPlanHeader || '7-Day Sourashtra Meal Plan', lines.join('\n'));
+        const ok = (window as unknown as { AndroidShareBridge: { shareText: (t: string, text: string) => boolean } }).AndroidShareBridge.shareText(t.printPlanHeader || '7-Day Sourashtra Meal Plan', fullText);
         if (ok) {
           showToast(t.copyPlanSuccess || '✓ 7-Day Plan & Grocery List ready to share!');
           return;
@@ -1625,8 +1627,23 @@ export default function RecipesPage() {
       } catch (_) {}
     }
 
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(lines.join('\n')).then(() => {
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: t.printPlanHeader || '7-Day Sourashtra Meal Plan',
+          text: fullText
+        });
+        showToast(t.copyPlanSuccess || '✓ 7-Day Plan & Grocery List ready to share!');
+        return;
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          return;
+        }
+      }
+    }
+
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(fullText).then(() => {
         showToast(t.copyPlanSuccess || '✓ 7-Day Plan & Grocery List copied to clipboard!');
       }).catch(() => {
         showToast('✓ 7-Day Plan text ready');
@@ -3101,12 +3118,22 @@ export default function RecipesPage() {
                 type="button"
                 className="print-modal-btn print-modal-btn-print"
                 onClick={() => {
-                  if (
-                    typeof window !== 'undefined' &&
-                    (window as unknown as { AndroidPrintBridge?: { print?: (n: string) => boolean } })
-                      .AndroidPrintBridge?.print
-                  ) {
-                    (window as unknown as { AndroidPrintBridge: { print: (n: string) => boolean } }).AndroidPrintBridge.print('Sourashtra Chef 7-Day Plan');
+                  const bridge = typeof window !== 'undefined'
+                    ? (window as unknown as { AndroidPrintBridge?: { print?: (n: string) => boolean } })?.AndroidPrintBridge
+                    : undefined;
+
+                  if (bridge?.print) {
+                    try {
+                      bridge.print('Sourashtra Chef 7-Day Plan');
+                      return;
+                    } catch (_) {}
+                  }
+
+                  const isMobile = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+                  if (isMobile) {
+                    // On mobile WebView, avoid opening a confusing second popup or calling window.print()
+                    // Use native share sheet which allows direct "Save to Drive as PDF", "Print", or WhatsApp
+                    handleCopyFullPlan();
                   } else {
                     window.open('/recipes/print', '_blank');
                   }
@@ -3119,7 +3146,7 @@ export default function RecipesPage() {
                 className="print-modal-btn print-modal-btn-copy"
                 onClick={handleCopyFullPlan}
               >
-                {t.printModalCopyBtn || '📋 Copy / Share Full Plan'}
+                {t.printModalCopyBtn || '📲 Share / Save as PDF'}
               </button>
               <button
                 type="button"
