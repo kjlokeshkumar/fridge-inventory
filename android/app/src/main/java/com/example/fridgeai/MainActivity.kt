@@ -9,7 +9,9 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.provider.CalendarContract
 import android.provider.MediaStore
+import android.webkit.JavascriptInterface
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
@@ -182,6 +184,8 @@ class MainActivity : ComponentActivity() {
                     settings.loadWithOverviewMode = true
                     settings.mediaPlaybackRequiresUserGesture = false
 
+                    addJavascriptInterface(AndroidCalendarBridge(this@MainActivity), "AndroidCalendarBridge")
+
                     webViewClient = object : WebViewClient() {
                       override fun shouldOverrideUrlLoading(
                         view: WebView?,
@@ -193,12 +197,16 @@ class MainActivity : ComponentActivity() {
                         }
                         try {
                           val intent = if (url.startsWith("intent://")) {
-                            Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+                            Intent.parseUri(url, Intent.URI_INTENT_SCHEME).apply {
+                              addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            }
                           } else {
-                            Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                              addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            }
                           }
                           if (intent != null) {
-                            context.startActivity(intent)
+                            this@MainActivity.startActivity(intent)
                             return true
                           }
                           return false
@@ -284,6 +292,39 @@ class MainActivity : ComponentActivity() {
               )
           }
         }
+      }
+    }
+  }
+}
+
+class AndroidCalendarBridge(private val activity: ComponentActivity) {
+  @JavascriptInterface
+  fun openCalendarEvent(title: String, description: String, startTimeMs: Long, endTimeMs: Long): Boolean {
+    return try {
+      val intent = Intent(Intent.ACTION_INSERT).apply {
+        data = CalendarContract.Events.CONTENT_URI
+        putExtra(CalendarContract.Events.TITLE, title)
+        putExtra(CalendarContract.Events.DESCRIPTION, description)
+        putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTimeMs)
+        putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTimeMs)
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+      }
+      activity.startActivity(intent)
+      true
+    } catch (e: Exception) {
+      try {
+        val fallback = Intent(Intent.ACTION_EDIT).apply {
+          type = "vnd.android.cursor.item/event"
+          putExtra(CalendarContract.Events.TITLE, title)
+          putExtra(CalendarContract.Events.DESCRIPTION, description)
+          putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTimeMs)
+          putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTimeMs)
+          addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        activity.startActivity(fallback)
+        true
+      } catch (e2: Exception) {
+        false
       }
     }
   }

@@ -814,7 +814,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Annapoorani Caters- Madurai Mr. Vijay : 8428463331. Puliyodharai Tamarind - 1 kg Raw Rice - 1.5 kg Curry Leaves - As ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -843,7 +842,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: The study of native or traditional recipes often involves examining regional ingredients, cooking techniques, and distinctive flavor ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -872,7 +870,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Veg Eeral Masala Good day and welcome. We are pleased to present a vegetarian dish that offers the rich, savory texture typically ...",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -902,7 +899,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Saurashtrian style Madurai Mutton Sukka Craving an authentic taste of Madurai? Look no further! This video reveals the secrets to ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1015,7 +1011,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Kulambu Podi. Ingredients: Half KG Malli Vidhai, 125gm Vatral, Veesam Padi arisi, 300gm Karupu Ullundu, ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1045,7 +1040,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Karuppatti 1 Boiled rice or raw rice 1 cup Idli rice 1 cup Urad dhal 1 tsp Fenugreek little bit Ghee or butter.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -1073,7 +1067,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on More Kulambu preparation.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1103,7 +1096,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Thakkali charu preparation.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -1133,7 +1125,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Keera charu preparation.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -1163,7 +1154,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hii guys I think all are doing wells hole do you learn something from our videos . . . Ingredients Tomato 2 Curry leaves corandier ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -1193,7 +1183,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Tomato Rice | Tamaatar Pulao | தக்காளி சாதம் | Sourashtra Thakkali Pongal in Pressure Cooker ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -1224,7 +1213,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Gooseberry"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Curry leaves - 1 handful Coriander leaves - 1 handful Mint leaves - 1 handful Tamarind - 1 gooseberry size Ginger - 3 inches size ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -1252,7 +1240,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Cauliflower Kulambu preparation.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1282,7 +1269,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: hematr3171 This is a quick and easy recipe of thovaiyal. In Sourashtra, this recipe is called \"Loshto\". The main ingredients are ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -1311,7 +1297,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Tamarind- 100gm Red chili - 20 Oil - 150 ml Fenugreek powder - 1 tsp Asafoetida - 1 tsp Turmeric powder - 1/2 tsp Salt - 2 tsp ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -1340,7 +1325,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: For more videos visit us at http://www.yummysourashtra.com.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1431,7 +1415,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Coriander"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Onion - 1 small Tomato - 4 Ounty Burko - 3 tsp Curry and coriander leaves - small amount Green chili - 2 small size Turmeric ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1460,7 +1443,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Kulambu Podi — the ubiquitous curry powder and the holy grail of Sourashtra cuisine! ❤️ This humble spice blend ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1519,7 +1501,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Milk"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Healthy and tasty Coconut Milk Curry/Thengai Paal Kulambu for rice. Also goes well with idli/dosa/chapathi/idiyappam/appam.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1549,7 +1530,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Instant paruppu thogayal recipe, ready in just 1 minute, which can be prepared with/without coconut. This style of paruppu ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -1578,7 +1558,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Traditional Vendhaya Kulambu! Healthy fenugreek seeds gravy! Sourashtra Mithi Kolgar!",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1607,7 +1586,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Baltin Bhurko, a special post delivery curry powder prepared with 14 medicinal ingredients!",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1693,7 +1671,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Soft kozhukattai recipe, prepared traditional style, by grinding idli rice, also shaped without moulds. I always prefer to prepare ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -1722,7 +1699,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Khaaru Bhurko, a special post delivery digestion powder prepared with 11 medicinal ingredients!",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1753,7 +1729,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: This is a simple to make chana dal recipe, a must in lunch menu of all Sourashtra feasts. It tastes best with any spicy kuzhambu ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1812,7 +1787,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra's Kuzhambu Podi | Palkar Recipe |Avunti Bhurko | செளராஷ்டிரா குழம்பு பொடி | Buddy Recipes ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1842,7 +1816,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Coconut"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Black Urad dal Coconut Curry | Udith Nalar Ounty | சௌராஷ்டிரா கருப்பு உளுந்து ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1873,7 +1846,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Traditional Rasam powder & Rasam Recipe| Pilchaar Bhurko & Pilchaar | சௌராஷ்ட்ரா ரசம் பொடி ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -1903,7 +1875,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Thakkali Chaaru | Tomato Saar | Sourashtra Thakkali Chaar | Palkar Recipe | Buddy Recipes #ThakkaliChaaru #TomatoSaar ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -1933,7 +1904,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Tomato Curry Recipe | Traditional Tomato Kulambu | தக்காளி குழம்பு | Thakkali Ounty | Buddy ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -1964,7 +1934,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliyodharai/Sourashtra Ambad Bhath || how to make tamarind rice Check out my blog page: ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -1993,7 +1962,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Paruppu Kulambu in Sourashtra style! A forgotten traditional recipe! Super tasty and wholesome with goodness of dal, vegetables ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -2025,7 +1993,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Ingredients for Losan Kolkar/Poondu Kuzhmabu: For Tamarind Spice Mix: - Kuzhambu(Ounty) Podi(Burko) - 4 Tbsp - Salt to taste ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -2055,7 +2022,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Ingredients for Kuzhambu Podi/Ounty Burko: - Coriander Seeds - 100g ~ 1.5 Cups - Black Urad Dal - 50g ~ 1/4 Cup - Dry Red ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -2117,7 +2083,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Mutton 1/4 kg Onion 1 small Tomato 2 numbers Ounty powder 2 tsp Salt to taste.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -2149,7 +2114,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Onion 1/4 Tomato 1/2(small) Red chili 2 Curd 75ml Whole milk 50 ml Dhein ounty burko 1 tsp.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -2180,7 +2144,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Ambat Bhath | Sourashtra Puliyodharai | சௌராஷ்டிரா முறை புளியோதரை.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -2209,7 +2172,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rice 1 cup Water 4 cup Ambatbath paste 1.25 small houko Red chili 4 Peanut and channa dhal.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -2264,7 +2226,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra special/Ambat bhath/Puliyodarai/#Puliyogare Ingredients Serves 4-5 Oil Mustard seeds Chana dal Peanut Hing Curry ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -2295,7 +2256,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Kachchana- 100gm Onion -1 small Tomato - 2 small Garlic -3 piece Ginger - 1 inch Asafoetida - 3 pinch Ounty burko - 1 tsp Red ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -2382,7 +2342,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Meal Maker Ambat.",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -2412,7 +2371,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Easy to prepare. Only few items required, Ready in 15 minutes. Can be served with coconut chutney. Tasty and healthy.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -2468,7 +2426,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rasam | kalyana veetu Rasam | Jhoman pilchaar | Sourashtra Rasam recipe| Basic South Indian rasam Tomato Rasam,Basic ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2499,7 +2456,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rasam II (Joman Pilchaar)",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2530,7 +2486,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Style Rasam Powder Recipe The secret behind every soulful rasam Because every meal deserves a warm bowl ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2591,7 +2546,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: hematr3171 This Sourashtra Instant rasam recipe is a very easy and quick preparation which can be prepared within 10 minutes.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2622,7 +2576,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil | Sourashtra Quick Rasam.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2653,7 +2606,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil | Parupu Rasam.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2684,7 +2636,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Instant homemade Rasam #Immunityboosting ingredients Pepper Garlic Hing Red chilli Curry leaves Tomato Tamarind water ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2715,7 +2666,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil | Rasa Podi.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2744,7 +2694,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Pepper- 100 gram(rice cooker cup full) Red chili- 50 pieces Dry curry leaves- one handful Cumin seeds- 3 spoon Asafoetida- 2 ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2805,7 +2754,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: சௌராஷ்ட்ரா மக்களின் பாரம்பரிய முறைப்படி செய்த ரசப் பொடி.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2835,7 +2783,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: புளி உபயோகிக்காமல், எலுமிச்சையை வைத்து ரசம் எப்படி செய்வது என்று ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2866,7 +2813,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: sourashtra Rasam powder| Rasam powder intamil| sourashtra traditional rasam powder|Jhoman pilchaar RASAM Benefits of ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2897,7 +2843,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Heyyyyy guysssss This is my grandma rasam recipe..... it is very simple and quick method of rasam who dont know to cook rasam ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -2928,7 +2873,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rice - 1 cup Water - 3 cup Jaggery pongal - 1.5 cup Ghee - 1/2 cup Cardamom - 2 Cashew and raisin - 20 number.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Palm Jaggery / Karupatti or Gullu (1 cup)",
       "Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins"
@@ -2956,7 +2900,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Ingredients Rice-1/2 cup Tamarind extract-1/2 cup Water -1.5 to 2 cups+ as needed Turmeric powder-1/4 tsp Roasted fenugreek ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -2985,7 +2928,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Today we are going to see,how to make Muddha pongal in sourashtra This channel is about cooking,shopping haul,vlogs.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3014,7 +2956,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil |Ven pongal.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3043,7 +2984,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliady's Kitchen!",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3072,7 +3012,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Easy to prepare... Thanks for watching and for your support..",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3101,7 +3040,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: முத்தா பொங்கல் என்று சௌராஷ்ட்ரியர்கள் அழைக்க கூடிய வெண் பொங்கல் ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3130,7 +3068,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puli pongal is a version of tamarind rice prepared in pressure cooker. A recipe unique to Sourashtra cuisine, called in Sourashtra ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3158,7 +3095,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: தக்காளி பொங்கல் செய்முறை. அது என்ன தக்காளி பொங்கல். இதை தக்காளி ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3243,7 +3179,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: சௌராஷ்ட்ரா மக்கள் விரும்பி செய்யக்கூடிய தவ்ரா பொங்கல். அதாவது ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3272,7 +3207,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hello viewer welcome to Lakshmi's Best Recipes In this video we will see how to make Puli Pongal or Liquid Puliyodharai recipe ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3329,7 +3263,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: சௌராஷ்டிரா தவுரா பொங்கல் (கோவில் பொங்கல்) ஒடச்சக்கடலை துவையல்.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3384,7 +3317,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: சௌராஷ்ட்ரா சமூகத்தினரின் உடனடி preparation ஆன வங்கி புடித் ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3412,7 +3344,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Kathirikai Chutney #Sourashtra vangi budith # vangi chutney # brinjal chutney recipe # Best side dish chutney for dosa, idli and ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3444,7 +3375,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Coriander"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Brinjal 3 Onion 1 small Tomato 3 Red chili 5 Green chili 1 Toor dhal 1 tsp Curry and coriander leaves little bit Asafoetida small ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3472,7 +3402,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourastra Special Chutney | ஒரு வரம் அனாலும் கெடாத சட்னி | Best for dosa,idly and variety rices Other ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -3500,7 +3429,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: DESCRIPTION* :- With this video you could know how to make the version 2.0 of the Ginger Chutney we made in this channel ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3528,7 +3456,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Brinjal chutney,Baingan chutney,kathirikai chutney,#vangibudit,#Sourashtra,vazhuthananga chutney Brinjal Chutney,Baingan ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3556,7 +3483,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: The Ultimate 3-in-1 Brinjal Chutney! ✨ Tired of cooking separate side dishes for breakfast, lunch, and dinner? This \"All-rounder\" ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3584,7 +3510,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Brinjal Chutney Recipe | Palkar Recipe | Vangi Budith | Chutney Recipe | கத்தரிக்காய் சட்னி | Buddy Recipes ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3639,7 +3564,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: No cook raw mango pachadi/Mangai pachadi/Sourashtra kachamba bhudith.",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3667,7 +3591,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil |Katrika chutney.",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3695,7 +3618,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Channa dhal - 3 table spoon Red chili - 6 Curry leaves - 1/2 handful Tomato- 3 Salt to taste Asafoetida - small amount.",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3723,7 +3645,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Vangi Budith | கத்திரிக்காய் சட்னி | வங்கி புடித் | An Instant Chutney Recipe #recipe #chutney ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3807,7 +3728,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Losto (Pudhina Thuvaiyal)",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3838,7 +3758,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Mint Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Mint 1 handful Coriander leaves 1 handful Curry leaves 1 handful Asafoetida 1/2 tsp Garlic pieces 3 Ginger 1/2 inch Red chili 15 ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3895,7 +3814,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Urad dhal - 2 tsp Red chili - 4 Tamarind - small amount Mint - 1/2 handful Coriander leaves - 1 handful Tempering - 1 tbsp oil, ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -3926,7 +3844,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Mutton"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Mutton 1/4kg Sombu 1 tsp Curry leaves 1 handful Onion 1 big Red chili 3 numbers Ginger garlic paste 1 tsp Turmeric powder 1/4 ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -3957,7 +3874,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rusk - 1 cup (100ml) Sugar - 1 cup Ghee - 1/2 cup Cardamom - 3 Cashews - 15 numbers.",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -3987,7 +3903,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Kovakai 300gm Toor dhal 50gm Red chili 2 Asafoetida 1/4 tsp Salt to taste Turmeric 1/4 tsp.",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -4018,7 +3933,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Shrimp - 1/4 kg Turmeric powder - 1/2 tsp Chili powder - 1 1/4 tsp Malli powder - 1 tsp Garam masala - 1 tsp Pepper powder - 1 tsp ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4050,7 +3964,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Goat liver - 1/4 kg Pepper- 1 tsp Cumin seeds - 1 tsp Garlic - 4 Ginger -small amount Turmeric -1/4 tsp Onion - 1/4 Chopped Salt ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4080,7 +3993,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Pattai 10 numbers Brinji leaf 10 numbers Star anise (Annachi poo) 1/2 cup Fennel seeds(Sombu) 1/2 cup Cardamom 1/3 cup ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4110,7 +4022,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rice 2 cups Salt to taste Mustard seeds 1/2 tsp Channa dhal 2 tbsp Peanut 2 tsp(optional) Red chili 7 Hing 1/8 tsp Turmeric ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4141,7 +4052,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Chicken"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Chicken 600-750gm Onion 1 big Green chili 3 Tomato 2 small or 1 big Turmeric powder 1/4 tsp Fennel seeds 1/4 tsp Red chili 1/4 ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4177,7 +4087,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rice - 400 gm Onion - 1 small size Tomato - 1 medium size Garlic - 8 Ginger - 1 inch Green chili - 3 small Coconut - 1/2 Mint - 1/2 ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4205,7 +4114,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Pasta 400gm Marinara sauce 5-6 spoon Pesto sauce 1.5 spoon Butter 1-2 tsp Olive oil 3 tsp Red pepper as you required Salt to ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4237,7 +4145,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Coconut"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Coconut 3 big pieces 3 spoon Chana dhal 6 red chili Small amount tamarind 4 garlic piece 1 inch ginger Handful curry and ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -4270,7 +4177,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Chicken 600gm Onion 1 big Tomato 2 small or 1 big Green chili 3 Ginger garlic 2 tbsp Chicken masala 1 tsp Red chili 1/4 ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4302,7 +4208,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Mulo 1 big Onion 1/2 Tomato 1 big Ounty burko 1/2 tsp Coriander powder 1/2 tsp Red chili powder 1/4 tsp optional Turmeric ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4334,7 +4239,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Kallo 3 Onion 1/2 Ripe Tomato 2 Red chili 2 Cumin seeds 1/2 tsp Salt to taste Asafoetida little bit Tamarind very little bit Sugar 1/4 ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4369,7 +4273,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Milk"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Small Onion 20-25 numbers Tomato 8 Red chili 1 Green chili 3 Coconut 1 Coriander and curry leaves little bit Ounty burko 1 tsp ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4401,7 +4304,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Chicken"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Chicken - 400gm Onion - 1 small Tomato - 2 small Curry leaves - 1string Malli - 2 tbsp Fennel - 1 tsp Cumin seeds - 1 tsp Pepper ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4431,7 +4333,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Pepper- 1 tea spoon Fennel seed - 1/2 tea spoon Cumin seed - 1/2 tea spoon Kozhambu powder -2 tea spoon Mali powder 1 tea ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4462,7 +4363,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Mutton"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Mutton - 1/4 kg Malli - 2 tsp Cumin seeds - 1 tsp Red chili - 6 Curry leaves - 2 string Coconut- 2 chillu Cashews - 10 pieces Fennel ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4496,7 +4396,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Mutton Onion - 1 Pepper - 1 tsp Malli - 1 tsp Jeera - 1 tsp Green chili - 1 optional Red chili - 3 Ginger- small amount Garlic - 4.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4527,7 +4426,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Channa dhal 1 cup Fennel seeds 1.5 spoon Small onion 10-12 pieces Tomato 3 Ounty burko 4 tea spoon Tamarind 1 goose berry ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4559,7 +4457,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Eggs"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Egg - 3 boiled Onion - 3/4 small size onion Tomato - 1 Garam masala - 1/3 tsp Turmeric powder - 1/4 tsp Chili powder - 1/2 tsp ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4592,7 +4489,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Mint Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Tomato - 6 Red chilli - 5 Ginger - small finger size Channa dhal - 3 1/2 tsp Mint, coriander and curry leaves together - one handful.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4620,7 +4516,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Ravai - 250 gm Moong dhal - 75 gm Pepper - 1 tsp Cumin seeds - 1 tsp Ginger - 1 inch Curry leaves - 1 string Cashews - 20 Make ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4648,7 +4543,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Ravai - 250 gm Moong dhal - 75 gm Pepper - 1 tsp Cumin seeds - 1 tsp Ginger - 1 inch Curry leaves - 1 string Cashews - 20 Make ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4678,7 +4572,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Losan(Garlic) 12 pieces Onion- half of (garlic)losan Tomato- 1 big red chilli -6 Kashmiri chilli- 3-4 for color(its optional)",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4738,7 +4631,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Onion 1 or 1/2 Tomato 1 Green chili 2 Ginger garlic paste 1/2 tsp Turmeric powder 1/8 tsp Hing 1/4 tsp Salt to taste Besan powder ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4770,7 +4662,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Tomato 3 Onion 1 Channa dhal 2 tbsp Red chili 3 Mint one handful Coriander small amount Coconut 1 chillu Hing little bit Salt to ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4856,7 +4747,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: I created this video with the YouTube Video Editor (http://www.youtube.com/editor)",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -4914,7 +4804,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: This video is about Sivja Udith.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -4944,7 +4833,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Koula- 1 Curd Salt to taste Asafoetida small amount.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5004,7 +4892,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Yummy Sourashtra Recipe.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5037,7 +4924,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Chicken"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Chicken - 650 gm Onion - 1 big Garlic - 12 Pepper - 1 1/2 tsp Cumin seeds - 1 1/2 tsp Fennel seeds - 3/4 tsp Green chili - 2 Curry ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5067,7 +4953,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Yummy Sourashtra Recipe.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -5126,7 +5011,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: For more recipes, visit us at http://www.yummysourashtra.com.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -5507,7 +5391,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: For more videos, visit us at http://www.yummysourashtra.com.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5537,7 +5420,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Visit https://yummysourashtra.com/kandhullo-kolakkattai/ for Instructions.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5597,7 +5479,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Good day viewers, தக்காளி அவுண்டி (குழம்பு) . சௌராஷ்ட்ரா சமூகத்தினர் ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5628,7 +5509,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: சௌராஷ்ட்ரா பாரம்பரிய முறைப்படி ரசம் எப்படி செய்வது என்று ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -5658,7 +5538,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: இது சௌராஷ்ட்ரா மக்களின் பாரம்பரியமான கத்திரிக்காய், ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5688,7 +5567,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: curd rice,curd rice recipe,how to make curd rice,rice,curd rice south indian style,best curd rice recipe,spicy curd rice,south indian ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -5717,7 +5595,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliady's Kitchen!",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5747,7 +5624,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Special Combo - Ghee Jeera Rice and Lemon Rice விசேசமான நாட்களில் சௌராஷ்ட்ரா இன ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -5774,7 +5650,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: This is a traditional recipe called Kerpaav Kozhumbu. We add curry leaves to our dishes but never consume it. In order to add it to ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5805,7 +5680,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil | PULIYOTHARAI MIX AND PULIYOTHARAI.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5836,7 +5710,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: This is a very easy recipe for instant puliogare preparation. Link for Sourashtra Puliyotharai mix ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5866,7 +5739,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Easy and simple recipe to make potato fry in tamil.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5926,7 +5798,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Mullangi Kulambu preparation.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5957,7 +5828,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Karunakkelangu Kulambu preparation.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -5987,7 +5857,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil | Egg Masala.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6018,7 +5887,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Easy recipe to make delicious Rava Laddu in Tamil.",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -6048,7 +5916,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: A very easy recipe to prepare Sourashtra butter beans gravy. Link to Sourashtra Kolambu podi ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6079,7 +5946,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil| Paasiparuppu Sambhar.",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -6110,7 +5976,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil | SAMBHAR PODI.",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -6141,7 +6006,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Paruppurundai Kulambu preparation.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6172,7 +6036,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra kolambu podi.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6203,7 +6066,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Vendaikai Kulambu preparation.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6234,7 +6096,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Kuruma Kulambu preparation.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6264,7 +6125,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil | Sourashtra Poondu Kolambu.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6295,7 +6155,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil |Thakali kolambu.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6326,7 +6185,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil| Kathrikai murungakai Kulambu.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6357,7 +6215,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hema's sourashtra samayal in Tamil| Nookal Kulambu.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6388,7 +6245,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Home made Sourashtra samayal in Tamil. A recipe on Peerkangai Kulambu preparation.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6448,7 +6304,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: ZOOM THE VIDEO FOR BETTER CLARITY -------------------------------------------------- Gullu pongal - https://youtu.be/t13ugVJQ_Z4 ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Palm Jaggery / Karupatti or Gullu (1 cup)",
       "Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins"
@@ -6504,7 +6359,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Thakkali Charu / Thakkali Chaar, a traditional and unique Sourashtra style tomato soup recipe for rice !!! This mild flavourful soup ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -6592,7 +6446,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtrian Traditional sweet (SEVI) | Doodun Dhowlo | Pal Kozhakattai rice flour - 1.5 cups sugar -1 cup caradamon powder ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Palm Jaggery / Karupatti or Gullu (1 cup)",
       "Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins"
@@ -6620,7 +6473,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rice Dumplings Recipe | Thanni / Neer Kozhukattai | Kanji Kozhukattai | Palkar Recipe | Panim/Meedum Dhowlo | Buddy Recipes ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -6649,7 +6501,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Madurai Street food | Palkar Recipe | முள்ளு முருங்கை வடை| கல்யாணமுருங்கை வடை ...",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -6678,7 +6529,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: ... Sadham | மதுரை Special பருத்தி பால் சாதம் | Sekki Bath | Palkar Recipe | Buddy Recipes This traditional ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Palm Jaggery / Karupatti or Gullu (1 cup)",
       "Ghee (Thup — 3 tbsp), Cardamom, Cashews & Raisins"
@@ -6706,7 +6556,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Healthy Broccoli Pulao Recipe | Broccoli Rice Recipe | Broccoli stir fry recipe | ப்ரோக்கோலி புலாவ் | Buddy ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -6734,7 +6583,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Coconut Appam/Vadai | Nalar Bhairi | தேங்காய் அப்பம் | Sourashtra Recipes | Madurai Street Food Recipes| Buddy ...",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -6791,7 +6639,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Lentil Dumplings curry |Paruppu Urundai Kulambu | பருப்பு உருண்டை குழம்பு | South Indian Curry Recipe ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6822,7 +6669,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Healthy murungai keerai saaru/Sourashtra Bhajji char.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -6853,7 +6699,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hey guyss...! elarukum vanakam Elarum nalla irupinga nu naan namburen Iniki namma pakka pora samayal vandhu karri ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6884,7 +6729,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Askin like Keroo, Share keroo, Subscribe Keroo Video skip keranako savo.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6915,7 +6759,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Very tasty, Very easy to prepare, Ready in 20 minutes, Mouth watering, Hotel taste. #Parota #Chilli Parota #Tasty #Easy ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6946,7 +6789,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Yummy, Only few ingredients, Healthy, Easy to prepare, Ready in 30 minutes #yummy #delicious #vani'spalkarkitchen #easy ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -6977,7 +6819,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Very easy to prepare , very tasty and traditional. #soft&tasty #homemade #easy #simple #vani'spalkarkitchen Like, share and ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7007,7 +6848,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Yummy and tasty, very easy to prepare, few ingredients. Ready in 5 minutes. #milkshake #apple #vanispalkarkitchen #yummy ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7037,7 +6877,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Very tasty and yummy, Rich in protein,Easy to cook,serves 4. #homemade #vani'spalkarkitchen #youtube #simple #easy ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7067,7 +6906,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Yummy, Only few ingredients, Ready in 30 minutes. #tasty #easy #vani'spalkarkitchen #simple Like, share and subscribe for more ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7098,7 +6936,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Very tasty, mouth melting, delicious,few ingredients, easy to prepare.",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -7128,7 +6965,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: only 4 ingredients , very tasty, very easy to prepare, ready in 1/2 an hour.",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -7157,7 +6993,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Easy to prepare. Yummy and tasty. You can add Vegetables of your taste. For more simple and easy recipes Subscribe Vani's ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7187,7 +7022,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Very tasty and yummy along with chapathi, roti, nan, parota etc. Easy to prepare. High in protein content. Good for health.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7218,7 +7052,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Maida ribbon snacks. Easy and tasty. Only few ingredients required. Quick and simple. Try it and comment how was it. Like, share ...",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -7247,7 +7080,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Easy to prepare, Very tasty. Like, share and subscribe and also press the bell icon for more simple and easy recipes. Link for ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -7275,7 +7107,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: South Indian, Karnataka's famous Akki Roti , soft and tasty, mouth watering with Onion chutney, Akki Roti and onion chutney great ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -7304,7 +7135,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Raw Rasam, cook instantly. Good for digestion. Healthy and very tasty. Ready in just 15 minutes. Cook without fire. Simple and ...",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -7335,7 +7165,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Easy to prepare, Very tasty, healthy, Ready in 10 minutes. Ingredients: Banana Jaggery powder Cardamom Ghee Dates Natural ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7365,7 +7194,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Capsicum masala curry, Onion capsicum curry, easy and tasty capsicum curry, sourashtra Onion capsicum curry, simple and easy ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7396,7 +7224,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra kuzhambu podi, Amti bhurko, Kuzhambu podi recipe in Tamil, குழம்பு பொடி, sourastra kuzhambhu podi in ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7427,7 +7254,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Ulundu murukku recipe in tamil,, murukku recipe, thenkuzhal, urad dal murukku, pacharisi ulundu murukku, chakli recipe, rice ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -7456,7 +7282,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Milk"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Mor kuzhambu, more kulambu, kulambu recipes, how to make more kuzhambu, more kuzhambu with out coconut, curd curry, ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7487,7 +7312,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliyodharai recipe in tamil,Tamarind rice,puli sadham recipe in tamil,sourashtra ambhat bhath,variety rice recipes, sourashtra ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -7515,7 +7339,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: chicken kurma, chicken korma recipe in Tamil, kozhi kurma, chicken recipes, Sourashtra recipes, Original chicken kuruma ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7546,7 +7369,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: pudina chutney,mint chutney,புதினா துவையல், pudina chutney recipe in Tamil,hari chutney, dhaniya pudina chutney, ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -7574,7 +7396,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Tomato kuzhambu, தக்காளி குழம்பு,Thakkali kuzhambu for idli, dosa, rice, south indian recipe, how to make ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7604,7 +7425,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Fish"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: meen kuzhambu,meen kulambu,meen kuzhambu in tamil,meen kulambu in tamil,gramathu meen kulambu,fish kuzhambu in tamil ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7635,7 +7455,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rava uttapam,Sooji uttappam,semolina uttapam,Rava uttapam recipe in tamil, Instant uttapam,Rava utappam recipe, instant dosa ...",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -7664,7 +7483,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Rajma, Recipe, Rajma recipe, Rajma recipe chat, Rajma recipe in hindi, Rajma recipe in urdu, Rajma recipe salad, This is the ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7694,7 +7512,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Chicken"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Chicken gravy recipe in tamil,Chicken curry recipe, chicken masala,spicy chicken gravy, simple chicken curry for beginners,simple ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7725,7 +7542,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sambar powder recipe,sambar podi in Tamil,sourashtra sambaar burko,Homemade sambar powder,masala podi, traditional ...",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -7755,7 +7571,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: This video explains in detail of preparation of Sourashtra recipe Tomato soup which can be prepared very simply but very tasty.",
       "Pilchar Bhurko / Sourashtra Rasam Podi (1.5–2 tbsp)",
       "Tamarind Extract (Ambat) & Cooked Toor Dal Water",
       "Black Pepper (Miri), Cumin Seeds (Jeera) & Hing",
@@ -7786,7 +7601,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Jeera rice is a sourashtra traditional dish which is named as Thoop pongal.which will be made at all festival.it also be servedalong ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -7815,7 +7629,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Semiya kesari recipe in tamil, vermicelli kesari, seviyaan kesari,How to make semiya kesari in Tamil, sourashtra recipe, perfect ...",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -7845,7 +7658,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi My name is Rathinakumar PS. My hobby is home making food vegetarian and Non vegetarian. I love foods. I am following old ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7876,7 +7688,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi My name is Rathinakumar PS. My hobby is home making food vegetarian and Non vegetarian. I love foods. I am following old ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7907,7 +7718,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: One of our tasty and traditional Dish.. Kulambhu Podi video available @ https://youtu.be/yEXbqFPu2hA #SouCooking.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7938,7 +7748,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi My name is Rathinakumar PS. My hobby is home making food vegetarian and Non vegetarian. I love foods. I am following old ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -7968,7 +7777,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Easy Tomato Rice|Sourashtra Style|தக்காளி பொங்கல்|Veg Biriyani Hello All, I Make a Video Tomato Rice ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -7997,7 +7805,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: ஈஸியா சிக்கன் கிரேவி ரெடி பன்றது எப்படி சௌராஷ்ட்ரா முறையில் Hi My ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8028,7 +7835,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi My name is Rathinakumar PS. My hobby is home making food vegetarian and Non vegetarian. I love foods. I am following old ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8058,7 +7864,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi My name is Rathinakumar PS. My hobby is home making food vegetarian and Non vegetarian. I love foods. I am following old ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -8086,7 +7891,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi My name is Rathinakumar PS. My hobby is home making food vegetarian and Non vegetarian. I love foods. I am following old ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8116,7 +7920,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi My name is Rathinakumar PS. My hobby is home making food vegetarian and Non vegetarian. I love foods. I am following old ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8146,7 +7949,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi My name is Rathinakumar PS. My hobby is home making food vegetarian and Non vegetarian. I love foods. I am following old ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8207,7 +8009,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: QUICK SIDEDISH - SOURASHTRA SPL -ONE POT RECIPE-இட்லி, தோசை, பொங்கலுக்கு உகந்தது.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8238,7 +8039,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: ஏலா தேலா | Yela Thela Song | Hedde Jomai Movie | Sourashtra Videos Singers : \"Padmasri\" Dr. G. Sivachidhambaram, V. K. ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8269,7 +8069,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: sourashtra || #saurashtra || #palkar Ragi Dosa in sourashtra language, Ragi Dosa in saurashtra, Ragi Dosa in palkar language ...",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -8299,7 +8098,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Love song, sourashtra language, O.Visvesh Collection song.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8330,7 +8128,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Casting : Ambarish Koushik Singer : Rajesh Moorthy D.O.P & Editing : Kissan Lal Music Composed by : @raaju1234 (Rajesh ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8361,7 +8158,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: பங்கராபான் பைரி என்று சௌராஷ்ட்ரா மக்களால் சொல்லப்படும் முள்ளு ...",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -8391,7 +8187,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Nalar Bhairi Sourashtra Geetha Bei Kitchen #GeethaBeiKitchen.",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -8421,7 +8216,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: I created this video with the YouTube Video Editor (http://www.youtube.com/editor)",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -8451,7 +8245,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Ingredients Idli rice-1 cup Grated coconut-3/4 cup Black pepper powder-1/2 tsp Salt-1/2 tsp Oil to deep fry Music: ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -8510,7 +8303,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Idli rice - 250 gm Pangarapan - 1 handful Drumstick leaves - 1 handful Thuthuvalai leaves - 5 count Chiththaraththai - 1 piece or ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -8539,7 +8331,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Miri Bhairi (மிரி பைரி) is a traditional Sourashtra (Palkar) recipe made with rice, pepper and coconut. This recipe is quick ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -8569,7 +8360,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi Friends! Let's try this Healthy Snack - Pangarapaan Bhairi (Mullumurungai Vadai). It cures Cold, Cough & Mucus. In Sourashtra ...",
       "Idli Rice / Raw Rice (1 cup) & Urad Dal (2 tbsp)",
       "Black Pepper, Cumin Seeds (or Palm Jaggery / Gullu for sweet Appam/Dhowlo)",
       "Chenna Bhurko (Pottukadalai Podi, for serving with Bhairi)",
@@ -8625,7 +8415,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Kanji #KurunaiKanji #SourashtraKanji This is a very easy and tasty recipe to prepare Sourashtra Kanji. In Sourashtra, we call this ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -8653,7 +8442,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Madurai Urad dal rice | Madurai Ulundhu Sadam | மதுரை உளுந்து சாதம்| Kenni pes -Sourashtrians Recipe urad ...",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -8681,7 +8469,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: தொவ்ளோ கோனக் ஹன்தத்தே Dhovlo sourashtra #GeethaBeiKitchen Geetha Bei Kitchen.",
       "Raw Rice (Saadu — 1 to 2 cups) & Moong Dal / Chana Dal",
       "Tamarind Extract (for Ambat/Dhowra Pongal) or Black Pepper & Cumin (for Mudha/Thoov Pongal)",
       "Mustard Seeds (Mhuri), Urad Dal, Chana Dal, Peanuts & Hing",
@@ -8710,7 +8497,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Hi friends, In this video, we will see how to make mutton peratal in tamil. This mutton peratal is sourashtra special polte chaina.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8741,7 +8527,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: MuttonRecipes #PepperMutton #Sourashtrarecipes #CookBookRecipeKitchen.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8771,7 +8556,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Losan(garlic) - 25 numbers or 1 handful Ounty Burko - 3 tbsp Oil - 7 tbsp Asafoetida- to taste Salt- to taste Kaaru Burko - 1/4 soak ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8801,7 +8585,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Traditional and Authentic Poondu Kulambu recipe. -------------------------------------------------- SUBSCRIBE to my YouTube channel for ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8860,7 +8643,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: சௌராஷ்டிரா ஸ்பெஷல் ருசியான லொசன் கொல்க்கர் (ருசியான பூண்டு ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8890,7 +8672,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: பூண்டு காரக் குழம்பு எப்படி செய்வது என்று பாரக்கலாம். இதை ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8920,7 +8701,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: poondukulambu #losankolkar #maduraistylepoondukulambu #sourashtrastylepoondukulambu.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -8950,7 +8730,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliady's Kitchen! Link to make curry powder for Garlic Curry! https://youtu.be/mLAkuJqtdSo This curry powder is made by ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9009,7 +8788,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Ounty burko 2 tsp Tamarind water Garlic 4 pieces Cumin seeds 1 tsp Viskailo small amount Asafoetida small amount Sesame oil.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9039,7 +8817,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Siththaraththai small piece Ounty burko 5 spoon Tamarind juice Sesame oil.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9099,7 +8876,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Mutton"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Simple and tasty chicken kulambu / chicken curry recipe. Tastes delicious with rice, idli, dosa, poori, chapati, appam.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9160,7 +8936,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Mutton kuzhambu in sourashtra |Chaina Amty |Sourashtra special Recipes |Ounty|Bachelor's recipe @vevanmedia9891.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9224,7 +8999,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Chicken - 250 gm Onion - 1 Tomato - 2 Cumin seeds - 1 tsp Fennel seeds - 1 tsp Masa kasha - 1 tsp Coconut - 1 or 2 chillu Malli ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9284,7 +9058,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourastra receipes/koddi fry/thirukkai koddi bhunjini/2 min non veg ready.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9314,7 +9087,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra style கருவாட்டு குழம்பு & கருவாட்டு கொத்து வறுவல்...try and share your ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9344,7 +9116,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Sourashtra Mali /mahli neei meen Ounti Sourashtra meen KULAMBU.",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",
@@ -9375,7 +9146,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliady's Kitchen!",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -9408,7 +9178,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Snake guard - 1 big Tomato - 1 small Onion - 1 small Green chili - 2 Cumin seeds - 1 tea spoon Garlic - 4 pieces Toor and moong ...",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -9441,7 +9210,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Toor dhal 100gm Onion 1 Tomato 2 Tamarind water 1 small howko Green chili 1 Mixed veg(drumsticks, carrots, chaw chaw) one ...",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -9473,7 +9241,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Moong dhal 3/4 cup Onion 1 small Tomato 1 big or 2 small Green chili 1 Sambar powder 3/4 tsp Hing 1/4 tsp Turmeric powder 1/4 ...",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -9504,7 +9271,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliady's Kitchen!",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -9534,7 +9300,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: An easy recipe for Keera kootu.",
       "Toor Dal (Tuvaram Bela) or Chana Dal (Harbara Bela — 1/2 cup)",
       "Ounty Bhurko or Sambar Bhurko (1.5–2 tbsp)",
       "Tamarind (small gooseberry size), Turmeric & Hing",
@@ -9593,7 +9358,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliady's Kitchen!",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -9623,7 +9387,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Yummy Sourashtra Recipe.",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -9653,7 +9416,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: 5 lime 1/2 cup salt (1/2 cup in 100gm cup) Fenugreek 3/4 baby spoon Asafoetida 3/4 baby spoon Kashmiri red chilli powder 2 ...",
       "Chana Dal or Toor Dal (1 tbsp) & Dry Red Chillies (5–8)",
       "Tamarind (small piece) & Asafoetida (Hing — 1/4 tsp)",
       "Mustard Seeds, Urad Dal & Gingelly Oil (for tempering)",
@@ -9684,7 +9446,6 @@ export const MADURAI_SOURASHTRA_RECIPES: SourashtraRecipeReference[] = [
       "Curry Leaves"
     ],
     "pantryAdditives": [
-      "Channel Ingredient Note: Puliady's Kitchen! #worldfamousrecipes #vangichutney #kathirikaikodsu #brinjalchutney #sourashtrachutney #sourashtrarecipes ...",
       "Ounty Bhurko / Sourashtra Kulambu Podi (2–3 tbsp)",
       "Tamarind (Ambat — small lemon size)",
       "Gingelly / Sesame Oil (2–3 tbsp)",

@@ -173,6 +173,13 @@ export function calculateRecipeNutrition(recipe: Partial<SourashtraRecipeReferen
     ingredientsBreakdown.push(estimateFridge(item));
   }
   for (const item of recipe.pantryAdditives || []) {
+    if (
+      !item ||
+      item.toLowerCase().startsWith('channel ingredient note:') ||
+      item.toLowerCase().startsWith('note:')
+    ) {
+      continue;
+    }
     ingredientsBreakdown.push(estimateAdditive(item));
   }
 

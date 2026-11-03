@@ -207,9 +207,16 @@ function formulateSourashtraRecipesFromFridge(
         ? matchedTriggers
         : recipe.fridgeTriggers.slice(0, 2).map((t) => SOURASHTRA_TERM_MAP[t.toLowerCase()] || t);
 
+    const cleanAdditives = (recipe.pantryAdditives || []).filter(
+      (a) =>
+        a &&
+        !a.toLowerCase().startsWith('channel ingredient note:') &&
+        !a.toLowerCase().startsWith('note:')
+    );
+
     const breakdown: IngredientCalorieItem[] = [
       ...usedFridge.map(estimateFridgeCalories),
-      ...recipe.pantryAdditives.slice(0, 5).map(estimateAdditiveCalories)
+      ...cleanAdditives.slice(0, 5).map(estimateAdditiveCalories)
     ];
     const totalCalories = breakdown.reduce((sum, item) => sum + item.calories, 0);
 
@@ -226,7 +233,7 @@ function formulateSourashtraRecipesFromFridge(
       youtubeUrl: recipe.youtubeUrl,
       webUrl: recipe.webUrl,
       fridgeIngredientsUsed: usedFridge,
-      pantryAdditives: recipe.pantryAdditives,
+      pantryAdditives: cleanAdditives,
       bhurkoNote: recipe.bhurkoUsed
         ? `${recipe.bhurkoUsed} • Source: ${recipe.sourceAttribution}`
         : `Traditional Sourashtra tempering & preparation • Source: ${recipe.sourceAttribution}`,

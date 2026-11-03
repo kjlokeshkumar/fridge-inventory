@@ -113,7 +113,14 @@ function buildPrepPlateItems(recipe: Recipe | undefined): PrepPlateItem[] {
 
   if (Array.isArray(recipe.pantryAdditives)) {
     for (const raw of recipe.pantryAdditives) {
-      if (!raw || typeof raw !== 'string') continue;
+      if (
+        !raw ||
+        typeof raw !== 'string' ||
+        raw.toLowerCase().startsWith('channel ingredient note:') ||
+        raw.toLowerCase().startsWith('note:')
+      ) {
+        continue;
+      }
       const parsed = parseIngredientString(raw, 'pantry', recipe.ingredientsBreakdown);
       const key = parsed.name.toLowerCase();
       if (!seen.has(key)) {
@@ -125,7 +132,13 @@ function buildPrepPlateItems(recipe: Recipe | undefined): PrepPlateItem[] {
 
   if (items.length === 0 && Array.isArray(recipe.ingredientsBreakdown)) {
     for (const b of recipe.ingredientsBreakdown) {
-      if (!b?.name) continue;
+      if (
+        !b?.name ||
+        b.name.toLowerCase().startsWith('channel ingredient note:') ||
+        b.name.toLowerCase().startsWith('note:')
+      ) {
+        continue;
+      }
       const key = b.name.toLowerCase();
       if (!seen.has(key)) {
         seen.add(key);
@@ -1477,30 +1490,41 @@ export default function RecipesPage() {
     }
 
     if (type === 'device') {
-      const isAndroid = typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent);
-      if (isAndroid) {
-        const mealLines: string[] = [];
-        if (day.breakfast) mealLines.push(`🌅 Breakfast: ${day.breakfast.mainDishTitle} + ${day.breakfast.pairedWithTitle}`);
-        if (day.lunch) mealLines.push(`☀️ Lunch: ${day.lunch.mainDishTitle} + ${day.lunch.pairedWithTitle}`);
-        if (day.dinner) mealLines.push(`🌙 Dinner: ${day.dinner.mainDishTitle} + ${day.dinner.pairedWithTitle}`);
-        const descText = mealLines.join('\n');
-        const titleText = `🍲 Sourashtra Menu (${day.dayName})`;
+      const mealLines: string[] = [];
+      if (day.breakfast) mealLines.push(`🌅 Breakfast: ${day.breakfast.mainDishTitle} + ${day.breakfast.pairedWithTitle}`);
+      if (day.lunch) mealLines.push(`☀️ Lunch: ${day.lunch.mainDishTitle} + ${day.lunch.pairedWithTitle}`);
+      if (day.dinner) mealLines.push(`🌙 Dinner: ${day.dinner.mainDishTitle} + ${day.dinner.pairedWithTitle}`);
+      const descText = mealLines.join('\n');
+      const titleText = `🍲 Sourashtra Menu (${day.dayName})`;
 
-        const startIso = day.isoDate ? `${day.isoDate}T08:00:00` : new Date().toISOString();
-        const endIso = day.isoDate ? `${day.isoDate}T21:00:00` : new Date().toISOString();
-        const startTimeMs = new Date(startIso).getTime() || Date.now();
-        const endTimeMs = new Date(endIso).getTime() || (Date.now() + 12 * 3600 * 1000);
+      const startIso = day.isoDate ? `${day.isoDate}T08:00:00` : new Date().toISOString();
+      const endIso = day.isoDate ? `${day.isoDate}T21:00:00` : new Date().toISOString();
+      const startTimeMs = new Date(startIso).getTime() || Date.now();
+      const endTimeMs = new Date(endIso).getTime() || (Date.now() + 12 * 3600 * 1000);
 
-        const androidCalendarIntent = `intent://#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;S.title=${encodeURIComponent(titleText)};S.description=${encodeURIComponent(descText)};l.beginTime=${startTimeMs};l.endTime=${endTimeMs};end`;
-
+      // 1. If running inside the Android App (AAB / APK) with AndroidCalendarBridge:
+      // Direct native Samsung / Google Calendar Event Editor Intent!
+      if (
+        typeof window !== 'undefined' &&
+        (window as unknown as { AndroidCalendarBridge?: { openCalendarEvent?: (t: string, d: string, s: number, e: number) => boolean } })
+          .AndroidCalendarBridge?.openCalendarEvent
+      ) {
         try {
-          window.location.href = androidCalendarIntent;
+          const bridge = (window as unknown as { AndroidCalendarBridge: { openCalendarEvent: (t: string, d: string, s: number, e: number) => boolean } }).AndroidCalendarBridge;
+          const success = bridge.openCalendarEvent(titleText, descText, startTimeMs, endTimeMs);
+          if (success) {
+            setCalendarTargetDay(null);
+            return;
+          }
         } catch (_) {
-          handleDownloadDayIcs(day);
+          // Fall through to standard .ics download if bridge failed
         }
-      } else {
-        handleDownloadDayIcs(day);
       }
+
+      // 2. Standard Universal RFC 5545 .ics Calendar File Download:
+      // Works across all Android phones, iPhones, iPads, Macs, and Windows PCs.
+      // On Android / Samsung, downloading the .ics prompts to "Open with Calendar" and imports all meals with 1 tap.
+      handleDownloadDayIcs(day);
       setCalendarTargetDay(null);
     }
   };
@@ -2840,16 +2864,16 @@ export default function RecipesPage() {
                 onClick={() => handleLaunchCalendarSync(calendarTargetDay, 'device')}
               >
                 <span className="cal-btn-primary-text">
-                  📱 {t.calendarDeviceBtn || 'Device Calendar (Samsung / Apple / .ics)'}
+                  📱 {t.calendarDeviceBtn || 'Default Device Calendar (Android / iOS / Standard .ics)'}
                 </span>
                 <span className="cal-btn-sub-text">
-                  {t.calendarDeviceSub || 'Export standard event file for Samsung Calendar or Outlook'}
+                  {t.calendarDeviceSub || 'Universal standard event for any phone calendar app (Android, iPhone, iPad & Desktop)'}
                 </span>
               </button>
             </div>
 
             <p className="cal-modal-footer-note">
-              ✓ Compatible with Samsung Galaxy Flip 5, Moto G, Google Pixel, iPhone & Desktop
+              {t.calendarModalFooterNote || '✓ Universally supported on all Android phones, iPhones, tablets and desktop calendars'}
             </p>
           </div>
         </div>
