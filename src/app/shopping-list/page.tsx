@@ -210,6 +210,19 @@ export default function ShoppingListPage() {
       return;
     }
     setNotice('');
+    if (
+      typeof window !== 'undefined' &&
+      (window as unknown as { AndroidShareBridge?: { shareText?: (title: string, text: string) => boolean } })
+        .AndroidShareBridge?.shareText
+    ) {
+      try {
+        const ok = (window as unknown as { AndroidShareBridge: { shareText: (title: string, text: string) => boolean } }).AndroidShareBridge.shareText(t.shareTitle, text);
+        if (ok) {
+          setNotice(t.shoppingListShared);
+          return;
+        }
+      } catch (_) {}
+    }
     if (Capacitor.isNativePlatform()) {
       try {
         await Share.share({

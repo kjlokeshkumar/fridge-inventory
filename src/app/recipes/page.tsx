@@ -1622,6 +1622,20 @@ export default function RecipesPage() {
       }
     }
 
+    if (
+      typeof window !== 'undefined' &&
+      (window as unknown as { AndroidShareBridge?: { shareText?: (t: string, text: string) => boolean } })
+        .AndroidShareBridge?.shareText
+    ) {
+      try {
+        const ok = (window as unknown as { AndroidShareBridge: { shareText: (t: string, text: string) => boolean } }).AndroidShareBridge.shareText(t.printPlanHeader || '7-Day Sourashtra Meal Plan', lines.join('\n'));
+        if (ok) {
+          showToast(t.copyPlanSuccess || '✓ 7-Day Plan & Grocery List ready to share!');
+          return;
+        }
+      } catch (_) {}
+    }
+
     if (navigator.clipboard) {
       navigator.clipboard.writeText(lines.join('\n')).then(() => {
         showToast(t.copyPlanSuccess || '✓ 7-Day Plan & Grocery List copied to clipboard!');

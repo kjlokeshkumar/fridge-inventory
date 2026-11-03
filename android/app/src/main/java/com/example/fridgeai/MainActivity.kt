@@ -22,6 +22,7 @@ import android.webkit.WebViewClient
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
@@ -45,6 +46,7 @@ class MainActivity : ComponentActivity() {
 
   private var filePathCallback: ValueCallback<Array<Uri>>? = null
   private var cameraImageUri: Uri? = null
+  private var activeWebView: WebView? = null
 
   private val requestPermissionLauncher = registerForActivityResult(
     ActivityResultContracts.RequestPermission()
@@ -92,6 +94,17 @@ class MainActivity : ComponentActivity() {
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
       requestPermissionLauncher.launch(Manifest.permission.CAMERA)
     }
+
+    onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+      override fun handleOnBackPressed() {
+        if (activeWebView?.canGoBack() == true) {
+          activeWebView?.goBack()
+        } else {
+          isEnabled = false
+          onBackPressedDispatcher.onBackPressed()
+        }
+      }
+    })
 
     val prefs = getSharedPreferences("FridgeAI_Prefs", Context.MODE_PRIVATE)
 
@@ -173,6 +186,7 @@ class MainActivity : ComponentActivity() {
             AndroidView(
               factory = { context ->
                   WebView(context).apply {
+                    activeWebView = this
                     layoutParams = FrameLayout.LayoutParams(
                       FrameLayout.LayoutParams.MATCH_PARENT,
                       FrameLayout.LayoutParams.MATCH_PARENT
@@ -188,6 +202,7 @@ class MainActivity : ComponentActivity() {
 
                     addJavascriptInterface(AndroidCalendarBridge(this@MainActivity), "AndroidCalendarBridge")
                     addJavascriptInterface(AndroidPrintBridge(this@MainActivity, this), "AndroidPrintBridge")
+                    addJavascriptInterface(AndroidShareBridge(this@MainActivity), "AndroidShareBridge")
 
                     setDownloadListener { url, _, _, mimetype, _ ->
                       try {
@@ -223,6 +238,11 @@ class MainActivity : ComponentActivity() {
                         request: WebResourceRequest?
                       ): Boolean {
                         val url = request?.url?.toString() ?: return false
+                        val currentHost = try { Uri.parse(currentUrl).host } catch (_: Exception) { null }
+                        val targetUri = Uri.parse(url)
+                        val targetHost = targetUri.host
+
+                        // 1. Calendar .ics download / API
                         if (url.contains("/api/calendar/ics") || url.endsWith(".ics", ignoreCase = true)) {
                           try {
                             val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -237,6 +257,23 @@ class MainActivity : ComponentActivity() {
                             return false
                           }
                         }
+
+                        // 2. External destinations: YouTube app, Google Calendar, social apps, external websites
+                        if (url.contains("youtube.com", ignoreCase = true) ||
+                            url.contains("youtu.be", ignoreCase = true) ||
+                            url.contains("calendar.google.com", ignoreCase = true) ||
+                            (targetHost != null && currentHost != null && !targetHost.equals(currentHost, ignoreCase = true) && !targetHost.contains("localhost"))) {
+                          try {
+                            val intent = Intent(Intent.ACTION_VIEW, targetUri).apply {
+                              addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            }
+                            this@MainActivity.startActivity(intent)
+                            return true
+                          } catch (_: Exception) {
+                            return false
+                          }
+                        }
+
                         if (url.startsWith("http://") || url.startsWith("https://")) {
                           return false
                         }
@@ -398,5 +435,27 @@ class AndroidPrintBridge(private val activity: ComponentActivity, private val we
     } catch (e: Exception) {
       false
     }
+  }
+}
+
+class AndroidShareBridge(private val activity: ComponentActivity) {
+  @JavascriptInterface
+  fun shareText(title: String, text: String): Boolean {
+    activity.runOnUiThread {
+      try {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+          type = "text/plain"
+          putExtra(Intent.EXTRA_SUBJECT, title)
+          putExtra(Intent.EXTRA_TEXT, text)
+        }
+        val chooser = Intent.createChooser(intent, title).apply {
+          addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        activity.startActivity(chooser)
+      } catch (e: Exception) {
+        Toast.makeText(activity, "Cannot share text", Toast.LENGTH_SHORT).show()
+      }
+    }
+    return true
   }
 }
