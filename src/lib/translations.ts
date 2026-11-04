@@ -878,7 +878,8 @@ export function formatDishTitle(title: string, language: string): string {
     clean = clean.replace(/Losto\(sourashtra\)/i, 'Losto (Sourashtra Mint Chutney)');
     return clean.trim();
   }
-  // Tamil mode
+
+  // Tamil mode - enforce authentic Tamil script, never leave trailing English transliterations
   if (DISH_TITLE_TRANSLATION_MAP[title]) {
     return DISH_TITLE_TRANSLATION_MAP[title];
   }
@@ -888,6 +889,8 @@ export function formatDishTitle(title: string, language: string): string {
       return taVal;
     }
   }
+
+  // Combos joined by ' & ' or ' + '
   if (title.includes(' & ')) {
     const parts = title.split(' & ');
     return parts.map((p) => formatDishTitle(p.trim(), 'Tamil')).join(' & ');
@@ -896,11 +899,40 @@ export function formatDishTitle(title: string, language: string): string {
     const parts = title.split(' + ');
     return parts.map((p) => formatDishTitle(p.trim(), 'Tamil')).join(' + ');
   }
-  for (const [enKey, taVal] of Object.entries(DISH_TITLE_TRANSLATION_MAP)) {
-    if (enKey.length >= 8 && title.includes(enKey)) {
-      return title.replace(enKey, taVal);
+
+  // Handle "Sourashtra Name — English Subtitle" or "Name - Subtitle"
+  if (title.includes(' — ') || title.includes(' - ')) {
+    const mainPart = title.split(/\s*[-—]\s*/)[0].trim();
+    if (DISH_TITLE_TRANSLATION_MAP[mainPart]) {
+      return DISH_TITLE_TRANSLATION_MAP[mainPart];
+    }
+    for (const [enKey, taVal] of Object.entries(DISH_TITLE_TRANSLATION_MAP)) {
+      if (enKey.toLowerCase() === mainPart.toLowerCase()) {
+        return taVal;
+      }
     }
   }
+
+  // Handle "Dish Name (Transliteration/Note in parens)"
+  const parenMatch = title.match(/^([^(]+)\s*\(([^)]+)\)$/);
+  if (parenMatch) {
+    const head = parenMatch[1].trim();
+    if (DISH_TITLE_TRANSLATION_MAP[head]) {
+      return DISH_TITLE_TRANSLATION_MAP[head];
+    }
+    for (const [enKey, taVal] of Object.entries(DISH_TITLE_TRANSLATION_MAP)) {
+      if (enKey.toLowerCase() === head.toLowerCase()) {
+        return taVal;
+      }
+    }
+  }
+
+  for (const [enKey, taVal] of Object.entries(DISH_TITLE_TRANSLATION_MAP)) {
+    if (enKey.length >= 8 && title.includes(enKey)) {
+      return taVal;
+    }
+  }
+
   if (title.includes('புதினா தொவயல்') || title.toLowerCase().includes('losto')) {
     return 'புதினா தொவயல் (லோஸ்டோ)';
   }

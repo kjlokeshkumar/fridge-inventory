@@ -47,6 +47,18 @@ test('translates dish titles and blueprint combos into authentic Tamil', () => {
     formatDishTitle('Thakkali Ounty', 'Tamil'),
     'தக்காளி அவ்வுண்டி'
   );
+  assert.equal(
+    formatDishTitle('Thakkali Ounty — Classic Sourashtra Tangy Tomato Gravy', 'Tamil'),
+    'தக்காளி அவ்வுண்டி'
+  );
+  assert.equal(
+    formatDishTitle('Losan Kolkar (Lasan Ounty)', 'Tamil'),
+    'லோசன் கொல்கார் (பூண்டு குழம்பு)'
+  );
+  assert.equal(
+    formatDishTitle('Vangi Budith', 'Tamil'),
+    'வாங்கி புடித் (கத்திரிக்காய் சட்னி)'
+  );
 });
 
 test('translates pairing tradition notes and date labels into Tamil', () => {
