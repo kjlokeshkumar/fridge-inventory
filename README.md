@@ -312,6 +312,19 @@ in Play Console and Google's official developer documentation before submission.
 
 ## Checks last completed
 
+- **Complete 329 Recipe Catalog**:
+  - Restored the full authentic catalog of 329 traditional Sourashtra recipes (36 core hand-curated + 293 community recipes).
+  - Purged 100% of non-food items (songs, trailers, movie scenes).
+  - Cleaned all dish titles and subtitles (removed clickbait phrases, hashtags, emojis, and video ID codes).
+  - Audited recipe content for privacy: strictly zero personal phone numbers, caterer advertisements, or location identifiers.
+- **100% Local Culinary Food Photography**:
+  - All recipe images are stored locally in `public/images/recipes/` with zero external scraper dependencies, zero generic stock photos (e.g. Unsplash), and **strictly zero human faces, portraits, or selfies**.
+  - Smart culinary matcher accurately distributes dishes across authentic presentations (Ounty, Kolkar, Ambat, Pitla, Budith, Losto, Pilchar, Charu, Bhaath, Pongal, Sambar, Bhairi, Appam, Chaino, Koli, Meen, Anda).
+- **Original Creator & Channel Attribution**:
+  - Transparent creator attribution (`👨‍🍳 Recipe by: {sourceAttribution}`) displayed prominently on every catalog card and recipe modal (`Chef Deena's Kitchen`, `Sugi Cooks`, `Buddy Recipes`, `Hema's Sourashtra Samayal`, `Palkar.org`, `Sou Sou Samayal`, etc.).
+  - Direct links to original YouTube videos allow users to watch the creator's video while giving them full credit.
+- **Interactive Verification Gallery**:
+  - `recipe-gallery.html` and `public/images/recipes/index.html` provide an interactive visual viewer for all 329 recipes with real-time text search, category filter pills, dietary badges, creator credits, and local asset filenames.
 - `npm test` passed all 26 unit tests (including recipe pairings, pantry categorizations, shopping list deduplication, share text, and Tamil translation coverage).
 - `npx tsc --noEmit` passed.
 - `npm run build` succeeded, compiling all 25 Next.js static and dynamic routes cleanly.
