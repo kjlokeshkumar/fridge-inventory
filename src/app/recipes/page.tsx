@@ -1905,6 +1905,13 @@ ${groceryList}
               <h3 className="modal-recipe-title">
                 {formatDishTitle(safeString(modalRecipe.title), language)}
               </h3>
+              {modalRecipe.sourceAttribution && (
+                <div style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <span>👨‍🍳</span>
+                  <span style={{ color: '#fbbf24', fontWeight: 600 }}>{language === 'Tamil' ? 'சமையல் கலைஞர் / ஆதாரம்:' : 'Recipe & Video by:'}</span>
+                  <span style={{ color: '#f1f5f9' }}>{safeString(modalRecipe.sourceAttribution)}</span>
+                </div>
+              )}
             </div>
 
             {/* Symmetrical 50/50 Segmented Combo Switcher (only shown when secondary recipe exists) */}
@@ -2908,6 +2915,14 @@ ${groceryList}
                       >
                         {formatDishTitle(safeString(recipe.title), language)}
                       </h3>
+                      {recipe.sourceAttribution && (
+                        <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                          <span>👨‍🍳</span>
+                          <span style={{ color: '#cbd5e1', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            {safeString(recipe.sourceAttribution)}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -2936,9 +2951,9 @@ ${groceryList}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="source-link-btn source-link-yt"
-                            title={`Watch ${safeString(recipe.title)} on YouTube`}
+                            title={`Watch ${safeString(recipe.title)} by ${safeString(recipe.sourceAttribution || 'creator')} on YouTube`}
                           >
-                            ▶️ Video
+                            ▶️ {recipe.sourceAttribution ? `Video • ${safeString(recipe.sourceAttribution).split('/')[0].trim()}` : 'Video'}
                           </a>
                         )}
                         {recipe.webUrl && (
