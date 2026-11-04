@@ -69,10 +69,12 @@ const CULINARY_IMAGE_REGISTRY: Record<string, string> = {
   sambar: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80',
 
   // 8. Bhairi, Appam & Tiffin
-  bhairi: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
-  vada: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
-  appam: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
-  karupatti_appam: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
+  bhairi: '/images/recipes/pangarapaan_nalar_bhairi.jpg',
+  pangarapaan_bhairi: '/images/recipes/pangarapaan_nalar_bhairi.jpg',
+  nalar_bhairi: '/images/recipes/pangarapaan_nalar_bhairi.jpg',
+  vada: '/images/recipes/pangarapaan_nalar_bhairi.jpg',
+  appam: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80',
+  karupatti_appam: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80',
   kenni_paes: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80',
   kanji: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80',
   chappathi: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&auto=format&fit=crop&q=80',

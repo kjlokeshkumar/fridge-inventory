@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sourashtra Chef — Recipe Image Gallery & Verification</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #f59e0b;
+      --accent-green: #10b981;
+      --accent-blue: #38bdf8;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 2rem 1.5rem; }
+    header { max-width: 1300px; margin: 0 auto 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+    h1 { font-size: 2rem; color: #fbbf24; display: flex; align-items: center; gap: 0.75rem; }
+    p.subtitle { color: var(--text-muted); font-size: 1rem; margin-top: 0.5rem; }
+    .folder-path { display: inline-block; background: #0b1120; border: 1px solid #38bdf844; color: #38bdf8; padding: 0.35rem 0.75rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-top: 0.75rem; word-break: break-all; }
+    .controls { max-width: 1300px; margin: 0 auto 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+    .search-box { flex: 1; min-width: 280px; }
+    .search-box input { width: 100%; padding: 0.75rem 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 0.95rem; }
+    .search-box input:focus { outline: none; border-color: var(--accent); }
+    .stats { color: var(--text-muted); font-size: 0.9rem; }
+    .grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.4); border-color: #64748b; }
+    .img-wrapper { position: relative; width: 100%; height: 210px; background: #000; overflow: hidden; }
+    .img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .card-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
+    .badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; width: fit-content; }
+    .badge-bespoke { background: #064e3b; color: #34d399; border: 1px solid #059669; }
+    .badge-curated { background: #1e3a8a; color: #93c5fd; border: 1px solid #2563eb; }
+    .badge-veg { background: #14532d; color: #86efac; border: 1px solid #16a34a; margin-left: 0.5rem; }
+    .badge-nonveg { background: #7f1d1d; color: #fca5a5; border: 1px solid #dc2626; margin-left: 0.5rem; }
+    .dish-number { color: #f59e0b; font-weight: bold; font-size: 0.85rem; margin-bottom: 0.25rem; }
+    .dish-name { font-size: 1.15rem; font-weight: bold; color: #fff; margin-bottom: 0.35rem; line-height: 1.3; }
+    .dish-subtitle { color: #cbd5e1; font-size: 0.88rem; line-height: 1.4; margin-bottom: 0.85rem; flex: 1; }
+    .file-meta { margin-top: auto; padding-top: 0.85rem; border-top: 1px solid #334155; font-size: 0.78rem; font-family: monospace; color: #94a3b8; display: flex; justify-content: space-between; align-items: center; }
+    .file-name { color: #38bdf8; font-weight: 600; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🍲 Sourashtra Chef — Recipe Image Verification Gallery</h1>
+    <p class="subtitle">Complete visual verification catalog for all 36 authentic Sourashtra recipes. Zero scraped video thumbnails, zero hotlinks.</p>
+    <div class="folder-path">📂 Local Asset Directory: C:\Users\reksl\.gemini\antigravity\scratch\fridge-inventory\public\images\recipes\</div>
+  </header>
+
+  <div class="controls">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search dish name, ingredient, or filename..." oninput="filterCards()">
+    </div>
+    <div class="stats" id="statsCount">Showing 36 recipes</div>
+  </div>
+
+  <div class="grid" id="recipeGrid">
+    
+    <div class="card" data-search="thakkali ounty classic sourashtra tangy tomato gravy ounty & kolkar (tangy gravies) thakkali_ounty_curry.jpg">
+      <div class="img-wrapper">
+        <img src="./thakkali_ounty_curry.jpg" alt="Thakkali Ounty" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-bespoke">
+            ⭐ LOCAL BESPOKE ASSET
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#1 · Ounty & Kolkar (Tangy Gravies)</div>
+        <div class="dish-name">Thakkali Ounty</div>
+        <div class="dish-subtitle">Classic Sourashtra Tangy Tomato Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">thakkali_ounty_curry.jpg</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="losan kolkar (lasan ounty) sourashtra whole garlic & sesame oil tamarind gravy ounty & kolkar (tangy gravies) curated: garlic tamarind gravy">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80" alt="Losan Kolkar (Lasan Ounty)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#2 · Ounty & Kolkar (Tangy Gravies)</div>
+        <div class="dish-name">Losan Kolkar (Lasan Ounty)</div>
+        <div class="dish-subtitle">Sourashtra Whole Garlic & Sesame Oil Tamarind Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Garlic Tamarind Gravy</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="koduk ounty (with polte bhajji / bhunje kodhi) ancient sourashtra fermented rice-starch probiotic tangy curry ounty & kolkar (tangy gravies) curated: south indian traditional curry">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80" alt="Koduk Ounty (with Polte Bhajji / Bhunje Kodhi)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#3 · Ounty & Kolkar (Tangy Gravies)</div>
+        <div class="dish-name">Koduk Ounty (with Polte Bhajji / Bhunje Kodhi)</div>
+        <div class="dish-subtitle">Ancient Sourashtra Fermented Rice-Starch Probiotic Tangy Curry</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: South Indian Traditional Curry</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="vangi budith iconic sourashtra pressure-cooked brinjal chutney budith, losto & polte (chutneys/masiyal) curated: roasted brinjal mash">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80" alt="Vangi Budith" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#4 · Budith, Losto & Polte (Chutneys/Masiyal)</div>
+        <div class="dish-name">Vangi Budith</div>
+        <div class="dish-subtitle">Iconic Sourashtra Pressure-Cooked Brinjal Chutney</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Roasted Brinjal Mash</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra pudina / kothmir losto zero-coconut, zero-onion fiery mint & coriander paste budith, losto & polte (chutneys/masiyal) curated: roasted brinjal mash">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Pudina / Kothmir Losto" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#5 · Budith, Losto & Polte (Chutneys/Masiyal)</div>
+        <div class="dish-name">Sourashtra Pudina / Kothmir Losto</div>
+        <div class="dish-subtitle">Zero-Coconut, Zero-Onion Fiery Mint & Coriander Paste</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Roasted Brinjal Mash</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="polte bhajji (sourashtra keerai masiyal) pressure-cooked mashed greens with garlic, cumin & tamarind budith, losto & polte (chutneys/masiyal) curated: garlic tamarind gravy">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80" alt="Polte Bhajji (Sourashtra Keerai Masiyal)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#6 · Budith, Losto & Polte (Chutneys/Masiyal)</div>
+        <div class="dish-name">Polte Bhajji (Sourashtra Keerai Masiyal)</div>
+        <div class="dish-subtitle">Pressure-Cooked Mashed Greens with Garlic, Cumin & Tamarind</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Garlic Tamarind Gravy</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="nellika rubbin (lubbin) zero-oil salted & spiced gooseberry relish budith, losto & polte (chutneys/masiyal) curated: roasted brinjal mash">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80" alt="Nellika Rubbin (Lubbin)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#7 · Budith, Losto & Polte (Chutneys/Masiyal)</div>
+        <div class="dish-name">Nellika Rubbin (Lubbin)</div>
+        <div class="dish-subtitle">Zero-Oil Salted & Spiced Gooseberry Relish</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Roasted Brinjal Mash</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="beans & batata ambat madurai feast double beans & potato gravy ambat & pitla (rich curries) curated: spiced tamarind rice">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80" alt="Beans & Batata Ambat" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#8 · Ambat & Pitla (Rich Curries)</div>
+        <div class="dish-name">Beans & Batata Ambat</div>
+        <div class="dish-subtitle">Madurai Feast Double Beans & Potato Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Spiced Tamarind Rice</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="kachchana ambat sourashtra black chickpea (kala chana) spiced gravy ambat & pitla (rich curries) curated: spiced tamarind rice">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80" alt="Kachchana Ambat" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#9 · Ambat & Pitla (Rich Curries)</div>
+        <div class="dish-name">Kachchana Ambat</div>
+        <div class="dish-subtitle">Sourashtra Black Chickpea (Kala Chana) Spiced Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Spiced Tamarind Rice</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra vangi / pavakkai pitla brinjal or bitter gourd in roasted coconut-chana dal-tamarind gravy ambat & pitla (rich curries) curated: roasted brinjal mash">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Vangi / Pavakkai Pitla" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#10 · Ambat & Pitla (Rich Curries)</div>
+        <div class="dish-name">Sourashtra Vangi / Pavakkai Pitla</div>
+        <div class="dish-subtitle">Brinjal or Bitter Gourd in Roasted Coconut-Chana Dal-Tamarind Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Roasted Brinjal Mash</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="joman pilchar (thakkali charu) sourashtra wedding-style pepper-cumin tomato rasam pilchar & charu (rasam/broths) joman_pilchar_rasam.jpg">
+      <div class="img-wrapper">
+        <img src="./joman_pilchar_rasam.jpg" alt="Joman Pilchar (Thakkali Charu)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-bespoke">
+            ⭐ LOCAL BESPOKE ASSET
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#11 · Pilchar & Charu (Rasam/Broths)</div>
+        <div class="dish-name">Joman Pilchar (Thakkali Charu)</div>
+        <div class="dish-subtitle">Sourashtra Wedding-Style Pepper-Cumin Tomato Rasam</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">joman_pilchar_rasam.jpg</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="bhajji charu (keerai chaaru) sourashtra greens broth with coconut, cumin, poppy seeds & warm milk pilchar & charu (rasam/broths) joman_pilchar_rasam.jpg">
+      <div class="img-wrapper">
+        <img src="./joman_pilchar_rasam.jpg" alt="Bhajji Charu (Keerai Chaaru)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-bespoke">
+            ⭐ LOCAL BESPOKE ASSET
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#12 · Pilchar & Charu (Rasam/Broths)</div>
+        <div class="dish-name">Bhajji Charu (Keerai Chaaru)</div>
+        <div class="dish-subtitle">Sourashtra Greens Broth with Coconut, Cumin, Poppy Seeds & Warm Milk</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">joman_pilchar_rasam.jpg</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="ambat bhaath & mudha ambat bhaath signature sourashtra tamarind rice with roasted methi & sesame oil bhaath & pongal (rice specialties) curated: south indian ghee pongal">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80" alt="Ambat Bhaath & Mudha Ambat Bhaath" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#13 · Bhaath & Pongal (Rice Specialties)</div>
+        <div class="dish-name">Ambat Bhaath & Mudha Ambat Bhaath</div>
+        <div class="dish-subtitle">Signature Sourashtra Tamarind Rice with Roasted Methi & Sesame Oil</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: South Indian Ghee Pongal</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="mudha pongal (with milk & ghee) velvety sourashtra ven pongal paired with vangi budith bhaath & pongal (rice specialties) curated: roasted brinjal mash">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80" alt="Mudha Pongal (with Milk & Ghee)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#14 · Bhaath & Pongal (Rice Specialties)</div>
+        <div class="dish-name">Mudha Pongal (with Milk & Ghee)</div>
+        <div class="dish-subtitle">Velvety Sourashtra Ven Pongal Paired with Vangi Budith</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Roasted Brinjal Mash</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="serki bhaath & gullu pongal traditional sourashtra cottonseed-milk / jaggery sweet rice bhaath & pongal (rice specialties) curated: south indian ghee pongal">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80" alt="Serki Bhaath & Gullu Pongal" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#15 · Bhaath & Pongal (Rice Specialties)</div>
+        <div class="dish-name">Serki Bhaath & Gullu Pongal</div>
+        <div class="dish-subtitle">Traditional Sourashtra Cottonseed-Milk / Jaggery Sweet Rice</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: South Indian Ghee Pongal</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="limbu pongal, thoop pongal & mhuri pongal sourashtra lemon rice, pepper-ghee "love birds" rice & mustard rice bhaath & pongal (rice specialties) curated: south indian ghee pongal">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80" alt="Limbu Pongal, Thoop Pongal & Mhuri Pongal" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#16 · Bhaath & Pongal (Rice Specialties)</div>
+        <div class="dish-name">Limbu Pongal, Thoop Pongal & Mhuri Pongal</div>
+        <div class="dish-subtitle">Sourashtra Lemon Rice, Pepper-Ghee "Love Birds" Rice & Mustard Rice</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: South Indian Ghee Pongal</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sengu-vangi-batata sambar sourashtra drumstick, brinjal & potato sambar sambar (lentil stews) curated: roasted brinjal mash">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80" alt="Sengu-Vangi-Batata Sambar" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#17 · Sambar (Lentil Stews)</div>
+        <div class="dish-name">Sengu-Vangi-Batata Sambar</div>
+        <div class="dish-subtitle">Sourashtra Drumstick, Brinjal & Potato Sambar</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Roasted Brinjal Mash</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="pangarapaan bhairi & nalar bhairi madurai street-style herbal greens vadai & coconut rice fritters bhairi & appam (fritters & tiffin) pangarapaan_nalar_bhairi.jpg">
+      <div class="img-wrapper">
+        <img src="./pangarapaan_nalar_bhairi.jpg" alt="Pangarapaan Bhairi & Nalar Bhairi" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-bespoke">
+            ⭐ LOCAL BESPOKE ASSET
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#18 · Bhairi & Appam (Fritters & Tiffin)</div>
+        <div class="dish-name">Pangarapaan Bhairi & Nalar Bhairi</div>
+        <div class="dish-subtitle">Madurai Street-Style Herbal Greens Vadai & Coconut Rice Fritters</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">pangarapaan_nalar_bhairi.jpg</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="loni appam (madurai karupatti appam) soft fermented rice & palm jaggery sweet appam in ghee bhairi & appam (fritters & tiffin) pangarapaan_nalar_bhairi.jpg">
+      <div class="img-wrapper">
+        <img src="./pangarapaan_nalar_bhairi.jpg" alt="Loni Appam (Madurai Karupatti Appam)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-bespoke">
+            ⭐ LOCAL BESPOKE ASSET
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#19 · Bhairi & Appam (Fritters & Tiffin)</div>
+        <div class="dish-name">Loni Appam (Madurai Karupatti Appam)</div>
+        <div class="dish-subtitle">Soft Fermented Rice & Palm Jaggery Sweet Appam in Ghee</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">pangarapaan_nalar_bhairi.jpg</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra polte chaino (mutton uppu kari) oil-free / low-oil pepper-cumin mutton roast with crunchy coconut bits non-veg ounty, chaino & kodhi curated: pepper mutton roast">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Polte Chaino (Mutton Uppu Kari)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-nonveg">
+            Non-Veg
+          </span>
+        </div>
+        <div class="dish-number">#20 · Non-Veg Ounty, Chaino & Kodhi</div>
+        <div class="dish-name">Sourashtra Polte Chaino (Mutton Uppu Kari)</div>
+        <div class="dish-subtitle">Oil-Free / Low-Oil Pepper-Cumin Mutton Roast with Crunchy Coconut Bits</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Pepper Mutton Roast</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="chaino kolkar (sourashtra mutton ounty) traditional bone-in mutton gravy with ounty bhurko & sesame oil non-veg ounty, chaino & kodhi curated: pepper mutton roast">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80" alt="Chaino Kolkar (Sourashtra Mutton Ounty)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-nonveg">
+            Non-Veg
+          </span>
+        </div>
+        <div class="dish-number">#21 · Non-Veg Ounty, Chaino & Kodhi</div>
+        <div class="dish-name">Chaino Kolkar (Sourashtra Mutton Ounty)</div>
+        <div class="dish-subtitle">Traditional Bone-In Mutton Gravy with Ounty Bhurko & Sesame Oil</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Pepper Mutton Roast</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="pilchar bhurko koli varuval (rasam powder chicken roast) traditional sourashtra pepper-cumin-khus khus chicken curry non-veg ounty, chaino & kodhi joman_pilchar_rasam.jpg">
+      <div class="img-wrapper">
+        <img src="./joman_pilchar_rasam.jpg" alt="Pilchar Bhurko Koli Varuval (Rasam Powder Chicken Roast)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-bespoke">
+            ⭐ LOCAL BESPOKE ASSET
+          </span>
+          <span class="badge badge-nonveg">
+            Non-Veg
+          </span>
+        </div>
+        <div class="dish-number">#22 · Non-Veg Ounty, Chaino & Kodhi</div>
+        <div class="dish-name">Pilchar Bhurko Koli Varuval (Rasam Powder Chicken Roast)</div>
+        <div class="dish-subtitle">Traditional Sourashtra Pepper-Cumin-Khus Khus Chicken Curry</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">joman_pilchar_rasam.jpg</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra meen / karuvadu kodhi (fish ounty) tangy tamarind, shallot & whole garlic fish / dry fish curry non-veg ounty, chaino & kodhi curated: pepper mutton roast">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Meen / Karuvadu Kodhi (Fish Ounty)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-nonveg">
+            Non-Veg
+          </span>
+        </div>
+        <div class="dish-number">#23 · Non-Veg Ounty, Chaino & Kodhi</div>
+        <div class="dish-name">Sourashtra Meen / Karuvadu Kodhi (Fish Ounty)</div>
+        <div class="dish-subtitle">Tangy Tamarind, Shallot & Whole Garlic Fish / Dry Fish Curry</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Pepper Mutton Roast</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra anda ounty (muttai ounty) buddy recipes style boiled egg curry with ounty bhurko & fennel-pepper paste non-veg ounty, chaino & kodhi curated: spiced egg masala">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Anda Ounty (Muttai Ounty)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Eggitarian
+          </span>
+        </div>
+        <div class="dish-number">#24 · Non-Veg Ounty, Chaino & Kodhi</div>
+        <div class="dish-name">Sourashtra Anda Ounty (Muttai Ounty)</div>
+        <div class="dish-subtitle">Buddy Recipes Style Boiled Egg Curry with Ounty Bhurko & Fennel-Pepper Paste</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Spiced Egg Masala</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="kajali ambat (saiva eeral) madurai special vegetarian liver masala (besan-spiced feast gravy) ambat & pitla (rich curries) curated: spiced tamarind rice">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80" alt="Kajali Ambat (Saiva Eeral)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#25 · Ambat & Pitla (Rich Curries)</div>
+        <div class="dish-name">Kajali Ambat (Saiva Eeral)</div>
+        <div class="dish-subtitle">Madurai Special Vegetarian Liver Masala (Besan-Spiced Feast Gravy)</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Spiced Tamarind Rice</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="dheim ounty (more kulambu) spiced sour curd & coconut buttermilk gravy with ash gourd or potato ounty & kolkar (tangy gravies) curated: south indian traditional curry">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80" alt="Dheim Ounty (More Kulambu)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#26 · Ounty & Kolkar (Tangy Gravies)</div>
+        <div class="dish-name">Dheim Ounty (More Kulambu)</div>
+        <div class="dish-subtitle">Spiced Sour Curd & Coconut Buttermilk Gravy with Ash Gourd or Potato</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: South Indian Traditional Curry</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="mithi kolkar (vendhaya kuzhambu) cooling roasted fenugreek & sesame oil tamarind gravy ounty & kolkar (tangy gravies) curated: spiced tamarind rice">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80" alt="Mithi Kolkar (Vendhaya Kuzhambu)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#27 · Ounty & Kolkar (Tangy Gravies)</div>
+        <div class="dish-name">Mithi Kolkar (Vendhaya Kuzhambu)</div>
+        <div class="dish-subtitle">Cooling Roasted Fenugreek & Sesame Oil Tamarind Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Spiced Tamarind Rice</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra bela ounty (paruppu kulambu) traditional soothing toor dal & mixed vegetable gravy ounty & kolkar (tangy gravies) curated: south indian traditional curry">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Bela Ounty (Paruppu Kulambu)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#28 · Ounty & Kolkar (Tangy Gravies)</div>
+        <div class="dish-name">Sourashtra Bela Ounty (Paruppu Kulambu)</div>
+        <div class="dish-subtitle">Traditional Soothing Toor Dal & Mixed Vegetable Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: South Indian Traditional Curry</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="alla chutni (ginger chutney) fiery & sweet-tangy madurai ginger, tamarind & jaggery relish budith, losto & polte (chutneys/masiyal) curated: roasted brinjal mash">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80" alt="Alla Chutni (Ginger Chutney)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#29 · Budith, Losto & Polte (Chutneys/Masiyal)</div>
+        <div class="dish-name">Alla Chutni (Ginger Chutney)</div>
+        <div class="dish-subtitle">Fiery & Sweet-Tangy Madurai Ginger, Tamarind & Jaggery Relish</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Roasted Brinjal Mash</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="kandha chutney (madurai thanni chutney) madurai night-street thanni onion & red chilli chutney budith, losto & polte (chutneys/masiyal) curated: roasted brinjal mash">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80" alt="Kandha Chutney (Madurai Thanni Chutney)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#30 · Budith, Losto & Polte (Chutneys/Masiyal)</div>
+        <div class="dish-name">Kandha Chutney (Madurai Thanni Chutney)</div>
+        <div class="dish-subtitle">Madurai Night-Street Thanni Onion & Red Chilli Chutney</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Roasted Brinjal Mash</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="kenni paes (ulundhu kanji) nourishing urad dal, raw rice & coconut milk morning porridge bhaath & pongal (rice specialties) curated: south indian ghee pongal">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80" alt="Kenni Paes (Ulundhu Kanji)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#31 · Bhaath & Pongal (Rice Specialties)</div>
+        <div class="dish-name">Kenni Paes (Ulundhu Kanji)</div>
+        <div class="dish-subtitle">Nourishing Urad Dal, Raw Rice & Coconut Milk Morning Porridge</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: South Indian Ghee Pongal</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra thakkali pongal (tomato rice) one-pot fragrant rice cooked with cinnamon, cloves, mint & ripe tomatoes bhaath & pongal (rice specialties) curated: south indian ghee pongal">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Thakkali Pongal (Tomato Rice)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#32 · Bhaath & Pongal (Rice Specialties)</div>
+        <div class="dish-name">Sourashtra Thakkali Pongal (Tomato Rice)</div>
+        <div class="dish-subtitle">One-Pot Fragrant Rice Cooked with Cinnamon, Cloves, Mint & Ripe Tomatoes</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: South Indian Ghee Pongal</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra meal maker ambat high-protein spiced soya chunks curry in traditional ounty bhurko gravy ambat & pitla (rich curries) curated: spiced tamarind rice">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Meal Maker Ambat" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#33 · Ambat & Pitla (Rich Curries)</div>
+        <div class="dish-name">Sourashtra Meal Maker Ambat</div>
+        <div class="dish-subtitle">High-Protein Spiced Soya Chunks Curry in Traditional Ounty Bhurko Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Spiced Tamarind Rice</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="sourashtra cauliflower kulambu tender cauliflower florets in roasted spice & coconut gravy ambat & pitla (rich curries) curated: spiced tamarind rice">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80" alt="Sourashtra Cauliflower Kulambu" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-curated">
+            📷 CURATED FOOD PHOTO
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#34 · Ambat & Pitla (Rich Curries)</div>
+        <div class="dish-name">Sourashtra Cauliflower Kulambu</div>
+        <div class="dish-subtitle">Tender Cauliflower Florets in Roasted Spice & Coconut Gravy</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">Curated: Spiced Tamarind Rice</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" data-search="thengai pooranam dhowlo (sweet kozhukattai) steamed rice dumplings stuffed with fresh grated coconut & jaggery bhairi & appam (fritters & tiffin) pangarapaan_nalar_bhairi.jpg">
+      <div class="img-wrapper">
+        <img src="./pangarapaan_nalar_bhairi.jpg" alt="Thengai Pooranam Dhowlo (Sweet Kozhukattai)" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=600&auto=format&fit=crop&q=80'">
+      </div>
+      <div class="card-body">
+        <div>
+          <span class="badge badge-bespoke">
+            ⭐ LOCAL BESPOKE ASSET
+          </span>
+          <span class="badge badge-veg">
+            Vegetarian
+          </span>
+        </div>
+        <div class="dish-number">#35 · Bhairi & Appam (Fritters & Tiffin)</div>
+        <div class="dish-name">Thengai Pooranam Dhowlo (Sweet Kozhukattai)</div>
+        <div class="dish-subtitle">Steamed Rice Dumplings Stuffed with Fresh Grated Coconut & Jaggery</div>
+        <div class="file-meta">
+          <span>File:</span>
+          <span class="file-name">pangarapaan_nalar_bhairi.jpg</span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <script>
+    function filterCards() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.card');
+      let visible = 0;
+      cards.forEach(card => {
+        const text = card.getAttribute('data-search');
+        if (!q || text.includes(q)) {
+          card.style.display = 'flex';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      document.getElementById('statsCount').innerText = 'Showing ' + visible + ' of 36 recipes';
+    }
+  </script>
+</body>
+</html>

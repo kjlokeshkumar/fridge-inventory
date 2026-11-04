@@ -13,26 +13,26 @@
     "android:open": "cap open android"
   },
   "dependencies": {
-    "@capacitor/android": "^8.5.3",
+    "@capacitor/android": "^8.6.0",
     "@capacitor/camera": "^8.2.6",
-    "@capacitor/core": "^8.5.3",
+    "@capacitor/core": "^8.6.0",
     "@capacitor/share": "^8.0.3",
     "@capawesome/capacitor-google-sign-in": "^0.1.4",
     "@google/generative-ai": "^0.24.1",
-    "@neondatabase/serverless": "^1.0.2",
-    "google-auth-library": "^11.3.2",
+    "@neondatabase/serverless": "^1.2.0",
+    "google-auth-library": "^11.3.3",
     "heic2any": "^0.0.4",
     "next": "15.1.11",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@capacitor/cli": "^8.5.3",
+    "@capacitor/cli": "^8.6.0",
     "@playwright/test": "^1.64.1",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
     "eslint-config-next": "15.1.11",
     "sharp": "^0.35.5",
     "typescript": "^5"
