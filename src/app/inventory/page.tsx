@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import './inventory.css';
 import { formatItemName, toTamilCategory, UI_TRANSLATIONS } from '@/lib/translations';
-import { getProduceStyle, getIngredientImage } from '@/lib/produce-styles';
+import { getIngredientImage } from '@/lib/produce-styles';
 import { isInventoryItemExpired, isInventoryItemExpiringSoon } from '@/lib/inventory-dates';
 import { triggerSparkles, triggerSparklesAtElement } from '@/lib/sparkles';
 import IngredientInspectionModal from '@/components/IngredientInspectionModal';
@@ -200,7 +200,6 @@ export default function InventoryPage() {
 
   const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
-  const getProduceEmoji = (name: string) => getProduceStyle(name).icon;
 
   if (loading) {
     return (
@@ -369,12 +368,12 @@ export default function InventoryPage() {
               </div>
 
               {(() => {
-                const itemImg = item.imageUrl || getIngredientImage(item.name);
+                const itemImg = item.imageUrl || getIngredientImage(item.name, item.category);
                 return (
                   <div
                     className="item-main-row item-clickable-preview"
                     onClick={() => setInspectingIngredient(item.name)}
-                    title="Click to view authentic ingredient photo & guide"
+                    title={language === 'Tamil' ? 'பொருளின் புகைப்படம் & வழிகாட்டியைப் பார்க்க தட்டவும்' : 'Click to view authentic ingredient photo & guide'}
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) => {
@@ -385,11 +384,16 @@ export default function InventoryPage() {
                     }}
                   >
                     <div className="item-icon-badge" aria-hidden="true">
-                      {itemImg ? (
-                        <img src={itemImg} alt={item.name} className="inventory-item-thumb" />
-                      ) : (
-                        getProduceEmoji(item.name)
-                      )}
+                      <img
+                        src={itemImg || '/images/ingredients/standard-ingredient.svg'}
+                        alt={item.name}
+                        className="inventory-item-thumb"
+                        onError={(e) => {
+                          const target = e.currentTarget as HTMLImageElement;
+                          target.onerror = null;
+                          target.src = '/images/ingredients/standard-ingredient.svg';
+                        }}
+                      />
                     </div>
                     <h3 className="item-name">{formatItemName(item.name, language)}</h3>
                   </div>

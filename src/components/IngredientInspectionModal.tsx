@@ -59,17 +59,20 @@ export default function IngredientInspectionModal({
           {/* Large High-Res Porcelain Ramekin Photo */}
           <div className="ingredient-inspect-bowl-wrap">
             <div className="ingredient-inspect-porcelain-bowl">
-              {imageSrc ? (
-                <img
-                  src={imageSrc}
-                  alt={ingredientName}
-                  className="ingredient-inspect-photo"
-                />
-              ) : (
-                <span className="ingredient-inspect-fallback">🍲</span>
-              )}
+              <img
+                src={imageSrc || '/images/ingredients/standard-ingredient.svg'}
+                alt={ingredientName}
+                className="ingredient-inspect-photo"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  target.onerror = null;
+                  target.src = '/images/ingredients/standard-ingredient.svg';
+                }}
+              />
             </div>
-            <span className="ingredient-inspect-badge">Authentic Food Photo</span>
+            <span className="ingredient-inspect-badge">
+              {imageSrc && !imageSrc.endsWith('.svg') ? 'Authentic Food Photo' : 'Authentic Ingredient Guide'}
+            </span>
           </div>
 
           {/* Names & Language Translations */}

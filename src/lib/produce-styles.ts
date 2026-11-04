@@ -22,8 +22,8 @@ export interface ProduceStyle {
   bg: string;
 }
 
-export function getIngredientImage(name: string): string | undefined {
-  if (!name) return undefined;
+export function getIngredientImage(name: string, categoryHint?: string): string {
+  if (!name) return '/images/ingredients/standard-ingredient.svg';
   const lower = name.toLowerCase().trim();
 
   // 1. Onion / Shallots
@@ -548,7 +548,207 @@ export function getIngredientImage(name: string): string | undefined {
     return '/images/ingredients/gooseberry.jpg';
   }
 
-  return undefined;
+  // 49. Fresh Leafy Greens / Keerai / Spinach / Palak / Methi / Mint / Pudina
+  if (
+    lower.includes('keerai') ||
+    lower.includes('spinach') ||
+    lower.includes('palak') ||
+    lower.includes('greens') ||
+    lower.includes('methi') ||
+    lower.includes('murungai keerai') ||
+    lower.includes('pudina') ||
+    lower.includes('mint') ||
+    lower.includes('புதினா') ||
+    lower.includes('கீரை')
+  ) {
+    return '/images/ingredients/coriander.jpg';
+  }
+
+  // 50. Okra / Ladies Finger / Bhendi / Vendakkai
+  if (
+    lower.includes('okra') ||
+    lower.includes('ladies finger') ||
+    lower.includes('lady finger') ||
+    lower.includes("lady's finger") ||
+    lower.includes('bhendi') ||
+    lower.includes('bhindi') ||
+    lower.includes('வெண்டைக்காய்')
+  ) {
+    return '/images/ingredients/beans.jpg';
+  }
+
+  // 51. Cauliflower / Broccoli / Gobi
+  if (lower.includes('cauliflower') || lower.includes('broccoli') || lower.includes('gobi') || lower.includes('பூக்கோசு')) {
+    return '/images/ingredients/red_cabbage.jpg';
+  }
+
+  // 52. Gourds & Squash (Bottle Gourd, Ridge Gourd, Snake Gourd, Ash Gourd, Pumpkin, Chow Chow)
+  if (
+    lower.includes('sorakkai') ||
+    lower.includes('bottle gourd') ||
+    lower.includes('lauki') ||
+    lower.includes('peerkangai') ||
+    lower.includes('ridge gourd') ||
+    lower.includes('turai') ||
+    lower.includes('pudalangai') ||
+    lower.includes('snake gourd') ||
+    lower.includes('poosani') ||
+    lower.includes('ash gourd') ||
+    lower.includes('pumpkin') ||
+    lower.includes('parangikai') ||
+    lower.includes('பூசணிக்காய்') ||
+    lower.includes('சுரைக்காய்') ||
+    lower.includes('பீர்கங்காய்') ||
+    lower.includes('புடலங்காய்') ||
+    lower.includes('chow chow') ||
+    lower.includes('chayote')
+  ) {
+    return '/images/ingredients/radish_diced.jpg';
+  }
+
+  // 53. Beetroot
+  if (lower.includes('beetroot') || lower.includes('beet') || lower.includes('பீட்ரூட்')) {
+    return '/images/ingredients/carrot_diced.jpg';
+  }
+
+  // 54. Cucumber / Kheera
+  if (lower.includes('cucumber') || lower.includes('kheera') || lower.includes('vellarikkai') || lower.includes('வெள்ளரிக்காய்')) {
+    return '/images/ingredients/radish_diced.jpg';
+  }
+
+  // 55. Peas / Green Peas / Corn
+  if (
+    lower.includes('peas') ||
+    lower.includes('pattani') ||
+    lower.includes('corn') ||
+    lower.includes('மக்காச்சோளம்') ||
+    lower.includes('பட்டாணி')
+  ) {
+    return '/images/ingredients/beans.jpg';
+  }
+
+  // 56. Mushroom / Kalan
+  if (lower.includes('mushroom') || lower.includes('kalan') || lower.includes('காளான்')) {
+    return '/images/ingredients/potato.jpg';
+  }
+
+  // 57. Milk & Cream
+  if (
+    lower.includes('milk') ||
+    lower.includes('paal') ||
+    lower.includes('பால்') ||
+    lower.includes('doodh') ||
+    lower.includes('cream') ||
+    lower.includes('malai')
+  ) {
+    return '/images/ingredients/curd.jpg';
+  }
+
+  // 58. Paneer, Cheese, Tofu
+  if (
+    lower.includes('paneer') ||
+    lower.includes('panir') ||
+    lower.includes('cheese') ||
+    lower.includes('tofu') ||
+    lower.includes('பன்னீர்')
+  ) {
+    return '/images/ingredients/curd.jpg';
+  }
+
+  // 59. Cooking Oils (Groundnut, Sunflower, Mustard, General Oil)
+  if (
+    lower.includes('oil') ||
+    lower.includes('ennai') ||
+    lower.includes('எண்ணெய்') ||
+    lower.includes('tel')
+  ) {
+    return '/images/ingredients/sesame_oil.jpg';
+  }
+
+  // 60. Flours, Grains, Batter, Bread
+  if (
+    lower.includes('flour') ||
+    lower.includes('atta') ||
+    lower.includes('wheat') ||
+    lower.includes('maida') ||
+    lower.includes('rava') ||
+    lower.includes('sooji') ||
+    lower.includes('besan') ||
+    lower.includes('bread') ||
+    lower.includes('batter') ||
+    lower.includes('மாவு') ||
+    lower.includes('ரவை') ||
+    lower.includes('கோதுமை')
+  ) {
+    return '/images/ingredients/rice.jpg';
+  }
+
+  // 61. Sugar & Sweeteners
+  if (
+    lower.includes('sugar') ||
+    lower.includes('sakkarai') ||
+    lower.includes('சர்க்கரை') ||
+    lower.includes('honey') ||
+    lower.includes('தேன்')
+  ) {
+    return '/images/ingredients/jaggery.jpg';
+  }
+
+  // 62. Fresh Fruits (Apple, Banana, Orange, Mango, Grapes)
+  if (
+    lower.includes('fruit') ||
+    lower.includes('apple') ||
+    lower.includes('banana') ||
+    lower.includes('orange') ||
+    lower.includes('mango') ||
+    lower.includes('grape') ||
+    lower.includes('pomegranate') ||
+    lower.includes('வாழைப்பழம்') ||
+    lower.includes('ஆப்பிள்') ||
+    lower.includes('மாம்பழம்')
+  ) {
+    return '/images/ingredients/lemon.jpg';
+  }
+
+  // 63. General Dals / Lentils / Pulses fallback
+  if (
+    lower.includes('dal') ||
+    lower.includes('dhal') ||
+    lower.includes('paruppu') ||
+    lower.includes('பருப்பு') ||
+    lower.includes('pulse') ||
+    lower.includes('lentil') ||
+    lower.includes('gram') ||
+    lower.includes('rajma')
+  ) {
+    return '/images/ingredients/toor_dal.jpg';
+  }
+
+  // 64. General Spice Powders & Masalas
+  if (
+    lower.includes('powder') ||
+    lower.includes('masala') ||
+    lower.includes('bhurko') ||
+    lower.includes('podia') ||
+    lower.includes('பொடி') ||
+    lower.includes('மசாலா')
+  ) {
+    return '/images/ingredients/sambar_powder.jpg';
+  }
+
+  // Standard Ceramic Fallback (Never returns undefined or raw emoji)
+  if (
+    categoryHint?.toLowerCase().includes('produce') ||
+    categoryHint?.toLowerCase().includes('herb') ||
+    lower.includes('vegetable') ||
+    lower.includes('fruit') ||
+    lower.includes('salad') ||
+    lower.includes('leaf')
+  ) {
+    return '/images/ingredients/standard-produce.svg';
+  }
+
+  return '/images/ingredients/standard-ingredient.svg';
 }
 
 export function getRamekinStyle(name: string): RamekinStyle {

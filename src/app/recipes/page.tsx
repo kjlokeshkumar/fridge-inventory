@@ -934,6 +934,8 @@ export default function RecipesPage() {
   const [weeklyPlan, setWeeklyPlan] = useState<DayMealPlan[]>([]);
   const [checkedShoppingItems, setCheckedShoppingItems] = useState<string[]>([]);
   const [activePlannerModal, setActivePlannerModal] = useState<ActivePlannerModalState | null>(null);
+  const [modalScrolled, setModalScrolled] = useState(false);
+  const modalScrollRef = useRef<HTMLDivElement>(null);
   const [isWeekPinned, setIsWeekPinned] = useState(false);
   const [plannerSeed, setPlannerSeed] = useState(0);
   const [shuffleSeed, setShuffleSeed] = useState(0);
@@ -1124,15 +1126,26 @@ export default function RecipesPage() {
     triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'celebrate');
   };
 
+  const scrollToModalSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setModalScrolled(true);
+    }
+  };
+
   const openPlannerModal = (state: ActivePlannerModalState, e?: React.MouseEvent) => {
     if (e) triggerSparklesAtElement(e.currentTarget as HTMLElement, 'open');
     else triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'open');
+    setModalScrolled(false);
     setActivePlannerModal(state);
+    if (modalScrollRef.current) modalScrollRef.current.scrollTop = 0;
   };
 
   const openCatalogRecipeModal = (recipe: Recipe, e?: React.MouseEvent) => {
     if (e) triggerSparklesAtElement(e.currentTarget as HTMLElement, 'open');
     else triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'open');
+    setModalScrolled(false);
     setActivePlannerModal({
       dayName: '',
       slotLabel: language === 'Tamil' ? 'சமையல் குறிப்பு விவரம்' : 'Recipe Details',
@@ -1147,6 +1160,7 @@ export default function RecipesPage() {
       activeTab: 'main',
       isCatalogView: true,
     });
+    if (modalScrollRef.current) modalScrollRef.current.scrollTop = 0;
   };
 
   const closePlannerModal = () => {
@@ -1869,8 +1883,17 @@ ${groceryList}
           onClick={closePlannerModal}
         >
           <div
+            ref={modalScrollRef}
             className="planner-recipe-modal"
             onClick={(e) => e.stopPropagation()}
+            onScroll={(e) => {
+              const target = e.currentTarget;
+              if (target.scrollTop > 45) {
+                if (!modalScrolled) setModalScrolled(true);
+              } else {
+                if (modalScrolled) setModalScrolled(false);
+              }
+            }}
           >
             <div className="modal-recipe-image-hero">
               <img
@@ -1930,9 +1953,11 @@ ${groceryList}
                   role="tab"
                   aria-selected={activePlannerModal.activeTab === 'main'}
                   className={`modal-segmented-tab ${activePlannerModal.activeTab === 'main' ? 'active' : ''}`}
-                  onClick={() =>
-                    setActivePlannerModal({ ...activePlannerModal, activeTab: 'main' })
-                  }
+                  onClick={() => {
+                    setModalScrolled(false);
+                    setActivePlannerModal({ ...activePlannerModal, activeTab: 'main' });
+                    if (modalScrollRef.current) modalScrollRef.current.scrollTop = 0;
+                  }}
                   title={formatDishTitle(safeString(activePlannerModal.combo.mainDishTitle), language)}
                 >
                   🍽️ <span className="tab-label-prefix">{language === 'Tamil' ? 'முக்கிய:' : 'Main:'}</span> <span className="tab-dish-name">{formatDishTitle(safeString(activePlannerModal.combo.mainDishTitle), language)}</span>
@@ -1942,9 +1967,11 @@ ${groceryList}
                   role="tab"
                   aria-selected={activePlannerModal.activeTab === 'paired'}
                   className={`modal-segmented-tab ${activePlannerModal.activeTab === 'paired' ? 'active' : ''}`}
-                  onClick={() =>
-                    setActivePlannerModal({ ...activePlannerModal, activeTab: 'paired' })
-                  }
+                  onClick={() => {
+                    setModalScrolled(false);
+                    setActivePlannerModal({ ...activePlannerModal, activeTab: 'paired' });
+                    if (modalScrollRef.current) modalScrollRef.current.scrollTop = 0;
+                  }}
                   title={formatDishTitle(safeString(activePlannerModal.combo.pairedWithTitle), language)}
                 >
                   🥣 <span className="tab-label-prefix">{language === 'Tamil' ? 'துணை:' : 'Side:'}</span> <span className="tab-dish-name">{formatDishTitle(safeString(activePlannerModal.combo.pairedWithTitle), language)}</span>
@@ -1981,16 +2008,71 @@ ${groceryList}
             {/* 🍽️ Fresh Prep Plate • Ingredients at a Glance */}
             {(() => {
               const plateItems = buildPrepPlateItems(modalRecipe);
+              const stepCount = Array.isArray(modalRecipe.steps) ? modalRecipe.steps.length : 0;
               const totalWeight = Array.isArray(modalRecipe.ingredientsBreakdown)
                 ? modalRecipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.weightGrams) || 100), 0)
                 : 0;
               const totalKcal = modalRecipe.totalCalories || (Array.isArray(modalRecipe.ingredientsBreakdown)
                 ? modalRecipe.ingredientsBreakdown.reduce((sum, item) => sum + (Number(item?.calories) || 50), 0)
                 : 0);
+              const hasNutrition = Array.isArray(modalRecipe.ingredientsBreakdown) && modalRecipe.ingredientsBreakdown.length > 0;
+              const hasSecret = Boolean(modalRecipe.bhurkoNote);
 
               return (
                 <>
-                  <div className="culinary-prep-plate-container">
+                  {/* 🧭 Quick Jump / Recipe Content Overview Bar */}
+                  <div className="modal-recipe-quick-nav">
+                    <div className="quick-nav-header">
+                      <span className="quick-nav-title">
+                        🧭 {language === 'Tamil' ? 'பிரிவுகள் & விவரங்கள்:' : 'Recipe Contents:'}
+                      </span>
+                      <span className="quick-nav-hint">
+                        {language === 'Tamil' ? '👇 செய்முறை காண கீழே உருட்டவும் அல்லது தட்டவும்' : '👇 Scroll down or tap to jump'}
+                      </span>
+                    </div>
+                    <div className="quick-nav-pills-row">
+                      <button
+                        type="button"
+                        className="quick-nav-pill pill-ingredients"
+                        onClick={() => scrollToModalSection('modal-section-ingredients')}
+                        title={language === 'Tamil' ? 'பொருட்கள் பகுதிக்குச் செல்' : 'Jump to Ingredients'}
+                      >
+                        🥣 {language === 'Tamil' ? 'பொருட்கள்' : 'Ingredients'} ({plateItems.length})
+                      </button>
+                      {stepCount > 0 && (
+                        <button
+                          type="button"
+                          className="quick-nav-pill pill-steps"
+                          onClick={() => scrollToModalSection('modal-section-steps')}
+                          title={language === 'Tamil' ? 'செய்முறை பகுதிக்குச் செல்' : 'Jump to Steps'}
+                        >
+                          👩‍🍳 {language === 'Tamil' ? 'செய்முறை' : 'Steps'} ({stepCount})
+                        </button>
+                      )}
+                      {hasNutrition && (
+                        <button
+                          type="button"
+                          className="quick-nav-pill pill-nutrition"
+                          onClick={() => scrollToModalSection('modal-section-nutrition')}
+                          title={language === 'Tamil' ? 'ஊட்டச்சத்து பகுதிக்குச் செல்' : 'Jump to Nutrition'}
+                        >
+                          ⚖️ {language === 'Tamil' ? 'ஊட்டச்சத்து' : 'Nutrition'}
+                        </button>
+                      )}
+                      {hasSecret && (
+                        <button
+                          type="button"
+                          className="quick-nav-pill pill-secret"
+                          onClick={() => scrollToModalSection('modal-section-secret')}
+                          title={language === 'Tamil' ? 'சௌராஷ்டிர ரகசியம்' : 'Jump to Sourashtra Secret'}
+                        >
+                          💡 {language === 'Tamil' ? 'ரகசியம்' : 'Secret'}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  <div id="modal-section-ingredients" className="culinary-prep-plate-container">
                     <div className="prep-plate-header">
                       <div className="prep-plate-title-group">
                         <span className="prep-plate-icon" aria-hidden="true">🍽️</span>
@@ -2058,13 +2140,13 @@ ${groceryList}
 
                   {/* Sourashtra Secret */}
                   {modalRecipe.bhurkoNote && (
-                    <div className="bhurko-note-box">
+                    <div id="modal-section-secret" className="bhurko-note-box">
                       <strong>🥣 {language === 'Tamil' ? 'சௌராஷ்டிர ரகசியம்:' : 'Sourashtra Secret:'}</strong> {safeString(modalRecipe.bhurkoNote)}
                     </div>
                   )}
 
                   {/* ⚖️ Weight & Nutrition Breakdown Table */}
-                  <div className="recipe-section nutrition-summary-section">
+                  <div id="modal-section-nutrition" className="recipe-section nutrition-summary-section">
                     <h4>
                       ⚖️ {language === 'Tamil' ? 'எடை மற்றும் ஊட்டச்சத்து விவரம்' : 'Weight & Nutrition Breakdown'} ({t.approx} {totalKcal > 0 ? totalKcal : 320} {t.kcal})
                     </h4>
@@ -2108,7 +2190,7 @@ ${groceryList}
                   </div>
 
                   {/* Step-by-Step Cooking Process */}
-                  <div className="recipe-section">
+                  <div id="modal-section-steps" className="recipe-section">
                     <h4>👩‍🍳 {language === 'Tamil' ? 'பாரம்பரிய சமையல் முறை' : 'Traditional Cooking Process'} ({t.instructions})</h4>
                     <ol className="steps-list">
                       {Array.isArray(modalRecipe.steps) &&
@@ -2123,6 +2205,24 @@ ${groceryList}
                 </>
               );
             })()}
+
+            {/* Floating Bottom Scroll Cue (Visible when near top to prompt users) */}
+            {!modalScrolled && (
+              <button
+                type="button"
+                className="modal-floating-scroll-cue"
+                onClick={() => scrollToModalSection('modal-section-ingredients')}
+                aria-label={language === 'Tamil' ? 'பொருட்கள் மற்றும் செய்முறை காண கீழே உருட்டவும்' : 'Scroll down for ingredients and instructions'}
+              >
+                <span className="scroll-cue-arrow">↓</span>
+                <span className="scroll-cue-text">
+                  {language === 'Tamil'
+                    ? 'செய்முறை & பொருட்கள் காண கீழே உருட்டவும்'
+                    : 'Scroll down for Prepped Ingredients & Cooking Steps'}
+                </span>
+                <span className="scroll-cue-arrow">↓</span>
+              </button>
+            )}
 
             <div className="modal-bottom-sticky-bar">
               <button

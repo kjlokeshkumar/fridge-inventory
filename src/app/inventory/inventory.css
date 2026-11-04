@@ -127,15 +127,17 @@
 }
 
 .item-icon-badge {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
-  background: var(--badge-item-yellow);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #fdfbf7 0%, #f6f0e4 100%);
+  border: 1.5px solid rgba(45, 110, 119, 0.22);
+  box-shadow: 0 2px 6px rgba(31, 26, 23, 0.08);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .item-name {
@@ -206,21 +208,10 @@
   transform: scale(0.98);
 }
 
-.item-icon-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
 .inventory-item-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  display: block;
 }

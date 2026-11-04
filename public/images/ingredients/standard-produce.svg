@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <filter id="prodShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#1f1a17" flood-opacity="0.18" />
+    </filter>
+    <linearGradient id="prodPorcelain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#f5faf6" />
+      <stop offset="100%" stop-color="#e2ede5" />
+    </linearGradient>
+    <linearGradient id="prodRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d" />
+      <stop offset="60%" stop-color="#166534" />
+      <stop offset="100%" stop-color="#2d6e77" />
+    </linearGradient>
+    <radialGradient id="prodDepth" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="75%" stop-color="#edf7f0" />
+      <stop offset="100%" stop-color="#d7ebd9" />
+    </radialGradient>
+    <linearGradient id="freshVeg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#15803d" />
+    </linearGradient>
+    <linearGradient id="amberAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="60" cy="60" r="56" fill="url(#prodPorcelain)" stroke="url(#prodRim)" stroke-width="2.5" filter="url(#prodShadow)" />
+  <circle cx="60" cy="60" r="45" fill="url(#prodDepth)" stroke="rgba(21, 128, 61, 0.2)" stroke-width="1.5" />
+  <circle cx="60" cy="60" r="41" fill="none" stroke="rgba(21, 128, 61, 0.22)" stroke-width="1" stroke-dasharray="2 3" />
+
+  <!-- Artisanal Veggie Basket / Bowl Silhouette -->
+  <!-- Bowl Base -->
+  <path d="M 36 62 Q 60 85 84 62 Z" fill="#15803d" fill-opacity="0.18" stroke="#15803d" stroke-width="2.5" />
+  
+  <!-- Carrot / Veggie Peak -->
+  <path d="M 52 40 L 60 62 L 46 58 Z" fill="url(#amberAccent)" stroke="#b45309" stroke-width="1.5" stroke-linejoin="round" />
+  
+  <!-- Fresh Leaf Fronds -->
+  <path d="M 50 40 C 46 32, 38 34, 42 40 C 44 42, 48 42, 50 40 Z" fill="url(#freshVeg)" />
+  <path d="M 52 38 C 52 28, 58 28, 56 38 Z" fill="url(#freshVeg)" />
+  <path d="M 54 40 C 60 32, 66 35, 62 42 C 60 43, 56 42, 54 40 Z" fill="url(#freshVeg)" />
+
+  <!-- Round Veggie (Tomato/Pea) -->
+  <circle cx="69" cy="56" r="11" fill="#ef4444" fill-opacity="0.85" stroke="#b91c1c" stroke-width="1.5" />
+  <!-- Calyx -->
+  <path d="M 69 45 L 67 48 L 71 48 Z" fill="#15803d" />
+  
+  <!-- Herb Leaves Overhanging Bowl -->
+  <path d="M 36 60 Q 30 52 28 62 Q 33 65 36 60 Z" fill="url(#freshVeg)" stroke="#166534" stroke-width="1" />
+  <path d="M 84 60 Q 90 52 92 62 Q 87 65 84 60 Z" fill="url(#freshVeg)" stroke="#166534" stroke-width="1" />
+</svg>

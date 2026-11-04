@@ -406,16 +406,17 @@ export default function ShoppingListPage() {
                         setInspectingIngredient(item.item);
                       }}
                     >
-                      {imageSrc ? (
-                        <img
-                          src={imageSrc}
-                          alt={item.item}
-                          className="pantry-item-thumb-img"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <span className="pantry-item-thumb-fallback">🥬</span>
-                      )}
+                      <img
+                        src={imageSrc || '/images/ingredients/standard-ingredient.svg'}
+                        alt={item.item}
+                        className="pantry-item-thumb-img"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.currentTarget as HTMLImageElement;
+                          target.onerror = null;
+                          target.src = '/images/ingredients/standard-ingredient.svg';
+                        }}
+                      />
                     </div>
                     <span className="plan-shopping-name" title={formatItem(item.item)}>
                       {formatItem(item.item)}
@@ -493,16 +494,17 @@ export default function ShoppingListPage() {
                                   setInspectingIngredient(item);
                                 }}
                               >
-                                {imageSrc ? (
-                                  <img
-                                    src={imageSrc}
-                                    alt={item}
-                                    className="pantry-item-thumb-img"
-                                    loading="lazy"
-                                  />
-                                ) : (
-                                  <span className="pantry-item-thumb-fallback">{group.icon}</span>
-                                )}
+                                <img
+                                  src={imageSrc || '/images/ingredients/standard-ingredient.svg'}
+                                  alt={item}
+                                  className="pantry-item-thumb-img"
+                                  loading="lazy"
+                                  onError={(e) => {
+                                    const target = e.currentTarget as HTMLImageElement;
+                                    target.onerror = null;
+                                    target.src = '/images/ingredients/standard-ingredient.svg';
+                                  }}
+                                />
                               </div>
                               <span className="pantry-item-title" title={formatItem(item)}>
                                 {formatItem(item)}

@@ -2156,9 +2156,9 @@
 /* Recipe Detail Modal Hero Image (Prominent Big Food Photo) */
 .modal-recipe-image-hero {
   width: 100%;
-  height: 320px !important;
-  min-height: 320px !important;
-  max-height: 360px !important;
+  height: 260px !important;
+  min-height: 260px !important;
+  max-height: 280px !important;
   flex-shrink: 0 !important;
   overflow: hidden;
   position: relative;
@@ -2902,9 +2902,9 @@
 /* Recipe Detail Modal on Mobile */
 @media (max-width: 640px) {
   .modal-recipe-image-hero {
-    height: 240px !important;
-    min-height: 240px !important;
-    max-height: 260px !important;
+    height: 195px !important;
+    min-height: 195px !important;
+    max-height: 210px !important;
     flex-shrink: 0 !important;
   }
 
@@ -4531,6 +4531,161 @@
   color: #ffffff !important;
   border-color: #1d4ed8 !important;
 }
+
+/* ===================================================================
+   RECIPE MODAL QUICK JUMP BAR & SCROLL AFFORDANCE CUES
+   =================================================================== */
+.modal-recipe-quick-nav {
+  background: #fdfbf7;
+  border: 1.5px solid rgba(45, 110, 119, 0.22);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(31, 26, 23, 0.04);
+  margin: 4px 0 6px 0;
+}
+
+.quick-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.quick-nav-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #245961;
+}
+
+.quick-nav-hint {
+  font-size: 0.75rem;
+  color: #78350f;
+  font-weight: 600;
+}
+
+.quick-nav-pills-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid rgba(45, 110, 119, 0.28);
+  color: #1f1a17;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.quick-nav-pill:hover,
+.quick-nav-pill:focus-visible {
+  background: #2d6e77;
+  color: #ffffff !important;
+  border-color: #2d6e77;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 10px rgba(45, 110, 119, 0.25);
+}
+
+.quick-nav-pill:active {
+  transform: translateY(0);
+}
+
+.quick-nav-pill.pill-ingredients {
+  border-color: rgba(45, 110, 119, 0.38);
+}
+
+.quick-nav-pill.pill-steps {
+  border-color: rgba(180, 83, 9, 0.38);
+}
+
+.quick-nav-pill.pill-nutrition {
+  border-color: rgba(30, 64, 175, 0.32);
+}
+
+.quick-nav-pill.pill-secret {
+  background: #fefce8;
+  border-color: rgba(161, 98, 7, 0.4);
+}
+
+/* Floating Bottom Scroll Cue (Prompts users that rich content lives below) */
+.modal-floating-scroll-cue {
+  position: sticky;
+  bottom: 12px;
+  align-self: center;
+  z-index: 55;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1f1a17 0%, #245961 100%);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 20px rgba(31, 26, 23, 0.32), 0 2px 6px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  animation: modalScrollBounce 2.2s ease-in-out infinite;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: -6px;
+  margin-bottom: 2px;
+  text-decoration: none;
+}
+
+.modal-floating-scroll-cue:hover,
+.modal-floating-scroll-cue:focus-visible {
+  background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(31, 26, 23, 0.45);
+}
+
+.modal-floating-scroll-cue:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.scroll-cue-arrow {
+  font-size: 0.92rem;
+  font-weight: 900;
+  line-height: 1;
+  display: inline-block;
+  animation: arrowPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes modalScrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes arrowPulse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2.5px);
+  }
+}
+
 
 
 
