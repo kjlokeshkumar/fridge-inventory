@@ -41,12 +41,19 @@ export async function DELETE(req: NextRequest) {
   try {
     const user = await getAuthenticatedUser(req);
     if (!user) return authError();
-    const { id } = await req.json();
-    const itemId = Number(id);
-    if (!Number.isSafeInteger(itemId) || itemId <= 0) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+    const body = await req.json().catch(() => ({}));
 
     const { default: db, initDb } = await import('@/lib/db');
     await initDb();
+
+    if (body.clearAll === true) {
+      const result = await db`DELETE FROM inventory WHERE "userId" = ${user.id} RETURNING id`;
+      return NextResponse.json({ success: true, clearedCount: result.length });
+    }
+
+    const itemId = Number(body.id);
+    if (!Number.isSafeInteger(itemId) || itemId <= 0) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+
     const result = await db`DELETE FROM inventory WHERE id = ${itemId} AND "userId" = ${user.id}`;
 
     if (result.length > 0) return NextResponse.json({ success: true, id: itemId });

@@ -199,7 +199,27 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     gateChecking: "Checking your sign-in…",
     gateError: "Can’t verify your sign-in",
     gateConnectionCheck: "Please check your connection and try again.",
-    gateRetry: "Try again"
+    gateRetry: "Try again",
+
+    // Bulk Clearing & Start Fresh Actions
+    clearInventory: "Clear Inventory",
+    clearInventoryConfirmTitle: "Clear Entire Inventory?",
+    clearInventoryConfirmDesc: "This will remove all items from your fridge inventory so you can start completely fresh.",
+    clearInventoryConfirmBtn: "🗑️ Yes, Clear Everything",
+    clearInventorySuccess: "Inventory cleared. You can start fresh!",
+    inventoryRestored: "Inventory restored successfully.",
+    clearShoppingList: "Clear Shopping List",
+    clearShoppingListConfirmTitle: "Clear Shopping List & Weekly Plan?",
+    clearShoppingListConfirmDesc: "Are you sure you want to clear your weekly shopping list and 7-day meal plan to start fresh?",
+    clearShoppingListConfirmBtn: "🗑️ Yes, Clear Shopping List",
+    clearShoppingListSuccess: "Shopping list and weekly meal plan cleared.",
+    resetCheckedShopping: "Reset Checked",
+    clearPantry: "Reset Pantry Checks",
+    clearPantryConfirmTitle: "Reset Pantry Checklist?",
+    clearPantryConfirmDesc: "This will uncheck all stocked pantry staples so you can do a fresh pantry inventory audit.",
+    clearPantryConfirmBtn: "🧹 Yes, Reset Checks",
+    clearPantrySuccess: "Pantry checklist reset for a fresh audit.",
+    cancel: "Cancel"
   },
   Tamil: {
     navHome: "முகப்பு",
@@ -400,7 +420,27 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     gateChecking: "உள்நுழைவு சரிபார்க்கப்படுகிறது…",
     gateError: "உள்நுழைவைச் சரிபார்க்க முடியவில்லை",
     gateConnectionCheck: "உங்கள் இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
-    gateRetry: "மீண்டும் முயற்சி"
+    gateRetry: "மீண்டும் முயற்சி",
+
+    // Bulk Clearing & Start Fresh Actions
+    clearInventory: "சரக்கிருப்பை அழிக்க",
+    clearInventoryConfirmTitle: "முழு சரக்கிருப்பையும் அழிக்கவா?",
+    clearInventoryConfirmDesc: "இது உங்கள் சரக்கிருப்பில் உள்ள அனைத்து பொருட்களையும் நீக்கிவிடும். நீங்கள் புதிதாக தொடங்கலாம்.",
+    clearInventoryConfirmBtn: "🗑️ ஆம், அனைத்தையும் அழி",
+    clearInventorySuccess: "சரக்கிருப்பு அழிக்கப்பட்டது. புதிதாக தொடங்கலாம்!",
+    inventoryRestored: "சரக்கிருப்பு வெற்றிகரமாக மீட்டமைக்கப்பட்டது.",
+    clearShoppingList: "ஷாப்பிங் பட்டியலை அழிக்க",
+    clearShoppingListConfirmTitle: "ஷாப்பிங் பட்டியல் & திட்டத்தை அழிக்கவா?",
+    clearShoppingListConfirmDesc: "உங்கள் வாராந்திர ஷாப்பிங் பட்டியல் மற்றும் 7 நாள் உணவுத் திட்டத்தை அழித்து புதிதாக தொடங்க விரும்புகிறீர்களா?",
+    clearShoppingListConfirmBtn: "🗑️ ஆம், பட்டியலை அழி",
+    clearShoppingListSuccess: "ஷாப்பிங் பட்டியல் மற்றும் வாராந்திர உணவுத் திட்டம் அழிக்கப்பட்டது.",
+    resetCheckedShopping: "தேர்வை மீட்டமை",
+    clearPantry: "அஞ்சறை சரிபார்ப்பை மீட்டமை",
+    clearPantryConfirmTitle: "அஞ்சறை சரிபார்ப்பை மீட்டமைக்கவா?",
+    clearPantryConfirmDesc: "இது இருப்பில் உள்ள அனைத்து அஞ்சறைப் பொருட்களின் தேர்வையும் நீக்கிவிடும். நீங்கள் புதிய சரிபார்ப்பைச் செய்யலாம்.",
+    clearPantryConfirmBtn: "🧹 ஆம், மீட்டமை",
+    clearPantrySuccess: "அஞ்சறைப் பட்டியல் மீட்டமைக்கப்பட்டது.",
+    cancel: "ரத்து"
   }
 };
 

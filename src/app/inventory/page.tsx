@@ -23,8 +23,11 @@ export default function InventoryPage() {
   const [language, setLanguage] = useState('English');
   const [inspectingIngredient, setInspectingIngredient] = useState<string | null>(null);
   const [pendingDeletedItem, setPendingDeletedItem] = useState<InventoryItem | null>(null);
+  const [pendingClearedItems, setPendingClearedItems] = useState<InventoryItem[] | null>(null);
   const [undoCountdown, setUndoCountdown] = useState(5);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showClearModal, setShowClearModal] = useState(false);
+  const [isClearingAll, setIsClearingAll] = useState(false);
   const [newItemName, setNewItemName] = useState('');
   const [newItemCategory, setNewItemCategory] = useState('Produce');
   const [newItemQty, setNewItemQty] = useState(1);
@@ -74,6 +77,9 @@ export default function InventoryPage() {
         if (showAddModal) {
           setShowAddModal(false);
         }
+        if (showClearModal) {
+          setShowClearModal(false);
+        }
       }
       if (e.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes((e.target as HTMLElement)?.tagName)) {
         e.preventDefault();
@@ -86,7 +92,7 @@ export default function InventoryPage() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [showAddModal]);
+  }, [showAddModal, showClearModal]);
 
   const fetchInventory = async () => {
     setLoading(true);
@@ -168,6 +174,78 @@ export default function InventoryPage() {
     setPendingDeletedItem(null);
   };
 
+  const handleConfirmClearInventory = async () => {
+    if (items.length === 0 || isClearingAll) return;
+    setIsClearingAll(true);
+    try {
+      const backupItems = [...items];
+      setPendingClearedItems(backupItems);
+      setPendingDeletedItem(null);
+      setUndoCountdown(5);
+      setItems([]);
+      setShowClearModal(false);
+
+      await fetch('/api/inventory', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clearAll: true }),
+      });
+
+      if (deleteTimerRef.current) clearTimeout(deleteTimerRef.current);
+      if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+
+      countdownIntervalRef.current = setInterval(() => {
+        setUndoCountdown((c) => {
+          if (c <= 1) {
+            if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+            return 0;
+          }
+          return c - 1;
+        });
+      }, 1000);
+
+      deleteTimerRef.current = setTimeout(() => {
+        setPendingClearedItems(null);
+      }, 5000);
+    } catch (err) {
+      console.error('Failed to clear inventory', err);
+    } finally {
+      setIsClearingAll(false);
+    }
+  };
+
+  const handleUndoClearAll = async () => {
+    if (deleteTimerRef.current) clearTimeout(deleteTimerRef.current);
+    if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+
+    if (pendingClearedItems && pendingClearedItems.length > 0) {
+      const restored = [...pendingClearedItems];
+      setItems(restored);
+      triggerSparkles(window.innerWidth / 2, window.innerHeight - 80, 'celebrate');
+
+      try {
+        await Promise.all(
+          restored.map((item) =>
+            fetch('/api/inventory', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name: item.name,
+                category: item.category,
+                quantity: item.quantity,
+                expirationDate: item.expirationDate,
+              }),
+            })
+          )
+        );
+        fetchInventory();
+      } catch (err) {
+        console.error('Failed to restore cleared items', err);
+      }
+    }
+    setPendingClearedItems(null);
+  };
+
   const handleQuickAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     const name = newItemName.trim();
@@ -217,7 +295,24 @@ export default function InventoryPage() {
           <h1 className="page-title">{t.inventoryTitle}</h1>
           <p className="page-subtitle">{t.inventorySub}</p>
         </div>
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+          {items.length > 0 && (
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={() => setShowClearModal(true)}
+              style={{
+                minHeight: '40px',
+                color: '#b91c1c',
+                borderColor: 'rgba(185, 28, 28, 0.4)',
+                background: 'rgba(254, 242, 242, 0.85)',
+                fontWeight: 600,
+              }}
+              title={t.clearInventory || 'Clear Inventory'}
+            >
+              🗑️ {t.clearInventory || (language === 'Tamil' ? 'கையிருப்பை அழிக்க' : 'Clear Inventory')}
+            </button>
+          )}
           <button
             type="button"
             className="btn-primary"
@@ -429,6 +524,82 @@ export default function InventoryPage() {
             </button>
           </div>
           <div className="undo-progress-bar" />
+        </div>
+      )}
+
+      {/* 5-Second Undo Banner for Clear All Inventory */}
+      {pendingClearedItems && (
+        <div className="undo-toast-banner" role="status" aria-live="polite">
+          <div className="undo-toast-content">
+            <span className="undo-toast-text">
+              🗑️ {t.clearInventorySuccess || (language === 'Tamil' ? 'கையிருப்பு பொருட்கள் அனைத்தும் அழிக்கப்பட்டன' : 'All inventory items cleared')} ({pendingClearedItems.length})
+            </span>
+            <button 
+              type="button" 
+              className="undo-toast-btn"
+              onClick={handleUndoClearAll}
+            >
+              ↩️ {t.undo || (language === 'Tamil' ? 'செயல்தவிர்' : 'Undo')} ({undoCountdown}s)
+            </button>
+          </div>
+          <div className="undo-progress-bar" />
+        </div>
+      )}
+
+      {/* Clear Inventory Confirmation Modal */}
+      {showClearModal && (
+        <div className="planner-recipe-modal-backdrop" onClick={() => !isClearingAll && setShowClearModal(false)}>
+          <div
+            className="glass-pane"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: '#ffffff',
+              borderRadius: '14px',
+              padding: '24px',
+              maxWidth: '440px',
+              width: '92%',
+              boxShadow: '0 16px 40px rgba(0,0,0,0.25)',
+              margin: 'auto',
+              border: '1.5px solid rgba(185, 28, 28, 0.3)'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+              <span style={{ fontSize: '1.6rem' }}>⚠️</span>
+              <h3 style={{ margin: 0, color: '#b91c1c', fontSize: '1.2rem' }}>
+                {t.clearInventoryConfirmTitle || (language === 'Tamil' ? 'கையிருப்பை முழுமையாக அழிக்கவா?' : 'Clear All Inventory Items?')}
+              </h3>
+            </div>
+            <p style={{ fontSize: '0.95rem', color: '#4b5563', lineHeight: '1.5', margin: '0 0 20px 0' }}>
+              {t.clearInventoryConfirmDesc || (language === 'Tamil' ? 'இது உங்கள் குளிர்சாதனப் பெட்டியில் உள்ள அனைத்து பொருட்களையும் நீக்கும். நீங்கள் புதிதாக தொடங்கலாம்.' : 'This will remove all items currently tracked in your fridge inventory. You can start fresh from the beginning.')}
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+              <button
+                type="button"
+                disabled={isClearingAll}
+                onClick={() => setShowClearModal(false)}
+                style={{ padding: '9px 16px', borderRadius: '8px', border: '1px solid #ccc', background: '#f5f5f5', cursor: 'pointer', fontWeight: 500 }}
+              >
+                {t.cancel || (language === 'Tamil' ? 'ரத்து' : 'Cancel')}
+              </button>
+              <button
+                type="button"
+                disabled={isClearingAll}
+                onClick={handleConfirmClearInventory}
+                style={{
+                  padding: '9px 18px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  background: '#dc2626',
+                  color: '#ffffff',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(220, 38, 38, 0.35)'
+                }}
+              >
+                {isClearingAll ? '...' : (t.clearInventoryConfirmBtn || (language === 'Tamil' ? 'ஆம், அனைத்தையும் அழி' : 'Yes, Clear All'))}
+              </button>
+            </div>
+          </div>
         </div>
       )}
 

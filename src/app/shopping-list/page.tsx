@@ -12,7 +12,7 @@ import {
   groupPantryItems,
   type WeeklyShoppingDay
 } from '@/lib/weekly-shopping';
-import { readCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
+import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
 import { triggerSparklesAtElement } from '@/lib/sparkles';
 import { getIngredientImage } from '@/lib/produce-styles';
 import IngredientInspectionModal from '@/components/IngredientInspectionModal';
@@ -126,6 +126,19 @@ export default function ShoppingListPage() {
   const [notice, setNotice] = useState('');
   const [language, setLanguage] = useState('English');
   const [inspectingIngredient, setInspectingIngredient] = useState<string | null>(null);
+  const [showClearShoppingModal, setShowClearShoppingModal] = useState(false);
+  const [showClearPantryModal, setShowClearPantryModal] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (showClearShoppingModal) setShowClearShoppingModal(false);
+        if (showClearPantryModal) setShowClearPantryModal(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [showClearShoppingModal, showClearPantryModal]);
 
   const fetchShoppingData = useCallback(async () => {
     setLoading(true);
@@ -319,6 +332,27 @@ export default function ShoppingListPage() {
     localStorage.setItem('checkedPantryItemsV1', JSON.stringify(updated));
   };
 
+  const handleConfirmClearShoppingList = () => {
+    saveCurrentWeeklyPlan([]);
+    setPlan([]);
+    setCheckedItems([]);
+    setShowClearShoppingModal(false);
+    setNotice(t.clearShoppingListSuccess || (language === 'Tamil' ? 'ஷாப்பிங் பட்டியல் மற்றும் உணவு திட்டம் அழிக்கப்பட்டது' : 'Shopping list and weekly meal plan cleared'));
+  };
+
+  const handleResetCheckedShopping = () => {
+    setCheckedItems([]);
+    localStorage.setItem(getCheckedItemsKey(plan), JSON.stringify([]));
+    setNotice(language === 'Tamil' ? 'தேர்வு செய்த பொருட்கள் மீட்டமைக்கப்பட்டன' : 'Checked items reset');
+  };
+
+  const handleConfirmClearPantry = () => {
+    setCheckedPantryItems([]);
+    localStorage.removeItem('checkedPantryItemsV1');
+    setShowClearPantryModal(false);
+    setNotice(t.clearPantrySuccess || (language === 'Tamil' ? 'மளிகைப் பொருள் பட்டியல் மீட்டமைக்கப்பட்டது' : 'Pantry checklist reset'));
+  };
+
   if (loading && plan.length === 0 && inventory.length === 0) {
     return (
       <div className="center-container">
@@ -362,7 +396,34 @@ export default function ShoppingListPage() {
             <p className="selector-sub">{t.planShoppingDescription}</p>
           </div>
           {plan.length > 0 && (
-            <div className="shopping-share-actions">
+            <div className="shopping-share-actions" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+              {checkedItems.length > 0 && (
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={handleResetCheckedShopping}
+                  title={t.resetCheckedShopping || 'Reset Checked Items'}
+                  style={{ minHeight: '38px', fontSize: '0.85rem' }}
+                >
+                  🧹 {t.resetCheckedShopping || (language === 'Tamil' ? 'தேர்வை நீக்கு' : 'Reset Checked')} ({checkedItems.length})
+                </button>
+              )}
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={() => setShowClearShoppingModal(true)}
+                title={t.clearShoppingList || 'Clear Shopping List'}
+                style={{
+                  minHeight: '38px',
+                  fontSize: '0.85rem',
+                  color: '#b91c1c',
+                  borderColor: 'rgba(185, 28, 28, 0.4)',
+                  background: 'rgba(254, 242, 242, 0.85)',
+                  fontWeight: 600,
+                }}
+              >
+                🗑️ {t.clearShoppingList || (language === 'Tamil' ? 'பட்டியலை அழிக்க' : 'Clear List')}
+              </button>
               <button type="button" className="btn-primary" onClick={() => void handleShare()}>
                 {t.shareShoppingList}
               </button>
@@ -438,9 +499,30 @@ export default function ShoppingListPage() {
                 <h3 className="pantry-panel-title">{t.checkPantryTitle}</h3>
                 <p className="selector-sub">{t.checkPantryDescription}</p>
               </div>
-              <div className="pantry-stats-pill" title={`${inStockPantryCount} of ${totalPantryCount} in stock`}>
-                <span className="pantry-stats-count">{inStockPantryCount} / {totalPantryCount}</span>
-                <span className="pantry-stats-label">{t.pantryStockedCount}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                {inStockPantryCount > 0 && (
+                  <button
+                    type="button"
+                    className="btn-secondary"
+                    onClick={() => setShowClearPantryModal(true)}
+                    title={t.clearPantry || 'Reset Pantry Checks'}
+                    style={{
+                      minHeight: '34px',
+                      fontSize: '0.82rem',
+                      padding: '4px 10px',
+                      color: '#b91c1c',
+                      borderColor: 'rgba(185, 28, 28, 0.35)',
+                      background: 'rgba(254, 242, 242, 0.85)',
+                      fontWeight: 600,
+                    }}
+                  >
+                    🧹 {t.clearPantry || (language === 'Tamil' ? 'அனைத்தையும் நீக்கு' : 'Reset Checks')}
+                  </button>
+                )}
+                <div className="pantry-stats-pill" title={`${inStockPantryCount} of ${totalPantryCount} in stock`}>
+                  <span className="pantry-stats-count">{inStockPantryCount} / {totalPantryCount}</span>
+                  <span className="pantry-stats-label">{t.pantryStockedCount}</span>
+                </div>
               </div>
             </div>
 
@@ -569,6 +651,116 @@ export default function ShoppingListPage() {
           </div>
         )}
       </section>
+
+      {/* Clear Shopping List Confirmation Modal */}
+      {showClearShoppingModal && (
+        <div className="planner-recipe-modal-backdrop" onClick={() => setShowClearShoppingModal(false)}>
+          <div
+            className="glass-pane"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: '#ffffff',
+              borderRadius: '14px',
+              padding: '24px',
+              maxWidth: '440px',
+              width: '92%',
+              boxShadow: '0 16px 40px rgba(0,0,0,0.25)',
+              margin: 'auto',
+              border: '1.5px solid rgba(185, 28, 28, 0.3)'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+              <span style={{ fontSize: '1.6rem' }}>⚠️</span>
+              <h3 style={{ margin: 0, color: '#b91c1c', fontSize: '1.2rem' }}>
+                {t.clearShoppingListConfirmTitle || (language === 'Tamil' ? 'ஷாப்பிங் பட்டியலை அழிக்கவா?' : 'Clear Shopping List?')}
+              </h3>
+            </div>
+            <p style={{ fontSize: '0.95rem', color: '#4b5563', lineHeight: '1.5', margin: '0 0 20px 0' }}>
+              {t.clearShoppingListConfirmDesc || (language === 'Tamil' ? 'இது தற்போதைய 7-நாள் உணவு திட்டமிடலையும் ஷாப்பிங் பட்டியலையும் முழுமையாக மீட்டமைக்கும்.' : 'This will reset your 7-day meal plan and clear your current weekly shopping list so you can plan anew.')}
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+              <button
+                type="button"
+                onClick={() => setShowClearShoppingModal(false)}
+                style={{ padding: '9px 16px', borderRadius: '8px', border: '1px solid #ccc', background: '#f5f5f5', cursor: 'pointer', fontWeight: 500 }}
+              >
+                {t.cancel || (language === 'Tamil' ? 'ரத்து' : 'Cancel')}
+              </button>
+              <button
+                type="button"
+                onClick={handleConfirmClearShoppingList}
+                style={{
+                  padding: '9px 18px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  background: '#dc2626',
+                  color: '#ffffff',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(220, 38, 38, 0.35)'
+                }}
+              >
+                {t.clearShoppingListConfirmBtn || (language === 'Tamil' ? 'ஆம், பட்டியலை அழி' : 'Yes, Clear List')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Clear Pantry Confirmation Modal */}
+      {showClearPantryModal && (
+        <div className="planner-recipe-modal-backdrop" onClick={() => setShowClearPantryModal(false)}>
+          <div
+            className="glass-pane"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: '#ffffff',
+              borderRadius: '14px',
+              padding: '24px',
+              maxWidth: '440px',
+              width: '92%',
+              boxShadow: '0 16px 40px rgba(0,0,0,0.25)',
+              margin: 'auto',
+              border: '1.5px solid rgba(185, 28, 28, 0.3)'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+              <span style={{ fontSize: '1.6rem' }}>⚠️</span>
+              <h3 style={{ margin: 0, color: '#b91c1c', fontSize: '1.2rem' }}>
+                {t.clearPantryConfirmTitle || (language === 'Tamil' ? 'மளிகை இருப்பை மீட்டமைக்கவா?' : 'Reset Pantry Checklist?')}
+              </h3>
+            </div>
+            <p style={{ fontSize: '0.95rem', color: '#4b5563', lineHeight: '1.5', margin: '0 0 20px 0' }}>
+              {t.clearPantryConfirmDesc || (language === 'Tamil' ? 'மளிகைப் பொருட்களில் குறிக்கப்பட்ட அனைத்து சரிபார்ப்புகளையும் நீக்கி புதிதாக சரிபார்க்க இது உதவும்.' : 'This will uncheck all marked pantry staples so you can audit your kitchen spices and staples fresh.')}
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+              <button
+                type="button"
+                onClick={() => setShowClearPantryModal(false)}
+                style={{ padding: '9px 16px', borderRadius: '8px', border: '1px solid #ccc', background: '#f5f5f5', cursor: 'pointer', fontWeight: 500 }}
+              >
+                {t.cancel || (language === 'Tamil' ? 'ரத்து' : 'Cancel')}
+              </button>
+              <button
+                type="button"
+                onClick={handleConfirmClearPantry}
+                style={{
+                  padding: '9px 18px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  background: '#dc2626',
+                  color: '#ffffff',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(220, 38, 38, 0.35)'
+                }}
+              >
+                {t.clearPantryConfirmBtn || (language === 'Tamil' ? 'ஆம், மீட்டமைக்க' : 'Yes, Reset Checks')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <IngredientInspectionModal
         isOpen={Boolean(inspectingIngredient)}
