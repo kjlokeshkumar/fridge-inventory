@@ -608,6 +608,54 @@ export function formatCategory(category: string, language: string): string {
   return toEnglishCategory(category);
 }
 
+const RECIPE_CATEGORY_DISPLAY_MAP: Record<string, { en: string; ta: string }> = {
+  'Budith, Losto & Polte (Chutneys/Masiyal)': {
+    en: 'Chutneys & Masiyal (Budith)',
+    ta: 'சட்னி & மசியல் (புடித்)'
+  },
+  'Ounty & Kolkar (Tangy Gravies)': {
+    en: 'Tangy Gravies (Ounty)',
+    ta: 'அவ்வுண்டி & குழம்பு'
+  },
+  'Ambat & Pitla (Rich Curries)': {
+    en: 'Rich Curries (Ambat)',
+    ta: 'அம்பட் & பிட்லா'
+  },
+  'Pilchar & Charu (Rasam/Broths)': {
+    en: 'Rasam & Broths (Pilchar)',
+    ta: 'ரசம் & சாறு (பில்சார்)'
+  },
+  'Bhaath & Pongal (Rice Specialties)': {
+    en: 'Rice & Pongal (Bhaath)',
+    ta: 'சாதம் & பொங்கல் (பாத்)'
+  },
+  'Sambar (Lentil Stews)': {
+    en: 'Sambar (Lentil Stew)',
+    ta: 'சாம்பார்'
+  },
+  'Bhairi & Appam (Fritters & Tiffin)': {
+    en: 'Tiffin & Fritters (Bhairi)',
+    ta: 'சிற்றுண்டி & வடை'
+  },
+  'Non-Veg Ounty, Chaino & Kodhi': {
+    en: 'Non-Veg Gravies (Meat & Fish)',
+    ta: 'அசைவக் குழம்பு & சுக்கா'
+  }
+};
+
+export function formatRecipeCategory(category: string, language: string): string {
+  if (!category) return language === 'Tamil' ? 'பாரம்பரிய உணவு' : 'Traditional Recipe';
+  const found = RECIPE_CATEGORY_DISPLAY_MAP[category];
+  if (found) {
+    return language === 'Tamil' ? found.ta : found.en;
+  }
+  // Fallback cleanup
+  if (category.includes('(')) {
+    return category.split('(')[0].trim();
+  }
+  return category;
+}
+
 const TAMIL_DAY_NAMES: Record<string, string> = {
   Sunday: "ஞாயிறு",
   Sun: "ஞாயிறு",

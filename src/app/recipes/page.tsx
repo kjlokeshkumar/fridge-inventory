@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import './recipes.css';
-import { formatCategory, formatDateLabel, formatDayName, formatDishTitle, formatItemName, formatPairingNote, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
+import { formatCategory, formatRecipeCategory, formatDateLabel, formatDayName, formatDishTitle, formatItemName, formatPairingNote, toTamilDayName, toTamilItemName, UI_TRANSLATIONS } from '@/lib/translations';
 import { MADURAI_SOURASHTRA_BHURKOS } from '@/lib/sourashtra-recipes';
 import { calculateWeeklyShopping } from '@/lib/weekly-shopping';
 import { readCurrentWeeklyPlan, saveCurrentWeeklyPlan } from '@/lib/weekly-plan-storage';
@@ -227,6 +227,7 @@ interface ActivePlannerModalState {
   slotLabel: string;
   combo: MealCombo;
   activeTab: 'main' | 'paired';
+  isCatalogView?: boolean;
 }
 
 const FRIDGE_QUICK_ITEMS = [
@@ -1133,8 +1134,8 @@ export default function RecipesPage() {
     if (e) triggerSparklesAtElement(e.currentTarget as HTMLElement, 'open');
     else triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'open');
     setActivePlannerModal({
-      dayName: recipe.category || (language === 'Tamil' ? 'சௌராஷ்டிர பாரம்பரிய உணவு' : 'Sourashtra Classic'),
-      slotLabel: '🍽️ Traditional Recipe',
+      dayName: '',
+      slotLabel: language === 'Tamil' ? 'சமையல் குறிப்பு விவரம்' : 'Recipe Details',
       combo: {
         comboId: recipe.id || String(recipe.title).toLowerCase().replace(/\s+/g, '-'),
         mainDishTitle: recipe.title,
@@ -1144,6 +1145,7 @@ export default function RecipesPage() {
         secondaryRecipe: undefined,
       },
       activeTab: 'main',
+      isCatalogView: true,
     });
   };
 
@@ -1885,14 +1887,20 @@ ${groceryList}
                 ✕
               </button>
             </div>
-            {/* Unified Metadata Pill Row: Calendar slot, category, difficulty */}
+            {/* Unified Metadata Pill Row: Calendar slot or Recipe details, category, difficulty */}
             <div className="modal-recipe-meta-row">
-              <span className="modal-meta-chip meta-chip-calendar">
-                📅 {formatDayName(activePlannerModal.dayName, language)} • {activePlannerModal.slotLabel}
-              </span>
+              {activePlannerModal.isCatalogView || !activePlannerModal.dayName ? (
+                <span className="modal-meta-chip meta-chip-calendar">
+                  📖 {language === 'Tamil' ? 'சமையல் குறிப்பு விவரம்' : 'Recipe Details'}
+                </span>
+              ) : (
+                <span className="modal-meta-chip meta-chip-calendar">
+                  📅 {formatDayName(activePlannerModal.dayName, language)} • {activePlannerModal.slotLabel}
+                </span>
+              )}
               {modalRecipe.category && (
                 <span className="modal-meta-chip meta-chip-category">
-                  🏷️ {formatCategory(safeString(modalRecipe.category), language)}
+                  🏷️ {language === 'Tamil' ? 'வகை: ' : 'Category: '}{formatRecipeCategory(safeString(modalRecipe.category), language)}
                 </span>
               )}
               <span className={`modal-meta-chip meta-chip-diff ${getDifficultyClass(modalRecipe.difficulty)}`}>
@@ -1906,10 +1914,10 @@ ${groceryList}
                 {formatDishTitle(safeString(modalRecipe.title), language)}
               </h3>
               {modalRecipe.sourceAttribution && (
-                <div style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <span>👨‍🍳</span>
-                  <span style={{ color: '#fbbf24', fontWeight: 600 }}>{language === 'Tamil' ? 'சமையல் கலைஞர் / ஆதாரம்:' : 'Recipe & Video by:'}</span>
-                  <span style={{ color: '#f1f5f9' }}>{safeString(modalRecipe.sourceAttribution)}</span>
+                <div className="modal-recipe-author-banner">
+                  <span className="author-icon">👨‍🍳</span>
+                  <span className="author-label">{language === 'Tamil' ? 'சமையல் குறிப்பு & காணொளி:' : 'Recipe & Video by:'}</span>
+                  <span className="author-name">{safeString(modalRecipe.sourceAttribution)}</span>
                 </div>
               )}
             </div>
@@ -1985,15 +1993,15 @@ ${groceryList}
                   <div className="culinary-prep-plate-container">
                     <div className="prep-plate-header">
                       <div className="prep-plate-title-group">
-                        <span className="prep-plate-icon" aria-hidden="true">👨‍🍳</span>
+                        <span className="prep-plate-icon" aria-hidden="true">🍽️</span>
                         <div>
                           <h4 className="prep-plate-title">
-                            {language === 'Tamil' ? "செஃப் மிஸ்-என்-பிளேஸ் பலகை" : "Chef's Porcelain Mise-en-Place"}
+                            {language === 'Tamil' ? "சமையல் பொருட்கள் & அளவுகள்" : "Prepped Ingredients & Quantities"}
                           </h4>
                           <p className="prep-plate-subtitle">
                             {language === 'Tamil'
-                              ? 'சமையலுக்குத் தேவையான பொருட்கள் பீங்கான் கிண்ணங்களில் அளவுகளுடன்'
-                              : 'Prepped ingredients in porcelain ramekins with hovering quantities'}
+                              ? 'இன்வென்டரி இருப்பும் சமையலுக்கு தேவையான துல்லிய அளவுகளும்'
+                              : 'Fresh ingredients and measured pantry items ready for cooking'}
                           </p>
                         </div>
                       </div>
@@ -2907,7 +2915,9 @@ ${groceryList}
                   <div className="recipe-header">
                     <div>
                       {recipe.category && (
-                        <span className="recipe-category-badge">{safeString(recipe.category)}</span>
+                        <span className="recipe-category-badge">
+                          🏷️ {language === 'Tamil' ? 'வகை: ' : 'Category: '}{formatRecipeCategory(safeString(recipe.category), language)}
+                        </span>
                       )}
                       <h3
                         onClick={() => openCatalogRecipeModal(recipe)}
@@ -2916,11 +2926,9 @@ ${groceryList}
                         {formatDishTitle(safeString(recipe.title), language)}
                       </h3>
                       {recipe.sourceAttribution && (
-                        <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.2rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                          <span>👨‍🍳</span>
-                          <span style={{ color: '#cbd5e1', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                            {safeString(recipe.sourceAttribution)}
-                          </span>
+                        <div className="card-recipe-author">
+                          <span className="author-icon">👨‍🍳</span>
+                          <span className="author-name">{safeString(recipe.sourceAttribution)}</span>
                         </div>
                       )}
                     </div>

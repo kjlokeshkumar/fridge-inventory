@@ -77,130 +77,145 @@ export function getRecipeImageUrl(recipe?: {
     return RECIPE_IMAGE_MAP[recipe.id];
   }
 
-  const raw = `${recipe.title || ''} ${recipe.name || ''} ${recipe.id || ''} ${recipe.category || ''}`.toLowerCase();
+  // Separate dish-specific text from broad category string
+  const dishText = `${recipe.title || ''} ${recipe.name || ''} ${recipe.id || ''}`.toLowerCase();
+  const raw = `${dishText} ${recipe.category || ''}`.toLowerCase();
 
-  // 2. Non-Veg Specialties
-  if (raw.includes('anda') || raw.includes('egg') || raw.includes('muttai')) return RECIPE_IMAGE_MAP['anda-ounty'];
-  if (raw.includes('meen') || raw.includes('fish') || raw.includes('karuvadu')) return RECIPE_IMAGE_MAP['meen-karuvadu-kodhi'];
-  if (raw.includes('koli') || raw.includes('chicken')) {
-    if (raw.includes('varuval') || raw.includes('roast') || raw.includes('fry') || raw.includes('sukka')) {
+  // 2. Non-Veg Specialties (Checked against dishText first)
+  if (dishText.includes('anda') || dishText.includes('egg') || dishText.includes('muttai')) return RECIPE_IMAGE_MAP['anda-ounty'];
+  if (dishText.includes('meen') || dishText.includes('fish') || dishText.includes('karuvadu')) return RECIPE_IMAGE_MAP['meen-karuvadu-kodhi'];
+  if (dishText.includes('koli') || dishText.includes('chicken')) {
+    if (dishText.includes('varuval') || dishText.includes('roast') || dishText.includes('fry') || dishText.includes('sukka')) {
       return RECIPE_IMAGE_MAP['sugi-pilchar-bhurko-chicken-varuval'];
     }
     return RECIPE_IMAGE_MAP['jaleela-koli-ounty'];
   }
-  if (raw.includes('chaino') || raw.includes('mutton') || raw.includes('kari') || raw.includes('sukka') || raw.includes('boti')) {
-    if (raw.includes('kolkar') || raw.includes('curry') || raw.includes('gravy')) {
+  if (dishText.includes('chaino') || dishText.includes('mutton') || dishText.includes('kari') || dishText.includes('sukka') || dishText.includes('boti')) {
+    if (dishText.includes('kolkar') || dishText.includes('curry') || dishText.includes('gravy')) {
       return RECIPE_IMAGE_MAP['chaino-kolkar'];
     }
     return RECIPE_IMAGE_MAP['polte-chaino'];
   }
 
-  // 3. Fritters, Tiffin & Traditional Sweets
-  if (raw.includes('bhairi') || raw.includes('vada') || raw.includes('pakoda') || raw.includes('pangarapaan') || raw.includes('nalar')) {
+  // 3. Brinjal / Eggplant Chutneys, Thokku & Budith (High Priority - Prevents greens/polte mismatch)
+  const isBrinjalDish = dishText.includes('vangi') || dishText.includes('brinjal') || dishText.includes('eggplant') || dishText.includes('kathirikai') || dishText.includes('baingan');
+  if (isBrinjalDish) {
+    if (dishText.includes('budith') || dishText.includes('chutney') || dishText.includes('chutni') || dishText.includes('thokku') || dishText.includes('marriage') || dishText.includes('mash') || dishText.includes('smash')) {
+      return RECIPE_IMAGE_MAP['vangi-budith'];
+    }
+    if (dishText.includes('pitla') || dishText.includes('pavakkai')) {
+      return RECIPE_IMAGE_MAP['pavakkai-vangi-pitla'];
+    }
+    if (dishText.includes('sambar') || dishText.includes('sengu')) {
+      return RECIPE_IMAGE_MAP['sengu-vangi-batata-sambar'];
+    }
+    return RECIPE_IMAGE_MAP['vangi-budith'];
+  }
+
+  // 4. Fritters, Tiffin & Traditional Sweets
+  if (dishText.includes('bhairi') || dishText.includes('vada') || dishText.includes('pakoda') || dishText.includes('pangarapaan') || dishText.includes('nalar')) {
     return RECIPE_IMAGE_MAP['pangarapaan-nalar-bhairi'];
   }
-  if (raw.includes('appam') || raw.includes('karupatti') || raw.includes('loni')) {
+  if (dishText.includes('appam') || dishText.includes('karupatti') || dishText.includes('loni')) {
     return RECIPE_IMAGE_MAP['loni-karupatti-appam'];
   }
-  if (raw.includes('dhowlo') || raw.includes('kozhukattai') || raw.includes('modak') || raw.includes('pooranam') || raw.includes('sweet') || raw.includes('laddu') || raw.includes('halwa')) {
+  if (dishText.includes('dhowlo') || dishText.includes('kozhukattai') || dishText.includes('modak') || dishText.includes('pooranam') || dishText.includes('sweet') || dishText.includes('laddu') || dishText.includes('halwa')) {
     return RECIPE_IMAGE_MAP['thengai-pooranam-dhowlo'];
   }
-  if (raw.includes('kenni') || raw.includes('kanji') || raw.includes('paes')) {
+  if (dishText.includes('kenni') || dishText.includes('kanji') || dishText.includes('paes')) {
     return RECIPE_IMAGE_MAP['kenni-paes'];
   }
 
-  // 4. Chutneys, Losto & Greens
-  if (raw.includes('alla') || raw.includes('inji') || raw.includes('ginger')) {
+  // 5. Chutneys, Losto & Condiments (Must check dishText, NOT category keywords)
+  if (dishText.includes('alla') || dishText.includes('inji') || dishText.includes('ginger')) {
     return RECIPE_IMAGE_MAP['alla-chutni'];
   }
-  if (raw.includes('kandha') || (raw.includes('onion') && raw.includes('chutney')) || raw.includes('thanni')) {
+  if (dishText.includes('kandha') || (dishText.includes('onion') && dishText.includes('chutney')) || dishText.includes('thanni')) {
     return RECIPE_IMAGE_MAP['kandha-chutney'];
   }
-  if (raw.includes('nellika') || raw.includes('rubbin') || raw.includes('lubbin') || raw.includes('gooseberry') || raw.includes('amla') || raw.includes('pickle')) {
+  if (dishText.includes('nellika') || dishText.includes('rubbin') || dishText.includes('lubbin') || dishText.includes('gooseberry') || dishText.includes('amla') || dishText.includes('pickle')) {
     return RECIPE_IMAGE_MAP['nellika-rubbin'];
   }
-  if (raw.includes('vangi') && (raw.includes('budith') || raw.includes('bhudid') || raw.includes('chutney') || raw.includes('thokku'))) {
-    return RECIPE_IMAGE_MAP['vangi-budith'];
-  }
-  if (raw.includes('pudina') || raw.includes('kothmir') || raw.includes('coriander') || raw.includes('mint')) {
+  if (dishText.includes('pudina') || dishText.includes('kothmir') || dishText.includes('coriander') || dishText.includes('mint')) {
     return RECIPE_IMAGE_MAP['pudina-kothmir-losto'];
   }
-  if (raw.includes('polte') || raw.includes('keerai') || raw.includes('greens') || raw.includes('masiyal') || raw.includes('bhajji')) {
-    if (raw.includes('charu') || raw.includes('rasam') || raw.includes('pilchar')) {
+  // Greens / Polte / Masiyal ONLY if dish title itself specifies greens
+  if (dishText.includes('polte') || dishText.includes('keerai') || dishText.includes('spinach') || dishText.includes('greens') || (dishText.includes('bhajji') && !dishText.includes('charu'))) {
+    if (dishText.includes('charu') || dishText.includes('rasam') || dishText.includes('pilchar')) {
       return RECIPE_IMAGE_MAP['bhajji-keerai-charu'];
     }
     return RECIPE_IMAGE_MAP['polte-bhajji'];
   }
 
-  // 5. Rasam & Broths
-  if (raw.includes('pilchar') || raw.includes('charu') || raw.includes('rasam')) {
-    if (raw.includes('keerai') || raw.includes('bhajji')) return RECIPE_IMAGE_MAP['bhajji-keerai-charu'];
+  // 6. Rasam & Broths
+  if (dishText.includes('pilchar') || dishText.includes('charu') || dishText.includes('rasam')) {
+    if (dishText.includes('keerai') || dishText.includes('bhajji')) return RECIPE_IMAGE_MAP['bhajji-keerai-charu'];
     return RECIPE_IMAGE_MAP['joman-pilchar'];
   }
 
-  // 6. Rice Varieties & Pongal
-  if (raw.includes('mudha') || raw.includes('ven pongal') || raw.includes('ghee pongal')) {
+  // 7. Rice Varieties & Pongal
+  if (dishText.includes('mudha') || dishText.includes('ven pongal') || dishText.includes('ghee pongal')) {
     return RECIPE_IMAGE_MAP['mudha-pongal'];
   }
-  if (raw.includes('serki') || raw.includes('gullu') || raw.includes('sweet pongal') || raw.includes('sakkarai')) {
+  if (dishText.includes('serki') || dishText.includes('gullu') || dishText.includes('sweet pongal') || dishText.includes('sakkarai')) {
     return RECIPE_IMAGE_MAP['serki-bhaath-gullu-pongal'];
   }
-  if (raw.includes('limbu') || raw.includes('lemon') || raw.includes('mhuri') || raw.includes('thoop')) {
+  if (dishText.includes('limbu') || dishText.includes('lemon') || dishText.includes('mhuri') || dishText.includes('thoop')) {
     return RECIPE_IMAGE_MAP['limbu-thoop-mhuri-pongal'];
   }
-  if (raw.includes('thakkali pongal') || raw.includes('tomato rice') || raw.includes('thakkali sadam')) {
+  if (dishText.includes('thakkali pongal') || dishText.includes('tomato rice') || dishText.includes('thakkali sadam')) {
     return RECIPE_IMAGE_MAP['thakkali-pongal'];
   }
-  if (raw.includes('ambat bhaath') || raw.includes('puliyodharai') || raw.includes('puli sadam') || raw.includes('tamarind rice') || raw.includes('temple')) {
+  if (dishText.includes('ambat bhaath') || dishText.includes('puliyodharai') || dishText.includes('puli sadam') || dishText.includes('tamarind rice') || dishText.includes('temple')) {
     return RECIPE_IMAGE_MAP['ambat-bhaath'];
   }
 
-  // 7. Sambar
-  if (raw.includes('sambar') || raw.includes('sengu') || raw.includes('drumstick')) {
+  // 8. Sambar
+  if (dishText.includes('sambar') || dishText.includes('sengu') || dishText.includes('drumstick')) {
     return RECIPE_IMAGE_MAP['sengu-vangi-batata-sambar'];
   }
 
-  // 8. Ambat & Pitla (Rich Curries)
-  if (raw.includes('kachchana') || raw.includes('chana') || raw.includes('kondakadalai') || raw.includes('sundal')) {
+  // 9. Ambat & Pitla (Rich Curries)
+  if (dishText.includes('kachchana') || dishText.includes('chana') || dishText.includes('kondakadalai') || dishText.includes('sundal')) {
     return RECIPE_IMAGE_MAP['kachchana-ambat'];
   }
-  if (raw.includes('kajali') || raw.includes('eeral')) {
+  if (dishText.includes('kajali') || dishText.includes('eeral')) {
     return RECIPE_IMAGE_MAP['kajali-ambat'];
   }
-  if (raw.includes('pavakkai') || raw.includes('bitter gourd') || raw.includes('pitla')) {
+  if (dishText.includes('pavakkai') || dishText.includes('bitter gourd') || dishText.includes('pitla')) {
     return RECIPE_IMAGE_MAP['pavakkai-vangi-pitla'];
   }
-  if (raw.includes('meal maker') || raw.includes('soya')) {
+  if (dishText.includes('meal maker') || dishText.includes('soya')) {
     return RECIPE_IMAGE_MAP['meal-maker-ambat'];
   }
-  if (raw.includes('cauliflower') || raw.includes('gobi')) {
+  if (dishText.includes('cauliflower') || dishText.includes('gobi')) {
     return RECIPE_IMAGE_MAP['cauliflower-kulambu'];
   }
-  if (raw.includes('beans') || raw.includes('batata') || raw.includes('potato') || raw.includes('urulaikilangu')) {
+  if (dishText.includes('beans') || dishText.includes('batata') || dishText.includes('potato') || dishText.includes('urulaikilangu')) {
     return RECIPE_IMAGE_MAP['beans-batata-ambat'];
   }
 
-  // 9. Ounty & Kolkar Gravies
-  if (raw.includes('dheim') || raw.includes('mor kulambu') || raw.includes('more kulambu') || raw.includes('buttermilk') || raw.includes('curd')) {
+  // 10. Ounty & Kolkar Gravies
+  if (dishText.includes('dheim') || dishText.includes('mor kulambu') || dishText.includes('more kulambu') || dishText.includes('buttermilk') || dishText.includes('curd')) {
     return RECIPE_IMAGE_MAP['dheim-ounty'];
   }
-  if (raw.includes('bela ounty') || raw.includes('paruppu') || raw.includes('dal curry')) {
+  if (dishText.includes('bela ounty') || dishText.includes('paruppu') || dishText.includes('dal curry')) {
     return RECIPE_IMAGE_MAP['bela-ounty'];
   }
-  if (raw.includes('mithi') || raw.includes('vendhaya') || raw.includes('fenugreek')) {
+  if (dishText.includes('mithi') || dishText.includes('vendhaya') || dishText.includes('fenugreek')) {
     return RECIPE_IMAGE_MAP['mithi-kolkar'];
   }
-  if (raw.includes('koduk')) {
+  if (dishText.includes('koduk')) {
     return RECIPE_IMAGE_MAP['koduk-ounty'];
   }
-  if (raw.includes('thakkali') || raw.includes('tomato')) {
+  if (dishText.includes('thakkali') || dishText.includes('tomato')) {
     return RECIPE_IMAGE_MAP['thakkali-ounty'];
   }
-  if (raw.includes('losan') || raw.includes('garlic') || raw.includes('poondu')) {
+  if (dishText.includes('losan') || dishText.includes('garlic') || dishText.includes('poondu')) {
     return RECIPE_IMAGE_MAP['losan-kolkar'];
   }
 
-  // 10. Broad Category Matchers
+  // 11. Broad Fallbacks from raw (dish + category)
   if (raw.includes('chutney') || raw.includes('chutni') || raw.includes('thovaiyal')) return RECIPE_IMAGE_MAP['pudina-kothmir-losto'];
   if (raw.includes('bhaath') || raw.includes('rice') || raw.includes('pongal')) return RECIPE_IMAGE_MAP['ambat-bhaath'];
   if (raw.includes('ounty') || raw.includes('kolkar') || raw.includes('kulambu') || raw.includes('kuzhambu')) return RECIPE_IMAGE_MAP['thakkali-ounty'];
