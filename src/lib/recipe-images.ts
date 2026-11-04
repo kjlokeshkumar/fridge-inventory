@@ -28,7 +28,7 @@ const CULINARY_IMAGE_REGISTRY: Record<string, string> = {
   serki_bhaath: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80',
 
   // 3. Ounty & Kolkar (Tangy & Tamarind Gravies)
-  thakkali_ounty: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+  thakkali_ounty: '/images/recipes/thakkali_ounty_curry.jpg',
   losan_kolkar: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80',
   garlic_curry: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=80',
   koduk_ounty: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80',
@@ -59,11 +59,11 @@ const CULINARY_IMAGE_REGISTRY: Record<string, string> = {
   cauliflower: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
 
   // 6. Pilchar & Charu (Rasam & Broths)
-  rasam: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
-  pilchar: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
-  charu: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
-  joman_pilchar: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
-  limbu_pilchar: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+  rasam: '/images/recipes/joman_pilchar_rasam.jpg',
+  pilchar: '/images/recipes/joman_pilchar_rasam.jpg',
+  charu: '/images/recipes/joman_pilchar_rasam.jpg',
+  joman_pilchar: '/images/recipes/joman_pilchar_rasam.jpg',
+  limbu_pilchar: '/images/recipes/joman_pilchar_rasam.jpg',
 
   // 7. Sambar
   sambar: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&auto=format&fit=crop&q=80',
