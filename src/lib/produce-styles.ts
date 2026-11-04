@@ -366,12 +366,16 @@ export function getIngredientImage(name: string, categoryHint?: string): string 
 
   // 30. Oils
   if (
-    lower.includes('sesame') ||
-    lower.includes('gingelly') ||
-    lower.includes('nallennai') ||
-    lower.includes('நல்லெண்ணெய்') ||
-    lower.includes('oil') ||
-    lower.includes('எண்ணெய்')
+    !lower.includes('boil') &&
+    (
+      lower.includes('sesame') ||
+      lower.includes('gingelly') ||
+      lower.includes('nallennai') ||
+      lower.includes('நல்லெண்ணெய்') ||
+      /\boils?\b/i.test(lower) ||
+      lower.includes('ennai') ||
+      lower.includes('எண்ணெய்')
+    )
   ) {
     return '/images/ingredients/sesame_oil.jpg';
   }
@@ -657,10 +661,13 @@ export function getIngredientImage(name: string, categoryHint?: string): string 
 
   // 59. Cooking Oils (Groundnut, Sunflower, Mustard, General Oil)
   if (
-    lower.includes('oil') ||
-    lower.includes('ennai') ||
-    lower.includes('எண்ணெய்') ||
-    lower.includes('tel')
+    !lower.includes('boil') &&
+    (
+      /\boils?\b/i.test(lower) ||
+      lower.includes('ennai') ||
+      lower.includes('எண்ணெய்') ||
+      /\btel\b/i.test(lower)
+    )
   ) {
     return '/images/ingredients/sesame_oil.jpg';
   }
@@ -1208,12 +1215,15 @@ function getBaseRamekinStyle(name: string): Omit<RamekinStyle, 'image'> {
   // =========================================================================
   // Oils (golden oil gradient)
   if (
-    lower.includes('oil') ||
-    lower.includes('sesame oil') ||
-    lower.includes('gingelly') ||
-    lower.includes('நல்லெண்ணெய்') ||
-    lower.includes('எண்ணெய்') ||
-    lower.includes('tel')
+    !lower.includes('boil') &&
+    (
+      /\boils?\b/i.test(lower) ||
+      lower.includes('sesame oil') ||
+      lower.includes('gingelly') ||
+      lower.includes('நல்லெண்ணெய்') ||
+      lower.includes('எண்ணெய்') ||
+      /\btel\b/i.test(lower)
+    )
   ) {
     return {
       category: 'liquid',
@@ -2041,7 +2051,7 @@ export function getProduceStyle(name: string): ProduceStyle {
   if (lower.includes('rice') || lower.includes('wheat') || lower.includes('flour') || lower.includes('bhaath') || lower.includes('அரிசி') || lower.includes('மாவு')) return { icon: '🌾', bg: '#d7ccc8' };
   if (lower.includes('bean') || lower.includes('lentil') || lower.includes('dal') || lower.includes('bela') || lower.includes('toor') || lower.includes('chana') || lower.includes('urad') || lower.includes('பருப்பு')) return { icon: '🫘', bg: '#ffe0b2' };
   if (lower.includes('bread') || lower.includes('bun') || lower.includes('ரொட்டி')) return { icon: '🍞', bg: '#fef3c7' };
-  if (lower.includes('oil') || lower.includes('எண்ணெய்')) return { icon: '🫗', bg: '#fef9c3' };
+  if (!lower.includes('boil') && (/\boils?\b/i.test(lower) || lower.includes('எண்ணெய்'))) return { icon: '🫗', bg: '#fef9c3' };
   if (lower.includes('salt') || lower.includes('lenu') || lower.includes('sugar') || lower.includes('உப்பு') || lower.includes('சர்க்கரை')) return { icon: '🧂', bg: '#f1f5f9' };
 
   return { icon: '🥗', bg: '#dcedc8' };

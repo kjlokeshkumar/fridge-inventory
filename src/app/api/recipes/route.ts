@@ -72,7 +72,7 @@ const SOURASHTRA_TERM_MAP: Record<string, string> = {
 
 function estimateAdditiveCalories(additive: string): IngredientCalorieItem {
   const lower = additive.toLowerCase();
-  if (lower.includes('oil') || lower.includes('ghee')) {
+  if ((/\boils?\b/i.test(lower) && !lower.includes('boil')) || lower.includes('ghee')) {
     return { name: additive, weightGrams: 25, calories: 220 };
   }
   if (lower.includes('dal') || lower.includes('bela') || lower.includes('chickpea') || lower.includes('besan') || lower.includes('gram')) {

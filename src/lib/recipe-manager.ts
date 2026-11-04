@@ -113,7 +113,7 @@ export function calculateRecipeNutrition(recipe: Partial<SourashtraRecipeReferen
 
   const estimateAdditive = (additive: string): NutritionIngredient => {
     const lower = additive.toLowerCase();
-    if (lower.includes('oil') || lower.includes('ghee')) {
+    if ((/\boils?\b/i.test(lower) && !lower.includes('boil')) || lower.includes('ghee')) {
       return { name: additive, weightGrams: 25, calories: 220 };
     }
     if (lower.includes('dal') || lower.includes('gram') || lower.includes('chickpea') || lower.includes('besan')) {
