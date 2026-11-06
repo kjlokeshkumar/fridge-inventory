@@ -405,6 +405,15 @@ body::before {
   display: none;
 }
 
+/* Hide Bottom Nav entirely when software keyboard is open or when an input is focused */
+body.keyboard-open .bottom-nav,
+body:has(input:focus, textarea:focus, select:focus) .bottom-nav {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+}
+
 @media (max-width: 768px) {
   .bottom-nav {
     display: flex;
@@ -414,10 +423,10 @@ body::before {
     bottom: 0;
     left: 0;
     right: 0;
-    height: calc(64px + env(safe-area-inset-bottom, 16px));
-    padding-bottom: max(12px, env(safe-area-inset-bottom, 16px));
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: max(8px, env(safe-area-inset-bottom, 16px));
+    padding-left: max(4px, env(safe-area-inset-left, 0px));
+    padding-right: max(4px, env(safe-area-inset-right, 0px));
     background: var(--bg-main);
     border-top: 1px solid var(--border-color);
     z-index: 100;
@@ -429,29 +438,48 @@ body::before {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1;
+    flex: 1 1 0;
+    min-width: 0;
     height: 100%;
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.72rem;
+    font-size: 0.70rem;
     font-weight: 500;
-    transition: all 0.2s ease;
-    gap: 4px;
+    transition: color 0.15s ease;
+    gap: 2px;
+    padding: 0 1px;
+    box-sizing: border-box;
   }
 
   .bottom-nav-item:active, .bottom-nav-item.active {
     color: var(--primary-teal);
-    transform: scale(1.05);
+    font-weight: 700;
+    transform: none !important; /* Never scale active tab to avoid colliding with neighbors */
   }
 
   .bottom-nav-icon {
-    font-size: 1.3rem;
+    font-size: 1.22rem;
+    line-height: 1;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .bottom-nav-label {
+    font-size: clamp(0.58rem, 2.2vw, 0.68rem);
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-align: center;
+    display: block;
+    letter-spacing: -0.015em;
   }
 
   /* Special Floating Scan Button in the middle */
   .bottom-nav-item.scan-btn {
     position: relative;
-    top: -16px;
+    top: -14px;
     overflow: visible;
     display: flex;
     align-items: center;
@@ -459,19 +487,22 @@ body::before {
     height: 100%;
     padding: 0;
     margin: 0;
+    flex: 0 0 54px;
+    min-width: 54px;
+    max-width: 54px;
   }
 
   .scan-icon-container {
-    width: 58px;
-    height: 58px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 18px var(--primary-glow);
-    border: 4px solid #fffdf8;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3.5px solid #fffdf8;
+    transition: all 0.25s ease;
     padding: 0;
     margin: 0 auto;
     box-sizing: border-box;
@@ -486,7 +517,7 @@ body::before {
 
   .bottom-nav-item.scan-btn:active .scan-icon-container,
   .bottom-nav-item.scan-btn.active .scan-icon-container {
-    transform: scale(1.1) rotate(90deg);
+    transform: scale(1.08) rotate(90deg);
     box-shadow: 0 6px 22px var(--accent-glow);
   }
 
@@ -751,13 +782,20 @@ body::before {
     font-style: normal !important;
     user-select: none !important;
   }
+  .logo {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    gap: 4px !important;
+    overflow: hidden !important;
+  }
   .logo-text {
-    font-size: clamp(0.78rem, 3.4vw, 0.88rem) !important;
+    font-size: clamp(0.70rem, 3.1vw, 0.86rem) !important;
     font-weight: 700 !important;
     white-space: nowrap !important;
     letter-spacing: -0.02em !important;
-    flex-shrink: 0 !important;
-    overflow: visible !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
   }
   .navbar .nav-content,
   .nav-content {
@@ -766,8 +804,8 @@ body::before {
     align-items: center !important;
     width: 100% !important;
     max-width: 100% !important;
-    padding-left: max(10px, env(safe-area-inset-left, 0px)) !important;
-    padding-right: max(10px, env(safe-area-inset-right, 0px)) !important;
+    padding-left: max(8px, env(safe-area-inset-left, 0px)) !important;
+    padding-right: max(8px, env(safe-area-inset-right, 0px)) !important;
     height: 56px;
     gap: 4px !important;
     box-sizing: border-box !important;
@@ -775,16 +813,16 @@ body::before {
   .nav-controls {
     display: flex !important;
     align-items: center !important;
-    gap: 4px !important;
+    gap: 3px !important;
     flex-wrap: nowrap !important;
     flex-shrink: 0 !important;
     justify-content: flex-end !important;
   }
   .user-auth-badge, .profile-badge-btn {
-    width: 30px !important;
-    height: 30px !important;
-    min-width: 30px !important;
-    min-height: 30px !important;
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
     padding: 0 !important;
     border-radius: 50% !important;
     display: inline-flex !important;
@@ -793,15 +831,16 @@ body::before {
     flex-shrink: 0 !important;
   }
   .lang-selector-container {
-    height: 30px !important;
-    padding: 0 4px 0 6px !important;
-    border-radius: 7px !important;
-    gap: 3px !important;
+    height: 28px !important;
+    padding: 0 4px 0 5px !important;
+    border-radius: 6px !important;
+    gap: 2px !important;
     white-space: nowrap !important;
     touch-action: manipulation !important;
     flex-shrink: 0 !important;
     box-sizing: border-box !important;
-    max-width: 84px !important;
+    max-width: none !important;
+    width: auto !important;
   }
   .user-auth-name, .profile-name {
     display: none !important;

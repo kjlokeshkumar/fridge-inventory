@@ -42,7 +42,43 @@ export default function Navigation() {
     };
     void syncSession();
     window.addEventListener('userAuthChange', handleAuthChange);
-    return () => window.removeEventListener('userAuthChange', handleAuthChange);
+
+    // Global keyboard visibility detection for mobile webview & browsers
+    const handleFocusIn = (e: FocusEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+        document.body.classList.add('keyboard-open');
+      }
+    };
+    const handleFocusOut = () => {
+      setTimeout(() => {
+        const active = document.activeElement as HTMLElement | null;
+        if (!active || (active.tagName !== 'INPUT' && active.tagName !== 'TEXTAREA' && !active.isContentEditable)) {
+          document.body.classList.remove('keyboard-open');
+        }
+      }, 120);
+    };
+    const handleVisualResize = () => {
+      if (window.visualViewport) {
+        const isKeyboardUp = window.visualViewport.height < (window.innerHeight * 0.75);
+        document.body.classList.toggle('keyboard-open', isKeyboardUp);
+      }
+    };
+
+    window.addEventListener('focusin', handleFocusIn);
+    window.addEventListener('focusout', handleFocusOut);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleVisualResize);
+    }
+
+    return () => {
+      window.removeEventListener('userAuthChange', handleAuthChange);
+      window.removeEventListener('focusin', handleFocusIn);
+      window.removeEventListener('focusout', handleFocusOut);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', handleVisualResize);
+      }
+    };
   }, []);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

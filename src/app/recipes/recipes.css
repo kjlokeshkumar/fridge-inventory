@@ -239,26 +239,31 @@
 }
 
 .category-tab-btn {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #cbd5e1;
+  background: #ffffff;
+  border: 1.5px solid rgba(45, 110, 119, 0.25);
+  color: var(--text-main);
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 0.82rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
-.category-tab-btn:hover {
-  border-color: #6366f1;
-  color: #fff;
+.category-tab-btn:hover:not(.active) {
+  border-color: var(--primary-teal);
+  background: var(--bg-strip);
+  color: var(--primary-teal);
 }
 
-.category-tab-btn.active {
-  background: rgba(99, 102, 241, 0.28);
-  border-color: #6366f1;
-  color: #fff;
-  font-weight: 600;
+.category-tab-btn.active,
+.category-tab-btn.active:hover,
+.category-tab-btn.active:focus {
+  background: var(--primary-teal) !important;
+  border-color: var(--primary-teal) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 4px rgba(45, 110, 119, 0.25) !important;
 }
 
 /* Source Hyperlinks Section inside Recipe & Bhurko Cards */
@@ -1310,13 +1315,19 @@
 }
 
 .recipe-view-tab.active,
+.recipe-view-tab.active:hover,
+.recipe-view-tab.active:focus,
 .category-tab-btn.active,
-.fridge-pill.active {
-  background: var(--primary-teal);
-  border-color: var(--primary-teal);
-  color: #ffffff;
-  font-weight: 700;
-  box-shadow: 0 2px 4px rgba(45, 110, 119, 0.2);
+.category-tab-btn.active:hover,
+.category-tab-btn.active:focus,
+.fridge-pill.active,
+.fridge-pill.active:hover,
+.fridge-pill.active:focus {
+  background: var(--primary-teal) !important;
+  border-color: var(--primary-teal) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 4px rgba(45, 110, 119, 0.2) !important;
 }
 
 .planner-day-tab {
@@ -1418,9 +1429,9 @@
 
 .source-link-yt:hover,
 .source-link-web:hover,
-.fridge-pill:hover,
-.category-tab-btn:hover,
-.recipe-view-tab:hover {
+.fridge-pill:not(.active):hover,
+.category-tab-btn:not(.active):hover,
+.recipe-view-tab:not(.active):hover {
   color: #194f56;
   border-color: var(--primary-teal);
 }

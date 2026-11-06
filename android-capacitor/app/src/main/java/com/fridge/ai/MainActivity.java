@@ -15,6 +15,10 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import com.getcapacitor.BridgeActivity;
 
 public class MainActivity extends BridgeActivity {
@@ -22,6 +26,12 @@ public class MainActivity extends BridgeActivity {
     public void onCreate(Bundle savedInstanceState) {
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
+            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+            return windowInsets;
+        });
 
         try {
             if (this.bridge != null && this.bridge.getWebView() != null) {
@@ -119,15 +129,18 @@ public class MainActivity extends BridgeActivity {
                 });
             }
         } catch (Exception ignored) {}
-    }
 
-    // Prevent Android hardware/gesture Back button from unexpectedly closing the app!
-    @Override
-    public void onBackPressed() {
-        if (this.bridge != null && this.bridge.getWebView() != null && this.bridge.getWebView().canGoBack()) {
-            this.bridge.getWebView().goBack();
-        } else {
-            super.onBackPressed();
-        }
+        // Handle Android Back gesture/button backward-compatibly using modern OnBackPressedDispatcher
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (bridge != null && bridge.getWebView() != null && bridge.getWebView().canGoBack()) {
+                    bridge.getWebView().goBack();
+                } else {
+                    setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                }
+            }
+        });
     }
 }
