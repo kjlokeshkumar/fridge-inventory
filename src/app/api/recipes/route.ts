@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuthenticatedUser, isAuthConfigurationError } from '@/lib/session';
+import { doesInventorySatisfyRecipeIngredient } from '@/lib/weekly-shopping';
 import {
   MADURAI_SOURASHTRA_BHURKOS,
   MADURAI_SOURASHTRA_RECIPES,
@@ -158,18 +159,20 @@ function formulateSourashtraRecipesFromFridge(
 
     for (const trigger of recipe.fridgeTriggers) {
       const tLow = trigger.toLowerCase();
-      const matchedInFridge = normalizedFridge.some(
-        (f) =>
-          f.includes(tLow) ||
-          tLow.includes(f) ||
-          (tLow === 'greens' && (f.includes('spinach') || f.includes('bhajji') || f.includes('keerai'))) ||
-          (tLow === 'spinach' && (f.includes('greens') || f.includes('bhajji'))) ||
-          (tLow === 'curd' && (f.includes('milk') || f.includes('buttermilk') || f.includes('dhi') || f.includes('dheim'))) ||
-          (tLow === 'buttermilk' && (f.includes('curd') || f.includes('milk'))) ||
-          (tLow === 'eggs' && f.includes('egg')) ||
-          (tLow === 'amla' && f.includes('gooseberry')) ||
-          (tLow === 'gooseberry' && f.includes('amla'))
-      );
+      const matchedInFridge =
+        doesInventorySatisfyRecipeIngredient(trigger, normalizedFridge) ||
+        normalizedFridge.some(
+          (f) =>
+            f.includes(tLow) ||
+            tLow.includes(f) ||
+            (tLow === 'greens' && (f.includes('spinach') || f.includes('bhajji') || f.includes('keerai'))) ||
+            (tLow === 'spinach' && (f.includes('greens') || f.includes('bhajji'))) ||
+            (tLow === 'curd' && (f.includes('milk') || f.includes('buttermilk') || f.includes('dhi') || f.includes('dheim'))) ||
+            (tLow === 'buttermilk' && (f.includes('curd') || f.includes('milk'))) ||
+            (tLow === 'eggs' && f.includes('egg')) ||
+            (tLow === 'amla' && f.includes('gooseberry')) ||
+            (tLow === 'gooseberry' && f.includes('amla'))
+        );
 
       if (matchedInFridge) {
         matchedTriggers.push(SOURASHTRA_TERM_MAP[tLow] || `${trigger} (Fresh from Fridge)`);

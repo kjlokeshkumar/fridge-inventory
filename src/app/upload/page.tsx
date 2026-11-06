@@ -213,10 +213,23 @@ export default function UploadPage() {
           console.error("Vercel API raw response:", errText);
           let errData: Record<string, string> = {};
           try { errData = JSON.parse(errText); } catch {}
+          if (response.status === 422 || errData.error === 'no_food_detected') {
+            throw new Error(t.noFoodDetected || errData.message || 'No edible food items or groceries detected.');
+          }
           throw new Error(errData.error || errData.message || `API rejected batch ${i + 1} with status ${response.status}. See console for raw response.`);
         }
 
-        await response.json();
+        const batchResult = await response.json();
+        if (Array.isArray(batchResult.suggestions) && batchResult.suggestions.length > 0) {
+          try {
+            const existing = JSON.parse(localStorage.getItem('pendingFridgeSuggestions') || '[]');
+            const existingNames = new Set(existing.map((s: { name: string }) => s.name.toLowerCase()));
+            const toAdd = batchResult.suggestions.filter((s: { name: string }) => !existingNames.has(s.name.toLowerCase()));
+            localStorage.setItem('pendingFridgeSuggestions', JSON.stringify([...existing, ...toAdd]));
+          } catch {
+            localStorage.setItem('pendingFridgeSuggestions', JSON.stringify(batchResult.suggestions));
+          }
+        }
       }
       
       setProgressMsg(t.completeRedirecting);

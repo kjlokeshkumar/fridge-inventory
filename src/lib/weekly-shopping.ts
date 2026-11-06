@@ -1,3 +1,137 @@
+export interface EquivalenceGroup {
+  canonical: string;
+  aliases: string[];
+  satisfies: string[];
+}
+
+export const CULINARY_EQUIVALENCE_GROUPS: EquivalenceGroup[] = [
+  {
+    canonical: 'Idli / Dosa Batter',
+    aliases: ['idli dosa batter', 'dosa batter', 'idli batter', 'batter', 'maavu', 'dosa maavu', 'idli maavu', 'fermented batter'],
+    satisfies: ['dosa batter', 'idli batter', 'batter', 'idli', 'dosa', 'appam batter', 'uthappam batter'],
+  },
+  {
+    canonical: 'Curd / Yogurt (Dheim)',
+    aliases: ['curd', 'yogurt', 'yoghurt', 'dheim', 'dahi', 'taak', 'thayir', 'mor', 'buttermilk', 'spiced buttermilk'],
+    satisfies: ['curd', 'yogurt', 'dheim', 'dahi', 'buttermilk', 'taak', 'thayir'],
+  },
+  {
+    canonical: 'Cooked Rice (Saadu)',
+    aliases: ['cooked rice', 'bhaath', 'saadu', 'boiled rice', 'steamed rice', 'leftover rice', 'rice'],
+    satisfies: ['cooked rice', 'bhaath', 'saadu', 'rice'],
+  },
+  {
+    canonical: 'Boiled Eggs (Anda)',
+    aliases: ['boiled eggs', 'boiled egg', 'hard boiled eggs', 'egg', 'eggs', 'anda', 'muttai'],
+    satisfies: ['egg', 'eggs', 'boiled egg', 'boiled eggs', 'anda', 'muttai'],
+  },
+  {
+    canonical: 'Ginger Garlic Paste',
+    aliases: ['ginger garlic paste', 'allam losan paste', 'ginger paste', 'garlic paste'],
+    satisfies: ['ginger garlic paste', 'ginger', 'garlic', 'fresh ginger', 'garlic cloves'],
+  },
+  {
+    canonical: 'Tamarind Paste / Pulp',
+    aliases: ['tamarind paste', 'tamarind pulp', 'tamarind extract', 'puli', 'amli'],
+    satisfies: ['tamarind', 'tamarind paste', 'tamarind pulp', 'puli'],
+  },
+  {
+    canonical: 'Fresh Grated Coconut (Nalar)',
+    aliases: ['grated coconut', 'fresh coconut', 'nalar', 'shredded coconut', 'coconut'],
+    satisfies: ['coconut', 'grated coconut', 'fresh grated coconut', 'nalar'],
+  },
+  {
+    canonical: 'Fresh Coriander Leaves (Kothmir)',
+    aliases: ['fresh coriander leaves', 'coriander', 'coriander leaves', 'cilantro', 'kothmir', 'kothamalli'],
+    satisfies: ['coriander', 'coriander leaves', 'fresh coriander', 'cilantro', 'kothmir'],
+  },
+  {
+    canonical: 'Fresh Mint Leaves (Pudina)',
+    aliases: ['fresh mint leaves', 'mint', 'mint leaves', 'pudina'],
+    satisfies: ['mint', 'mint leaves', 'fresh mint', 'pudina'],
+  },
+  {
+    canonical: 'Green Chillies (Mirsang)',
+    aliases: ['green chilli', 'green chillies', 'green chili', 'green chilies', 'mirsang', 'pachai milagai'],
+    satisfies: ['green chilli', 'green chillies', 'chilli', 'chillies', 'mirsang'],
+  },
+  {
+    canonical: 'Gooseberry / Amla (Nellika)',
+    aliases: ['gooseberry', 'amla', 'nellika', 'amla fruit', 'nelli'],
+    satisfies: ['gooseberry', 'amla', 'nellika'],
+  },
+  {
+    canonical: 'Fresh Greens / Spinach (Bhajji)',
+    aliases: ['spinach', 'greens', 'bhajji', 'keerai', 'palak', 'methi leaves'],
+    satisfies: ['spinach', 'greens', 'bhajji', 'keerai', 'fresh greens'],
+  },
+];
+
+export function normalizeForReconciliation(value: string): string {
+  if (!value) return '';
+  return value
+    .toLowerCase()
+    .replace(/\(.*?\)/g, '')
+    .replace(/\s+-\s+\d+(?:\.\d+)?\s*[a-z]+\s*$/i, '')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+export function doesInventorySatisfyRecipeIngredient(
+  requiredIngredient: string,
+  availableInventory: string[]
+): boolean {
+  if (!requiredIngredient || !Array.isArray(availableInventory) || availableInventory.length === 0) {
+    return false;
+  }
+
+  const normRequired = normalizeForReconciliation(requiredIngredient);
+  if (!normRequired) return false;
+
+  const requiredWords = normRequired.split(' ').filter((w) => w.length > 2);
+
+  for (const invItem of availableInventory) {
+    const normInv = normalizeForReconciliation(invItem);
+    if (!normInv) continue;
+
+    if (normInv === normRequired) {
+      return true;
+    }
+
+    if ((normRequired === 'egg' || normRequired === 'eggs') && normInv.includes('eggplant')) {
+      continue;
+    }
+    if ((normInv === 'egg' || normInv === 'eggs') && normRequired.includes('eggplant')) {
+      continue;
+    }
+
+    const invWords = normInv.split(' ').filter((w) => w.length > 2);
+    const hasWordOverlap = requiredWords.some((rw) => invWords.includes(rw));
+    if (hasWordOverlap) {
+      return true;
+    }
+
+    for (const group of CULINARY_EQUIVALENCE_GROUPS) {
+      const invMatchesGroup = group.aliases.some((alias) => {
+        const normAlias = normalizeForReconciliation(alias);
+        return normInv === normAlias || normInv.split(' ').includes(normAlias);
+      });
+      if (invMatchesGroup) {
+        const requiredSatisfied = group.satisfies.some((sat) => {
+          const normSat = normalizeForReconciliation(sat);
+          return normRequired === normSat || normRequired.split(' ').includes(normSat);
+        });
+        if (requiredSatisfied) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
 export interface WeeklyShoppingRecipe {
   title?: string;
   fridgeIngredientsUsed?: string[];
@@ -267,11 +401,13 @@ export function calculateWeeklyShopping(
             recipeIngredients.add(normalizedName);
 
             const ingredientWords = normalizedName.split(/[^a-z0-9]+/).filter((word) => word.length > 2);
-            const inInventory = available.some((inventoryName) => {
-              const inventoryWords = inventoryName.split(/[^a-z0-9]+/).filter((word) => word.length > 2);
-              return inventoryName === normalizedName ||
-                ingredientWords.some((word) => inventoryWords.includes(word));
-            });
+            const inInventory =
+              doesInventorySatisfyRecipeIngredient(canonicalName, safeInventory) ||
+              available.some((inventoryName) => {
+                const inventoryWords = inventoryName.split(/[^a-z0-9]+/).filter((word) => word.length > 2);
+                return inventoryName === normalizedName ||
+                  ingredientWords.some((word) => inventoryWords.includes(word));
+              });
             if (inInventory) {
               alreadyInFridge.add(canonicalName);
             } else {

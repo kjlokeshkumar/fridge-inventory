@@ -25,6 +25,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -89,6 +90,7 @@ class MainActivity : ComponentActivity() {
   @OptIn(ExperimentalMaterial3Api::class)
   @SuppressLint("SetJavaScriptEnabled")
   override fun onCreate(savedInstanceState: Bundle?) {
+    enableEdgeToEdge()
     super.onCreate(savedInstanceState)
 
     // Request Camera permission if not granted
@@ -116,7 +118,7 @@ class MainActivity : ComponentActivity() {
       var inputUrl by remember { mutableStateOf(currentUrl) }
 
       MaterialTheme {
-        Surface(modifier = Modifier.fillMaxSize(), color = Color(0xFF0F172A)) {
+        Surface(modifier = Modifier.fillMaxSize().safeDrawingPadding(), color = Color(0xFF0F172A)) {
           if (isConfiguring || currentUrl.isEmpty()) {
             // Setup Screen to enter Vercel URL
             Box(

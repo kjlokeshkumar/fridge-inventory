@@ -17,6 +17,13 @@ interface InventoryItem {
   imageUrl: string | null;
 }
 
+interface SmartSuggestion {
+  name: string;
+  category?: string;
+  hint?: string;
+  sourashtraName?: string;
+}
+
 export default function InventoryPage() {
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -30,8 +37,9 @@ export default function InventoryPage() {
   const [isClearingAll, setIsClearingAll] = useState(false);
   const [newItemName, setNewItemName] = useState('');
   const [newItemCategory, setNewItemCategory] = useState('Produce');
-  const [newItemQty, setNewItemQty] = useState(1);
+  const [newItemQty, setNewItemQty] = useState<string>('1');
   const [isSubmittingNew, setIsSubmittingNew] = useState(false);
+  const [suggestions, setSuggestions] = useState<SmartSuggestion[]>([]);
 
   const deleteTimerRef = useRef<NodeJS.Timeout | null>(null);
   const countdownIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -40,6 +48,16 @@ export default function InventoryPage() {
   useEffect(() => {
     const stored = localStorage.getItem('appLanguage') || 'English';
     setLanguage(stored);
+
+    try {
+      const storedSug = localStorage.getItem('pendingFridgeSuggestions');
+      if (storedSug) {
+        const parsed = JSON.parse(storedSug);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setSuggestions(parsed);
+        }
+      }
+    } catch {}
 
     const handleLang = (e: Event) => {
       const newLang = (e as CustomEvent).detail;
@@ -113,11 +131,12 @@ export default function InventoryPage() {
   };
 
   // 5-Second Undo Delete (Heuristic #3 - User Control & Freedom) with Magic Sprinkles
-  const handleDelete = (item: InventoryItem, e: React.MouseEvent) => {
-    e.stopPropagation();
-    triggerSparklesAtElement(e.currentTarget as HTMLElement, 'remove');
+  const handleDelete = (item: InventoryItem, e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (e?.currentTarget) {
+      triggerSparklesAtElement(e.currentTarget as HTMLElement, 'remove');
+    }
 
-    // Finalize any previously pending delete immediately
     if (pendingItemRef.current) {
       finalizeDelete(pendingItemRef.current.id);
     }
@@ -126,7 +145,6 @@ export default function InventoryPage() {
     setPendingDeletedItem(item);
     setUndoCountdown(5);
 
-    // Optimistically remove from state
     setItems((prev) => prev.filter((i) => i.id !== item.id));
 
     if (deleteTimerRef.current) clearTimeout(deleteTimerRef.current);
@@ -246,11 +264,26 @@ export default function InventoryPage() {
     setPendingClearedItems(null);
   };
 
+  const handleDecrementNewQty = () => {
+    setNewItemQty((prev) => {
+      const n = parseInt(prev, 10) || 1;
+      return String(Math.max(1, n - 1));
+    });
+  };
+
+  const handleIncrementNewQty = () => {
+    setNewItemQty((prev) => {
+      const n = parseInt(prev, 10) || 1;
+      return String(n + 1);
+    });
+  };
+
   const handleQuickAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     const name = newItemName.trim();
     if (!name || isSubmittingNew) return;
 
+    const parsedQty = Math.max(1, parseInt(newItemQty, 10) || 1);
     setIsSubmittingNew(true);
     try {
       const res = await fetch('/api/inventory', {
@@ -259,13 +292,14 @@ export default function InventoryPage() {
         body: JSON.stringify({
           name,
           category: newItemCategory,
-          quantity: newItemQty,
+          quantity: parsedQty,
         }),
       });
       const data = await res.json();
       if (res.ok && data.item) {
         setItems((prev) => [data.item, ...prev]);
         setNewItemName('');
+        setNewItemQty('1');
         setShowAddModal(false);
         triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'add');
       }
@@ -276,8 +310,58 @@ export default function InventoryPage() {
     }
   };
 
-  const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
+  const handleUpdateItemQuantity = async (item: InventoryItem, newQty: number, e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (newQty <= 0) {
+      handleDelete(item, e);
+      return;
+    }
 
+    setItems((prev) => prev.map((i) => (i.id === item.id ? { ...i, quantity: newQty } : i)));
+
+    try {
+      await fetch('/api/inventory', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: item.id, quantity: newQty }),
+      });
+    } catch (err) {
+      console.error('Failed to update quantity', err);
+      fetchInventory();
+    }
+  };
+
+  const handleAddSuggestedItem = async (suggestion: SmartSuggestion) => {
+    try {
+      const res = await fetch('/api/inventory', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: suggestion.name,
+          category: suggestion.category || 'Pantry',
+          quantity: 1,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.item) {
+        setItems((prev) => [data.item, ...prev]);
+        triggerSparkles(window.innerWidth / 2, window.innerHeight / 3, 'add');
+
+        const updatedSug = suggestions.filter((s) => s.name !== suggestion.name);
+        setSuggestions(updatedSug);
+        localStorage.setItem('pendingFridgeSuggestions', JSON.stringify(updatedSug));
+      }
+    } catch (err) {
+      console.error('Failed to add suggested item', err);
+    }
+  };
+
+  const handleDismissSuggestions = () => {
+    setSuggestions([]);
+    localStorage.removeItem('pendingFridgeSuggestions');
+  };
+
+  const t = UI_TRANSLATIONS[language] || UI_TRANSLATIONS.English;
 
   if (loading) {
     return (
@@ -318,6 +402,7 @@ export default function InventoryPage() {
             className="btn-primary"
             onClick={(e) => {
               triggerSparklesAtElement(e.currentTarget, 'open');
+              setNewItemQty('1');
               setShowAddModal(true);
             }}
             style={{ minHeight: '40px' }}
@@ -329,6 +414,68 @@ export default function InventoryPage() {
           </a>
         </div>
       </header>
+
+      {/* AI Smart Suggestions for Unlabeled Homemade Preps */}
+      {suggestions.length > 0 && (
+        <div
+          className="unlabeled-suggestions-banner glass-pane"
+          style={{
+            background: 'linear-gradient(135deg, rgba(230, 245, 245, 0.95), rgba(254, 243, 199, 0.88))',
+            border: '1.5px solid rgba(45, 110, 119, 0.35)',
+            borderRadius: '12px',
+            padding: '14px 18px',
+            marginBottom: '20px',
+            boxShadow: '0 4px 14px rgba(0,0,0,0.06)',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px', marginBottom: '8px' }}>
+            <div>
+              <h4 style={{ margin: 0, color: 'var(--primary-teal)', fontSize: '1rem', fontWeight: 700 }}>
+                {t.unlabeledSuggestionsTitle || '✨ AI Suggestions for Unlabeled Items'}
+              </h4>
+              <p style={{ margin: '3px 0 0 0', fontSize: '0.85rem', color: '#4b5563' }}>
+                {t.unlabeledSuggestionsDesc || 'We spotted unlabeled containers/vessels in your fridge. Tap to add any of these to your inventory:'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleDismissSuggestions}
+              style={{ background: 'transparent', border: 'none', color: '#6b7280', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 500 }}
+            >
+              ✕ {t.dismissSuggestions || 'Dismiss'}
+            </button>
+          </div>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '10px' }}>
+            {suggestions.map((sug, idx) => (
+              <button
+                key={`${sug.name}-${idx}`}
+                type="button"
+                onClick={() => handleAddSuggestedItem(sug)}
+                className="btn-secondary"
+                style={{
+                  padding: '7px 14px',
+                  fontSize: '0.86rem',
+                  borderRadius: '20px',
+                  background: '#ffffff',
+                  border: '1.5px solid var(--primary-teal)',
+                  color: 'var(--primary-teal)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                }}
+              >
+                <span>➕</span>
+                <span>{formatItemName(sug.name, language)}</span>
+                {sug.hint && <span style={{ fontSize: '0.75rem', opacity: 0.7, fontWeight: 400 }}>({sug.hint})</span>}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Quick Add Modal */}
       {showAddModal && (
@@ -344,7 +491,7 @@ export default function InventoryPage() {
               width: '92%',
               boxShadow: '0 16px 40px rgba(0,0,0,0.25)',
               margin: 'auto',
-              border: '1.5px solid rgba(45, 110, 119, 0.28)'
+              border: '1.5px solid rgba(45, 110, 119, 0.28)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
@@ -370,12 +517,12 @@ export default function InventoryPage() {
                   required
                   value={newItemName}
                   onChange={(e) => setNewItemName(e.target.value)}
-                  placeholder={t.itemNamePlaceholder || (language === 'Tamil' ? 'எ.கா. தக்காளி, கத்தரிக்காய்' : 'e.g. Tomato, Brinjal')}
+                  placeholder={t.itemNamePlaceholder || (language === 'Tamil' ? 'எ.கா. தக்காளி, கத்தரிக்காய், இட்லி மாவு' : 'e.g. Tomato, Brinjal, Dosa Batter')}
                   style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '0.95rem' }}
                 />
               </div>
 
-              <div style={{ display: 'flex', gap: '10px' }}>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-end' }}>
                 <div style={{ flex: 1 }}>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '4px', color: 'var(--text-main)' }}>
                     {language === 'Tamil' ? 'பிரிவு' : 'Category'}
@@ -392,17 +539,92 @@ export default function InventoryPage() {
                     <option value="Other">{language === 'Tamil' ? 'மற்றவை' : 'Other'}</option>
                   </select>
                 </div>
-                <div style={{ width: '90px' }}>
+                <div style={{ width: '110px' }}>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '4px', color: 'var(--text-main)' }}>
                     {t.qty || (language === 'Tamil' ? 'அளவு' : 'Qty')}
                   </label>
-                  <input
-                    type="number"
-                    min="1"
-                    value={newItemQty}
-                    onChange={(e) => setNewItemQty(Math.max(1, parseInt(e.target.value) || 1))}
-                    style={{ width: '100%', padding: '9px 10px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '0.9rem' }}
-                  />
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      border: '1px solid #ccc',
+                      borderRadius: '8px',
+                      overflow: 'hidden',
+                      background: '#f9fafb',
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={handleDecrementNewQty}
+                      disabled={parseInt(newItemQty, 10) <= 1}
+                      aria-label={t.decreaseQty || 'Decrease quantity'}
+                      style={{
+                        border: 'none',
+                        background: 'transparent',
+                        width: '32px',
+                        height: '38px',
+                        fontSize: '1.2rem',
+                        fontWeight: 'bold',
+                        cursor: parseInt(newItemQty, 10) <= 1 ? 'not-allowed' : 'pointer',
+                        color: parseInt(newItemQty, 10) <= 1 ? '#9ca3af' : 'var(--primary-teal)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      −
+                    </button>
+                    <input
+                      type="number"
+                      min="1"
+                      value={newItemQty}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const v = e.target.value;
+                        if (v === '') {
+                          setNewItemQty('');
+                          return;
+                        }
+                        const n = parseInt(v, 10);
+                        if (!isNaN(n) && n >= 0) setNewItemQty(String(n));
+                      }}
+                      onBlur={() => {
+                        if (!newItemQty || parseInt(newItemQty, 10) < 1) {
+                          setNewItemQty('1');
+                        }
+                      }}
+                      style={{
+                        width: '46px',
+                        textAlign: 'center',
+                        border: 'none',
+                        background: '#ffffff',
+                        height: '38px',
+                        fontSize: '0.95rem',
+                        fontWeight: 600,
+                        padding: 0,
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={handleIncrementNewQty}
+                      aria-label={t.increaseQty || 'Increase quantity'}
+                      style={{
+                        border: 'none',
+                        background: 'transparent',
+                        width: '32px',
+                        height: '38px',
+                        fontSize: '1.2rem',
+                        fontWeight: 'bold',
+                        cursor: 'pointer',
+                        color: 'var(--primary-teal)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -437,7 +659,10 @@ export default function InventoryPage() {
             <button
               type="button"
               className="btn-primary"
-              onClick={() => setShowAddModal(true)}
+              onClick={() => {
+                setNewItemQty('1');
+                setShowAddModal(true);
+              }}
             >
               ✨ {t.quickAddItem || 'Add Item'}
             </button>
@@ -495,8 +720,57 @@ export default function InventoryPage() {
                 );
               })()}
 
-              <div className="item-details">
-                <span className="item-quantity">{t.qty}: {item.quantity}</span>
+              <div className="item-details" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px' }}>
+                <div className="item-qty-adjuster" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                  <span className="item-quantity" style={{ marginRight: '2px' }}>{t.qty}:</span>
+                  <button
+                    type="button"
+                    onClick={(e) => handleUpdateItemQuantity(item, Math.max(0, item.quantity - 1), e)}
+                    aria-label={t.decreaseQty || 'Decrease quantity'}
+                    title={t.decreaseQty || 'Decrease quantity'}
+                    style={{
+                      width: '26px',
+                      height: '26px',
+                      borderRadius: '6px',
+                      border: '1px solid #d1d5db',
+                      background: '#f9fafb',
+                      cursor: 'pointer',
+                      fontWeight: 'bold',
+                      fontSize: '0.9rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#374151',
+                    }}
+                  >
+                    −
+                  </button>
+                  <span style={{ minWidth: '18px', textAlign: 'center', fontWeight: 600, fontSize: '0.9rem' }}>
+                    {item.quantity}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => handleUpdateItemQuantity(item, item.quantity + 1, e)}
+                    aria-label={t.increaseQty || 'Increase quantity'}
+                    title={t.increaseQty || 'Increase quantity'}
+                    style={{
+                      width: '26px',
+                      height: '26px',
+                      borderRadius: '6px',
+                      border: '1px solid #d1d5db',
+                      background: '#f9fafb',
+                      cursor: 'pointer',
+                      fontWeight: 'bold',
+                      fontSize: '0.9rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--primary-teal)',
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
                 {item.expirationDate && (
                   <span className="item-expiry">
                     {t.exp}: {item.expirationDate}
@@ -560,7 +834,7 @@ export default function InventoryPage() {
               width: '92%',
               boxShadow: '0 16px 40px rgba(0,0,0,0.25)',
               margin: 'auto',
-              border: '1.5px solid rgba(185, 28, 28, 0.3)'
+              border: '1.5px solid rgba(185, 28, 28, 0.3)',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
@@ -593,7 +867,7 @@ export default function InventoryPage() {
                   color: '#ffffff',
                   fontWeight: 600,
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(220, 38, 38, 0.35)'
+                  boxShadow: '0 2px 8px rgba(220, 38, 38, 0.35)',
                 }}
               >
                 {isClearingAll ? '...' : (t.clearInventoryConfirmBtn || (language === 'Tamil' ? 'ஆம், அனைத்தையும் அழி' : 'Yes, Clear All'))}

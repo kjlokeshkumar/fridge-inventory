@@ -219,7 +219,17 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     clearPantryConfirmDesc: "This will uncheck all stocked pantry staples so you can do a fresh pantry inventory audit.",
     clearPantryConfirmBtn: "🧹 Yes, Reset Checks",
     clearPantrySuccess: "Pantry checklist reset for a fresh audit.",
-    cancel: "Cancel"
+    cancel: "Cancel",
+
+    // Smart Suggestions & Guardrails
+    noFoodDetected: "No edible food items or groceries detected. Cookware, utensils, and non-food photos are not accepted. Please take a clear photo of the food inside your fridge.",
+    unlabeledSuggestionsTitle: "✨ AI Suggestions for Unlabeled Items",
+    unlabeledSuggestionsDesc: "We spotted unlabeled containers/vessels in your fridge. Tap to add any of these to your inventory:",
+    addSuggestion: "Add to Fridge",
+    dismissSuggestions: "Dismiss",
+    suggestionAdded: "added to inventory!",
+    increaseQty: "Increase quantity",
+    decreaseQty: "Decrease quantity"
   },
   Tamil: {
     navHome: "முகப்பு",
@@ -440,7 +450,17 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     clearPantryConfirmDesc: "இது இருப்பில் உள்ள அனைத்து அஞ்சறைப் பொருட்களின் தேர்வையும் நீக்கிவிடும். நீங்கள் புதிய சரிபார்ப்பைச் செய்யலாம்.",
     clearPantryConfirmBtn: "🧹 ஆம், மீட்டமை",
     clearPantrySuccess: "அஞ்சறைப் பட்டியல் மீட்டமைக்கப்பட்டது.",
-    cancel: "ரத்து"
+    cancel: "ரத்து",
+
+    // Smart Suggestions & Guardrails
+    noFoodDetected: "உண்ணக்கூடிய உணவுப் பொருட்கள் எதுவும் கண்டறியப்படவில்லை. பாத்திரங்கள் மற்றும் உணவல்லாத படங்கள் ஏற்கப்படாது. குளிர்சாதனப் பெட்டியில் உள்ள உணவை தெளிவாக புகைப்படம் எடுக்கவும்.",
+    unlabeledSuggestionsTitle: "✨ பெயரிடப்படாத பொருட்களுக்கான AI பரிந்துரைகள்",
+    unlabeledSuggestionsDesc: "உங்கள் பாத்திரங்களில் உள்ள சில உணவுப் பொருட்கள் அடையாளம் காணப்பட்டுள்ளன. இவற்றை சரக்கிருப்பில் சேர்க்க தட்டவும்:",
+    addSuggestion: "சரக்கில் சேர்",
+    dismissSuggestions: "நீக்கு",
+    suggestionAdded: "சரக்கிருப்பில் சேர்க்கப்பட்டது!",
+    increaseQty: "அளவை கூட்டுக",
+    decreaseQty: "அளவை குறைக்க"
   }
 };
 
