@@ -17,6 +17,7 @@
     "@capacitor/camera": "^8.2.6",
     "@capacitor/core": "^8.6.0",
     "@capacitor/share": "^8.0.3",
+    "@capawesome/capacitor-app-update": "^8.1.1",
     "@capawesome/capacitor-google-sign-in": "^0.1.4",
     "@google/generative-ai": "^0.24.1",
     "@neondatabase/serverless": "^1.2.0",

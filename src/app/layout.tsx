@@ -3,6 +3,7 @@ import Link from 'next/link';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import AppAccessGate from '@/components/AppAccessGate';
+import AppUpdateChecker from '@/components/AppUpdateChecker';
 
 export const metadata: Metadata = {
   title: 'Sourashtra Chef',
@@ -32,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <AppUpdateChecker />
         <Navigation />
         <main className="page-wrapper container">
           <AppAccessGate>{children}</AppAccessGate>
