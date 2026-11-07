@@ -44,23 +44,35 @@ export default function Navigation() {
     window.addEventListener('userAuthChange', handleAuthChange);
 
     // Global keyboard visibility detection for mobile webview & browsers
+    const isTextInput = (el: Element | null): boolean => {
+      if (!el) return false;
+      const tag = el.tagName;
+      return tag === 'INPUT' || tag === 'TEXTAREA' || (el as HTMLElement).isContentEditable;
+    };
+
     const handleFocusIn = (e: FocusEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+      if (isTextInput(e.target as Element)) {
         document.body.classList.add('keyboard-open');
       }
     };
+
     const handleFocusOut = () => {
       setTimeout(() => {
-        const active = document.activeElement as HTMLElement | null;
-        if (!active || (active.tagName !== 'INPUT' && active.tagName !== 'TEXTAREA' && !active.isContentEditable)) {
+        if (!isTextInput(document.activeElement)) {
           document.body.classList.remove('keyboard-open');
         }
       }, 120);
     };
+
     const handleVisualResize = () => {
+      // If user is actively focused on an input/search, keep keyboard-open locked active
+      if (isTextInput(document.activeElement)) {
+        document.body.classList.add('keyboard-open');
+        return;
+      }
       if (window.visualViewport) {
-        const isKeyboardUp = window.visualViewport.height < (window.innerHeight * 0.75);
+        const screenH = (window.screen && window.screen.height) || window.innerHeight || 800;
+        const isKeyboardUp = window.visualViewport.height < (screenH * 0.68);
         document.body.classList.toggle('keyboard-open', isKeyboardUp);
       }
     };

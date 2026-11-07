@@ -2886,6 +2886,15 @@ ${groceryList}
               ? t.searchRecipesPlaceholder
               : "🔍 Search 320+ Sourashtra recipes (e.g. Ounty, Budith, Pilchar, Ambat, Pongal, Bhairi, Chaino, Rani's, Sugi)..."}
             value={searchQuery}
+            onFocus={() => document.body.classList.add('keyboard-open')}
+            onBlur={() => {
+              setTimeout(() => {
+                const active = document.activeElement;
+                if (!active || (active.tagName !== 'INPUT' && active.tagName !== 'TEXTAREA')) {
+                  document.body.classList.remove('keyboard-open');
+                }
+              }, 120);
+            }}
             onChange={(e) => {
               setSearchQuery(e.target.value);
               setVisibleCount(60);

@@ -27,15 +27,14 @@ public class MainActivity extends BridgeActivity {
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, windowInsets) -> {
-            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
-            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
-            return windowInsets;
-        });
-
         try {
             if (this.bridge != null && this.bridge.getWebView() != null) {
                 WebView webView = this.bridge.getWebView();
+
+                // Prevent aggressive OEM / MIUI Force-Dark algorithms from inverting white text on teal buttons
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                    webView.getSettings().setForceDark(android.webkit.WebSettings.FORCE_DARK_OFF);
+                }
 
                 // 1. Android Print Bridge (Invokes Android System Print & Save as PDF)
                 webView.addJavascriptInterface(new Object() {
