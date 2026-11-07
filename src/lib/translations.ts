@@ -632,9 +632,9 @@ export function toEnglishItemName(name: string): string {
       result = result.replace(new RegExp(tamilWord, 'g'), TAMIL_TO_ENGLISH_ITEM_MAP[tamilWord]);
     }
   }
-  // Strip any remaining parenthesized Tamil
-  result = result.replace(/\s*\([\u0B80-\u0BFF\s/]+\)/g, '');
-  result = result.replace(/\s*\/[\u0B80-\u0BFF\s]+/g, '');
+  // Strip any remaining parenthesized or slashed Tamil (ensure at least one Tamil character is present)
+  result = result.replace(/\s*\(\s*[\u0B80-\u0BFF][\u0B80-\u0BFF\s/]*\)/g, '');
+  result = result.replace(/\s*\/\s*[\u0B80-\u0BFF][\u0B80-\u0BFF\s]*/g, '');
   return result.trim();
 }
 

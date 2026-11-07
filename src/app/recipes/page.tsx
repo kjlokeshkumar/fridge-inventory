@@ -28,6 +28,36 @@ interface PrepPlateItem {
   image?: string;
 }
 
+function cleanQuantityString(rawQty: string): string {
+  let q = (rawQty || '').trim();
+  if (!q) return '';
+
+  // 1. If starts with standard measurement (e.g. "2 tbsp - coarse pepper...", "1 cup diluted..."), grab just amount + unit
+  const unitMatch = q.match(/^([0-9]+(?:\/[0-9]+)?(?:\.[0-9]+)?\s*(?:tbsp|tsp|cup|cups|g|kg|ml|l|pinch|pinches|pcs|piece|pieces|bunch|leaves|stalk|clove|cloves|pod|pods|inch))\b/i);
+  if (unitMatch) {
+    return unitMatch[1].trim();
+  }
+
+  // 2. Strip parenthetical or trailing notes after hyphens, dashes, or commas
+  q = q.replace(/,\s*optional\b/i, '').trim();
+  if (q.includes('–')) q = q.split('–')[0].trim();
+  if (q.includes('—')) q = q.split('—')[0].trim();
+  if (q.includes(' - ')) q = q.split(' - ')[0].trim();
+  if (q.includes(',')) q = q.split(',')[0].trim();
+
+  // 3. Compact long phrases
+  if (/small lemon-sized/i.test(q) || /lemon-sized/i.test(q)) return 'Lemon-size';
+  if (/small pinch/i.test(q)) return 'Pinch';
+  if (/to taste/i.test(q)) return 'To taste';
+  if (/as needed/i.test(q)) return 'As needed';
+
+  // 4. Maximum length protection
+  if (q.length > 14) {
+    q = q.slice(0, 13).trim() + '…';
+  }
+  return q;
+}
+
 function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdowns?: IngredientCalories[]): PrepPlateItem {
   const cleanRaw = raw.trim();
   let name = cleanRaw;
@@ -40,13 +70,13 @@ function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdo
     if (/^\d+$/.test(parenContent)) {
       quantity = `${parenContent} pcs`;
     } else {
-      quantity = parenContent.replace(/^for\s+/i, '');
+      quantity = cleanQuantityString(parenContent.replace(/^for\s+/i, ''));
     }
   } else {
     const dashMatch = cleanRaw.match(/^(.*?)\s*-\s*([0-9]+(?:\.[0-9]+)?\s*[a-zA-Z]+|[a-zA-Z0-9\s]+)$/);
     if (dashMatch) {
       name = dashMatch[1].trim();
-      quantity = dashMatch[2].trim();
+      quantity = cleanQuantityString(dashMatch[2].trim());
     }
   }
 
@@ -73,6 +103,7 @@ function parseIngredientString(raw: string, source: 'fridge' | 'pantry', breakdo
 
   if (quantity.length > 0) {
     quantity = quantity.charAt(0).toUpperCase() + quantity.slice(1);
+    quantity = cleanQuantityString(quantity);
   }
 
   const ramekin = getRamekinStyle(name);

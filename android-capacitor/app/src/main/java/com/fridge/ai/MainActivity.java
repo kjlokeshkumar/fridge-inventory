@@ -24,8 +24,16 @@ import com.getcapacitor.BridgeActivity;
 public class MainActivity extends BridgeActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        supportRequestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
+
+        if (getActionBar() != null) {
+            getActionBar().hide();
+        }
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         try {
             if (this.bridge != null && this.bridge.getWebView() != null) {
